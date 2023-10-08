@@ -1,13 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-// import { logInWithEmailAndPassword } from "./firebase/firebase";
+import {
+  logInWithEmailAndPassword,
+  registerWithEmailAndPassword,
+} from "./lib/firebase/firebase";
+import { abortController } from "./lib/axios/axios";
 
 function App() {
   const [count, setCount] = useState(0);
-  console.log(import.meta.env.VITE_SOME_KEY);
-  console.log(import.meta.env);
+  useEffect(() => {
+    const handleOnTabClose = (e) => {
+      e.preventDefault();
+      // Chrome will only show dialog if user has interacted with the page
+      return (e.returnValue = "Are you sure you want to exit?");
+    };
+
+    window.addEventListener("beforeunload", handleOnTabClose, {
+      capture: true,
+    });
+
+    return () => {
+      // cleanup event listener to prevent memory leak
+      window.removeEventListener("beforeunload", handleOnTabClose);
+      // cancel all exisiting http requests
+      abortController.abort();
+    };
+  }, []);
+  // console.log(import.meta.env);
   return (
     <>
       <div>
@@ -31,11 +52,21 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <button
-      // onClick={() =>
-      //   // logInWithEmailAndPassword("yisyen123@gmail.com", "yisyen123")
-      // }
+        onClick={() =>
+          logInWithEmailAndPassword("yisyen123@gmail.com", "Yisyen@123")
+        }
       >
         Login
+      </button>
+      <button
+        onClick={() =>
+          registerWithEmailAndPassword({
+            email: "yisyen123+test1@gmail.com",
+            password: "Yisyen@123",
+          })
+        }
+      >
+        Register
       </button>
     </>
   );

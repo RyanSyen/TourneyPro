@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getUser } from "./authAPI";
 
 import {
   GoogleAuthProvider,
@@ -11,12 +12,12 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  // apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  // authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  // projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  // storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  // messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDERID,
-  // appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.REACT_APP_FIREBASE_MESSAGING_SENDERID,
+  appId: import.meta.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -34,16 +35,22 @@ const signInWithGoogle = async () => {
 };
 
 const logInWithEmailAndPassword = async (email, password) => {
+  console.log("login");
   try {
     const res = await signInWithEmailAndPassword(auth, email, password);
     console.log(res);
+
+    const user = await getUser(res._tokenResponse.idToken);
+    console.log(user);
   } catch (err) {
     console.error(err);
   }
 };
 
-const registerWithEmailAndPassword = async (...user) => {
+const registerWithEmailAndPassword = async (user) => {
+  console.log(user);
   const { email, password } = user;
+  console.log(email, password);
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;

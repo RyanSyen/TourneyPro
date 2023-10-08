@@ -1,23 +1,29 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App.jsx";
+// import App from "../../App.jsx";
+import Home from "../../pages/home.jsx";
+import { StyleProvider } from "../../context/styleContext.jsx";
 
-export default createBrowserRouter(
+const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <App />,
+      element: (
+        <StyleProvider>
+          <Home />
+        </StyleProvider>
+      ),
       //   loader: rootLoader,
-      children: [
-        // {
-        //   path: "team",
-        //   element: <Team />,
-        //   loader: teamLoader,
-        // },
-      ],
+      // children: [
+      //   // {
+      //   //   path: "team",
+      //   //   element: <Team />,
+      //   //   loader: teamLoader,
+      //   // },
+      // ],
     },
   ],
   {
-    basename: "/app/",
+    basename: "/",
     future: {
       // https://reactrouter.com/en/main/routers/create-browser-router#window:~:text=An%20optional%20set%20of%20Future%20Flags%20to%20enable%20for%20this%20Router.%20We%20recommend%20opting%20into%20newly%20released%20future%20flags%20sooner%20rather%20than%20later%20to%20ease%20your%20eventual%20migration%20to%20v7.
       // Normalize `useNavigation()`/`useFetcher()` `formMethod` to uppercase
@@ -25,6 +31,8 @@ export default createBrowserRouter(
     },
   }
 );
+
+export default router;
 
 /* type declaration for createBrowserRouter
 function createBrowserRouter(
