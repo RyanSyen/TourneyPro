@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 // import App from "../../App.jsx";
 import Home from "../../pages/home.jsx";
 import { StyleProvider } from "../../context/styleContext.jsx";
+import Error404 from "../../pages/error404.jsx";
 
 const router = createBrowserRouter(
   [
@@ -20,6 +21,11 @@ const router = createBrowserRouter(
       //   //   loader: teamLoader,
       //   // },
       // ],
+      errorElement: (
+        <StyleProvider>
+          <Error404 />
+        </StyleProvider>
+      ),
     },
   ],
   {

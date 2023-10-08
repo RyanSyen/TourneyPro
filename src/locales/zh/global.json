@@ -1,0 +1,12 @@
+{
+  "header": {
+    "chooseLanguage": "Choose Language:"
+  },
+  "mainSection": {
+    "title": "Creating Multilingual React Apps with react-i18next: A Step-by-Step Guide"
+  },
+  "error404": {
+    "title": "抱歉，出了点问题.",
+    "description": "请稍后重试或刷新页面."
+  }
+}

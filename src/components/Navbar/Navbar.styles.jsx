@@ -5,7 +5,7 @@ const NavbarWrapper = styled.nav`
   display: flex;
   align-items: center;
   position: fixed;
-  padding: 10px 30px;
+  padding: 20px 30px;
   width: 100%;
   background-color: ${(props) => props.styleConst.body_background_color};
   color: #fcfcfc;
@@ -24,8 +24,25 @@ const NavbarWrapper = styled.nav`
 
 const NavbarLogo = styled.a`
   display: flex;
+  align-items: center;
   padding: 0;
   margin: 0;
+  cursor: pointer;
+
+  img {
+    padding-right: 5px;
+  }
 `;
 
-export { NavbarWrapper, NavbarLogo };
+const NavBurgerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1rem;
+`;
+
+// const LanguagePicker = styled.div`
+
+// `
+
+export { NavbarWrapper, NavbarLogo, NavBurgerContainer };

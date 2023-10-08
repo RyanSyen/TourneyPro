@@ -42,24 +42,24 @@ const themesOption = {
     },
   },
   typography: {
-    fontFamily: "Roboto Flex",
-    h4: {
-      color: "rgba(0,0,0,0.7)",
-      letterSpacing: " 0.25px",
-      fontWeight: 700,
-    },
-    h5: {
-      color: "rgba(0,0,0,0.6)",
-      fontWeight: 400,
-    },
-    subtitle1: {
-      color: "rgba(0,0,0,0.7)",
-      letterSpacing: " 0.25px",
-    },
-    body2: {
-      color: "rgba(55, 65, 81, 1)",
-      fontWeight: 400,
-    },
+    fontFamily: "'Noto Sans', sans-serif",
+    // h4: {
+    //   color: "rgba(0,0,0,0.7)",
+    //   letterSpacing: " 0.25px",
+    //   fontWeight: 700,
+    // },
+    // h5: {
+    //   color: "rgba(0,0,0,0.6)",
+    //   fontWeight: 400,
+    // },
+    // subtitle1: {
+    //   color: "rgba(0,0,0,0.7)",
+    //   letterSpacing: " 0.25px",
+    // },
+    // body2: {
+    //   color: "rgba(55, 65, 81, 1)",
+    //   fontWeight: 400,
+    // },
   },
 };
 

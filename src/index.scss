@@ -100,3 +100,11 @@ select {
   flex-direction: column;
   height: 100%;
 }
+
+.error-container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  height: 100vh;
+  padding: 0 75px;
+}
