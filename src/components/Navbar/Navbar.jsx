@@ -16,7 +16,7 @@ const Navbar = () => {
   const styleConst = useStyle();
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const { user } = useUserContext();
+  const { userData } = useUserContext();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,11 +30,11 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      console.log("unsubsribed");
-
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  console.log(userData);
 
   return (
     <NavbarWrapper
@@ -49,10 +49,10 @@ const Navbar = () => {
       </div>
       <div className="flex-center">
         <LanguageDropdown />
-        {user.loggedIn ? (
+        {userData ? (
           <CustomAvatar
-            photoUrl={user.data.photoUrl}
-            username={user.data.username ?? user.data.email}
+            photoUrl={userData.photoURL ?? null}
+            username={userData.username ?? userData.email}
           />
         ) : (
           <LoginModalContextProvider>

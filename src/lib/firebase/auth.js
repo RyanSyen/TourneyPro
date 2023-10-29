@@ -36,34 +36,36 @@ if (user != null) {
   console.log(data);
 }
 
-const onAuthStateChange = (setUser) => {
-  console.log("called onAuthStateChange");
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.user
-      console.log("auth state changed: user signed in");
-      var userData = {
-        id: user.uid,
-        username: user.displayName,
-        email: user.email,
-        isEmailVerified: user.isEmailVerified,
-        photoURL: user.photoURL,
-        mobileNumber: user.phoneNumber,
-        providerData: user.providerData,
-        providerId: user.providerId,
-        accessToken: user.accessToken,
-        lastSignIn: user.metadata.lastSignInTime,
-      };
-      setUser({ loggedIn: true, data: userData });
-    } else {
-      // User is signed out
-      // ...
-      console.log("auth state changed: user signed out");
-      setUser({ loggedIn: false });
-    }
-  });
-};
+//* we dont need to init or handle onAuthStateChange. We can use the useAuthState hook to handle the events for us
+// const onAuthStateChange = (onSetUser) => {
+//   console.log("called onAuthStateChange");
+//   onAuthStateChanged(auth, (user) => {
+//     if (user) {
+//       // User is signed in, see docs for a list of available properties
+//       // https://firebase.google.com/docs/reference/js/auth.user
+//       console.log("auth state changed: user signed in");
+//       var userData = {
+//         id: user.uid,
+//         username: user.displayName,
+//         email: user.email,
+//         isEmailVerified: user.isEmailVerified,
+//         photoURL: user.photoURL,
+//         mobileNumber: user.phoneNumber,
+//         providerData: user.providerData,
+//         providerId: user.providerId,
+//         accessToken: user.accessToken,
+//         lastSignIn: user.metadata.lastSignInTime,
+//       };
+//       //   setUser({ loggedIn: true, data: userData });
+//       onSetUser({ loggedIn: true, data: userData });
+//     } else {
+//       // User is signed out
+//       // ...
+//       console.log("auth state changed: user signed out");
+//       onSetUser({ loggedIn: false });
+//     }
+//   });
+// };
 
 const getCurrentUser = () => {
   return auth.currentUser;
@@ -122,9 +124,9 @@ const logout = () => {
 };
 
 export {
+  auth,
   logInWithEmailAndPassword,
   logout,
-  onAuthStateChange,
   registerWithEmailAndPassword,
   sendPasswordReset,
   signInWithGoogle,
