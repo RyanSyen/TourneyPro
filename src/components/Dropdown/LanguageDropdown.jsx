@@ -1,32 +1,54 @@
-import { useState } from "react";
+import styled from "@emotion/styled";
 import Box from "@mui/material/Box";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { typography_primary_hover_color } from "../../customStyles";
+import localeList from "../../locales/localeList";
+import media from "./../../lib/mui/styledComponents";
+import Dropdown from "./Dropdown";
+
+const DropdownContainer = styled(Box)`
+  display: none;
+  padding-right: 1.5rem;
+
+  @media ${media.sm} {
+    display: inline-flex;
+  }
+`;
 
 const LanguageDropdown = () => {
+  const { i18n } = useTranslation("global");
   const [lang, setLang] = useState("");
 
+  const elProp = {
+    helperText: "language dropdown",
+    variant: "standard",
+    withLabel: false,
+    displayEmpty: true,
+    displayHelperTxt: false,
+    enableDefaultOpt: false,
+    disableUnderline: true,
+    disableOutline: true,
+    hoverColor: { typography_primary_hover_color },
+  };
+
   const onChangeLang = (e) => {
+    console.log(e.target.value);
     setLang(e.target.value);
+    i18n.changeLanguage(e.target.value);
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <Select
-          id="demo-simple-select"
-          value={lang}
-          label="Language"
-          onChange={onChangeLang}
-          inputProps={{ "aria-label": "Without label" }}
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <DropdownContainer>
+      <Dropdown
+        el={elProp}
+        title="Language"
+        data={localeList}
+        onChange={onChangeLang}
+        value={lang || localeList.find((a) => a.Code == "en").Code}
+      />
+    </DropdownContainer>
   );
 };
 

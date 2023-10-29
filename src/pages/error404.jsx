@@ -1,7 +1,8 @@
-import illustration from "../assets/error404-illustration.png";
 import { Typography } from "@mui/material";
-import { useStyle } from "../context/styleContext";
 import { useTranslation } from "react-i18next";
+
+import illustration from "../assets/error404-illustration.png";
+import { useStyle } from "../context/styleContext";
 
 const Error404 = () => {
   const styleConst = useStyle();
@@ -16,7 +17,7 @@ const Error404 = () => {
         <Typography
           align="left"
           gutterBottom
-          noWrap="false"
+          noWrap={true}
           variant="h4"
           sx={{ color: styleConst.typography_primary_color, fontWeight: 600 }}
         >
@@ -26,7 +27,7 @@ const Error404 = () => {
         <Typography
           align="left"
           gutterBottom
-          noWrap="false"
+          noWrap={true}
           variant="h6"
           sx={{ color: styleConst.typography_primary_color }}
         >

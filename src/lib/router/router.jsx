@@ -1,16 +1,52 @@
+import { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
-// import App from "../../App.jsx";
-import Home from "../../pages/home.jsx";
+import { BounceLoader } from "react-spinners";
+
 import { StyleProvider } from "../../context/styleContext.jsx";
 import Error404 from "../../pages/error404.jsx";
+// import App from "../../App.jsx";
+import Home from "../../pages/home.jsx";
+import TestDropdown from "../../pages/test_page/components.jsx";
 
 const router = createBrowserRouter(
   [
     {
       path: "/",
       element: (
+        <Suspense
+          fallback={
+            <BounceLoader
+              color="#D3D3D3"
+              loading
+              size={60}
+              speedMultiplier={0.8}
+            />
+          }
+        >
+          <StyleProvider>
+            <Home />
+          </StyleProvider>
+        </Suspense>
+      ),
+      //   loader: rootLoader,
+      // children: [
+      //   // {
+      //   //   path: "team",
+      //   //   element: <Team />,
+      //   //   loader: teamLoader,
+      //   // },
+      // ],
+      errorElement: (
         <StyleProvider>
-          <Home />
+          <Error404 />
+        </StyleProvider>
+      ),
+    },
+    {
+      path: "/test/dropdown",
+      element: (
+        <StyleProvider>
+          <TestDropdown />
         </StyleProvider>
       ),
       //   loader: rootLoader,

@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+
 import * as constants from "../customStyles";
 
 const StyleContext = createContext();
@@ -11,7 +12,7 @@ const StyleProvider = ({ children }) => {
   );
 };
 
-export { useStyle, StyleProvider };
+export { StyleProvider, useStyle };
 
 //* apply in component
 // const { primaryColor, fontSizeMedium } = useStyle();

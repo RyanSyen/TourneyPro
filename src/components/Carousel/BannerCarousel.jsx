@@ -1,5 +1,5 @@
-import { SliderContainer, CarouselSlider } from "./BannerCarousel.styles";
 import { useStyle } from "../../context/styleContext";
+import { CarouselSlider, SliderContainer } from "./BannerCarousel.styles";
 
 const BannerCarousel = () => {
   const settings = {
@@ -63,7 +63,7 @@ const BannerCarousel = () => {
         {images.map((image) => (
           <div key={image.id}>
             <img
-              style={{ height: "100%", width: "100%" }}
+              style={{ height: "100%", width: "100%", objectFit: "cover" }}
               src={image.url}
               alt={image.name}
               data-img-id={image.id}

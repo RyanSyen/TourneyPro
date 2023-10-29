@@ -1,6 +1,7 @@
 {
   "header": {
-    "chooseLanguage": "Choose Language:"
+    "chooseLanguage": "Choose Language:",
+    "label_signin": "Sign In"
   },
   "mainSection": {
     "title": "Creating Multilingual React Apps with react-i18next: A Step-by-Step Guide"

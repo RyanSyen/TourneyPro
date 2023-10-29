@@ -1,12 +1,14 @@
-import media from "../../lib/mui/styledComponents";
 import styled from "@emotion/styled";
+
+import media from "../../lib/mui/styledComponents";
 
 const NavbarWrapper = styled.nav`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   position: fixed;
   padding: 20px 30px;
-  width: 100%;
+  width: -webkit-fill-available;
   background-color: ${(props) => props.styleConst.body_background_color};
   color: #fcfcfc;
   box-shadow: 0 3px 30px ${(props) => props.styleConst.header_box_shadow};
@@ -39,10 +41,14 @@ const NavBurgerContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-right: 1rem;
+
+  @media ${media.sm} {
+    display: none;
+  }
 `;
 
 // const LanguagePicker = styled.div`
 
 // `
 
-export { NavbarWrapper, NavbarLogo, NavBurgerContainer };
+export { NavbarLogo, NavbarWrapper, NavBurgerContainer };

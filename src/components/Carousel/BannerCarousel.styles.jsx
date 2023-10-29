@@ -1,13 +1,19 @@
 import styled from "@emotion/styled";
 import Slider from "react-slick";
 
+import media from "./../../lib/mui/styledComponents";
+
 const SliderContainer = styled.div`
   position: relative;
   width: 100%;
-  padding-bottom: 50%;
+  padding-bottom: 98%;
 
   .banner-carousel-container {
     padding: 5px;
+  }
+
+  @media ${media.sm} {
+    padding-bottom: 40%;
   }
 `;
 
@@ -18,7 +24,10 @@ const CarouselSlider = styled(Slider)`
   width: 100%;
   height: 100%;
 
-  .slick-list {
+  .slick-list,
+  .slick-track,
+  .slick-slide,
+  .slick-slide * {
     height: 100%;
   }
 
@@ -55,4 +64,4 @@ const CarouselSlider = styled(Slider)`
   }
 `;
 
-export { SliderContainer, CarouselSlider };
+export { CarouselSlider, SliderContainer };

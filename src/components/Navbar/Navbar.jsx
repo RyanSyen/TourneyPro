@@ -1,30 +1,64 @@
-import { NavbarWrapper, NavbarLogo, NavBurgerContainer } from "./Navbar.styles";
 import MenuSharpIcon from "@mui/icons-material/MenuSharp";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import Logo32 from "../../assets/logo/logo_32.png";
-import { Typography } from "@mui/material";
 import { useStyle } from "../../context/styleContext";
-import PublicIcon from "@mui/icons-material/Public";
-import Dropdown from "../Dropdown/Dropdown";
+import { useUserContext } from "../../context/userContext";
+import { LoginBtn } from "../Button";
+import AppLogo from "../Common/Applogo";
+import CustomAvatar from "../Common/Avatar";
+import { LanguageDropdown } from "../Dropdown";
+import { LoginModalContextProvider } from "./../../context/loginContext";
+import { NavbarWrapper, NavBurgerContainer } from "./Navbar.styles";
 
 const Navbar = () => {
   const styleConst = useStyle();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const { user } = useUserContext();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      console.log("unsubsribed");
+
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <NavbarWrapper styleConst={styleConst}>
-      <div>
+    <NavbarWrapper
+      className={isScrolled ? "" : "transparent-nav"}
+      styleConst={styleConst}
+    >
+      <div className="flex-center">
         <NavBurgerContainer>
           <MenuSharpIcon />
         </NavBurgerContainer>
-        <NavbarLogo>
-          <img src={Logo32} alt="Tourney Pro" />
-          <Typography>TourneyPro</Typography>
-        </NavbarLogo>
+        <AppLogo enableOnclick={true} imgSrc={Logo32} fontSize="inherit" />
       </div>
-      <div>
-        {/* <LanguagePicker> */}
-        <PublicIcon />
-        <Dropdown />
-        {/* </LanguagePicker> */}
+      <div className="flex-center">
+        <LanguageDropdown />
+        {user.loggedIn ? (
+          <CustomAvatar
+            photoUrl={user.data.photoUrl}
+            username={user.data.username ?? user.data.email}
+          />
+        ) : (
+          <LoginModalContextProvider>
+            <LoginBtn />
+          </LoginModalContextProvider>
+        )}
       </div>
     </NavbarWrapper>
   );
