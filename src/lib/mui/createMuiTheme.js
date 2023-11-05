@@ -1,32 +1,12 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
-import {
-  background_primary_color,
-  body_background_color,
-  primary_font_size,
-  secondary_font_size,
-  typography_error_color,
-  typography_primary_color,
-  typography_primary_hover_color,
-} from "../../customStyles";
-//! will not utilize create mui theme as there's not enough customizations, will override mui component styles
+//* TODO: Revamp to have better readability by using shared styles as variables
 // Refer here: https://mui.com/material-ui/customization/theming/#responsivefontsizes-theme-options-theme
-
-// h1: 96px
-// h2: 60px
-// h3: 48px
-// h4: 34px
-// h5: 24px
-// subtitle1: 16px
-// subtitle2: 14px
-// body1: 16px
-// body2: 14px
-// button: 14px
-// caption: 12px
-// overline: 12px
 
 /*
   To expose the theme in the component, do this:
+  - import { useTheme } from "@mui/material/styles";
+  - const theme = useTheme();
 */
 
 const { palette } = createTheme();
@@ -42,7 +22,6 @@ const themesOption = {
     },
   },
   direction: "ltr",
-  // components: "", // override mui components styles here e.g. muialert
   palette: {
     mode: "dark",
     common: {
@@ -55,40 +34,19 @@ const themesOption = {
     secondary: {
       main: "#000000",
     },
-    // signup: palette.augmentColor({
-    //   color: {
-    //     main: "transparent linear-gradient(116deg, #E50B0D 0%, #CF0868 100%) 0% 0% no-repeat padding-box",
-    //   },
-    // }),
-    action: {
-      hover: typography_primary_hover_color,
-      hoverCapacity: 1,
-      focus: "transparent",
-    },
   },
   typography: {
     fontFamily: "'Noto Sans', sans-serif",
-    button: {
-      textTransform: "none",
-      fontSize: primary_font_size,
+    primary: {
+      color: "#FCFCFC",
+      hoverColor: "#FF2D2F",
+      size: "1rem",
     },
-    // h4: {
-    //   color: "rgba(0,0,0,0.7)",
-    //   letterSpacing: " 0.25px",
-    //   fontWeight: 700,
-    // },
-    // h5: {
-    //   color: "rgba(0,0,0,0.6)",
-    //   fontWeight: 400,
-    // },
-    // subtitle1: {
-    //   color: "rgba(0,0,0,0.7)",
-    //   letterSpacing: " 0.25px",
-    // },
-    // body2: {
-    //   color: "rgba(55, 65, 81, 1)",
-    //   fontWeight: 400,
-    // },
+    secondary: {
+      color: "#FCFCFC",
+      hoverColor: "#C7CBD3",
+      size: "0.9rem",
+    },
   },
   components: {
     // Name of component
@@ -109,7 +67,7 @@ const themesOption = {
     MuiMenu: {
       styleOverrides: {
         list: {
-          backgroundColor: body_background_color,
+          backgroundColor: "#26282F",
           // borderRadius: "15px",
         },
         paper: {
@@ -120,15 +78,18 @@ const themesOption = {
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          backgroundColor: body_background_color,
+          backgroundColor: "#26282F",
           "&.Mui-selected": {
-            backgroundColor: body_background_color,
+            backgroundColor: "#26282F",
             "&.Mui-focusVisible": {
-              background: body_background_color,
+              background: "#26282F",
             },
             "&:hover": {
-              backgroundColor: typography_primary_hover_color,
+              backgroundColor: "#FF2D2F",
             },
+          },
+          "&:hover": {
+            backgroundColor: "#FF2D2F",
           },
         },
       },
@@ -138,6 +99,12 @@ const themesOption = {
         root: {
           border: "none",
           borderRadius: "1.5rem",
+          textTransform: "none",
+          fontSize: "1rem",
+
+          "&:hover": {
+            backgroundColor: "transparent",
+          },
         },
       },
       variants: [
@@ -160,10 +127,26 @@ const themesOption = {
           },
         },
         {
+          props: { variant: "filledPrimaryShort" },
+          style: {
+            padding: "0.4rem 1.5rem",
+            backgroundColor: "#E50B0D",
+            width: "fit-content",
+            "&:hover": {
+              textDecoration: "none",
+              backgroundColor: "#C3090C",
+              // Reset on touch devices, it doesn't add specificity
+              "@media (hover: none)": {
+                backgroundColor: "#C3090C",
+              },
+            },
+          },
+        },
+        {
           props: { variant: "filledPrimary" },
           style: {
             padding: "0.4rem 1.5rem",
-            backgroundColor: background_primary_color,
+            backgroundColor: "#E50B0D",
             width: "100%",
             "&:hover": {
               textDecoration: "none",
@@ -208,16 +191,15 @@ const themesOption = {
               },
             },
             "&.MuiInput-root::after": {
-              borderBottom: `2px solid ${background_primary_color}`,
+              borderBottom: `2px solid ${"#E50B0D"}`,
             },
             "&.MuiInput-underline .Mui-focused": {
-              color: background_primary_color,
-              borderColor: background_primary_color,
+              color: "#E50B0D",
+              borderColor: "#E50B0D",
             },
             "&.Mui-focused": {
-              // color: background_primary_color,
               "&::after": {
-                borderColor: background_primary_color,
+                borderColor: "#E50B0D",
               },
             },
           },
@@ -227,7 +209,7 @@ const themesOption = {
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: typography_primary_color,
+          color: "#FCFCFC",
         },
       },
     },
@@ -238,8 +220,8 @@ const themesOption = {
           style: {
             display: "flex",
             alignItems: "center",
-            color: typography_error_color,
-            fontSize: secondary_font_size,
+            color: "#E87C03",
+            fontSize: "0.9rem",
             "&::before": {},
           },
         },
@@ -259,11 +241,17 @@ const themesOption = {
   background: {
     signupbtn:
       "transparent linear-gradient(116deg, #E50B0D 0%, #CF0868 100%) 0% 0% no-repeat padding-box",
-    modal: body_background_color,
+    modal: "#26282F",
     hover: {
       signupbtn:
         "transparent linear-gradient(116deg, #c3090c 0%, #b10659 100%) 0% 0% no-repeat padding-box",
     },
+  },
+  dropdown: {
+    primaryHover: "#FF2D2F",
+    secondaryHover: "#c7cbd333",
+    hoverCapacity: 1,
+    focusBg: "transparent",
   },
 };
 

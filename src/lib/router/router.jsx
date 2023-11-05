@@ -6,6 +6,7 @@ import { StyleProvider } from "../../context/styleContext.jsx";
 import Error404 from "../../pages/error404.jsx";
 // import App from "../../App.jsx";
 import Home from "../../pages/home.jsx";
+import ProfilePage from "../../pages/Security/profile.jsx";
 import TestDropdown from "../../pages/test_page/components.jsx";
 
 const router = createBrowserRouter(
@@ -28,14 +29,6 @@ const router = createBrowserRouter(
           </StyleProvider>
         </Suspense>
       ),
-      //   loader: rootLoader,
-      // children: [
-      //   // {
-      //   //   path: "team",
-      //   //   element: <Team />,
-      //   //   loader: teamLoader,
-      //   // },
-      // ],
       errorElement: (
         <StyleProvider>
           <Error404 />
@@ -49,19 +42,16 @@ const router = createBrowserRouter(
           <TestDropdown />
         </StyleProvider>
       ),
-      //   loader: rootLoader,
-      // children: [
-      //   // {
-      //   //   path: "team",
-      //   //   element: <Team />,
-      //   //   loader: teamLoader,
-      //   // },
-      // ],
       errorElement: (
         <StyleProvider>
           <Error404 />
         </StyleProvider>
       ),
+    },
+    {
+      path: "/security/profile",
+      element: <ProfilePage />,
+      errorElement: <Error404 />,
     },
   ],
   {

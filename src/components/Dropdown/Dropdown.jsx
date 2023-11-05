@@ -35,51 +35,22 @@ const CustomSelect = styled(
   ...(disableOutline && {
     boxShadow: "none",
 
-    // ".MuiOutlinedInput-notchedOutline": {
-    //   border: 0,
-    //   outline: 0,
-    // },
-    // "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
-    //   border: 0,
-    // },
-    // "& .MuiOutlinedInput-root.MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-    //   {
-    //     border: 0,
-    //   },
-    // "& .MuiInput-root MuiSelect-select.Mui-focused": {
-    //   backgroundColor: "transparent",
-    // },
     "& .MuiSelect-select:focus": {
-      backgroundColor: theme.palette.action.focus,
+      backgroundColor: theme.dropdown.focusBg,
     },
     "& .MuiSelect-select:hover": {
-      color: theme.palette.action.hover,
+      color: theme.dropdown.primaryHover,
     },
     "& .MuiSvgIcon-root": {
       top: "12%",
     },
-    // "& .MuiSvgIcon-root:hover": {
-    //   color: theme.palette.action.hover,
-    //   // backgroundColor: theme.palette.action.hover,
-    // },
     "&:hover .MuiSvgIcon-root": {
-      color: theme.palette.action.hover,
+      color: theme.dropdown.primaryHover,
     },
 
     "& .MuiPaper-root": {
       borderRadius: "50px",
     },
-
-    // "& .MuiSelect-select": {
-    //   "& .MuiMenuItem-root": {
-    //     padding: "7px 15px",
-    //     backgroundColor: "white",
-    //   },
-
-    //   "& .Mui-selected": {
-    //     backgroundColor: "transparent",
-    //   },
-    // },
   }),
 }));
 
@@ -123,7 +94,7 @@ const Dropdown = (props) => {
           // hoverColor={
           //   props.el.hoverColor.typography_primary_hover_color || "inherit"
           // }
-          // defaultValue=""
+          defaultValue=""
           MenuProps={{
             disableScrollLock: true,
           }}
@@ -145,22 +116,7 @@ const Dropdown = (props) => {
               <em>None</em>
             </MenuItem>
           )}
-
-          {props.data ? (
-            props.data.map((item) => {
-              return (
-                <MenuItem key={uuidv1()} value={item.Code}>
-                  {item.Locale}
-                </MenuItem>
-              );
-            })
-          ) : (
-            <div>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </div>
-          )}
+          {props.children}
         </CustomSelect>
         {props.el.displayHelperTxt && (
           <FormHelperText>{props.el.helperText}</FormHelperText>

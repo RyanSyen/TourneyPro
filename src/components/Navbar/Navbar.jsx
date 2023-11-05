@@ -7,8 +7,8 @@ import { useStyle } from "../../context/styleContext";
 import { useUserContext } from "../../context/userContext";
 import { LoginBtn } from "../Button";
 import AppLogo from "../Common/Applogo";
-import CustomAvatar from "../Common/Avatar";
 import { LanguageDropdown } from "../Dropdown";
+import UserControlDropdown from "../Dropdown/UserControlDropdown";
 import { LoginModalContextProvider } from "./../../context/loginContext";
 import { NavbarWrapper, NavBurgerContainer } from "./Navbar.styles";
 
@@ -34,7 +34,7 @@ const Navbar = () => {
     };
   }, []);
 
-  console.log(userData);
+  // console.log(userData);
 
   return (
     <NavbarWrapper
@@ -50,10 +50,7 @@ const Navbar = () => {
       <div className="flex-center">
         <LanguageDropdown />
         {userData ? (
-          <CustomAvatar
-            photoUrl={userData.photoURL ?? null}
-            username={userData.username ?? userData.email}
-          />
+          <UserControlDropdown />
         ) : (
           <LoginModalContextProvider>
             <LoginBtn />

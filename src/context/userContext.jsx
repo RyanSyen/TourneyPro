@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import CustomLoader from "../components/Common/CustomLoader";
-import { auth, onAuthStateChange } from "../lib/firebase/auth";
+import { auth } from "../lib/firebase/auth";
 
 const UserContext = createContext();
 const useUserContext = () => useContext(UserContext);
@@ -39,6 +39,7 @@ const UserContextProvider = ({ children }) => {
       accessToken: user.accessToken,
       lastSignIn: user.metadata.lastSignInTime,
     };
+    console.log(user);
     return (
       <UserContext.Provider value={{ userData }}>
         {children}

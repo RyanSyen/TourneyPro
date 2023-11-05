@@ -8,6 +8,7 @@
   },
   "error404": {
     "title": "Oops! Something went wrong.",
-    "description": "Please try again later or refresh the page."
+    "description": "Please try again later or refresh the page.",
+    "cta": "Back to home"
   }
 }

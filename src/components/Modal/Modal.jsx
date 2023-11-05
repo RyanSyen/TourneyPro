@@ -56,7 +56,7 @@ const CloseBtnLink = styled(
     color: styleConst.typography_tertiary_color,
 
     "&:hover": {
-      color: theme.palette.action.hover,
+      color: theme.dropdown.primaryHover,
     },
   };
 });

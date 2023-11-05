@@ -16,8 +16,6 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const user = auth.currentUser;
 
-console.log("current user", user);
-
 if (user != null) {
   console.log(user.providerData);
   const uid = user.uid;
@@ -84,13 +82,14 @@ const signInWithGoogle = async () => {
 const logInWithEmailAndPassword = async (email, password) => {
   console.log("login");
   try {
-    const res = await signInWithEmailAndPassword(auth, email, password);
-    console.log(res);
+    await signInWithEmailAndPassword(auth, email, password);
 
-    // const user = await getUser(res._tokenResponse.idToken);
-    console.log(getCurrentUser());
+    // console.log(getCurrentUser());
+    return "success";
   } catch (err) {
-    console.error(err);
+    // console.error(err);
+    // console.error(err.code);
+    return err.code;
   }
 };
 
@@ -131,3 +130,11 @@ export {
   sendPasswordReset,
   signInWithGoogle,
 };
+
+/*  Auth state persistance
+  default behavior - persist a user's session even after the user closes the browser. But there are few cases where this might not be ideal:
+  - apps with sensitive data may want to clear state when the window or tab is closed
+  - apps that are used on a device shared by multiple users such as a library computer
+  
+  more: https://firebase.google.com/docs/auth/web/auth-state-persistence
+*/
