@@ -2,7 +2,7 @@ import { atom, useAtom } from 'jotai';
 import auth from 'lib/firebase/initAuth';
 import { useCallback, useMemo } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 const isOpenLoginAtom = atom(false);
 const isShowPasswordAtom = atom(false);
@@ -18,9 +18,9 @@ const useLogin = () => {
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormValues>();
+
   const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
@@ -48,12 +48,23 @@ const useLogin = () => {
       open,
       close,
       register,
-      control,
       togglePw,
+      isShowPw,
       submit,
-      Controller,
+      errors,
+      handleSubmit,
     }),
-    [isOpen, open, close, register, control, togglePw, submit, Controller]
+    [
+      isOpen,
+      open,
+      close,
+      register,
+      togglePw,
+      isShowPw,
+      submit,
+      errors,
+      handleSubmit,
+    ]
   );
 };
 

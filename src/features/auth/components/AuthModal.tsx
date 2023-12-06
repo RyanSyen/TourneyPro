@@ -4,6 +4,7 @@ import useRegister from 'features/auth/hooks/useRegister.ts';
 import { useTranslation } from 'react-i18next';
 
 import AuthWrapper from './AuthModal.styles.ts';
+import SignInForm from './SignInForm.tsx';
 
 const AuthModal = () => {
   const { t: localizer } = useTranslation('global');
@@ -29,7 +30,9 @@ const AuthModal = () => {
       title={localizer('Label_SignIn')}
       desc={localizer('Label_WelcomeBack')}
     >
-      <AuthWrapper>Sign in</AuthWrapper>
+      <AuthWrapper>
+        <SignInForm />
+      </AuthWrapper>
     </BaseModal>
   );
 };
