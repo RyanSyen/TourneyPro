@@ -4,82 +4,82 @@
     {
       "name": "__load__",
       "result": "const useCarousel = () => {\r\n  const settings = {\r\n    autoplay: true,\r\n    autoplaySpeed: 5000,\r\n    fade: true,\r\n    lazyLoad: 'ondemand',\r\n    dots: true,\r\n    infinite: true,\r\n    speed: 500,\r\n    slidesToShow: 1,\r\n    slidesToScroll: 1,\r\n    arrows: false,\r\n  };\r\n\r\n  const images = [\r\n    {\r\n      id: 0,\r\n      name: 'Commodore PET Mini',\r\n      src: 'Unsplash',\r\n      url: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',\r\n      views: '44,192,149',\r\n      published: '2019-02-21T10:41:25.000Z',\r\n    },\r\n    {\r\n      id: 1,\r\n      name: 'Gaming room with arcade machines',\r\n      src: 'Unsplash',\r\n      url: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80',\r\n      views: '29,338,824',\r\n      published: '2017-11-24T08:39:56.000Z',\r\n    },\r\n    {\r\n      id: 2,\r\n      name: 'Woman wearing black jacket',\r\n      src: 'Unsplash',\r\n      url: 'https://images.unsplash.com/photo-1531812960393-07fab8c1a28f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',\r\n      views: '5,404,984',\r\n      published: '2018-08-17T07:01:09.000Z',\r\n    },\r\n  ];\r\n\r\n  return {\r\n    settings,\r\n    images,\r\n  };\r\n};\r\n\r\nexport default useCarousel;\r\n",
-      "start": 1701766112744,
-      "end": 1701766112744
+      "start": 1701867792364,
+      "end": 1701867792364
     },
     {
       "name": "vite:css",
-      "start": 1701766112744,
-      "end": 1701766112744,
+      "start": 1701867792364,
+      "end": 1701867792364,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112744,
-      "end": 1701766112744,
+      "start": 1701867792364,
+      "end": 1701867792364,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112744,
-      "end": 1701766112744,
+      "start": 1701867792364,
+      "end": 1701867792364,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
       "result": "const useCarousel = ()=>{\n    const settings = {\n        autoplay: true,\n        autoplaySpeed: 5000,\n        fade: true,\n        lazyLoad: 'ondemand',\n        dots: true,\n        infinite: true,\n        speed: 500,\n        slidesToShow: 1,\n        slidesToScroll: 1,\n        arrows: false\n    };\n    const images = [\n        {\n            id: 0,\n            name: 'Commodore PET Mini',\n            src: 'Unsplash',\n            url: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',\n            views: '44,192,149',\n            published: '2019-02-21T10:41:25.000Z'\n        },\n        {\n            id: 1,\n            name: 'Gaming room with arcade machines',\n            src: 'Unsplash',\n            url: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80',\n            views: '29,338,824',\n            published: '2017-11-24T08:39:56.000Z'\n        },\n        {\n            id: 2,\n            name: 'Woman wearing black jacket',\n            src: 'Unsplash',\n            url: 'https://images.unsplash.com/photo-1531812960393-07fab8c1a28f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',\n            views: '5,404,984',\n            published: '2018-08-17T07:01:09.000Z'\n        }\n    ];\n    return {\n        settings,\n        images\n    };\n};\nexport default useCarousel;\n",
-      "start": 1701766112744,
-      "end": 1701766112772,
+      "start": 1701867792364,
+      "end": 1701867792396,
       "order": "normal",
       "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/useCarousel.ts\"],\"sourcesContent\":[\"const useCarousel = () => {\\r\\n  const settings = {\\r\\n    autoplay: true,\\r\\n    autoplaySpeed: 5000,\\r\\n    fade: true,\\r\\n    lazyLoad: 'ondemand',\\r\\n    dots: true,\\r\\n    infinite: true,\\r\\n    speed: 500,\\r\\n    slidesToShow: 1,\\r\\n    slidesToScroll: 1,\\r\\n    arrows: false,\\r\\n  };\\r\\n\\r\\n  const images = [\\r\\n    {\\r\\n      id: 0,\\r\\n      name: 'Commodore PET Mini',\\r\\n      src: 'Unsplash',\\r\\n      url: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',\\r\\n      views: '44,192,149',\\r\\n      published: '2019-02-21T10:41:25.000Z',\\r\\n    },\\r\\n    {\\r\\n      id: 1,\\r\\n      name: 'Gaming room with arcade machines',\\r\\n      src: 'Unsplash',\\r\\n      url: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80',\\r\\n      views: '29,338,824',\\r\\n      published: '2017-11-24T08:39:56.000Z',\\r\\n    },\\r\\n    {\\r\\n      id: 2,\\r\\n      name: 'Woman wearing black jacket',\\r\\n      src: 'Unsplash',\\r\\n      url: 'https://images.unsplash.com/photo-1531812960393-07fab8c1a28f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',\\r\\n      views: '5,404,984',\\r\\n      published: '2018-08-17T07:01:09.000Z',\\r\\n    },\\r\\n  ];\\r\\n\\r\\n  return {\\r\\n    settings,\\r\\n    images,\\r\\n  };\\r\\n};\\r\\n\\r\\nexport default useCarousel;\\r\\n\"],\"names\":[\"useCarousel\",\"settings\",\"autoplay\",\"autoplaySpeed\",\"fade\",\"lazyLoad\",\"dots\",\"infinite\",\"speed\",\"slidesToShow\",\"slidesToScroll\",\"arrows\",\"images\",\"id\",\"name\",\"src\",\"url\",\"views\",\"published\"],\"mappings\":\"AAAA,MAAMA,cAAc;IAClB,MAAMC,WAAW;QACfC,UAAU;QACVC,eAAe;QACfC,MAAM;QACNC,UAAU;QACVC,MAAM;QACNC,UAAU;QACVC,OAAO;QACPC,cAAc;QACdC,gBAAgB;QAChBC,QAAQ;IACV;IAEA,MAAMC,SAAS;QACb;YACEC,IAAI;YACJC,MAAM;YACNC,KAAK;YACLC,KAAK;YACLC,OAAO;YACPC,WAAW;QACb;QACA;YACEL,IAAI;YACJC,MAAM;YACNC,KAAK;YACLC,KAAK;YACLC,OAAO;YACPC,WAAW;QACb;QACA;YACEL,IAAI;YACJC,MAAM;YACNC,KAAK;YACLC,KAAK;YACLC,OAAO;YACPC,WAAW;QACb;KACD;IAED,OAAO;QACLjB;QACAW;IACF;AACF;AAEA,eAAeZ,YAAY\"}"
     },
     {
       "name": "vite:define",
-      "start": 1701766112772,
-      "end": 1701766112772,
+      "start": 1701867792396,
+      "end": 1701867792396,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112772,
-      "end": 1701766112772,
+      "start": 1701867792396,
+      "end": 1701867792396,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792396,
+      "end": 1701867792396,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792396,
+      "end": 1701867792396,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792396,
+      "end": 1701867792396,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792396,
+      "end": 1701867792396,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792396,
+      "end": 1701867792396,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
       "result": "const useCarousel = ()=>{\n    const settings = {\n        autoplay: true,\n        autoplaySpeed: 5000,\n        fade: true,\n        lazyLoad: 'ondemand',\n        dots: true,\n        infinite: true,\n        speed: 500,\n        slidesToShow: 1,\n        slidesToScroll: 1,\n        arrows: false\n    };\n    const images = [\n        {\n            id: 0,\n            name: 'Commodore PET Mini',\n            src: 'Unsplash',\n            url: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',\n            views: '44,192,149',\n            published: '2019-02-21T10:41:25.000Z'\n        },\n        {\n            id: 1,\n            name: 'Gaming room with arcade machines',\n            src: 'Unsplash',\n            url: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80',\n            views: '29,338,824',\n            published: '2017-11-24T08:39:56.000Z'\n        },\n        {\n            id: 2,\n            name: 'Woman wearing black jacket',\n            src: 'Unsplash',\n            url: 'https://images.unsplash.com/photo-1531812960393-07fab8c1a28f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',\n            views: '5,404,984',\n            published: '2018-08-17T07:01:09.000Z'\n        }\n    ];\n    return {\n        settings,\n        images\n    };\n};\nexport default useCarousel;\n",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792396,
+      "end": 1701867792396,
       "order": "normal",
       "sourcemaps": null
     }

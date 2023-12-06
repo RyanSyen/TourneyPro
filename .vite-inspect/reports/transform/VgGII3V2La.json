@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/@mui_material_List.js?v=c929456e",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "\"use client\";\nimport {\n  List_default,\n  getListUtilityClass,\n  listClasses_default\n} from \"./chunk-CVSVVK33.js\";\nimport \"./chunk-WJIYT6DO.js\";\nimport \"./chunk-5CYIWUDX.js\";\nimport \"./chunk-CY3GP2WZ.js\";\nimport \"./chunk-U73TBONF.js\";\nimport \"./chunk-QHG5RGAF.js\";\nimport \"./chunk-HMTWVGVS.js\";\nimport \"./chunk-ZGRSIX2Q.js\";\nimport \"./chunk-ROME4SDB.js\";\nexport {\n  List_default as default,\n  getListUtilityClass,\n  listClasses_default as listClasses\n};\n//# sourceMappingURL=@mui_material_List.js.map\n",
+      "start": 1701867792174,
+      "end": 1701867792298,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "\"use client\";\nimport {\n  List_default,\n  getListUtilityClass,\n  listClasses_default\n} from \"/node_modules/.vite/deps/chunk-CVSVVK33.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-WJIYT6DO.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-5CYIWUDX.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-CY3GP2WZ.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-U73TBONF.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-QHG5RGAF.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-HMTWVGVS.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-ZGRSIX2Q.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=c929456e\";\nexport {\n  List_default as default,\n  getListUtilityClass,\n  listClasses_default as listClasses\n};\n//# sourceMappingURL=@mui_material_List.js.map\n",
+      "start": 1701867792298,
+      "end": 1701867792298,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

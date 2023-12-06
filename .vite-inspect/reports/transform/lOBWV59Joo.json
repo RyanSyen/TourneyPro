@@ -4,82 +4,82 @@
     {
       "name": "__load__",
       "result": "const localeList = [\r\n  {\r\n    Code: 'en',\r\n    Locale: 'English',\r\n  },\r\n  {\r\n    Code: 'zh',\r\n    Locale: 'Mandarin',\r\n  },\r\n  {\r\n    Code: 'ms',\r\n    Locale: 'Malay',\r\n  },\r\n];\r\n\r\nexport default localeList;\r\n",
-      "start": 1701766112751,
-      "end": 1701766112751
+      "start": 1701867792380,
+      "end": 1701867792380
     },
     {
       "name": "vite:css",
-      "start": 1701766112751,
-      "end": 1701766112751,
+      "start": 1701867792380,
+      "end": 1701867792380,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112751,
-      "end": 1701766112751,
+      "start": 1701867792380,
+      "end": 1701867792380,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112751,
-      "end": 1701766112751,
+      "start": 1701867792380,
+      "end": 1701867792380,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
       "result": "const localeList = [\n    {\n        Code: 'en',\n        Locale: 'English'\n    },\n    {\n        Code: 'zh',\n        Locale: 'Mandarin'\n    },\n    {\n        Code: 'ms',\n        Locale: 'Malay'\n    }\n];\nexport default localeList;\n",
-      "start": 1701766112751,
-      "end": 1701766112772,
+      "start": 1701867792380,
+      "end": 1701867792410,
       "order": "normal",
       "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/i18n/locales/localeList.ts\"],\"sourcesContent\":[\"const localeList = [\\r\\n  {\\r\\n    Code: 'en',\\r\\n    Locale: 'English',\\r\\n  },\\r\\n  {\\r\\n    Code: 'zh',\\r\\n    Locale: 'Mandarin',\\r\\n  },\\r\\n  {\\r\\n    Code: 'ms',\\r\\n    Locale: 'Malay',\\r\\n  },\\r\\n];\\r\\n\\r\\nexport default localeList;\\r\\n\"],\"names\":[\"localeList\",\"Code\",\"Locale\"],\"mappings\":\"AAAA,MAAMA,aAAa;IACjB;QACEC,MAAM;QACNC,QAAQ;IACV;IACA;QACED,MAAM;QACNC,QAAQ;IACV;IACA;QACED,MAAM;QACNC,QAAQ;IACV;CACD;AAED,eAAeF,WAAW\"}"
     },
     {
       "name": "vite:define",
-      "start": 1701766112772,
-      "end": 1701766112772,
+      "start": 1701867792410,
+      "end": 1701867792410,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112772,
-      "end": 1701766112772,
+      "start": 1701867792410,
+      "end": 1701867792410,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112772,
-      "end": 1701766112772,
+      "start": 1701867792410,
+      "end": 1701867792410,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112772,
-      "end": 1701766112772,
+      "start": 1701867792410,
+      "end": 1701867792410,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112772,
-      "end": 1701766112772,
+      "start": 1701867792410,
+      "end": 1701867792410,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112772,
-      "end": 1701766112772,
+      "start": 1701867792410,
+      "end": 1701867792410,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112772,
-      "end": 1701766112772,
+      "start": 1701867792410,
+      "end": 1701867792410,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
       "result": "const localeList = [\n    {\n        Code: 'en',\n        Locale: 'English'\n    },\n    {\n        Code: 'zh',\n        Locale: 'Mandarin'\n    },\n    {\n        Code: 'ms',\n        Locale: 'Malay'\n    }\n];\nexport default localeList;\n",
-      "start": 1701766112772,
-      "end": 1701766112772,
+      "start": 1701867792410,
+      "end": 1701867792410,
       "order": "normal",
       "sourcemaps": null
     }

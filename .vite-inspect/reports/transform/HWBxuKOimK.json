@@ -4,32 +4,32 @@
     {
       "name": "__load__",
       "result": "import Language from '@mui/icons-material/Language';\r\nimport FormControl from '@mui/material/FormControl';\r\nimport { SelectChangeEvent } from '@mui/material/Select';\r\nimport React, { useCallback, useMemo } from 'react';\r\n\r\nimport { CustomSelect, TitleComponent } from './Dropdown.styles.ts';\r\n\r\ninterface DropdownProps {\r\n  children: React.ReactNode;\r\n  customVariant?: string;\r\n  helperText: string;\r\n  isDisableUnderline: boolean;\r\n  isSelectionNone: boolean;\r\n  label: string;\r\n  onSelect: (event: SelectChangeEvent<unknown>) => void;\r\n  value: string;\r\n  valueText: string;\r\n  variant: 'outlined' | 'standard' | 'filled' | undefined;\r\n}\r\n\r\nconst Dropdown = (props: DropdownProps) => {\r\n  const {\r\n    children,\r\n    customVariant,\r\n    helperText,\r\n    isDisableUnderline,\r\n    isSelectionNone,\r\n    label,\r\n    onSelect,\r\n    value,\r\n    valueText,\r\n    variant,\r\n  } = props;\r\n\r\n  //! render twice 3 times on first load => fixed\r\n\r\n  const CustomTitleComponent = useCallback(() => {\r\n    // console.log('CustomTitleComponent');\r\n    return (\r\n      <TitleComponent>\r\n        <Language />\r\n        {valueText}\r\n      </TitleComponent>\r\n    );\r\n  }, [valueText]);\r\n\r\n  const selectedValue = useMemo(() => {\r\n    // console.log('selected value', value);\r\n    return <CustomTitleComponent />;\r\n  }, [value]);\r\n\r\n  return (\r\n    <FormControl>\r\n      <CustomSelect\r\n        autoWidth\r\n        id={`dropdown_${label}`}\r\n        variant={variant}\r\n        value={value}\r\n        onChange={(e) => onSelect(e)}\r\n        inputProps={{ 'aria-label': helperText }}\r\n        displayEmpty={isSelectionNone}\r\n        disableUnderline={isDisableUnderline}\r\n        defaultValue=\"\"\r\n        MenuProps={{\r\n          disableScrollLock: true,\r\n          PaperProps: {\r\n            style: {\r\n              width: customVariant === 'line-input' ? '376px' : undefined,\r\n              border:\r\n                customVariant === 'line-input'\r\n                  ? '1px solid #8C94A1'\r\n                  : undefined,\r\n            },\r\n          },\r\n          anchorOrigin: {\r\n            vertical: 'bottom',\r\n            horizontal: 'left',\r\n          },\r\n          transformOrigin: {\r\n            vertical: 'top',\r\n            horizontal: 'left',\r\n          },\r\n        }}\r\n        renderValue={() => selectedValue}\r\n      >\r\n        {children}\r\n      </CustomSelect>\r\n    </FormControl>\r\n  );\r\n};\r\n\r\nDropdown.defaultProps = {\r\n  customVariant: '',\r\n};\r\n\r\nexport default Dropdown;\r\n",
-      "start": 1701766112745,
-      "end": 1701766112745
+      "start": 1701867792377,
+      "end": 1701867792377
     },
     {
       "name": "vite:css",
-      "start": 1701766112745,
-      "end": 1701766112745,
+      "start": 1701867792377,
+      "end": 1701867792377,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112745,
-      "end": 1701766112745,
+      "start": 1701867792377,
+      "end": 1701867792377,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112745,
-      "end": 1701766112745,
+      "start": 1701867792377,
+      "end": 1701867792377,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
       "result": "import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport { jsxDEV as _jsxDEV } from \"react/jsx-dev-runtime\";\nvar _s = $RefreshSig$();\nimport Language from '@mui/icons-material/Language';\nimport FormControl from '@mui/material/FormControl';\nimport React, { useCallback, useMemo } from 'react';\nimport { CustomSelect, TitleComponent } from './Dropdown.styles.ts';\nconst Dropdown = (props)=>{\n    _s();\n    const { children, customVariant, helperText, isDisableUnderline, isSelectionNone, label, onSelect, value, valueText, variant } = props;\n    //! render twice 3 times on first load => fixed\n    const CustomTitleComponent = useCallback(()=>{\n        // console.log('CustomTitleComponent');\n        return /*#__PURE__*/ _jsxDEV(TitleComponent, {\n            children: [\n                /*#__PURE__*/ _jsxDEV(Language, {}, void 0, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n                    lineNumber: 41,\n                    columnNumber: 9\n                }, this),\n                valueText\n            ]\n        }, void 0, true, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n            lineNumber: 40,\n            columnNumber: 7\n        }, this);\n    }, [\n        valueText\n    ]);\n    const selectedValue = useMemo(()=>{\n        // console.log('selected value', value);\n        return /*#__PURE__*/ _jsxDEV(CustomTitleComponent, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n            lineNumber: 49,\n            columnNumber: 12\n        }, this);\n    }, [\n        value\n    ]);\n    return /*#__PURE__*/ _jsxDEV(FormControl, {\n        children: /*#__PURE__*/ _jsxDEV(CustomSelect, {\n            autoWidth: true,\n            id: `dropdown_${label}`,\n            variant: variant,\n            value: value,\n            onChange: (e)=>onSelect(e),\n            inputProps: {\n                'aria-label': helperText\n            },\n            displayEmpty: isSelectionNone,\n            disableUnderline: isDisableUnderline,\n            defaultValue: \"\",\n            MenuProps: {\n                disableScrollLock: true,\n                PaperProps: {\n                    style: {\n                        width: customVariant === 'line-input' ? '376px' : undefined,\n                        border: customVariant === 'line-input' ? '1px solid #8C94A1' : undefined\n                    }\n                },\n                anchorOrigin: {\n                    vertical: 'bottom',\n                    horizontal: 'left'\n                },\n                transformOrigin: {\n                    vertical: 'top',\n                    horizontal: 'left'\n                }\n            },\n            renderValue: ()=>selectedValue,\n            children: children\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n            lineNumber: 54,\n            columnNumber: 7\n        }, this)\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n        lineNumber: 53,\n        columnNumber: 5\n    }, this);\n};\n_s(Dropdown, \"RSRAaoFPrLshSXDNu/aG9GBbWe4=\");\n_c = Dropdown;\nDropdown.defaultProps = {\n    customVariant: ''\n};\nexport default Dropdown;\nvar _c;\n$RefreshReg$(_c, \"Dropdown\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
-      "start": 1701766112745,
-      "end": 1701766112773,
+      "start": 1701867792377,
+      "end": 1701867792407,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -88,51 +88,51 @@
     },
     {
       "name": "vite:define",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792407,
+      "end": 1701867792407,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792407,
+      "end": 1701867792407,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792407,
+      "end": 1701867792407,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792407,
+      "end": 1701867792407,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792407,
+      "end": 1701867792407,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792407,
+      "end": 1701867792407,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112773,
-      "end": 1701766112773,
+      "start": 1701867792407,
+      "end": 1701867792407,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
-      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/components/inputs/dropdown/Dropdown.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3c106fdb\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"];\nvar _s = $RefreshSig$();\nimport __vite__cjsImport2__mui_iconsMaterial_Language from \"/node_modules/.vite/deps/@mui_icons-material_Language.js?v=3c106fdb\"; const Language = __vite__cjsImport2__mui_iconsMaterial_Language.__esModule ? __vite__cjsImport2__mui_iconsMaterial_Language.default : __vite__cjsImport2__mui_iconsMaterial_Language;\nimport FormControl from \"/node_modules/.vite/deps/@mui_material_FormControl.js?v=3c106fdb\";\nimport __vite__cjsImport4_react from \"/node_modules/.vite/deps/react.js?v=3c106fdb\"; const React = __vite__cjsImport4_react.__esModule ? __vite__cjsImport4_react.default : __vite__cjsImport4_react; const useCallback = __vite__cjsImport4_react[\"useCallback\"]; const useMemo = __vite__cjsImport4_react[\"useMemo\"];\nimport { CustomSelect, TitleComponent } from \"/src/components/inputs/dropdown/Dropdown.styles.ts\";\nconst Dropdown = (props)=>{\n    _s();\n    const { children, customVariant, helperText, isDisableUnderline, isSelectionNone, label, onSelect, value, valueText, variant } = props;\n    //! render twice 3 times on first load => fixed\n    const CustomTitleComponent = useCallback(()=>{\n        // console.log('CustomTitleComponent');\n        return /*#__PURE__*/ _jsxDEV(TitleComponent, {\n            children: [\n                /*#__PURE__*/ _jsxDEV(Language, {}, void 0, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n                    lineNumber: 41,\n                    columnNumber: 9\n                }, this),\n                valueText\n            ]\n        }, void 0, true, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n            lineNumber: 40,\n            columnNumber: 7\n        }, this);\n    }, [\n        valueText\n    ]);\n    const selectedValue = useMemo(()=>{\n        // console.log('selected value', value);\n        return /*#__PURE__*/ _jsxDEV(CustomTitleComponent, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n            lineNumber: 49,\n            columnNumber: 12\n        }, this);\n    }, [\n        value\n    ]);\n    return /*#__PURE__*/ _jsxDEV(FormControl, {\n        children: /*#__PURE__*/ _jsxDEV(CustomSelect, {\n            autoWidth: true,\n            id: `dropdown_${label}`,\n            variant: variant,\n            value: value,\n            onChange: (e)=>onSelect(e),\n            inputProps: {\n                'aria-label': helperText\n            },\n            displayEmpty: isSelectionNone,\n            disableUnderline: isDisableUnderline,\n            defaultValue: \"\",\n            MenuProps: {\n                disableScrollLock: true,\n                PaperProps: {\n                    style: {\n                        width: customVariant === 'line-input' ? '376px' : undefined,\n                        border: customVariant === 'line-input' ? '1px solid #8C94A1' : undefined\n                    }\n                },\n                anchorOrigin: {\n                    vertical: 'bottom',\n                    horizontal: 'left'\n                },\n                transformOrigin: {\n                    vertical: 'top',\n                    horizontal: 'left'\n                }\n            },\n            renderValue: ()=>selectedValue,\n            children: children\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n            lineNumber: 54,\n            columnNumber: 7\n        }, this)\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n        lineNumber: 53,\n        columnNumber: 5\n    }, this);\n};\n_s(Dropdown, \"RSRAaoFPrLshSXDNu/aG9GBbWe4=\");\n_c = Dropdown;\nDropdown.defaultProps = {\n    customVariant: ''\n};\nexport default Dropdown;\nvar _c;\n$RefreshReg$(_c, \"Dropdown\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
-      "start": 1701766112773,
-      "end": 1701766112775,
+      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/components/inputs/dropdown/Dropdown.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=c929456e\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"];\nvar _s = $RefreshSig$();\nimport __vite__cjsImport2__mui_iconsMaterial_Language from \"/node_modules/.vite/deps/@mui_icons-material_Language.js?v=c929456e\"; const Language = __vite__cjsImport2__mui_iconsMaterial_Language.__esModule ? __vite__cjsImport2__mui_iconsMaterial_Language.default : __vite__cjsImport2__mui_iconsMaterial_Language;\nimport FormControl from \"/node_modules/.vite/deps/@mui_material_FormControl.js?v=c929456e\";\nimport __vite__cjsImport4_react from \"/node_modules/.vite/deps/react.js?v=c929456e\"; const React = __vite__cjsImport4_react.__esModule ? __vite__cjsImport4_react.default : __vite__cjsImport4_react; const useCallback = __vite__cjsImport4_react[\"useCallback\"]; const useMemo = __vite__cjsImport4_react[\"useMemo\"];\nimport { CustomSelect, TitleComponent } from \"/src/components/inputs/dropdown/Dropdown.styles.ts\";\nconst Dropdown = (props)=>{\n    _s();\n    const { children, customVariant, helperText, isDisableUnderline, isSelectionNone, label, onSelect, value, valueText, variant } = props;\n    //! render twice 3 times on first load => fixed\n    const CustomTitleComponent = useCallback(()=>{\n        // console.log('CustomTitleComponent');\n        return /*#__PURE__*/ _jsxDEV(TitleComponent, {\n            children: [\n                /*#__PURE__*/ _jsxDEV(Language, {}, void 0, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n                    lineNumber: 41,\n                    columnNumber: 9\n                }, this),\n                valueText\n            ]\n        }, void 0, true, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n            lineNumber: 40,\n            columnNumber: 7\n        }, this);\n    }, [\n        valueText\n    ]);\n    const selectedValue = useMemo(()=>{\n        // console.log('selected value', value);\n        return /*#__PURE__*/ _jsxDEV(CustomTitleComponent, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n            lineNumber: 49,\n            columnNumber: 12\n        }, this);\n    }, [\n        value\n    ]);\n    return /*#__PURE__*/ _jsxDEV(FormControl, {\n        children: /*#__PURE__*/ _jsxDEV(CustomSelect, {\n            autoWidth: true,\n            id: `dropdown_${label}`,\n            variant: variant,\n            value: value,\n            onChange: (e)=>onSelect(e),\n            inputProps: {\n                'aria-label': helperText\n            },\n            displayEmpty: isSelectionNone,\n            disableUnderline: isDisableUnderline,\n            defaultValue: \"\",\n            MenuProps: {\n                disableScrollLock: true,\n                PaperProps: {\n                    style: {\n                        width: customVariant === 'line-input' ? '376px' : undefined,\n                        border: customVariant === 'line-input' ? '1px solid #8C94A1' : undefined\n                    }\n                },\n                anchorOrigin: {\n                    vertical: 'bottom',\n                    horizontal: 'left'\n                },\n                transformOrigin: {\n                    vertical: 'top',\n                    horizontal: 'left'\n                }\n            },\n            renderValue: ()=>selectedValue,\n            children: children\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n            lineNumber: 54,\n            columnNumber: 7\n        }, this)\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\",\n        lineNumber: 53,\n        columnNumber: 5\n    }, this);\n};\n_s(Dropdown, \"RSRAaoFPrLshSXDNu/aG9GBbWe4=\");\n_c = Dropdown;\nDropdown.defaultProps = {\n    customVariant: ''\n};\nexport default Dropdown;\nvar _c;\n$RefreshReg$(_c, \"Dropdown\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701867792407,
+      "end": 1701867792408,
       "order": "normal",
       "sourcemaps": null
     }

@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/@mui_material_TextField.js?v=c929456e",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "\"use client\";\nimport {\n  TextField_default,\n  getTextFieldUtilityClass,\n  textFieldClasses_default\n} from \"./chunk-SM3M3TPP.js\";\nimport \"./chunk-KMFZOR7S.js\";\nimport \"./chunk-ZOJBUZHG.js\";\nimport \"./chunk-PR6ZCO7G.js\";\nimport \"./chunk-CVSVVK33.js\";\nimport \"./chunk-WJIYT6DO.js\";\nimport \"./chunk-VBYXYQT4.js\";\nimport \"./chunk-AKKANAVW.js\";\nimport \"./chunk-DFOFFFUN.js\";\nimport \"./chunk-BO4RBQWS.js\";\nimport \"./chunk-QK5I2FHH.js\";\nimport \"./chunk-3VBKQG2M.js\";\nimport \"./chunk-NQATQIFR.js\";\nimport \"./chunk-GSZ7ISAW.js\";\nimport \"./chunk-FMFFUJ5P.js\";\nimport \"./chunk-ZOIWXA3S.js\";\nimport \"./chunk-Q2B64RV7.js\";\nimport \"./chunk-2SMJTKYW.js\";\nimport \"./chunk-VAFBYMTJ.js\";\nimport \"./chunk-CURGALAR.js\";\nimport \"./chunk-545KLGFI.js\";\nimport \"./chunk-63S7JPMK.js\";\nimport \"./chunk-5CYIWUDX.js\";\nimport \"./chunk-CY3GP2WZ.js\";\nimport \"./chunk-U73TBONF.js\";\nimport \"./chunk-QHG5RGAF.js\";\nimport \"./chunk-HMTWVGVS.js\";\nimport \"./chunk-ZGRSIX2Q.js\";\nimport \"./chunk-ROME4SDB.js\";\nexport {\n  TextField_default as default,\n  getTextFieldUtilityClass,\n  textFieldClasses_default as textFieldClasses\n};\n//# sourceMappingURL=@mui_material_TextField.js.map\n",
+      "start": 1701867792317,
+      "end": 1701867792356,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701867792356,
+      "end": 1701867792356,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701867792356,
+      "end": 1701867792356,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701867792356,
+      "end": 1701867792356,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701867792356,
+      "end": 1701867792356,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701867792356,
+      "end": 1701867792356,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701867792356,
+      "end": 1701867792356,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701867792356,
+      "end": 1701867792356,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701867792356,
+      "end": 1701867792356,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701867792356,
+      "end": 1701867792356,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701867792356,
+      "end": 1701867792356,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701867792356,
+      "end": 1701867792356,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "\"use client\";\nimport {\n  TextField_default,\n  getTextFieldUtilityClass,\n  textFieldClasses_default\n} from \"/node_modules/.vite/deps/chunk-SM3M3TPP.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-KMFZOR7S.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-ZOJBUZHG.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-PR6ZCO7G.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-CVSVVK33.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-WJIYT6DO.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-VBYXYQT4.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-AKKANAVW.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-DFOFFFUN.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-BO4RBQWS.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-QK5I2FHH.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-3VBKQG2M.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-NQATQIFR.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-GSZ7ISAW.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-FMFFUJ5P.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-ZOIWXA3S.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-Q2B64RV7.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-2SMJTKYW.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-VAFBYMTJ.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-CURGALAR.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-545KLGFI.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-63S7JPMK.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-5CYIWUDX.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-CY3GP2WZ.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-U73TBONF.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-QHG5RGAF.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-HMTWVGVS.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-ZGRSIX2Q.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=c929456e\";\nexport {\n  TextField_default as default,\n  getTextFieldUtilityClass,\n  textFieldClasses_default as textFieldClasses\n};\n//# sourceMappingURL=@mui_material_TextField.js.map\n",
+      "start": 1701867792356,
+      "end": 1701867792358,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

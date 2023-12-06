@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/chunk-VAFBYMTJ.js?v=c929456e",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "import {\n  init_esm,\n  useForkRef\n} from \"./chunk-CY3GP2WZ.js\";\nimport {\n  __esm\n} from \"./chunk-ROME4SDB.js\";\n\n// node_modules/@mui/material/utils/useForkRef.js\nvar useForkRef_default;\nvar init_useForkRef = __esm({\n  \"node_modules/@mui/material/utils/useForkRef.js\"() {\n    \"use client\";\n    init_esm();\n    useForkRef_default = useForkRef;\n  }\n});\n\nexport {\n  useForkRef_default,\n  init_useForkRef\n};\n//# sourceMappingURL=chunk-VAFBYMTJ.js.map\n",
+      "start": 1701867792155,
+      "end": 1701867792287,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import {\n  init_esm,\n  useForkRef\n} from \"/node_modules/.vite/deps/chunk-CY3GP2WZ.js?v=c929456e\";\nimport {\n  __esm\n} from \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=c929456e\";\n\n// node_modules/@mui/material/utils/useForkRef.js\nvar useForkRef_default;\nvar init_useForkRef = __esm({\n  \"node_modules/@mui/material/utils/useForkRef.js\"() {\n    \"use client\";\n    init_esm();\n    useForkRef_default = useForkRef;\n  }\n});\n\nexport {\n  useForkRef_default,\n  init_useForkRef\n};\n//# sourceMappingURL=chunk-VAFBYMTJ.js.map\n",
+      "start": 1701867792287,
+      "end": 1701867792287,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/hooks/useRegister.ts",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import { atom, useAtom } from 'jotai';\r\nimport { useCallback, useMemo } from 'react';\r\n\r\nconst isSignUpAtom = atom(false);\r\n\r\nconst useRegister = () => {\r\n  const [isSignUp, setIsSignUp] = useAtom(isSignUpAtom);\r\n\r\n  const open = useCallback(() => {\r\n    setIsSignUp(true);\r\n  }, []);\r\n\r\n  const close = useCallback(() => {\r\n    setIsSignUp(false);\r\n  }, []);\r\n\r\n  return useMemo(\r\n    () => ({\r\n      isSignUp,\r\n      open,\r\n      close,\r\n    }),\r\n    [isSignUp, open, close]\r\n  );\r\n};\r\n\r\nexport default useRegister;\r\n",
+      "start": 1701867792248,
+      "end": 1701867792248
+    },
+    {
+      "name": "vite:css",
+      "start": 1701867792248,
+      "end": 1701867792248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701867792248,
+      "end": 1701867792248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701867792248,
+      "end": 1701867792248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import { atom, useAtom } from 'jotai';\nimport { useCallback, useMemo } from 'react';\nconst isSignUpAtom = atom(false);\nconst useRegister = ()=>{\n    const [isSignUp, setIsSignUp] = useAtom(isSignUpAtom);\n    const open = useCallback(()=>{\n        setIsSignUp(true);\n    }, []);\n    const close = useCallback(()=>{\n        setIsSignUp(false);\n    }, []);\n    return useMemo(()=>({\n            isSignUp,\n            open,\n            close\n        }), [\n        isSignUp,\n        open,\n        close\n    ]);\n};\nexport default useRegister;\n",
+      "start": 1701867792248,
+      "end": 1701867792311,
+      "order": "normal",
+      "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/hooks/useRegister.ts\"],\"sourcesContent\":[\"import { atom, useAtom } from 'jotai';\\r\\nimport { useCallback, useMemo } from 'react';\\r\\n\\r\\nconst isSignUpAtom = atom(false);\\r\\n\\r\\nconst useRegister = () => {\\r\\n  const [isSignUp, setIsSignUp] = useAtom(isSignUpAtom);\\r\\n\\r\\n  const open = useCallback(() => {\\r\\n    setIsSignUp(true);\\r\\n  }, []);\\r\\n\\r\\n  const close = useCallback(() => {\\r\\n    setIsSignUp(false);\\r\\n  }, []);\\r\\n\\r\\n  return useMemo(\\r\\n    () => ({\\r\\n      isSignUp,\\r\\n      open,\\r\\n      close,\\r\\n    }),\\r\\n    [isSignUp, open, close]\\r\\n  );\\r\\n};\\r\\n\\r\\nexport default useRegister;\\r\\n\"],\"names\":[\"atom\",\"useAtom\",\"useCallback\",\"useMemo\",\"isSignUpAtom\",\"useRegister\",\"isSignUp\",\"setIsSignUp\",\"open\",\"close\"],\"mappings\":\"AAAA,SAASA,IAAI,EAAEC,OAAO,QAAQ,QAAQ;AACtC,SAASC,WAAW,EAAEC,OAAO,QAAQ,QAAQ;AAE7C,MAAMC,eAAeJ,KAAK;AAE1B,MAAMK,cAAc;IAClB,MAAM,CAACC,UAAUC,YAAY,GAAGN,QAAQG;IAExC,MAAMI,OAAON,YAAY;QACvBK,YAAY;IACd,GAAG,EAAE;IAEL,MAAME,QAAQP,YAAY;QACxBK,YAAY;IACd,GAAG,EAAE;IAEL,OAAOJ,QACL,IAAO,CAAA;YACLG;YACAE;YACAC;QACF,CAAA,GACA;QAACH;QAAUE;QAAMC;KAAM;AAE3B;AAEA,eAAeJ,YAAY\"}"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701867792311,
+      "end": 1701867792311,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701867792311,
+      "end": 1701867792311,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701867792311,
+      "end": 1701867792311,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701867792311,
+      "end": 1701867792311,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701867792311,
+      "end": 1701867792311,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701867792311,
+      "end": 1701867792311,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701867792311,
+      "end": 1701867792311,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import { atom, useAtom } from \"/node_modules/.vite/deps/jotai.js?v=c929456e\";\nimport __vite__cjsImport1_react from \"/node_modules/.vite/deps/react.js?v=c929456e\"; const useCallback = __vite__cjsImport1_react[\"useCallback\"]; const useMemo = __vite__cjsImport1_react[\"useMemo\"];\nconst isSignUpAtom = atom(false);\nconst useRegister = ()=>{\n    const [isSignUp, setIsSignUp] = useAtom(isSignUpAtom);\n    const open = useCallback(()=>{\n        setIsSignUp(true);\n    }, []);\n    const close = useCallback(()=>{\n        setIsSignUp(false);\n    }, []);\n    return useMemo(()=>({\n            isSignUp,\n            open,\n            close\n        }), [\n        isSignUp,\n        open,\n        close\n    ]);\n};\nexport default useRegister;\n",
+      "start": 1701867792311,
+      "end": 1701867792312,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

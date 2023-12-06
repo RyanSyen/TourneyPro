@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/detect-browser-language.js?v=c929456e",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "import {\n  __commonJS\n} from \"./chunk-ROME4SDB.js\";\n\n// node_modules/detect-browser-language/index.js\nvar require_detect_browser_language = __commonJS({\n  \"node_modules/detect-browser-language/index.js\"(exports, module) {\n    module.exports = function() {\n      return navigator.languages && navigator.languages[0] || navigator.language || navigator.userLanguage;\n    };\n  }\n});\nexport default require_detect_browser_language();\n//# sourceMappingURL=detect-browser-language.js.map\n",
+      "start": 1701867791962,
+      "end": 1701867792078,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import {\n  __commonJS\n} from \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=c929456e\";\n\n// node_modules/detect-browser-language/index.js\nvar require_detect_browser_language = __commonJS({\n  \"node_modules/detect-browser-language/index.js\"(exports, module) {\n    module.exports = function() {\n      return navigator.languages && navigator.languages[0] || navigator.language || navigator.userLanguage;\n    };\n  }\n});\nexport default require_detect_browser_language();\n//# sourceMappingURL=detect-browser-language.js.map\n",
+      "start": 1701867792078,
+      "end": 1701867792078,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

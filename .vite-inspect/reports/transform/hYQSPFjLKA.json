@@ -3,83 +3,83 @@
   "transforms": [
     {
       "name": "__load__",
-      "result": "import Box from '@mui/material/Box';\r\nimport Select from '@mui/material/Select';\r\nimport { styled as muiStyled } from '@mui/material/styles';\r\n\r\nconst CustomSelect = muiStyled(Select)(({ theme }) => ({\r\n  // boxShadow: 'none',\r\n  // '& .MuiSelect-select:focus': {\r\n  //   backgroundColor: 'transparent',\r\n  // },\r\n  //   '& .MuiSelect-select:hover': {\r\n  //     color: theme.dropdown.primaryHover,\r\n  //   },\r\n  //   '& .MuiSvgIcon-root': {\r\n  //     top: '12%',\r\n  //   },\r\n  //   '&:hover .MuiSvgIcon-root': {\r\n  //     color: theme.dropdown.primaryHover,\r\n  //   },\r\n  //   '& .MuiPaper-root': {\r\n  //     borderRadius: '50px',\r\n  //   },\r\n}));\r\n\r\nconst TitleComponent = muiStyled(Box)(({ theme }) => ({\r\n  display: 'flex',\r\n  fontSize: '1rem',\r\n  gap: '5px',\r\n\r\n  [theme.breakpoints.up('md')]: {\r\n    fontSize: '1.15rem',\r\n  },\r\n}));\r\n\r\nexport { CustomSelect, TitleComponent };\r\n",
-      "start": 1701766112803,
-      "end": 1701766112803
+      "result": "import styled from '@emotion/styled';\r\nimport Box from '@mui/material/Box';\r\nimport Select from '@mui/material/Select';\r\nimport { MuiThemeInterface } from 'src/common.ts';\r\n\r\nconst CustomSelect = styled(Select)<MuiThemeInterface>(({ theme }) => ({\r\n  // boxShadow: 'none',\r\n  // '& .MuiSelect-select:focus': {\r\n  //   backgroundColor: 'transparent',\r\n  // },\r\n  //   '& .MuiSelect-select:hover': {\r\n  //     color: theme.dropdown.primaryHover,\r\n  //   },\r\n  //   '& .MuiSvgIcon-root': {\r\n  //     top: '12%',\r\n  //   },\r\n  //   '&:hover .MuiSvgIcon-root': {\r\n  //     color: theme.dropdown.primaryHover,\r\n  //   },\r\n  //   '& .MuiPaper-root': {\r\n  //     borderRadius: '50px',\r\n  //   },\r\n}));\r\n\r\nconst TitleComponent = styled(Box)<MuiThemeInterface>(({ theme }) => ({\r\n  display: 'flex',\r\n  fontSize: '1rem',\r\n  gap: '5px',\r\n\r\n  [theme.breakpoints.up('md')]: {\r\n    fontSize: '1.15rem',\r\n  },\r\n}));\r\n\r\nexport { CustomSelect, TitleComponent };\r\n",
+      "start": 1701867792460,
+      "end": 1701867792460
     },
     {
       "name": "vite:css",
-      "start": 1701766112803,
-      "end": 1701766112803,
+      "start": 1701867792460,
+      "end": 1701867792460,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112803,
-      "end": 1701766112803,
+      "start": 1701867792460,
+      "end": 1701867792460,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112803,
-      "end": 1701766112803,
+      "start": 1701867792460,
+      "end": 1701867792460,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
-      "result": "import Box from '@mui/material/Box';\nimport Select from '@mui/material/Select';\nimport { styled as muiStyled } from '@mui/material/styles';\nconst CustomSelect = muiStyled(Select)(({ theme })=>({\n    }));\nconst TitleComponent = muiStyled(Box)(({ theme })=>({\n        display: 'flex',\n        fontSize: '1rem',\n        gap: '5px',\n        [theme.breakpoints.up('md')]: {\n            fontSize: '1.15rem'\n        }\n    }));\nexport { CustomSelect, TitleComponent };\n",
-      "start": 1701766112803,
-      "end": 1701766112807,
+      "result": "import styled from '@emotion/styled';\nimport Box from '@mui/material/Box';\nimport Select from '@mui/material/Select';\nconst CustomSelect = styled(Select)(({ theme })=>({\n    }));\nconst TitleComponent = styled(Box)(({ theme })=>({\n        display: 'flex',\n        fontSize: '1rem',\n        gap: '5px',\n        [theme.breakpoints.up('md')]: {\n            fontSize: '1.15rem'\n        }\n    }));\nexport { CustomSelect, TitleComponent };\n",
+      "start": 1701867792460,
+      "end": 1701867792462,
       "order": "normal",
-      "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.styles.ts\"],\"sourcesContent\":[\"import Box from '@mui/material/Box';\\r\\nimport Select from '@mui/material/Select';\\r\\nimport { styled as muiStyled } from '@mui/material/styles';\\r\\n\\r\\nconst CustomSelect = muiStyled(Select)(({ theme }) => ({\\r\\n  // boxShadow: 'none',\\r\\n  // '& .MuiSelect-select:focus': {\\r\\n  //   backgroundColor: 'transparent',\\r\\n  // },\\r\\n  //   '& .MuiSelect-select:hover': {\\r\\n  //     color: theme.dropdown.primaryHover,\\r\\n  //   },\\r\\n  //   '& .MuiSvgIcon-root': {\\r\\n  //     top: '12%',\\r\\n  //   },\\r\\n  //   '&:hover .MuiSvgIcon-root': {\\r\\n  //     color: theme.dropdown.primaryHover,\\r\\n  //   },\\r\\n  //   '& .MuiPaper-root': {\\r\\n  //     borderRadius: '50px',\\r\\n  //   },\\r\\n}));\\r\\n\\r\\nconst TitleComponent = muiStyled(Box)(({ theme }) => ({\\r\\n  display: 'flex',\\r\\n  fontSize: '1rem',\\r\\n  gap: '5px',\\r\\n\\r\\n  [theme.breakpoints.up('md')]: {\\r\\n    fontSize: '1.15rem',\\r\\n  },\\r\\n}));\\r\\n\\r\\nexport { CustomSelect, TitleComponent };\\r\\n\"],\"names\":[\"Box\",\"Select\",\"styled\",\"muiStyled\",\"CustomSelect\",\"theme\",\"TitleComponent\",\"display\",\"fontSize\",\"gap\",\"breakpoints\",\"up\"],\"mappings\":\"AAAA,OAAOA,SAAS,oBAAoB;AACpC,OAAOC,YAAY,uBAAuB;AAC1C,SAASC,UAAUC,SAAS,QAAQ,uBAAuB;AAE3D,MAAMC,eAAeD,UAAUF,QAAQ,CAAC,EAAEI,KAAK,EAAE,GAAM,CAAA;IAiBvD,CAAA;AAEA,MAAMC,iBAAiBH,UAAUH,KAAK,CAAC,EAAEK,KAAK,EAAE,GAAM,CAAA;QACpDE,SAAS;QACTC,UAAU;QACVC,KAAK;QAEL,CAACJ,MAAMK,WAAW,CAACC,EAAE,CAAC,MAAM,EAAE;YAC5BH,UAAU;QACZ;IACF,CAAA;AAEA,SAASJ,YAAY,EAAEE,cAAc,GAAG\"}"
+      "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/dropdown/Dropdown.styles.ts\"],\"sourcesContent\":[\"import styled from '@emotion/styled';\\r\\nimport Box from '@mui/material/Box';\\r\\nimport Select from '@mui/material/Select';\\r\\nimport { MuiThemeInterface } from 'src/common.ts';\\r\\n\\r\\nconst CustomSelect = styled(Select)<MuiThemeInterface>(({ theme }) => ({\\r\\n  // boxShadow: 'none',\\r\\n  // '& .MuiSelect-select:focus': {\\r\\n  //   backgroundColor: 'transparent',\\r\\n  // },\\r\\n  //   '& .MuiSelect-select:hover': {\\r\\n  //     color: theme.dropdown.primaryHover,\\r\\n  //   },\\r\\n  //   '& .MuiSvgIcon-root': {\\r\\n  //     top: '12%',\\r\\n  //   },\\r\\n  //   '&:hover .MuiSvgIcon-root': {\\r\\n  //     color: theme.dropdown.primaryHover,\\r\\n  //   },\\r\\n  //   '& .MuiPaper-root': {\\r\\n  //     borderRadius: '50px',\\r\\n  //   },\\r\\n}));\\r\\n\\r\\nconst TitleComponent = styled(Box)<MuiThemeInterface>(({ theme }) => ({\\r\\n  display: 'flex',\\r\\n  fontSize: '1rem',\\r\\n  gap: '5px',\\r\\n\\r\\n  [theme.breakpoints.up('md')]: {\\r\\n    fontSize: '1.15rem',\\r\\n  },\\r\\n}));\\r\\n\\r\\nexport { CustomSelect, TitleComponent };\\r\\n\"],\"names\":[\"styled\",\"Box\",\"Select\",\"CustomSelect\",\"theme\",\"TitleComponent\",\"display\",\"fontSize\",\"gap\",\"breakpoints\",\"up\"],\"mappings\":\"AAAA,OAAOA,YAAY,kBAAkB;AACrC,OAAOC,SAAS,oBAAoB;AACpC,OAAOC,YAAY,uBAAuB;AAG1C,MAAMC,eAAeH,OAAOE,QAA2B,CAAC,EAAEE,KAAK,EAAE,GAAM,CAAA;IAiBvE,CAAA;AAEA,MAAMC,iBAAiBL,OAAOC,KAAwB,CAAC,EAAEG,KAAK,EAAE,GAAM,CAAA;QACpEE,SAAS;QACTC,UAAU;QACVC,KAAK;QAEL,CAACJ,MAAMK,WAAW,CAACC,EAAE,CAAC,MAAM,EAAE;YAC5BH,UAAU;QACZ;IACF,CAAA;AAEA,SAASJ,YAAY,EAAEE,cAAc,GAAG\"}"
     },
     {
       "name": "vite:define",
-      "start": 1701766112807,
-      "end": 1701766112807,
+      "start": 1701867792462,
+      "end": 1701867792462,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112807,
-      "end": 1701766112807,
+      "start": 1701867792462,
+      "end": 1701867792462,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112807,
-      "end": 1701766112807,
+      "start": 1701867792462,
+      "end": 1701867792462,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112807,
-      "end": 1701766112807,
+      "start": 1701867792462,
+      "end": 1701867792462,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112807,
-      "end": 1701766112807,
+      "start": 1701867792462,
+      "end": 1701867792462,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112807,
-      "end": 1701766112807,
+      "start": 1701867792462,
+      "end": 1701867792462,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112807,
-      "end": 1701766112807,
+      "start": 1701867792462,
+      "end": 1701867792462,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
-      "result": "import Box from \"/node_modules/.vite/deps/@mui_material_Box.js?v=3c106fdb\";\nimport Select from \"/node_modules/.vite/deps/@mui_material_Select.js?v=3c106fdb\";\nimport { styled as muiStyled } from \"/node_modules/.vite/deps/@mui_material_styles.js?v=3c106fdb\";\nconst CustomSelect = muiStyled(Select)(({ theme })=>({\n    }));\nconst TitleComponent = muiStyled(Box)(({ theme })=>({\n        display: 'flex',\n        fontSize: '1rem',\n        gap: '5px',\n        [theme.breakpoints.up('md')]: {\n            fontSize: '1.15rem'\n        }\n    }));\nexport { CustomSelect, TitleComponent };\n",
-      "start": 1701766112807,
-      "end": 1701766112807,
+      "result": "import styled from \"/node_modules/.vite/deps/@emotion_styled.js?v=c929456e\";\nimport Box from \"/node_modules/.vite/deps/@mui_material_Box.js?v=c929456e\";\nimport Select from \"/node_modules/.vite/deps/@mui_material_Select.js?v=c929456e\";\nconst CustomSelect = styled(Select)(({ theme })=>({\n    }));\nconst TitleComponent = styled(Box)(({ theme })=>({\n        display: 'flex',\n        fontSize: '1rem',\n        gap: '5px',\n        [theme.breakpoints.up('md')]: {\n            fontSize: '1.15rem'\n        }\n    }));\nexport { CustomSelect, TitleComponent };\n",
+      "start": 1701867792462,
+      "end": 1701867792462,
       "order": "normal",
       "sourcemaps": null
     }

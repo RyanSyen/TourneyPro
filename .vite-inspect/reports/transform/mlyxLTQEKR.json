@@ -1,0 +1,87 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/firebase/initAuth.ts",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import { getAuth } from 'firebase/auth';\r\n\r\nimport app from './init.ts';\r\n\r\nconst auth = getAuth(app);\r\n\r\nexport default auth;\r\n",
+      "start": 1701867792368,
+      "end": 1701867792368
+    },
+    {
+      "name": "vite:css",
+      "start": 1701867792368,
+      "end": 1701867792368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701867792368,
+      "end": 1701867792368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701867792368,
+      "end": 1701867792368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import { getAuth } from 'firebase/auth';\nimport app from './init.ts';\nconst auth = getAuth(app);\nexport default auth;\n",
+      "start": 1701867792368,
+      "end": 1701867792397,
+      "order": "normal",
+      "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/firebase/initAuth.ts\"],\"sourcesContent\":[\"import { getAuth } from 'firebase/auth';\\r\\n\\r\\nimport app from './init.ts';\\r\\n\\r\\nconst auth = getAuth(app);\\r\\n\\r\\nexport default auth;\\r\\n\"],\"names\":[\"getAuth\",\"app\",\"auth\"],\"mappings\":\"AAAA,SAASA,OAAO,QAAQ,gBAAgB;AAExC,OAAOC,SAAS,YAAY;AAE5B,MAAMC,OAAOF,QAAQC;AAErB,eAAeC,KAAK\"}"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701867792397,
+      "end": 1701867792397,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701867792397,
+      "end": 1701867792397,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701867792397,
+      "end": 1701867792397,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701867792397,
+      "end": 1701867792397,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701867792397,
+      "end": 1701867792397,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701867792397,
+      "end": 1701867792397,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701867792397,
+      "end": 1701867792397,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import { getAuth } from \"/node_modules/.vite/deps/firebase_auth.js?v=c929456e\";\nimport app from \"/src/lib/firebase/init.ts\";\nconst auth = getAuth(app);\nexport default auth;\n",
+      "start": 1701867792397,
+      "end": 1701867792398,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

@@ -4,32 +4,32 @@
     {
       "name": "__load__",
       "result": "import Button, { ButtonProps } from '@mui/material/Button';\r\n\r\nimport VisuallyHiddenInput from './Button.styles.ts';\r\n\r\ndeclare module '@mui/material/Button' {\r\n  interface ButtonPropsVariantOverrides {\r\n    // insert your custom variants here\r\n    // source: https://v5-0-6.mui.com/customization/theme-components/#adding-new-component-variants\r\n    filledPrimary: true;\r\n    login: true;\r\n  }\r\n}\r\n\r\ninterface CustomButtonProps extends ButtonProps {\r\n  isUploadBtn: boolean;\r\n  text: string;\r\n}\r\n\r\nconst Btn = (props: CustomButtonProps) => {\r\n  const {\r\n    variant,\r\n    disabled,\r\n    onClick,\r\n    size,\r\n    startIcon,\r\n    endIcon,\r\n    type,\r\n    isUploadBtn,\r\n    text,\r\n  } = props;\r\n  return (\r\n    <Button\r\n      variant={variant}\r\n      disabled={disabled}\r\n      onClick={onClick}\r\n      size={size}\r\n      startIcon={startIcon}\r\n      endIcon={endIcon}\r\n      type={type}\r\n      disableElevation={false}\r\n      disableFocusRipple={false}\r\n      disableRipple={false}\r\n    >\r\n      {text}\r\n      {isUploadBtn && <VisuallyHiddenInput type=\"file\" />}\r\n    </Button>\r\n  );\r\n};\r\n\r\nexport default Btn;\r\n",
-      "start": 1701766112454,
-      "end": 1701766112454
+      "start": 1701867792124,
+      "end": 1701867792124
     },
     {
       "name": "vite:css",
-      "start": 1701766112454,
-      "end": 1701766112454,
+      "start": 1701867792124,
+      "end": 1701867792124,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112454,
-      "end": 1701766112454,
+      "start": 1701867792124,
+      "end": 1701867792124,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112454,
-      "end": 1701766112454,
+      "start": 1701867792124,
+      "end": 1701867792124,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
       "result": "import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport { jsxDEV as _jsxDEV } from \"react/jsx-dev-runtime\";\nimport Button from '@mui/material/Button';\nimport VisuallyHiddenInput from './Button.styles.ts';\nconst Btn = (props)=>{\n    const { variant, disabled, onClick, size, startIcon, endIcon, type, isUploadBtn, text } = props;\n    return /*#__PURE__*/ _jsxDEV(Button, {\n        variant: variant,\n        disabled: disabled,\n        onClick: onClick,\n        size: size,\n        startIcon: startIcon,\n        endIcon: endIcon,\n        type: type,\n        disableElevation: false,\n        disableFocusRipple: false,\n        disableRipple: false,\n        children: [\n            text,\n            isUploadBtn && /*#__PURE__*/ _jsxDEV(VisuallyHiddenInput, {\n                type: \"file\"\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\",\n                lineNumber: 45,\n                columnNumber: 23\n            }, this)\n        ]\n    }, void 0, true, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\",\n        lineNumber: 32,\n        columnNumber: 5\n    }, this);\n};\n_c = Btn;\nexport default Btn;\nvar _c;\n$RefreshReg$(_c, \"Btn\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
-      "start": 1701766112454,
-      "end": 1701766112478,
+      "start": 1701867792124,
+      "end": 1701867792132,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -62,51 +62,51 @@
     },
     {
       "name": "vite:define",
-      "start": 1701766112479,
-      "end": 1701766112479,
+      "start": 1701867792132,
+      "end": 1701867792132,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112479,
-      "end": 1701766112479,
+      "start": 1701867792132,
+      "end": 1701867792132,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112479,
-      "end": 1701766112479,
+      "start": 1701867792132,
+      "end": 1701867792132,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112479,
-      "end": 1701766112479,
+      "start": 1701867792132,
+      "end": 1701867792132,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112479,
-      "end": 1701766112479,
+      "start": 1701867792132,
+      "end": 1701867792132,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112479,
-      "end": 1701766112479,
+      "start": 1701867792132,
+      "end": 1701867792132,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112479,
-      "end": 1701766112479,
+      "start": 1701867792132,
+      "end": 1701867792132,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
-      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/components/inputs/button/Button.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3c106fdb\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"];\nimport Button from \"/node_modules/.vite/deps/@mui_material_Button.js?v=3c106fdb\";\nimport VisuallyHiddenInput from \"/src/components/inputs/button/Button.styles.ts\";\nconst Btn = (props)=>{\n    const { variant, disabled, onClick, size, startIcon, endIcon, type, isUploadBtn, text } = props;\n    return /*#__PURE__*/ _jsxDEV(Button, {\n        variant: variant,\n        disabled: disabled,\n        onClick: onClick,\n        size: size,\n        startIcon: startIcon,\n        endIcon: endIcon,\n        type: type,\n        disableElevation: false,\n        disableFocusRipple: false,\n        disableRipple: false,\n        children: [\n            text,\n            isUploadBtn && /*#__PURE__*/ _jsxDEV(VisuallyHiddenInput, {\n                type: \"file\"\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\",\n                lineNumber: 45,\n                columnNumber: 23\n            }, this)\n        ]\n    }, void 0, true, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\",\n        lineNumber: 32,\n        columnNumber: 5\n    }, this);\n};\n_c = Btn;\nexport default Btn;\nvar _c;\n$RefreshReg$(_c, \"Btn\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
-      "start": 1701766112479,
-      "end": 1701766112481,
+      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/components/inputs/button/Button.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=c929456e\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"];\nimport Button from \"/node_modules/.vite/deps/@mui_material_Button.js?v=c929456e\";\nimport VisuallyHiddenInput from \"/src/components/inputs/button/Button.styles.ts\";\nconst Btn = (props)=>{\n    const { variant, disabled, onClick, size, startIcon, endIcon, type, isUploadBtn, text } = props;\n    return /*#__PURE__*/ _jsxDEV(Button, {\n        variant: variant,\n        disabled: disabled,\n        onClick: onClick,\n        size: size,\n        startIcon: startIcon,\n        endIcon: endIcon,\n        type: type,\n        disableElevation: false,\n        disableFocusRipple: false,\n        disableRipple: false,\n        children: [\n            text,\n            isUploadBtn && /*#__PURE__*/ _jsxDEV(VisuallyHiddenInput, {\n                type: \"file\"\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\",\n                lineNumber: 45,\n                columnNumber: 23\n            }, this)\n        ]\n    }, void 0, true, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\",\n        lineNumber: 32,\n        columnNumber: 5\n    }, this);\n};\n_c = Btn;\nexport default Btn;\nvar _c;\n$RefreshReg$(_c, \"Btn\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701867792132,
+      "end": 1701867792133,
       "order": "normal",
       "sourcemaps": null
     }

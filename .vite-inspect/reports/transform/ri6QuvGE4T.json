@@ -4,81 +4,81 @@
     {
       "name": "vite:asset",
       "result": "export default \"/src/assets/error404-illustration.png\"",
-      "start": 1701766112444,
-      "end": 1701766112445,
+      "start": 1701867792077,
+      "end": 1701867792078,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
       "result": "export default \"/src/assets/error404-illustration.png\"",
-      "start": 1701766112445,
-      "end": 1701766112445,
+      "start": 1701867792078,
+      "end": 1701867792078,
       "order": "normal",
       "sourcemaps": null
     }

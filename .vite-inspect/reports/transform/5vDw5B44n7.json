@@ -4,20 +4,20 @@
     {
       "name": "__load__",
       "result": "{\r\n  \"Button_BackToHome\": \"Kembali ke halaman utama\",\r\n  \"Description_Error404\": \"Cuba sekali lagi atau muat semula halaman.\",\r\n  \"ErrMsg_Address_Required\": \"Sila masukkan alamat anda\",\r\n  \"ErrMsg_DateOfBirth_Required\": \"Sila masukkan tarikh lahir anda\",\r\n  \"ErrMsg_Email_Invalid\": \"Alamat email tidak sah. Sila cuba lagi\",\r\n  \"ErrMsg_Email_MaxLength\": \"E-mel anda tidak boleh melebihi 320 aksara\",\r\n  \"ErrMsg_Email_MinLength\": \"E-mel anda mestilah lebih daripada 3 aksara\",\r\n  \"ErrMsg_Email_Required\": \"Sila masukkan alamat e-mel\",\r\n  \"ErrMsg_EmailorPassword\": \"E-mel atau kata laluan tidak betul. Sila cuba lagi\",\r\n  \"ErrMsg_FullName_MaxLength\": \"Nama penuh anda tidak boleh melebihi 300 aksara\",\r\n  \"ErrMsg_FullName_MinLength\": \"Nama penuh anda mestilah lebih daripada 3 aksara\",\r\n  \"ErrMsg_FullName_Required\": \"Sila masukkan nama penuh\",\r\n  \"ErrMsg_Gender_Required\": \"Sila pilih jantina anda\",\r\n  \"ErrMsg_MobileNumber_Required\": \"Sila masukkan nombor telefon bimbit anda\",\r\n  \"ErrMsg_Occupation_Required\": \"Sila pilih pekerjaan anda\",\r\n  \"ErrMsg_Pw_MaxLength\": \"Kata laluan anda tidak boleh melebihi 20 aksara\",\r\n  \"ErrMsg_Pw_MinLength\": \"Kata laluan anda mestilah sekurang-kurangnya 8 aksara\",\r\n  \"ErrMsg_Pw_NumberorSpecialCharacter\": \"Kata laluan anda mesti mempunyai sekurang-kurangnya satu nombor atau satu aksara khas\",\r\n  \"ErrMsg_Pw_Required\": \"Sila masukkan kata laluan anda\",\r\n  \"Label_Account\": \"Akaun\",\r\n  \"Label_Address\": \"Alamat\",\r\n  \"Label_Back\": \"Balik\",\r\n  \"Label_Cancel\": \"Batalkan\",\r\n  \"Label_Continue\": \"Teruskan\",\r\n  \"Label_DateOfBirth\": \"Tarikh Lahir\",\r\n  \"Label_Demographic\": \"Demografik\",\r\n  \"Label_EmailAddress\": \"Alamat E-mel\",\r\n  \"Label_Employed\": \"Serdang Bekerja\",\r\n  \"Label_Employment\": \"Perkerjaan\",\r\n  \"Label_Female\": \"Wanita\",\r\n  \"Label_FullName\": \"Nama Penuh\",\r\n  \"Label_Gender\": \"Janita\",\r\n  \"Label_Male\": \"Lelaki\",\r\n  \"Label_MobileNumber\": \"Telefon Bimbit\",\r\n  \"Label_NoAccount\": \"Tidak mempunyai akaun?\",\r\n  \"Label_NonBinary\": \"Bukan Binari\",\r\n  \"Label_NotEmployed\": \"Tidak Bekerja\",\r\n  \"Label_Password\": \"Kala Laluan\",\r\n  \"Label_Personal\": \"Peribadi\",\r\n  \"Label_Retired\": \"Bersara\",\r\n  \"Label_SignIn\": \"Daftar Masuk\",\r\n  \"Label_SignUp\": \"Mendaftar\",\r\n  \"Label_SignUpNow\": \"Daftar sekarang.\",\r\n  \"Label_Student\": \"Pelajar\",\r\n  \"Label_WelcomeBack\": \"Selamat Kembali!\",\r\n  \"Placeholder_Address\": \"Masukkan alamat anda\",\r\n  \"Placeholder_EmailAddress\": \"Masukkan alamat e-mel\",\r\n  \"Placeholder_FullName\": \"Masukkan nama penuh\",\r\n  \"Placeholder_Gender\": \"Pilih jantina\",\r\n  \"Placeholder_MobileNumber\": \"Masukkan nombor telefon bimbit anda\",\r\n  \"Placeholder_Occupation\": \"Pilih pekerjaan\",\r\n  \"Placeholder_Password\": \"Masukkan kata laluan\",\r\n  \"Title_Profile\": \"Profil Saya\",\r\n  \"Title_Error404\": \"Oops! Ada sesuatu yang tak kena.\",\r\n\r\n  \"Label_PrivacyPolicy\": \"Privacy Policy\",\r\n  \"Label_Terms&Conditions\": \"Terms and Conditions\",\r\n  \"Label_FullStackDeveloper\": \"Full Stack Developer\",\r\n  \"Label_DevelopedBy\": \"Developed By\"\r\n}\r\n",
-      "start": 1701766112408,
-      "end": 1701766112408
+      "start": 1701867792061,
+      "end": 1701867792061
     },
     {
       "name": "vite:css",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792061,
+      "end": 1701867792061,
       "order": "normal"
     },
     {
       "name": "vite:json",
       "result": "export const Button_BackToHome = \"Kembali ke halaman utama\";\nexport const Description_Error404 = \"Cuba sekali lagi atau muat semula halaman.\";\nexport const ErrMsg_Address_Required = \"Sila masukkan alamat anda\";\nexport const ErrMsg_DateOfBirth_Required = \"Sila masukkan tarikh lahir anda\";\nexport const ErrMsg_Email_Invalid = \"Alamat email tidak sah. Sila cuba lagi\";\nexport const ErrMsg_Email_MaxLength = \"E-mel anda tidak boleh melebihi 320 aksara\";\nexport const ErrMsg_Email_MinLength = \"E-mel anda mestilah lebih daripada 3 aksara\";\nexport const ErrMsg_Email_Required = \"Sila masukkan alamat e-mel\";\nexport const ErrMsg_EmailorPassword = \"E-mel atau kata laluan tidak betul. Sila cuba lagi\";\nexport const ErrMsg_FullName_MaxLength = \"Nama penuh anda tidak boleh melebihi 300 aksara\";\nexport const ErrMsg_FullName_MinLength = \"Nama penuh anda mestilah lebih daripada 3 aksara\";\nexport const ErrMsg_FullName_Required = \"Sila masukkan nama penuh\";\nexport const ErrMsg_Gender_Required = \"Sila pilih jantina anda\";\nexport const ErrMsg_MobileNumber_Required = \"Sila masukkan nombor telefon bimbit anda\";\nexport const ErrMsg_Occupation_Required = \"Sila pilih pekerjaan anda\";\nexport const ErrMsg_Pw_MaxLength = \"Kata laluan anda tidak boleh melebihi 20 aksara\";\nexport const ErrMsg_Pw_MinLength = \"Kata laluan anda mestilah sekurang-kurangnya 8 aksara\";\nexport const ErrMsg_Pw_NumberorSpecialCharacter = \"Kata laluan anda mesti mempunyai sekurang-kurangnya satu nombor atau satu aksara khas\";\nexport const ErrMsg_Pw_Required = \"Sila masukkan kata laluan anda\";\nexport const Label_Account = \"Akaun\";\nexport const Label_Address = \"Alamat\";\nexport const Label_Back = \"Balik\";\nexport const Label_Cancel = \"Batalkan\";\nexport const Label_Continue = \"Teruskan\";\nexport const Label_DateOfBirth = \"Tarikh Lahir\";\nexport const Label_Demographic = \"Demografik\";\nexport const Label_EmailAddress = \"Alamat E-mel\";\nexport const Label_Employed = \"Serdang Bekerja\";\nexport const Label_Employment = \"Perkerjaan\";\nexport const Label_Female = \"Wanita\";\nexport const Label_FullName = \"Nama Penuh\";\nexport const Label_Gender = \"Janita\";\nexport const Label_Male = \"Lelaki\";\nexport const Label_MobileNumber = \"Telefon Bimbit\";\nexport const Label_NoAccount = \"Tidak mempunyai akaun?\";\nexport const Label_NonBinary = \"Bukan Binari\";\nexport const Label_NotEmployed = \"Tidak Bekerja\";\nexport const Label_Password = \"Kala Laluan\";\nexport const Label_Personal = \"Peribadi\";\nexport const Label_Retired = \"Bersara\";\nexport const Label_SignIn = \"Daftar Masuk\";\nexport const Label_SignUp = \"Mendaftar\";\nexport const Label_SignUpNow = \"Daftar sekarang.\";\nexport const Label_Student = \"Pelajar\";\nexport const Label_WelcomeBack = \"Selamat Kembali!\";\nexport const Placeholder_Address = \"Masukkan alamat anda\";\nexport const Placeholder_EmailAddress = \"Masukkan alamat e-mel\";\nexport const Placeholder_FullName = \"Masukkan nama penuh\";\nexport const Placeholder_Gender = \"Pilih jantina\";\nexport const Placeholder_MobileNumber = \"Masukkan nombor telefon bimbit anda\";\nexport const Placeholder_Occupation = \"Pilih pekerjaan\";\nexport const Placeholder_Password = \"Masukkan kata laluan\";\nexport const Title_Profile = \"Profil Saya\";\nexport const Title_Error404 = \"Oops! Ada sesuatu yang tak kena.\";\nexport const Label_PrivacyPolicy = \"Privacy Policy\";\nexport const Label_FullStackDeveloper = \"Full Stack Developer\";\nexport const Label_DevelopedBy = \"Developed By\";\nexport default {\n\tButton_BackToHome: Button_BackToHome,\n\tDescription_Error404: Description_Error404,\n\tErrMsg_Address_Required: ErrMsg_Address_Required,\n\tErrMsg_DateOfBirth_Required: ErrMsg_DateOfBirth_Required,\n\tErrMsg_Email_Invalid: ErrMsg_Email_Invalid,\n\tErrMsg_Email_MaxLength: ErrMsg_Email_MaxLength,\n\tErrMsg_Email_MinLength: ErrMsg_Email_MinLength,\n\tErrMsg_Email_Required: ErrMsg_Email_Required,\n\tErrMsg_EmailorPassword: ErrMsg_EmailorPassword,\n\tErrMsg_FullName_MaxLength: ErrMsg_FullName_MaxLength,\n\tErrMsg_FullName_MinLength: ErrMsg_FullName_MinLength,\n\tErrMsg_FullName_Required: ErrMsg_FullName_Required,\n\tErrMsg_Gender_Required: ErrMsg_Gender_Required,\n\tErrMsg_MobileNumber_Required: ErrMsg_MobileNumber_Required,\n\tErrMsg_Occupation_Required: ErrMsg_Occupation_Required,\n\tErrMsg_Pw_MaxLength: ErrMsg_Pw_MaxLength,\n\tErrMsg_Pw_MinLength: ErrMsg_Pw_MinLength,\n\tErrMsg_Pw_NumberorSpecialCharacter: ErrMsg_Pw_NumberorSpecialCharacter,\n\tErrMsg_Pw_Required: ErrMsg_Pw_Required,\n\tLabel_Account: Label_Account,\n\tLabel_Address: Label_Address,\n\tLabel_Back: Label_Back,\n\tLabel_Cancel: Label_Cancel,\n\tLabel_Continue: Label_Continue,\n\tLabel_DateOfBirth: Label_DateOfBirth,\n\tLabel_Demographic: Label_Demographic,\n\tLabel_EmailAddress: Label_EmailAddress,\n\tLabel_Employed: Label_Employed,\n\tLabel_Employment: Label_Employment,\n\tLabel_Female: Label_Female,\n\tLabel_FullName: Label_FullName,\n\tLabel_Gender: Label_Gender,\n\tLabel_Male: Label_Male,\n\tLabel_MobileNumber: Label_MobileNumber,\n\tLabel_NoAccount: Label_NoAccount,\n\tLabel_NonBinary: Label_NonBinary,\n\tLabel_NotEmployed: Label_NotEmployed,\n\tLabel_Password: Label_Password,\n\tLabel_Personal: Label_Personal,\n\tLabel_Retired: Label_Retired,\n\tLabel_SignIn: Label_SignIn,\n\tLabel_SignUp: Label_SignUp,\n\tLabel_SignUpNow: Label_SignUpNow,\n\tLabel_Student: Label_Student,\n\tLabel_WelcomeBack: Label_WelcomeBack,\n\tPlaceholder_Address: Placeholder_Address,\n\tPlaceholder_EmailAddress: Placeholder_EmailAddress,\n\tPlaceholder_FullName: Placeholder_FullName,\n\tPlaceholder_Gender: Placeholder_Gender,\n\tPlaceholder_MobileNumber: Placeholder_MobileNumber,\n\tPlaceholder_Occupation: Placeholder_Occupation,\n\tPlaceholder_Password: Placeholder_Password,\n\tTitle_Profile: Title_Profile,\n\tTitle_Error404: Title_Error404,\n\tLabel_PrivacyPolicy: Label_PrivacyPolicy,\n\t\"Label_Terms&Conditions\": \"Terms and Conditions\",\n\tLabel_FullStackDeveloper: Label_FullStackDeveloper,\n\tLabel_DevelopedBy: Label_DevelopedBy\n};\n",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792061,
+      "end": 1701867792061,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -25,62 +25,62 @@
     },
     {
       "name": "vite:worker",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792061,
+      "end": 1701867792061,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792061,
+      "end": 1701867792061,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792061,
+      "end": 1701867792061,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792061,
+      "end": 1701867792061,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792061,
+      "end": 1701867792062,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792062,
+      "end": 1701867792062,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792062,
+      "end": 1701867792062,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792062,
+      "end": 1701867792062,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792062,
+      "end": 1701867792062,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
-      "start": 1701766112408,
-      "end": 1701766112408,
+      "start": 1701867792062,
+      "end": 1701867792062,
       "order": "normal"
     }
   ]

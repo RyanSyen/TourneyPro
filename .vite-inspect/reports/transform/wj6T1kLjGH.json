@@ -3,83 +3,83 @@
   "transforms": [
     {
       "name": "__load__",
-      "result": "import { atom, useAtom } from 'jotai';\r\nimport { useCallback, useMemo } from 'react';\r\n\r\nconst isOpenLoginAtom = atom(false);\r\n\r\nconst useLogin = () => {\r\n  const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\r\n\r\n  const open = useCallback(() => {\r\n    setIsOpen(true);\r\n  }, []);\r\n\r\n  const close = useCallback(() => {\r\n    setIsOpen(false);\r\n  }, []);\r\n\r\n  // memoize the return object to ensure the same obj ref is returned if the props arent changed\r\n  return useMemo(\r\n    () => ({\r\n      isOpen,\r\n      open,\r\n      close,\r\n    }),\r\n    [isOpen, open, close]\r\n  );\r\n};\r\n\r\nexport default useLogin;\r\n",
-      "start": 1701766112648,
-      "end": 1701766112648
+      "result": "import { atom, useAtom } from 'jotai';\r\nimport auth from 'lib/firebase/initAuth';\r\nimport { useCallback, useMemo } from 'react';\r\nimport { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';\r\nimport { SubmitHandler, useForm } from 'react-hook-form';\r\n\r\nconst isOpenLoginAtom = atom(false);\r\nconst isShowPasswordAtom = atom(false);\r\n\r\ntype FormValues = {\r\n  Email: string;\r\n  Password: string;\r\n};\r\n\r\nconst useLogin = () => {\r\n  const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\r\n  const [isShowPw, setIsShowPw] = useAtom(isShowPasswordAtom);\r\n  const {\r\n    register,\r\n    handleSubmit,\r\n    formState: { errors },\r\n  } = useForm<FormValues>();\r\n\r\n  const [signInWithEmailAndPassword, loading, error] =\r\n    useSignInWithEmailAndPassword(auth);\r\n\r\n  const open = useCallback(() => {\r\n    setIsOpen(true);\r\n  }, []);\r\n\r\n  const close = useCallback(() => {\r\n    setIsOpen(false);\r\n  }, []);\r\n\r\n  const togglePw = useCallback((show: boolean) => {\r\n    setIsShowPw(show);\r\n  }, []);\r\n\r\n  const submit: SubmitHandler<FormValues> = (data) => {\r\n    const { Email, Password } = data;\r\n    signInWithEmailAndPassword(Email, Password);\r\n  };\r\n\r\n  // memoize the return object to ensure the same obj ref is returned if the props arent changed\r\n  return useMemo(\r\n    () => ({\r\n      isOpen,\r\n      open,\r\n      close,\r\n      register,\r\n      togglePw,\r\n      isShowPw,\r\n      submit,\r\n      errors,\r\n      handleSubmit,\r\n    }),\r\n    [\r\n      isOpen,\r\n      open,\r\n      close,\r\n      register,\r\n      togglePw,\r\n      isShowPw,\r\n      submit,\r\n      errors,\r\n      handleSubmit,\r\n    ]\r\n  );\r\n};\r\n\r\nexport default useLogin;\r\n",
+      "start": 1701867861824,
+      "end": 1701867861824
     },
     {
       "name": "vite:css",
-      "start": 1701766112648,
-      "end": 1701766112648,
+      "start": 1701867861824,
+      "end": 1701867861824,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112648,
-      "end": 1701766112648,
+      "start": 1701867861824,
+      "end": 1701867861824,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112648,
-      "end": 1701766112648,
+      "start": 1701867861824,
+      "end": 1701867861824,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
-      "result": "import { atom, useAtom } from 'jotai';\nimport { useCallback, useMemo } from 'react';\nconst isOpenLoginAtom = atom(false);\nconst useLogin = ()=>{\n    const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\n    const open = useCallback(()=>{\n        setIsOpen(true);\n    }, []);\n    const close = useCallback(()=>{\n        setIsOpen(false);\n    }, []);\n    // memoize the return object to ensure the same obj ref is returned if the props arent changed\n    return useMemo(()=>({\n            isOpen,\n            open,\n            close\n        }), [\n        isOpen,\n        open,\n        close\n    ]);\n};\nexport default useLogin;\n",
-      "start": 1701766112648,
-      "end": 1701766112699,
+      "result": "import { atom, useAtom } from 'jotai';\nimport auth from 'lib/firebase/initAuth';\nimport { useCallback, useMemo } from 'react';\nimport { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';\nimport { useForm } from 'react-hook-form';\nconst isOpenLoginAtom = atom(false);\nconst isShowPasswordAtom = atom(false);\nconst useLogin = ()=>{\n    const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\n    const [isShowPw, setIsShowPw] = useAtom(isShowPasswordAtom);\n    const { register, handleSubmit, formState: { errors } } = useForm();\n    const [signInWithEmailAndPassword, loading, error] = useSignInWithEmailAndPassword(auth);\n    const open = useCallback(()=>{\n        setIsOpen(true);\n    }, []);\n    const close = useCallback(()=>{\n        setIsOpen(false);\n    }, []);\n    const togglePw = useCallback((show)=>{\n        setIsShowPw(show);\n    }, []);\n    const submit = (data)=>{\n        const { Email, Password } = data;\n        signInWithEmailAndPassword(Email, Password);\n    };\n    // memoize the return object to ensure the same obj ref is returned if the props arent changed\n    return useMemo(()=>({\n            isOpen,\n            open,\n            close,\n            register,\n            togglePw,\n            isShowPw,\n            submit,\n            errors,\n            handleSubmit\n        }), [\n        isOpen,\n        open,\n        close,\n        register,\n        togglePw,\n        isShowPw,\n        submit,\n        errors,\n        handleSubmit\n    ]);\n};\nexport default useLogin;\n",
+      "start": 1701867861824,
+      "end": 1701867861826,
       "order": "normal",
-      "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/hooks/useLogin.ts\"],\"sourcesContent\":[\"import { atom, useAtom } from 'jotai';\\r\\nimport { useCallback, useMemo } from 'react';\\r\\n\\r\\nconst isOpenLoginAtom = atom(false);\\r\\n\\r\\nconst useLogin = () => {\\r\\n  const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\\r\\n\\r\\n  const open = useCallback(() => {\\r\\n    setIsOpen(true);\\r\\n  }, []);\\r\\n\\r\\n  const close = useCallback(() => {\\r\\n    setIsOpen(false);\\r\\n  }, []);\\r\\n\\r\\n  // memoize the return object to ensure the same obj ref is returned if the props arent changed\\r\\n  return useMemo(\\r\\n    () => ({\\r\\n      isOpen,\\r\\n      open,\\r\\n      close,\\r\\n    }),\\r\\n    [isOpen, open, close]\\r\\n  );\\r\\n};\\r\\n\\r\\nexport default useLogin;\\r\\n\"],\"names\":[\"atom\",\"useAtom\",\"useCallback\",\"useMemo\",\"isOpenLoginAtom\",\"useLogin\",\"isOpen\",\"setIsOpen\",\"open\",\"close\"],\"mappings\":\"AAAA,SAASA,IAAI,EAAEC,OAAO,QAAQ,QAAQ;AACtC,SAASC,WAAW,EAAEC,OAAO,QAAQ,QAAQ;AAE7C,MAAMC,kBAAkBJ,KAAK;AAE7B,MAAMK,WAAW;IACf,MAAM,CAACC,QAAQC,UAAU,GAAGN,QAAQG;IAEpC,MAAMI,OAAON,YAAY;QACvBK,UAAU;IACZ,GAAG,EAAE;IAEL,MAAME,QAAQP,YAAY;QACxBK,UAAU;IACZ,GAAG,EAAE;IAEL,8FAA8F;IAC9F,OAAOJ,QACL,IAAO,CAAA;YACLG;YACAE;YACAC;QACF,CAAA,GACA;QAACH;QAAQE;QAAMC;KAAM;AAEzB;AAEA,eAAeJ,SAAS\"}"
+      "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/hooks/useLogin.ts\"],\"sourcesContent\":[\"import { atom, useAtom } from 'jotai';\\r\\nimport auth from 'lib/firebase/initAuth';\\r\\nimport { useCallback, useMemo } from 'react';\\r\\nimport { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';\\r\\nimport { SubmitHandler, useForm } from 'react-hook-form';\\r\\n\\r\\nconst isOpenLoginAtom = atom(false);\\r\\nconst isShowPasswordAtom = atom(false);\\r\\n\\r\\ntype FormValues = {\\r\\n  Email: string;\\r\\n  Password: string;\\r\\n};\\r\\n\\r\\nconst useLogin = () => {\\r\\n  const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\\r\\n  const [isShowPw, setIsShowPw] = useAtom(isShowPasswordAtom);\\r\\n  const {\\r\\n    register,\\r\\n    handleSubmit,\\r\\n    formState: { errors },\\r\\n  } = useForm<FormValues>();\\r\\n\\r\\n  const [signInWithEmailAndPassword, loading, error] =\\r\\n    useSignInWithEmailAndPassword(auth);\\r\\n\\r\\n  const open = useCallback(() => {\\r\\n    setIsOpen(true);\\r\\n  }, []);\\r\\n\\r\\n  const close = useCallback(() => {\\r\\n    setIsOpen(false);\\r\\n  }, []);\\r\\n\\r\\n  const togglePw = useCallback((show: boolean) => {\\r\\n    setIsShowPw(show);\\r\\n  }, []);\\r\\n\\r\\n  const submit: SubmitHandler<FormValues> = (data) => {\\r\\n    const { Email, Password } = data;\\r\\n    signInWithEmailAndPassword(Email, Password);\\r\\n  };\\r\\n\\r\\n  // memoize the return object to ensure the same obj ref is returned if the props arent changed\\r\\n  return useMemo(\\r\\n    () => ({\\r\\n      isOpen,\\r\\n      open,\\r\\n      close,\\r\\n      register,\\r\\n      togglePw,\\r\\n      isShowPw,\\r\\n      submit,\\r\\n      errors,\\r\\n      handleSubmit,\\r\\n    }),\\r\\n    [\\r\\n      isOpen,\\r\\n      open,\\r\\n      close,\\r\\n      register,\\r\\n      togglePw,\\r\\n      isShowPw,\\r\\n      submit,\\r\\n      errors,\\r\\n      handleSubmit,\\r\\n    ]\\r\\n  );\\r\\n};\\r\\n\\r\\nexport default useLogin;\\r\\n\"],\"names\":[\"atom\",\"useAtom\",\"auth\",\"useCallback\",\"useMemo\",\"useSignInWithEmailAndPassword\",\"useForm\",\"isOpenLoginAtom\",\"isShowPasswordAtom\",\"useLogin\",\"isOpen\",\"setIsOpen\",\"isShowPw\",\"setIsShowPw\",\"register\",\"handleSubmit\",\"formState\",\"errors\",\"signInWithEmailAndPassword\",\"loading\",\"error\",\"open\",\"close\",\"togglePw\",\"show\",\"submit\",\"data\",\"Email\",\"Password\"],\"mappings\":\"AAAA,SAASA,IAAI,EAAEC,OAAO,QAAQ,QAAQ;AACtC,OAAOC,UAAU,wBAAwB;AACzC,SAASC,WAAW,EAAEC,OAAO,QAAQ,QAAQ;AAC7C,SAASC,6BAA6B,QAAQ,4BAA4B;AAC1E,SAAwBC,OAAO,QAAQ,kBAAkB;AAEzD,MAAMC,kBAAkBP,KAAK;AAC7B,MAAMQ,qBAAqBR,KAAK;AAOhC,MAAMS,WAAW;IACf,MAAM,CAACC,QAAQC,UAAU,GAAGV,QAAQM;IACpC,MAAM,CAACK,UAAUC,YAAY,GAAGZ,QAAQO;IACxC,MAAM,EACJM,QAAQ,EACRC,YAAY,EACZC,WAAW,EAAEC,MAAM,EAAE,EACtB,GAAGX;IAEJ,MAAM,CAACY,4BAA4BC,SAASC,MAAM,GAChDf,8BAA8BH;IAEhC,MAAMmB,OAAOlB,YAAY;QACvBQ,UAAU;IACZ,GAAG,EAAE;IAEL,MAAMW,QAAQnB,YAAY;QACxBQ,UAAU;IACZ,GAAG,EAAE;IAEL,MAAMY,WAAWpB,YAAY,CAACqB;QAC5BX,YAAYW;IACd,GAAG,EAAE;IAEL,MAAMC,SAAoC,CAACC;QACzC,MAAM,EAAEC,KAAK,EAAEC,QAAQ,EAAE,GAAGF;QAC5BR,2BAA2BS,OAAOC;IACpC;IAEA,8FAA8F;IAC9F,OAAOxB,QACL,IAAO,CAAA;YACLM;YACAW;YACAC;YACAR;YACAS;YACAX;YACAa;YACAR;YACAF;QACF,CAAA,GACA;QACEL;QACAW;QACAC;QACAR;QACAS;QACAX;QACAa;QACAR;QACAF;KACD;AAEL;AAEA,eAAeN,SAAS\"}"
     },
     {
       "name": "vite:define",
-      "start": 1701766112699,
-      "end": 1701766112699,
+      "start": 1701867861826,
+      "end": 1701867861826,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112699,
-      "end": 1701766112699,
+      "start": 1701867861826,
+      "end": 1701867861826,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112699,
-      "end": 1701766112699,
+      "start": 1701867861826,
+      "end": 1701867861826,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112699,
-      "end": 1701766112699,
+      "start": 1701867861826,
+      "end": 1701867861826,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112699,
-      "end": 1701766112699,
+      "start": 1701867861826,
+      "end": 1701867861826,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112699,
-      "end": 1701766112699,
+      "start": 1701867861826,
+      "end": 1701867861826,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112699,
-      "end": 1701766112699,
+      "start": 1701867861826,
+      "end": 1701867861826,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
-      "result": "import { atom, useAtom } from \"/node_modules/.vite/deps/jotai.js?v=3c106fdb\";\nimport __vite__cjsImport1_react from \"/node_modules/.vite/deps/react.js?v=3c106fdb\"; const useCallback = __vite__cjsImport1_react[\"useCallback\"]; const useMemo = __vite__cjsImport1_react[\"useMemo\"];\nconst isOpenLoginAtom = atom(false);\nconst useLogin = ()=>{\n    const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\n    const open = useCallback(()=>{\n        setIsOpen(true);\n    }, []);\n    const close = useCallback(()=>{\n        setIsOpen(false);\n    }, []);\n    // memoize the return object to ensure the same obj ref is returned if the props arent changed\n    return useMemo(()=>({\n            isOpen,\n            open,\n            close\n        }), [\n        isOpen,\n        open,\n        close\n    ]);\n};\nexport default useLogin;\n",
-      "start": 1701766112699,
-      "end": 1701766112699,
+      "result": "import { atom, useAtom } from \"/node_modules/.vite/deps/jotai.js?v=c929456e\";\nimport auth from \"/src/lib/firebase/initAuth.ts\";\nimport __vite__cjsImport2_react from \"/node_modules/.vite/deps/react.js?v=c929456e\"; const useCallback = __vite__cjsImport2_react[\"useCallback\"]; const useMemo = __vite__cjsImport2_react[\"useMemo\"];\nimport { useSignInWithEmailAndPassword } from \"/node_modules/.vite/deps/react-firebase-hooks_auth.js?v=c929456e\";\nimport { useForm } from \"/node_modules/react-hook-form/dist/index.esm.mjs?v=c929456e\";\nconst isOpenLoginAtom = atom(false);\nconst isShowPasswordAtom = atom(false);\nconst useLogin = ()=>{\n    const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\n    const [isShowPw, setIsShowPw] = useAtom(isShowPasswordAtom);\n    const { register, handleSubmit, formState: { errors } } = useForm();\n    const [signInWithEmailAndPassword, loading, error] = useSignInWithEmailAndPassword(auth);\n    const open = useCallback(()=>{\n        setIsOpen(true);\n    }, []);\n    const close = useCallback(()=>{\n        setIsOpen(false);\n    }, []);\n    const togglePw = useCallback((show)=>{\n        setIsShowPw(show);\n    }, []);\n    const submit = (data)=>{\n        const { Email, Password } = data;\n        signInWithEmailAndPassword(Email, Password);\n    };\n    // memoize the return object to ensure the same obj ref is returned if the props arent changed\n    return useMemo(()=>({\n            isOpen,\n            open,\n            close,\n            register,\n            togglePw,\n            isShowPw,\n            submit,\n            errors,\n            handleSubmit\n        }), [\n        isOpen,\n        open,\n        close,\n        register,\n        togglePw,\n        isShowPw,\n        submit,\n        errors,\n        handleSubmit\n    ]);\n};\nexport default useLogin;\n",
+      "start": 1701867861826,
+      "end": 1701867861829,
       "order": "normal",
       "sourcemaps": null
     }

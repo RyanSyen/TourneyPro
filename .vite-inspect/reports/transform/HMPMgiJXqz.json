@@ -4,82 +4,82 @@
     {
       "name": "__load__",
       "result": "const MenuTheme = {\r\n  styleOverrides: {\r\n    list: {\r\n      backgroundColor: '#26282F',\r\n      // borderRadius: \"15px\",\r\n    },\r\n    paper: {\r\n      borderRadius: '7px',\r\n    },\r\n  },\r\n};\r\n\r\nexport default MenuTheme;\r\n",
-      "start": 1701766112402,
-      "end": 1701766112402
+      "start": 1701867792006,
+      "end": 1701867792006
     },
     {
       "name": "vite:css",
-      "start": 1701766112402,
-      "end": 1701766112402,
+      "start": 1701867792006,
+      "end": 1701867792006,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112402,
-      "end": 1701766112402,
+      "start": 1701867792006,
+      "end": 1701867792006,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112402,
-      "end": 1701766112402,
+      "start": 1701867792006,
+      "end": 1701867792006,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
       "result": "const MenuTheme = {\n    styleOverrides: {\n        list: {\n            backgroundColor: '#26282F'\n        },\n        paper: {\n            borderRadius: '7px'\n        }\n    }\n};\nexport default MenuTheme;\n",
-      "start": 1701766112402,
-      "end": 1701766112408,
+      "start": 1701867792006,
+      "end": 1701867792064,
       "order": "normal",
       "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/mui/menu.theme.ts\"],\"sourcesContent\":[\"const MenuTheme = {\\r\\n  styleOverrides: {\\r\\n    list: {\\r\\n      backgroundColor: '#26282F',\\r\\n      // borderRadius: \\\"15px\\\",\\r\\n    },\\r\\n    paper: {\\r\\n      borderRadius: '7px',\\r\\n    },\\r\\n  },\\r\\n};\\r\\n\\r\\nexport default MenuTheme;\\r\\n\"],\"names\":[\"MenuTheme\",\"styleOverrides\",\"list\",\"backgroundColor\",\"paper\",\"borderRadius\"],\"mappings\":\"AAAA,MAAMA,YAAY;IAChBC,gBAAgB;QACdC,MAAM;YACJC,iBAAiB;QAEnB;QACAC,OAAO;YACLC,cAAc;QAChB;IACF;AACF;AAEA,eAAeL,UAAU\"}"
     },
     {
       "name": "vite:define",
-      "start": 1701766112409,
-      "end": 1701766112409,
+      "start": 1701867792064,
+      "end": 1701867792064,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112409,
-      "end": 1701766112409,
+      "start": 1701867792064,
+      "end": 1701867792064,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112409,
-      "end": 1701766112409,
+      "start": 1701867792064,
+      "end": 1701867792064,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112409,
-      "end": 1701766112409,
+      "start": 1701867792064,
+      "end": 1701867792064,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112409,
-      "end": 1701766112409,
+      "start": 1701867792064,
+      "end": 1701867792064,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112409,
-      "end": 1701766112409,
+      "start": 1701867792064,
+      "end": 1701867792064,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112409,
-      "end": 1701766112409,
+      "start": 1701867792064,
+      "end": 1701867792064,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
       "result": "const MenuTheme = {\n    styleOverrides: {\n        list: {\n            backgroundColor: '#26282F'\n        },\n        paper: {\n            borderRadius: '7px'\n        }\n    }\n};\nexport default MenuTheme;\n",
-      "start": 1701766112409,
-      "end": 1701766112409,
+      "start": 1701867792064,
+      "end": 1701867792064,
       "order": "normal",
       "sourcemaps": null
     }

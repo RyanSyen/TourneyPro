@@ -4,82 +4,82 @@
     {
       "name": "__load__",
       "result": "import { atom, useAtom } from 'jotai';\r\nimport { useEffect } from 'react';\r\n\r\nconst isScrolledAtom = atom(false);\r\nconst isOpenAtom = atom(false);\r\n\r\nconst useNavbar = () => {\r\n  const [isScrolled, setIsScrolled] = useAtom(isScrolledAtom);\r\n  const [isOpen, setIsOpen] = useAtom(isOpenAtom);\r\n\r\n  useEffect(() => {\r\n    const handleScroll = () => {\r\n      if (window.scrollY > 100) {\r\n        setIsScrolled(true);\r\n      } else {\r\n        setIsScrolled(false);\r\n      }\r\n    };\r\n\r\n    window.addEventListener('scroll', handleScroll);\r\n\r\n    return () => {\r\n      window.removeEventListener('scroll', handleScroll);\r\n    };\r\n  }, []);\r\n\r\n  const open = () => {\r\n    setIsOpen(true);\r\n  };\r\n\r\n  const close = () => {\r\n    setIsOpen(false);\r\n  };\r\n\r\n  return {\r\n    isScrolled,\r\n    isOpen,\r\n    open,\r\n    close,\r\n  };\r\n};\r\n\r\nexport default useNavbar;\r\n",
-      "start": 1701766112646,
-      "end": 1701766112646
+      "start": 1701867792306,
+      "end": 1701867792306
     },
     {
       "name": "vite:css",
-      "start": 1701766112646,
-      "end": 1701766112646,
+      "start": 1701867792306,
+      "end": 1701867792306,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112646,
-      "end": 1701766112646,
+      "start": 1701867792306,
+      "end": 1701867792306,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112646,
-      "end": 1701766112646,
+      "start": 1701867792306,
+      "end": 1701867792306,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
       "result": "import { atom, useAtom } from 'jotai';\nimport { useEffect } from 'react';\nconst isScrolledAtom = atom(false);\nconst isOpenAtom = atom(false);\nconst useNavbar = ()=>{\n    const [isScrolled, setIsScrolled] = useAtom(isScrolledAtom);\n    const [isOpen, setIsOpen] = useAtom(isOpenAtom);\n    useEffect(()=>{\n        const handleScroll = ()=>{\n            if (window.scrollY > 100) {\n                setIsScrolled(true);\n            } else {\n                setIsScrolled(false);\n            }\n        };\n        window.addEventListener('scroll', handleScroll);\n        return ()=>{\n            window.removeEventListener('scroll', handleScroll);\n        };\n    }, []);\n    const open = ()=>{\n        setIsOpen(true);\n    };\n    const close = ()=>{\n        setIsOpen(false);\n    };\n    return {\n        isScrolled,\n        isOpen,\n        open,\n        close\n    };\n};\nexport default useNavbar;\n",
-      "start": 1701766112646,
-      "end": 1701766112659,
+      "start": 1701867792306,
+      "end": 1701867792328,
       "order": "normal",
       "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/navigation/navbar/useNavbar.ts\"],\"sourcesContent\":[\"import { atom, useAtom } from 'jotai';\\r\\nimport { useEffect } from 'react';\\r\\n\\r\\nconst isScrolledAtom = atom(false);\\r\\nconst isOpenAtom = atom(false);\\r\\n\\r\\nconst useNavbar = () => {\\r\\n  const [isScrolled, setIsScrolled] = useAtom(isScrolledAtom);\\r\\n  const [isOpen, setIsOpen] = useAtom(isOpenAtom);\\r\\n\\r\\n  useEffect(() => {\\r\\n    const handleScroll = () => {\\r\\n      if (window.scrollY > 100) {\\r\\n        setIsScrolled(true);\\r\\n      } else {\\r\\n        setIsScrolled(false);\\r\\n      }\\r\\n    };\\r\\n\\r\\n    window.addEventListener('scroll', handleScroll);\\r\\n\\r\\n    return () => {\\r\\n      window.removeEventListener('scroll', handleScroll);\\r\\n    };\\r\\n  }, []);\\r\\n\\r\\n  const open = () => {\\r\\n    setIsOpen(true);\\r\\n  };\\r\\n\\r\\n  const close = () => {\\r\\n    setIsOpen(false);\\r\\n  };\\r\\n\\r\\n  return {\\r\\n    isScrolled,\\r\\n    isOpen,\\r\\n    open,\\r\\n    close,\\r\\n  };\\r\\n};\\r\\n\\r\\nexport default useNavbar;\\r\\n\"],\"names\":[\"atom\",\"useAtom\",\"useEffect\",\"isScrolledAtom\",\"isOpenAtom\",\"useNavbar\",\"isScrolled\",\"setIsScrolled\",\"isOpen\",\"setIsOpen\",\"handleScroll\",\"window\",\"scrollY\",\"addEventListener\",\"removeEventListener\",\"open\",\"close\"],\"mappings\":\"AAAA,SAASA,IAAI,EAAEC,OAAO,QAAQ,QAAQ;AACtC,SAASC,SAAS,QAAQ,QAAQ;AAElC,MAAMC,iBAAiBH,KAAK;AAC5B,MAAMI,aAAaJ,KAAK;AAExB,MAAMK,YAAY;IAChB,MAAM,CAACC,YAAYC,cAAc,GAAGN,QAAQE;IAC5C,MAAM,CAACK,QAAQC,UAAU,GAAGR,QAAQG;IAEpCF,UAAU;QACR,MAAMQ,eAAe;YACnB,IAAIC,OAAOC,OAAO,GAAG,KAAK;gBACxBL,cAAc;YAChB,OAAO;gBACLA,cAAc;YAChB;QACF;QAEAI,OAAOE,gBAAgB,CAAC,UAAUH;QAElC,OAAO;YACLC,OAAOG,mBAAmB,CAAC,UAAUJ;QACvC;IACF,GAAG,EAAE;IAEL,MAAMK,OAAO;QACXN,UAAU;IACZ;IAEA,MAAMO,QAAQ;QACZP,UAAU;IACZ;IAEA,OAAO;QACLH;QACAE;QACAO;QACAC;IACF;AACF;AAEA,eAAeX,UAAU\"}"
     },
     {
       "name": "vite:define",
-      "start": 1701766112659,
-      "end": 1701766112659,
+      "start": 1701867792328,
+      "end": 1701867792328,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112659,
-      "end": 1701766112659,
+      "start": 1701867792328,
+      "end": 1701867792328,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112659,
-      "end": 1701766112659,
+      "start": 1701867792328,
+      "end": 1701867792328,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112659,
-      "end": 1701766112659,
+      "start": 1701867792328,
+      "end": 1701867792328,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112659,
-      "end": 1701766112659,
+      "start": 1701867792328,
+      "end": 1701867792328,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112659,
-      "end": 1701766112659,
+      "start": 1701867792328,
+      "end": 1701867792328,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112659,
-      "end": 1701766112659,
+      "start": 1701867792328,
+      "end": 1701867792328,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
-      "result": "import { atom, useAtom } from \"/node_modules/.vite/deps/jotai.js?v=3c106fdb\";\nimport __vite__cjsImport1_react from \"/node_modules/.vite/deps/react.js?v=3c106fdb\"; const useEffect = __vite__cjsImport1_react[\"useEffect\"];\nconst isScrolledAtom = atom(false);\nconst isOpenAtom = atom(false);\nconst useNavbar = ()=>{\n    const [isScrolled, setIsScrolled] = useAtom(isScrolledAtom);\n    const [isOpen, setIsOpen] = useAtom(isOpenAtom);\n    useEffect(()=>{\n        const handleScroll = ()=>{\n            if (window.scrollY > 100) {\n                setIsScrolled(true);\n            } else {\n                setIsScrolled(false);\n            }\n        };\n        window.addEventListener('scroll', handleScroll);\n        return ()=>{\n            window.removeEventListener('scroll', handleScroll);\n        };\n    }, []);\n    const open = ()=>{\n        setIsOpen(true);\n    };\n    const close = ()=>{\n        setIsOpen(false);\n    };\n    return {\n        isScrolled,\n        isOpen,\n        open,\n        close\n    };\n};\nexport default useNavbar;\n",
-      "start": 1701766112659,
-      "end": 1701766112660,
+      "result": "import { atom, useAtom } from \"/node_modules/.vite/deps/jotai.js?v=c929456e\";\nimport __vite__cjsImport1_react from \"/node_modules/.vite/deps/react.js?v=c929456e\"; const useEffect = __vite__cjsImport1_react[\"useEffect\"];\nconst isScrolledAtom = atom(false);\nconst isOpenAtom = atom(false);\nconst useNavbar = ()=>{\n    const [isScrolled, setIsScrolled] = useAtom(isScrolledAtom);\n    const [isOpen, setIsOpen] = useAtom(isOpenAtom);\n    useEffect(()=>{\n        const handleScroll = ()=>{\n            if (window.scrollY > 100) {\n                setIsScrolled(true);\n            } else {\n                setIsScrolled(false);\n            }\n        };\n        window.addEventListener('scroll', handleScroll);\n        return ()=>{\n            window.removeEventListener('scroll', handleScroll);\n        };\n    }, []);\n    const open = ()=>{\n        setIsOpen(true);\n    };\n    const close = ()=>{\n        setIsOpen(false);\n    };\n    return {\n        isScrolled,\n        isOpen,\n        open,\n        close\n    };\n};\nexport default useNavbar;\n",
+      "start": 1701867792328,
+      "end": 1701867792329,
       "order": "normal",
       "sourcemaps": null
     }

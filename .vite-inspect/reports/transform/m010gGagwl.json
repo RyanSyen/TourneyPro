@@ -4,32 +4,32 @@
     {
       "name": "__load__",
       "result": "import { CarouselSlider, SliderContainer } from './Carousel.styled.tsx';\r\nimport useCarousel from './useCarousel.ts';\r\n\r\nconst BannerCarousel = () => {\r\n  const carousel = useCarousel();\r\n  const {\r\n    autoplay,\r\n    autoplaySpeed,\r\n    fade,\r\n    lazyLoad,\r\n    dots,\r\n    infinite,\r\n    speed,\r\n    slidesToScroll,\r\n    slidesToShow,\r\n    arrows,\r\n  } = carousel.settings;\r\n\r\n  return (\r\n    <SliderContainer className=\"banner-carousel-container\">\r\n      <CarouselSlider\r\n        autoplay={autoplay}\r\n        autoplaySpeed={autoplaySpeed}\r\n        fade={fade}\r\n        lazyLoad={lazyLoad === 'ondemand' ? 'ondemand' : 'progressive'}\r\n        dots={dots}\r\n        infinite={infinite}\r\n        speed={speed}\r\n        slidesToScroll={slidesToScroll}\r\n        slidesToShow={slidesToShow}\r\n        arrows={arrows}\r\n      >\r\n        {carousel.images.map((image) => (\r\n          <div key={image.id}>\r\n            <img\r\n              style={{ height: '100%', width: '100%', objectFit: 'cover' }}\r\n              src={image.url}\r\n              alt={image.name}\r\n              data-img-id={image.id}\r\n              data-img-src={image.src}\r\n              data-img-views={image.views}\r\n              data-img-published={image.published}\r\n            />\r\n          </div>\r\n        ))}\r\n      </CarouselSlider>\r\n    </SliderContainer>\r\n  );\r\n};\r\n\r\nexport default BannerCarousel;\r\n",
-      "start": 1701766112630,
-      "end": 1701766112630
+      "start": 1701867792251,
+      "end": 1701867792251
     },
     {
       "name": "vite:css",
-      "start": 1701766112630,
-      "end": 1701766112630,
+      "start": 1701867792251,
+      "end": 1701867792251,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112630,
-      "end": 1701766112630,
+      "start": 1701867792251,
+      "end": 1701867792251,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112630,
-      "end": 1701766112630,
+      "start": 1701867792251,
+      "end": 1701867792251,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
       "result": "import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport { jsxDEV as _jsxDEV } from \"react/jsx-dev-runtime\";\nvar _s = $RefreshSig$();\nimport { CarouselSlider, SliderContainer } from './Carousel.styled.tsx';\nimport useCarousel from './useCarousel.ts';\nconst BannerCarousel = ()=>{\n    _s();\n    const carousel = useCarousel();\n    const { autoplay, autoplaySpeed, fade, lazyLoad, dots, infinite, speed, slidesToScroll, slidesToShow, arrows } = carousel.settings;\n    return /*#__PURE__*/ _jsxDEV(SliderContainer, {\n        className: \"banner-carousel-container\",\n        children: /*#__PURE__*/ _jsxDEV(CarouselSlider, {\n            autoplay: autoplay,\n            autoplaySpeed: autoplaySpeed,\n            fade: fade,\n            lazyLoad: lazyLoad === 'ondemand' ? 'ondemand' : 'progressive',\n            dots: dots,\n            infinite: infinite,\n            speed: speed,\n            slidesToScroll: slidesToScroll,\n            slidesToShow: slidesToShow,\n            arrows: arrows,\n            children: carousel.images.map((image)=>/*#__PURE__*/ _jsxDEV(\"div\", {\n                    children: /*#__PURE__*/ _jsxDEV(\"img\", {\n                        style: {\n                            height: '100%',\n                            width: '100%',\n                            objectFit: 'cover'\n                        },\n                        src: image.url,\n                        alt: image.name,\n                        \"data-img-id\": image.id,\n                        \"data-img-src\": image.src,\n                        \"data-img-views\": image.views,\n                        \"data-img-published\": image.published\n                    }, void 0, false, {\n                        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n                        lineNumber: 35,\n                        columnNumber: 13\n                    }, this)\n                }, image.id, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n                    lineNumber: 34,\n                    columnNumber: 11\n                }, this))\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n            lineNumber: 21,\n            columnNumber: 7\n        }, this)\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n        lineNumber: 20,\n        columnNumber: 5\n    }, this);\n};\n_s(BannerCarousel, \"H8NsHzoXrYREoS0IerZtdS4+1lg=\", false, function() {\n    return [\n        useCarousel\n    ];\n});\n_c = BannerCarousel;\nexport default BannerCarousel;\nvar _c;\n$RefreshReg$(_c, \"BannerCarousel\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
-      "start": 1701766112630,
-      "end": 1701766112655,
+      "start": 1701867792251,
+      "end": 1701867792319,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -83,51 +83,51 @@
     },
     {
       "name": "vite:define",
-      "start": 1701766112655,
-      "end": 1701766112655,
+      "start": 1701867792319,
+      "end": 1701867792320,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112655,
-      "end": 1701766112655,
+      "start": 1701867792320,
+      "end": 1701867792320,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112655,
-      "end": 1701766112655,
+      "start": 1701867792320,
+      "end": 1701867792320,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112655,
-      "end": 1701766112655,
+      "start": 1701867792320,
+      "end": 1701867792320,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112655,
-      "end": 1701766112655,
+      "start": 1701867792320,
+      "end": 1701867792320,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112655,
-      "end": 1701766112655,
+      "start": 1701867792320,
+      "end": 1701867792320,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112655,
-      "end": 1701766112655,
+      "start": 1701867792320,
+      "end": 1701867792320,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
-      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/components/surfaces/carousel/Carousel.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3c106fdb\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"];\nvar _s = $RefreshSig$();\nimport { CarouselSlider, SliderContainer } from \"/src/components/surfaces/carousel/Carousel.styled.tsx\";\nimport useCarousel from \"/src/components/surfaces/carousel/useCarousel.ts\";\nconst BannerCarousel = ()=>{\n    _s();\n    const carousel = useCarousel();\n    const { autoplay, autoplaySpeed, fade, lazyLoad, dots, infinite, speed, slidesToScroll, slidesToShow, arrows } = carousel.settings;\n    return /*#__PURE__*/ _jsxDEV(SliderContainer, {\n        className: \"banner-carousel-container\",\n        children: /*#__PURE__*/ _jsxDEV(CarouselSlider, {\n            autoplay: autoplay,\n            autoplaySpeed: autoplaySpeed,\n            fade: fade,\n            lazyLoad: lazyLoad === 'ondemand' ? 'ondemand' : 'progressive',\n            dots: dots,\n            infinite: infinite,\n            speed: speed,\n            slidesToScroll: slidesToScroll,\n            slidesToShow: slidesToShow,\n            arrows: arrows,\n            children: carousel.images.map((image)=>/*#__PURE__*/ _jsxDEV(\"div\", {\n                    children: /*#__PURE__*/ _jsxDEV(\"img\", {\n                        style: {\n                            height: '100%',\n                            width: '100%',\n                            objectFit: 'cover'\n                        },\n                        src: image.url,\n                        alt: image.name,\n                        \"data-img-id\": image.id,\n                        \"data-img-src\": image.src,\n                        \"data-img-views\": image.views,\n                        \"data-img-published\": image.published\n                    }, void 0, false, {\n                        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n                        lineNumber: 35,\n                        columnNumber: 13\n                    }, this)\n                }, image.id, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n                    lineNumber: 34,\n                    columnNumber: 11\n                }, this))\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n            lineNumber: 21,\n            columnNumber: 7\n        }, this)\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n        lineNumber: 20,\n        columnNumber: 5\n    }, this);\n};\n_s(BannerCarousel, \"H8NsHzoXrYREoS0IerZtdS4+1lg=\", false, function() {\n    return [\n        useCarousel\n    ];\n});\n_c = BannerCarousel;\nexport default BannerCarousel;\nvar _c;\n$RefreshReg$(_c, \"BannerCarousel\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
-      "start": 1701766112655,
-      "end": 1701766112657,
+      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/components/surfaces/carousel/Carousel.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=c929456e\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"];\nvar _s = $RefreshSig$();\nimport { CarouselSlider, SliderContainer } from \"/src/components/surfaces/carousel/Carousel.styled.tsx\";\nimport useCarousel from \"/src/components/surfaces/carousel/useCarousel.ts\";\nconst BannerCarousel = ()=>{\n    _s();\n    const carousel = useCarousel();\n    const { autoplay, autoplaySpeed, fade, lazyLoad, dots, infinite, speed, slidesToScroll, slidesToShow, arrows } = carousel.settings;\n    return /*#__PURE__*/ _jsxDEV(SliderContainer, {\n        className: \"banner-carousel-container\",\n        children: /*#__PURE__*/ _jsxDEV(CarouselSlider, {\n            autoplay: autoplay,\n            autoplaySpeed: autoplaySpeed,\n            fade: fade,\n            lazyLoad: lazyLoad === 'ondemand' ? 'ondemand' : 'progressive',\n            dots: dots,\n            infinite: infinite,\n            speed: speed,\n            slidesToScroll: slidesToScroll,\n            slidesToShow: slidesToShow,\n            arrows: arrows,\n            children: carousel.images.map((image)=>/*#__PURE__*/ _jsxDEV(\"div\", {\n                    children: /*#__PURE__*/ _jsxDEV(\"img\", {\n                        style: {\n                            height: '100%',\n                            width: '100%',\n                            objectFit: 'cover'\n                        },\n                        src: image.url,\n                        alt: image.name,\n                        \"data-img-id\": image.id,\n                        \"data-img-src\": image.src,\n                        \"data-img-views\": image.views,\n                        \"data-img-published\": image.published\n                    }, void 0, false, {\n                        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n                        lineNumber: 35,\n                        columnNumber: 13\n                    }, this)\n                }, image.id, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n                    lineNumber: 34,\n                    columnNumber: 11\n                }, this))\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n            lineNumber: 21,\n            columnNumber: 7\n        }, this)\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\",\n        lineNumber: 20,\n        columnNumber: 5\n    }, this);\n};\n_s(BannerCarousel, \"H8NsHzoXrYREoS0IerZtdS4+1lg=\", false, function() {\n    return [\n        useCarousel\n    ];\n});\n_c = BannerCarousel;\nexport default BannerCarousel;\nvar _c;\n$RefreshReg$(_c, \"BannerCarousel\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701867792320,
+      "end": 1701867792322,
       "order": "normal",
       "sourcemaps": null
     }

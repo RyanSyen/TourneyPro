@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/@mui_material_MenuItem.js?v=c929456e",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "\"use client\";\nimport {\n  MenuItem_default,\n  getMenuItemUtilityClass,\n  menuItemClasses_default\n} from \"./chunk-HNQRNC42.js\";\nimport \"./chunk-PJFZN6VQ.js\";\nimport \"./chunk-F65R3Q5F.js\";\nimport \"./chunk-WJIYT6DO.js\";\nimport \"./chunk-M5AQCMDX.js\";\nimport \"./chunk-OC232SFN.js\";\nimport \"./chunk-NQATQIFR.js\";\nimport \"./chunk-GSZ7ISAW.js\";\nimport \"./chunk-2SMJTKYW.js\";\nimport \"./chunk-FQRWVM5R.js\";\nimport \"./chunk-AIRXF3RN.js\";\nimport \"./chunk-VAFBYMTJ.js\";\nimport \"./chunk-63S7JPMK.js\";\nimport \"./chunk-5CYIWUDX.js\";\nimport \"./chunk-CY3GP2WZ.js\";\nimport \"./chunk-U73TBONF.js\";\nimport \"./chunk-QHG5RGAF.js\";\nimport \"./chunk-HMTWVGVS.js\";\nimport \"./chunk-ZGRSIX2Q.js\";\nimport \"./chunk-ROME4SDB.js\";\nexport {\n  MenuItem_default as default,\n  getMenuItemUtilityClass,\n  menuItemClasses_default as menuItemClasses\n};\n//# sourceMappingURL=@mui_material_MenuItem.js.map\n",
+      "start": 1701867792334,
+      "end": 1701867792384,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701867792384,
+      "end": 1701867792384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701867792384,
+      "end": 1701867792384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701867792384,
+      "end": 1701867792384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701867792384,
+      "end": 1701867792384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701867792384,
+      "end": 1701867792384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701867792384,
+      "end": 1701867792384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701867792384,
+      "end": 1701867792384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701867792384,
+      "end": 1701867792384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701867792384,
+      "end": 1701867792384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701867792384,
+      "end": 1701867792384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701867792384,
+      "end": 1701867792384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "\"use client\";\nimport {\n  MenuItem_default,\n  getMenuItemUtilityClass,\n  menuItemClasses_default\n} from \"/node_modules/.vite/deps/chunk-HNQRNC42.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-PJFZN6VQ.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-F65R3Q5F.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-WJIYT6DO.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-M5AQCMDX.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-OC232SFN.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-NQATQIFR.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-GSZ7ISAW.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-2SMJTKYW.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-FQRWVM5R.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-AIRXF3RN.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-VAFBYMTJ.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-63S7JPMK.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-5CYIWUDX.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-CY3GP2WZ.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-U73TBONF.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-QHG5RGAF.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-HMTWVGVS.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-ZGRSIX2Q.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=c929456e\";\nexport {\n  MenuItem_default as default,\n  getMenuItemUtilityClass,\n  menuItemClasses_default as menuItemClasses\n};\n//# sourceMappingURL=@mui_material_MenuItem.js.map\n",
+      "start": 1701867792384,
+      "end": 1701867792386,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

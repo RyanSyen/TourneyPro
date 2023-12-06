@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/@mui_material_styles.js?v=c929456e",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "\"use client\";\nimport {\n  CssVarsProvider,\n  ThemeProvider,\n  adaptV4Theme,\n  createMuiStrictModeTheme,\n  createStyles,\n  excludeVariablesFromRoot_default,\n  experimental_sx,\n  extendTheme,\n  getInitColorSchemeScript,\n  getUnit,\n  makeStyles,\n  responsiveFontSizes,\n  shouldSkipGeneratingVar,\n  toUnitless,\n  useColorScheme,\n  withStyles,\n  withTheme\n} from \"./chunk-6KQ27VAP.js\";\nimport {\n  getOverlayAlpha_default\n} from \"./chunk-FMFFUJ5P.js\";\nimport {\n  useTheme\n} from \"./chunk-ZOIWXA3S.js\";\nimport {\n  StyledEngineProvider,\n  alpha,\n  createMuiTheme,\n  createTheme_default,\n  createTypography,\n  darken,\n  decomposeColor,\n  duration,\n  easing,\n  emphasize,\n  getContrastRatio,\n  getLuminance,\n  hexToRgb,\n  hslToRgb,\n  identifier_default,\n  lighten,\n  recomposeColor,\n  rgbToHex,\n  styled_default,\n  useThemeProps2 as useThemeProps\n} from \"./chunk-CY3GP2WZ.js\";\nimport \"./chunk-U73TBONF.js\";\nimport {\n  css,\n  keyframes\n} from \"./chunk-QHG5RGAF.js\";\nimport \"./chunk-HMTWVGVS.js\";\nimport \"./chunk-ZGRSIX2Q.js\";\nimport \"./chunk-ROME4SDB.js\";\nexport {\n  CssVarsProvider as Experimental_CssVarsProvider,\n  StyledEngineProvider,\n  identifier_default as THEME_ID,\n  ThemeProvider,\n  adaptV4Theme,\n  alpha,\n  createMuiTheme,\n  createStyles,\n  createTheme_default as createTheme,\n  css,\n  darken,\n  decomposeColor,\n  duration,\n  easing,\n  emphasize,\n  styled_default as experimentalStyled,\n  extendTheme as experimental_extendTheme,\n  experimental_sx,\n  getContrastRatio,\n  getInitColorSchemeScript,\n  getLuminance,\n  getOverlayAlpha_default as getOverlayAlpha,\n  hexToRgb,\n  hslToRgb,\n  keyframes,\n  lighten,\n  makeStyles,\n  createTypography as private_createTypography,\n  excludeVariablesFromRoot_default as private_excludeVariablesFromRoot,\n  recomposeColor,\n  responsiveFontSizes,\n  rgbToHex,\n  shouldSkipGeneratingVar,\n  styled_default as styled,\n  createMuiStrictModeTheme as unstable_createMuiStrictModeTheme,\n  getUnit as unstable_getUnit,\n  toUnitless as unstable_toUnitless,\n  useColorScheme,\n  useTheme,\n  useThemeProps,\n  withStyles,\n  withTheme\n};\n//# sourceMappingURL=@mui_material_styles.js.map\n",
+      "start": 1701867791891,
+      "end": 1701867791922,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701867791922,
+      "end": 1701867791922,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701867791922,
+      "end": 1701867791922,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701867791922,
+      "end": 1701867791922,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701867791922,
+      "end": 1701867791922,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701867791922,
+      "end": 1701867791922,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701867791922,
+      "end": 1701867791922,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701867791922,
+      "end": 1701867791922,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701867791922,
+      "end": 1701867791922,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701867791922,
+      "end": 1701867791922,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701867791922,
+      "end": 1701867791922,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701867791922,
+      "end": 1701867791922,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "\"use client\";\nimport {\n  CssVarsProvider,\n  ThemeProvider,\n  adaptV4Theme,\n  createMuiStrictModeTheme,\n  createStyles,\n  excludeVariablesFromRoot_default,\n  experimental_sx,\n  extendTheme,\n  getInitColorSchemeScript,\n  getUnit,\n  makeStyles,\n  responsiveFontSizes,\n  shouldSkipGeneratingVar,\n  toUnitless,\n  useColorScheme,\n  withStyles,\n  withTheme\n} from \"/node_modules/.vite/deps/chunk-6KQ27VAP.js?v=c929456e\";\nimport {\n  getOverlayAlpha_default\n} from \"/node_modules/.vite/deps/chunk-FMFFUJ5P.js?v=c929456e\";\nimport {\n  useTheme\n} from \"/node_modules/.vite/deps/chunk-ZOIWXA3S.js?v=c929456e\";\nimport {\n  StyledEngineProvider,\n  alpha,\n  createMuiTheme,\n  createTheme_default,\n  createTypography,\n  darken,\n  decomposeColor,\n  duration,\n  easing,\n  emphasize,\n  getContrastRatio,\n  getLuminance,\n  hexToRgb,\n  hslToRgb,\n  identifier_default,\n  lighten,\n  recomposeColor,\n  rgbToHex,\n  styled_default,\n  useThemeProps2 as useThemeProps\n} from \"/node_modules/.vite/deps/chunk-CY3GP2WZ.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-U73TBONF.js?v=c929456e\";\nimport {\n  css,\n  keyframes\n} from \"/node_modules/.vite/deps/chunk-QHG5RGAF.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-HMTWVGVS.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-ZGRSIX2Q.js?v=c929456e\";\nimport \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=c929456e\";\nexport {\n  CssVarsProvider as Experimental_CssVarsProvider,\n  StyledEngineProvider,\n  identifier_default as THEME_ID,\n  ThemeProvider,\n  adaptV4Theme,\n  alpha,\n  createMuiTheme,\n  createStyles,\n  createTheme_default as createTheme,\n  css,\n  darken,\n  decomposeColor,\n  duration,\n  easing,\n  emphasize,\n  styled_default as experimentalStyled,\n  extendTheme as experimental_extendTheme,\n  experimental_sx,\n  getContrastRatio,\n  getInitColorSchemeScript,\n  getLuminance,\n  getOverlayAlpha_default as getOverlayAlpha,\n  hexToRgb,\n  hslToRgb,\n  keyframes,\n  lighten,\n  makeStyles,\n  createTypography as private_createTypography,\n  excludeVariablesFromRoot_default as private_excludeVariablesFromRoot,\n  recomposeColor,\n  responsiveFontSizes,\n  rgbToHex,\n  shouldSkipGeneratingVar,\n  styled_default as styled,\n  createMuiStrictModeTheme as unstable_createMuiStrictModeTheme,\n  getUnit as unstable_getUnit,\n  toUnitless as unstable_toUnitless,\n  useColorScheme,\n  useTheme,\n  useThemeProps,\n  withStyles,\n  withTheme\n};\n//# sourceMappingURL=@mui_material_styles.js.map\n",
+      "start": 1701867791922,
+      "end": 1701867791925,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

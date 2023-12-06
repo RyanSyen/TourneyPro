@@ -1,0 +1,87 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/SignInForm.styles.ts",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import styled from '@emotion/styled';\r\nimport { Form } from 'react-hook-form';\r\n\r\nconst StyledSignInForm = styled(Form)({\r\n  width: '100%',\r\n});\r\n\r\nexport default StyledSignInForm;\r\n",
+      "start": 1701867792359,
+      "end": 1701867792359
+    },
+    {
+      "name": "vite:css",
+      "start": 1701867792359,
+      "end": 1701867792359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701867792359,
+      "end": 1701867792359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701867792359,
+      "end": 1701867792359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import styled from '@emotion/styled';\nimport { Form } from 'react-hook-form';\nconst StyledSignInForm = styled(Form)({\n    width: '100%'\n});\nexport default StyledSignInForm;\n",
+      "start": 1701867792359,
+      "end": 1701867792389,
+      "order": "normal",
+      "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/SignInForm.styles.ts\"],\"sourcesContent\":[\"import styled from '@emotion/styled';\\r\\nimport { Form } from 'react-hook-form';\\r\\n\\r\\nconst StyledSignInForm = styled(Form)({\\r\\n  width: '100%',\\r\\n});\\r\\n\\r\\nexport default StyledSignInForm;\\r\\n\"],\"names\":[\"styled\",\"Form\",\"StyledSignInForm\",\"width\"],\"mappings\":\"AAAA,OAAOA,YAAY,kBAAkB;AACrC,SAASC,IAAI,QAAQ,kBAAkB;AAEvC,MAAMC,mBAAmBF,OAAOC,MAAM;IACpCE,OAAO;AACT;AAEA,eAAeD,iBAAiB\"}"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701867792389,
+      "end": 1701867792389,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701867792389,
+      "end": 1701867792389,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701867792389,
+      "end": 1701867792389,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701867792389,
+      "end": 1701867792389,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701867792389,
+      "end": 1701867792389,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701867792389,
+      "end": 1701867792389,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701867792389,
+      "end": 1701867792389,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import styled from \"/node_modules/.vite/deps/@emotion_styled.js?v=c929456e\";\nimport { Form } from \"/node_modules/react-hook-form/dist/index.esm.mjs?v=c929456e\";\nconst StyledSignInForm = styled(Form)({\n    width: '100%'\n});\nexport default StyledSignInForm;\n",
+      "start": 1701867792389,
+      "end": 1701867792390,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

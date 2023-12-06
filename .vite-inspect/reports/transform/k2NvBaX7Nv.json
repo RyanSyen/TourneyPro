@@ -4,82 +4,82 @@
     {
       "name": "__load__",
       "result": "import detectBrowserLanguage from 'detect-browser-language';\r\nimport { atom, useAtom } from 'jotai';\r\nimport { createBrowserRouter, redirect } from 'react-router-dom';\r\nimport App from 'src/App';\r\nimport browserLangAtom from 'src/atoms/browserLangAtom';\r\nimport useAppLang from 'src/hooks/useAppLang';\r\nimport Error404 from 'src/pages/error404.tsx';\r\nimport InitAppLang from 'src/pages/initAppLang';\r\nimport MainLayout from 'src/pages/layout';\r\n\r\nconst router = createBrowserRouter(\r\n  [\r\n    {\r\n      path: '/',\r\n      // element: (),\r\n      loader: () => {\r\n        const langCode = detectBrowserLanguage().split('-')[0];\r\n        return redirect(`/${langCode}`);\r\n      },\r\n      errorElement: <Error404 />,\r\n    },\r\n    {\r\n      path: '/:language',\r\n      element: <MainLayout />,\r\n      errorElement: <Error404 />,\r\n    },\r\n    // {\r\n    //   path: '/:lang',\r\n    //   element: <MainLayout />,\r\n    //   errorElement: <Error404 />,\r\n    //   children: [\r\n    //     {\r\n    //       path: '/:lang/home',\r\n    //       element: <App />,\r\n    //     },\r\n    //   ],\r\n    // },\r\n  ],\r\n  {\r\n    basename: '/',\r\n    future: { v7_normalizeFormMethod: true, v7_fetcherPersist: true },\r\n  }\r\n);\r\n\r\nexport default router;\r\n",
-      "start": 1701766112089,
-      "end": 1701766112089
+      "start": 1701867870188,
+      "end": 1701867870188
     },
     {
       "name": "vite:css",
-      "start": 1701766112089,
-      "end": 1701766112089,
+      "start": 1701867870188,
+      "end": 1701867870188,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112089,
-      "end": 1701766112089,
+      "start": 1701867870188,
+      "end": 1701867870188,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112089,
-      "end": 1701766112089,
+      "start": 1701867870188,
+      "end": 1701867870188,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
       "result": "import { jsxDEV as _jsxDEV } from \"react/jsx-dev-runtime\";\nimport detectBrowserLanguage from 'detect-browser-language';\nimport { createBrowserRouter, redirect } from 'react-router-dom';\nimport Error404 from 'src/pages/error404.tsx';\nimport MainLayout from 'src/pages/layout';\nconst router = createBrowserRouter([\n    {\n        path: '/',\n        // element: (),\n        loader: ()=>{\n            const langCode = detectBrowserLanguage().split('-')[0];\n            return redirect(`/${langCode}`);\n        },\n        errorElement: /*#__PURE__*/ _jsxDEV(Error404, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/router/config.tsx\",\n            lineNumber: 20,\n            columnNumber: 21\n        }, this)\n    },\n    {\n        path: '/:language',\n        element: /*#__PURE__*/ _jsxDEV(MainLayout, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/router/config.tsx\",\n            lineNumber: 24,\n            columnNumber: 16\n        }, this),\n        errorElement: /*#__PURE__*/ _jsxDEV(Error404, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/router/config.tsx\",\n            lineNumber: 25,\n            columnNumber: 21\n        }, this)\n    }\n], {\n    basename: '/',\n    future: {\n        v7_normalizeFormMethod: true,\n        v7_fetcherPersist: true\n    }\n});\nexport default router;\n",
-      "start": 1701766112089,
-      "end": 1701766112132,
+      "start": 1701867870188,
+      "end": 1701867870189,
       "order": "normal",
       "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/router/config.tsx\"],\"sourcesContent\":[\"import detectBrowserLanguage from 'detect-browser-language';\\r\\nimport { atom, useAtom } from 'jotai';\\r\\nimport { createBrowserRouter, redirect } from 'react-router-dom';\\r\\nimport App from 'src/App';\\r\\nimport browserLangAtom from 'src/atoms/browserLangAtom';\\r\\nimport useAppLang from 'src/hooks/useAppLang';\\r\\nimport Error404 from 'src/pages/error404.tsx';\\r\\nimport InitAppLang from 'src/pages/initAppLang';\\r\\nimport MainLayout from 'src/pages/layout';\\r\\n\\r\\nconst router = createBrowserRouter(\\r\\n  [\\r\\n    {\\r\\n      path: '/',\\r\\n      // element: (),\\r\\n      loader: () => {\\r\\n        const langCode = detectBrowserLanguage().split('-')[0];\\r\\n        return redirect(`/${langCode}`);\\r\\n      },\\r\\n      errorElement: <Error404 />,\\r\\n    },\\r\\n    {\\r\\n      path: '/:language',\\r\\n      element: <MainLayout />,\\r\\n      errorElement: <Error404 />,\\r\\n    },\\r\\n    // {\\r\\n    //   path: '/:lang',\\r\\n    //   element: <MainLayout />,\\r\\n    //   errorElement: <Error404 />,\\r\\n    //   children: [\\r\\n    //     {\\r\\n    //       path: '/:lang/home',\\r\\n    //       element: <App />,\\r\\n    //     },\\r\\n    //   ],\\r\\n    // },\\r\\n  ],\\r\\n  {\\r\\n    basename: '/',\\r\\n    future: { v7_normalizeFormMethod: true, v7_fetcherPersist: true },\\r\\n  }\\r\\n);\\r\\n\\r\\nexport default router;\\r\\n\"],\"names\":[\"detectBrowserLanguage\",\"createBrowserRouter\",\"redirect\",\"Error404\",\"MainLayout\",\"router\",\"path\",\"loader\",\"langCode\",\"split\",\"errorElement\",\"element\",\"basename\",\"future\",\"v7_normalizeFormMethod\",\"v7_fetcherPersist\"],\"mappings\":\";AAAA,OAAOA,2BAA2B,0BAA0B;AAE5D,SAASC,mBAAmB,EAAEC,QAAQ,QAAQ,mBAAmB;AAIjE,OAAOC,cAAc,yBAAyB;AAE9C,OAAOC,gBAAgB,mBAAmB;AAE1C,MAAMC,SAASJ,oBACb;IACE;QACEK,MAAM;QACN,eAAe;QACfC,QAAQ;YACN,MAAMC,WAAWR,wBAAwBS,KAAK,CAAC,IAAI,CAAC,EAAE;YACtD,OAAOP,SAAS,CAAC,CAAC,EAAEM,SAAS,CAAC;QAChC;QACAE,4BAAc,QAACP;;;;;IACjB;IACA;QACEG,MAAM;QACNK,uBAAS,QAACP;;;;;QACVM,4BAAc,QAACP;;;;;IACjB;CAYD,EACD;IACES,UAAU;IACVC,QAAQ;QAAEC,wBAAwB;QAAMC,mBAAmB;IAAK;AAClE;AAGF,eAAeV,OAAO\"}"
     },
     {
       "name": "vite:define",
-      "start": 1701766112132,
-      "end": 1701766112132,
+      "start": 1701867870189,
+      "end": 1701867870189,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112132,
-      "end": 1701766112132,
+      "start": 1701867870189,
+      "end": 1701867870189,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112132,
-      "end": 1701766112132,
+      "start": 1701867870189,
+      "end": 1701867870189,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112132,
-      "end": 1701766112132,
+      "start": 1701867870189,
+      "end": 1701867870189,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112132,
-      "end": 1701766112132,
+      "start": 1701867870189,
+      "end": 1701867870189,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112132,
-      "end": 1701766112132,
+      "start": 1701867870189,
+      "end": 1701867870189,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112132,
-      "end": 1701766112132,
+      "start": 1701867870189,
+      "end": 1701867870189,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
-      "result": "import __vite__cjsImport0_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3c106fdb\"; const _jsxDEV = __vite__cjsImport0_react_jsxDevRuntime[\"jsxDEV\"];\nimport __vite__cjsImport1_detectBrowserLanguage from \"/node_modules/.vite/deps/detect-browser-language.js?v=3c106fdb\"; const detectBrowserLanguage = __vite__cjsImport1_detectBrowserLanguage.__esModule ? __vite__cjsImport1_detectBrowserLanguage.default : __vite__cjsImport1_detectBrowserLanguage;\nimport { createBrowserRouter, redirect } from \"/node_modules/.vite/deps/react-router-dom.js?v=3c106fdb\";\nimport Error404 from \"/src/pages/error404.tsx\";\nimport MainLayout from \"/src/pages/layout.tsx\";\nconst router = createBrowserRouter([\n    {\n        path: '/',\n        // element: (),\n        loader: ()=>{\n            const langCode = detectBrowserLanguage().split('-')[0];\n            return redirect(`/${langCode}`);\n        },\n        errorElement: /*#__PURE__*/ _jsxDEV(Error404, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/router/config.tsx\",\n            lineNumber: 20,\n            columnNumber: 21\n        }, this)\n    },\n    {\n        path: '/:language',\n        element: /*#__PURE__*/ _jsxDEV(MainLayout, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/router/config.tsx\",\n            lineNumber: 24,\n            columnNumber: 16\n        }, this),\n        errorElement: /*#__PURE__*/ _jsxDEV(Error404, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/router/config.tsx\",\n            lineNumber: 25,\n            columnNumber: 21\n        }, this)\n    }\n], {\n    basename: '/',\n    future: {\n        v7_normalizeFormMethod: true,\n        v7_fetcherPersist: true\n    }\n});\nexport default router;\n",
-      "start": 1701766112132,
-      "end": 1701766112137,
+      "result": "import __vite__cjsImport0_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=c929456e\"; const _jsxDEV = __vite__cjsImport0_react_jsxDevRuntime[\"jsxDEV\"];\nimport __vite__cjsImport1_detectBrowserLanguage from \"/node_modules/.vite/deps/detect-browser-language.js?v=c929456e\"; const detectBrowserLanguage = __vite__cjsImport1_detectBrowserLanguage.__esModule ? __vite__cjsImport1_detectBrowserLanguage.default : __vite__cjsImport1_detectBrowserLanguage;\nimport { createBrowserRouter, redirect } from \"/node_modules/.vite/deps/react-router-dom.js?v=c929456e\";\nimport Error404 from \"/src/pages/error404.tsx\";\nimport MainLayout from \"/src/pages/layout.tsx?t=1701867861759\";\nconst router = createBrowserRouter([\n    {\n        path: '/',\n        // element: (),\n        loader: ()=>{\n            const langCode = detectBrowserLanguage().split('-')[0];\n            return redirect(`/${langCode}`);\n        },\n        errorElement: /*#__PURE__*/ _jsxDEV(Error404, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/router/config.tsx\",\n            lineNumber: 20,\n            columnNumber: 21\n        }, this)\n    },\n    {\n        path: '/:language',\n        element: /*#__PURE__*/ _jsxDEV(MainLayout, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/router/config.tsx\",\n            lineNumber: 24,\n            columnNumber: 16\n        }, this),\n        errorElement: /*#__PURE__*/ _jsxDEV(Error404, {}, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/router/config.tsx\",\n            lineNumber: 25,\n            columnNumber: 21\n        }, this)\n    }\n], {\n    basename: '/',\n    future: {\n        v7_normalizeFormMethod: true,\n        v7_fetcherPersist: true\n    }\n});\nexport default router;\n",
+      "start": 1701867870189,
+      "end": 1701867870192,
       "order": "normal",
       "sourcemaps": null
     }

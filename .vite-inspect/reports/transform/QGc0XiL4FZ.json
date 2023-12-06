@@ -3,33 +3,33 @@
   "transforms": [
     {
       "name": "__load__",
-      "result": "import Avatar from '@mui/material/Avatar';\r\nimport { styled as muiStyled } from '@mui/material/styles';\r\n\r\ninterface AvatarProps {\r\n  username?: string;\r\n  photoUrl?: string;\r\n}\r\n\r\nconst StyledAvatar = muiStyled(Avatar)(({ theme }) => {\r\n  return {\r\n    width: '36px',\r\n    height: '36px',\r\n\r\n    [theme.breakpoints.up('sm')]: {\r\n      width: '42px',\r\n      height: '42px',\r\n    },\r\n  };\r\n});\r\n\r\nconst CustomAvatar = (props: AvatarProps) => {\r\n  const { photoUrl, username } = props;\r\n  console.log('custom avatar');\r\n\r\n  if (photoUrl == null) {\r\n    return (\r\n      <StyledAvatar alt=\"profile picture\">\r\n        {/* optional chaining operator (?.)  */}\r\n        {username?.[0].toUpperCase()}\r\n      </StyledAvatar>\r\n    );\r\n  }\r\n\r\n  return <StyledAvatar alt=\"profile picture\" src={photoUrl} />;\r\n};\r\n\r\nCustomAvatar.defaultProps = {\r\n  username: '',\r\n  photoUrl: '',\r\n};\r\n\r\nexport default CustomAvatar;\r\n",
-      "start": 1701766112658,
-      "end": 1701766112658
+      "result": "import styled from '@emotion/styled';\r\nimport Avatar from '@mui/material/Avatar';\r\nimport { MuiThemeInterface } from 'src/common';\r\n\r\ninterface AvatarProps {\r\n  username?: string;\r\n  photoUrl?: string;\r\n}\r\n\r\nconst StyledAvatar = styled(Avatar)<MuiThemeInterface>(({ theme }) => {\r\n  return {\r\n    width: '36px',\r\n    height: '36px',\r\n\r\n    [theme.breakpoints.up('sm')]: {\r\n      width: '42px',\r\n      height: '42px',\r\n    },\r\n  };\r\n});\r\n\r\nconst CustomAvatar = (props: AvatarProps) => {\r\n  const { photoUrl, username } = props;\r\n  console.log('custom avatar');\r\n\r\n  if (photoUrl == null) {\r\n    return (\r\n      <StyledAvatar alt=\"profile picture\">\r\n        {/* optional chaining operator (?.)  */}\r\n        {username?.[0].toUpperCase()}\r\n      </StyledAvatar>\r\n    );\r\n  }\r\n\r\n  return <StyledAvatar alt=\"profile picture\" src={photoUrl} />;\r\n};\r\n\r\nCustomAvatar.defaultProps = {\r\n  username: '',\r\n  photoUrl: '',\r\n};\r\n\r\nexport default CustomAvatar;\r\n",
+      "start": 1701867792318,
+      "end": 1701867792318
     },
     {
       "name": "vite:css",
-      "start": 1701766112658,
-      "end": 1701766112659,
+      "start": 1701867792318,
+      "end": 1701867792318,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1701766112659,
-      "end": 1701766112659,
+      "start": 1701867792318,
+      "end": 1701867792318,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1701766112659,
-      "end": 1701766112659,
+      "start": 1701867792318,
+      "end": 1701867792318,
       "order": "normal"
     },
     {
       "name": "vite:react-swc",
-      "result": "import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport { jsxDEV as _jsxDEV } from \"react/jsx-dev-runtime\";\nimport Avatar from '@mui/material/Avatar';\nimport { styled as muiStyled } from '@mui/material/styles';\nconst StyledAvatar = muiStyled(Avatar)(({ theme })=>{\n    return {\n        width: '36px',\n        height: '36px',\n        [theme.breakpoints.up('sm')]: {\n            width: '42px',\n            height: '42px'\n        }\n    };\n});\n_c = StyledAvatar;\nconst CustomAvatar = (props)=>{\n    const { photoUrl, username } = props;\n    console.log('custom avatar');\n    if (photoUrl == null) {\n        return /*#__PURE__*/ _jsxDEV(StyledAvatar, {\n            alt: \"profile picture\",\n            children: username?.[0].toUpperCase()\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\",\n            lineNumber: 27,\n            columnNumber: 7\n        }, this);\n    }\n    return /*#__PURE__*/ _jsxDEV(StyledAvatar, {\n        alt: \"profile picture\",\n        src: photoUrl\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\",\n        lineNumber: 34,\n        columnNumber: 10\n    }, this);\n};\n_c1 = CustomAvatar;\nCustomAvatar.defaultProps = {\n    username: '',\n    photoUrl: ''\n};\nexport default CustomAvatar;\nvar _c, _c1;\n$RefreshReg$(_c, \"StyledAvatar\");\n$RefreshReg$(_c1, \"CustomAvatar\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
-      "start": 1701766112659,
-      "end": 1701766112728,
+      "result": "import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport { jsxDEV as _jsxDEV } from \"react/jsx-dev-runtime\";\nimport styled from '@emotion/styled';\nimport Avatar from '@mui/material/Avatar';\nconst StyledAvatar = styled(Avatar)(({ theme })=>{\n    return {\n        width: '36px',\n        height: '36px',\n        [theme.breakpoints.up('sm')]: {\n            width: '42px',\n            height: '42px'\n        }\n    };\n});\n_c = StyledAvatar;\nconst CustomAvatar = (props)=>{\n    const { photoUrl, username } = props;\n    console.log('custom avatar');\n    if (photoUrl == null) {\n        return /*#__PURE__*/ _jsxDEV(StyledAvatar, {\n            alt: \"profile picture\",\n            children: username?.[0].toUpperCase()\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\",\n            lineNumber: 28,\n            columnNumber: 7\n        }, this);\n    }\n    return /*#__PURE__*/ _jsxDEV(StyledAvatar, {\n        alt: \"profile picture\",\n        src: photoUrl\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\",\n        lineNumber: 35,\n        columnNumber: 10\n    }, this);\n};\n_c1 = CustomAvatar;\nCustomAvatar.defaultProps = {\n    username: '',\n    photoUrl: ''\n};\nexport default CustomAvatar;\nvar _c, _c1;\n$RefreshReg$(_c, \"StyledAvatar\");\n$RefreshReg$(_c1, \"CustomAvatar\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701867792318,
+      "end": 1701867792340,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -37,12 +37,11 @@
           "avatar.tsx"
         ],
         "sourcesContent": [
-          "import Avatar from '@mui/material/Avatar';\r\nimport { styled as muiStyled } from '@mui/material/styles';\r\n\r\ninterface AvatarProps {\r\n  username?: string;\r\n  photoUrl?: string;\r\n}\r\n\r\nconst StyledAvatar = muiStyled(Avatar)(({ theme }) => {\r\n  return {\r\n    width: '36px',\r\n    height: '36px',\r\n\r\n    [theme.breakpoints.up('sm')]: {\r\n      width: '42px',\r\n      height: '42px',\r\n    },\r\n  };\r\n});\r\n\r\nconst CustomAvatar = (props: AvatarProps) => {\r\n  const { photoUrl, username } = props;\r\n  console.log('custom avatar');\r\n\r\n  if (photoUrl == null) {\r\n    return (\r\n      <StyledAvatar alt=\"profile picture\">\r\n        {/* optional chaining operator (?.)  */}\r\n        {username?.[0].toUpperCase()}\r\n      </StyledAvatar>\r\n    );\r\n  }\r\n\r\n  return <StyledAvatar alt=\"profile picture\" src={photoUrl} />;\r\n};\r\n\r\nCustomAvatar.defaultProps = {\r\n  username: '',\r\n  photoUrl: '',\r\n};\r\n\r\nexport default CustomAvatar;\r\n"
+          "import styled from '@emotion/styled';\r\nimport Avatar from '@mui/material/Avatar';\r\nimport { MuiThemeInterface } from 'src/common';\r\n\r\ninterface AvatarProps {\r\n  username?: string;\r\n  photoUrl?: string;\r\n}\r\n\r\nconst StyledAvatar = styled(Avatar)<MuiThemeInterface>(({ theme }) => {\r\n  return {\r\n    width: '36px',\r\n    height: '36px',\r\n\r\n    [theme.breakpoints.up('sm')]: {\r\n      width: '42px',\r\n      height: '42px',\r\n    },\r\n  };\r\n});\r\n\r\nconst CustomAvatar = (props: AvatarProps) => {\r\n  const { photoUrl, username } = props;\r\n  console.log('custom avatar');\r\n\r\n  if (photoUrl == null) {\r\n    return (\r\n      <StyledAvatar alt=\"profile picture\">\r\n        {/* optional chaining operator (?.)  */}\r\n        {username?.[0].toUpperCase()}\r\n      </StyledAvatar>\r\n    );\r\n  }\r\n\r\n  return <StyledAvatar alt=\"profile picture\" src={photoUrl} />;\r\n};\r\n\r\nCustomAvatar.defaultProps = {\r\n  username: '',\r\n  photoUrl: '',\r\n};\r\n\r\nexport default CustomAvatar;\r\n"
         ],
         "names": [
-          "Avatar",
           "styled",
-          "muiStyled",
+          "Avatar",
           "StyledAvatar",
           "theme",
           "width",
@@ -60,56 +59,56 @@
           "src",
           "defaultProps"
         ],
-        "mappings": ";;;;;;;;;AAAA,OAAOA,YAAY,uBAAuB;AAC1C,SAASC,UAAUC,SAAS,QAAQ,uBAAuB;AAO3D,MAAMC,eAAeD,UAAUF,QAAQ,CAAC,EAAEI,KAAK,EAAE;IAC/C,OAAO;QACLC,OAAO;QACPC,QAAQ;QAER,CAACF,MAAMG,WAAW,CAACC,EAAE,CAAC,MAAM,EAAE;YAC5BH,OAAO;YACPC,QAAQ;QACV;IACF;AACF;KAVMH;AAYN,MAAMM,eAAe,CAACC;IACpB,MAAM,EAAEC,QAAQ,EAAEC,QAAQ,EAAE,GAAGF;IAC/BG,QAAQC,GAAG,CAAC;IAEZ,IAAIH,YAAY,MAAM;QACpB,qBACE,QAACR;YAAaY,KAAI;sBAEfH,UAAU,CAAC,EAAE,CAACI;;;;;;IAGrB;IAEA,qBAAO,QAACb;QAAaY,KAAI;QAAkBE,KAAKN;;;;;;AAClD;MAdMF;AAgBNA,aAAaS,YAAY,GAAG;IAC1BN,UAAU;IACVD,UAAU;AACZ;AAEA,eAAeF,aAAa"
+        "mappings": ";;;;;;;;;AAAA,OAAOA,YAAY,kBAAkB;AACrC,OAAOC,YAAY,uBAAuB;AAQ1C,MAAMC,eAAeF,OAAOC,QAA2B,CAAC,EAAEE,KAAK,EAAE;IAC/D,OAAO;QACLC,OAAO;QACPC,QAAQ;QAER,CAACF,MAAMG,WAAW,CAACC,EAAE,CAAC,MAAM,EAAE;YAC5BH,OAAO;YACPC,QAAQ;QACV;IACF;AACF;KAVMH;AAYN,MAAMM,eAAe,CAACC;IACpB,MAAM,EAAEC,QAAQ,EAAEC,QAAQ,EAAE,GAAGF;IAC/BG,QAAQC,GAAG,CAAC;IAEZ,IAAIH,YAAY,MAAM;QACpB,qBACE,QAACR;YAAaY,KAAI;sBAEfH,UAAU,CAAC,EAAE,CAACI;;;;;;IAGrB;IAEA,qBAAO,QAACb;QAAaY,KAAI;QAAkBE,KAAKN;;;;;;AAClD;MAdMF;AAgBNA,aAAaS,YAAY,GAAG;IAC1BN,UAAU;IACVD,UAAU;AACZ;AAEA,eAAeF,aAAa"
       }
     },
     {
       "name": "vite:define",
-      "start": 1701766112728,
-      "end": 1701766112728,
+      "start": 1701867792340,
+      "end": 1701867792340,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1701766112728,
-      "end": 1701766112728,
+      "start": 1701867792340,
+      "end": 1701867792340,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1701766112728,
-      "end": 1701766112728,
+      "start": 1701867792340,
+      "end": 1701867792340,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1701766112728,
-      "end": 1701766112728,
+      "start": 1701867792340,
+      "end": 1701867792340,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1701766112728,
-      "end": 1701766112728,
+      "start": 1701867792340,
+      "end": 1701867792340,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1701766112728,
-      "end": 1701766112728,
+      "start": 1701867792340,
+      "end": 1701867792340,
       "order": "normal"
     },
     {
       "name": "vite:client-inject",
-      "start": 1701766112728,
-      "end": 1701766112728,
+      "start": 1701867792340,
+      "end": 1701867792340,
       "order": "normal"
     },
     {
       "name": "vite:import-analysis",
-      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/components/common/avatar.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3c106fdb\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"];\nimport Avatar from \"/node_modules/.vite/deps/@mui_material_Avatar.js?v=3c106fdb\";\nimport { styled as muiStyled } from \"/node_modules/.vite/deps/@mui_material_styles.js?v=3c106fdb\";\nconst StyledAvatar = muiStyled(Avatar)(({ theme })=>{\n    return {\n        width: '36px',\n        height: '36px',\n        [theme.breakpoints.up('sm')]: {\n            width: '42px',\n            height: '42px'\n        }\n    };\n});\n_c = StyledAvatar;\nconst CustomAvatar = (props)=>{\n    const { photoUrl, username } = props;\n    console.log('custom avatar');\n    if (photoUrl == null) {\n        return /*#__PURE__*/ _jsxDEV(StyledAvatar, {\n            alt: \"profile picture\",\n            children: username?.[0].toUpperCase()\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\",\n            lineNumber: 27,\n            columnNumber: 7\n        }, this);\n    }\n    return /*#__PURE__*/ _jsxDEV(StyledAvatar, {\n        alt: \"profile picture\",\n        src: photoUrl\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\",\n        lineNumber: 34,\n        columnNumber: 10\n    }, this);\n};\n_c1 = CustomAvatar;\nCustomAvatar.defaultProps = {\n    username: '',\n    photoUrl: ''\n};\nexport default CustomAvatar;\nvar _c, _c1;\n$RefreshReg$(_c, \"StyledAvatar\");\n$RefreshReg$(_c1, \"CustomAvatar\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
-      "start": 1701766112728,
-      "end": 1701766112731,
+      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/components/common/avatar.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=c929456e\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"];\nimport styled from \"/node_modules/.vite/deps/@emotion_styled.js?v=c929456e\";\nimport Avatar from \"/node_modules/.vite/deps/@mui_material_Avatar.js?v=c929456e\";\nconst StyledAvatar = styled(Avatar)(({ theme })=>{\n    return {\n        width: '36px',\n        height: '36px',\n        [theme.breakpoints.up('sm')]: {\n            width: '42px',\n            height: '42px'\n        }\n    };\n});\n_c = StyledAvatar;\nconst CustomAvatar = (props)=>{\n    const { photoUrl, username } = props;\n    console.log('custom avatar');\n    if (photoUrl == null) {\n        return /*#__PURE__*/ _jsxDEV(StyledAvatar, {\n            alt: \"profile picture\",\n            children: username?.[0].toUpperCase()\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\",\n            lineNumber: 28,\n            columnNumber: 7\n        }, this);\n    }\n    return /*#__PURE__*/ _jsxDEV(StyledAvatar, {\n        alt: \"profile picture\",\n        src: photoUrl\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\",\n        lineNumber: 35,\n        columnNumber: 10\n    }, this);\n};\n_c1 = CustomAvatar;\nCustomAvatar.defaultProps = {\n    username: '',\n    photoUrl: ''\n};\nexport default CustomAvatar;\nvar _c, _c1;\n$RefreshReg$(_c, \"StyledAvatar\");\n$RefreshReg$(_c1, \"CustomAvatar\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/avatar.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701867792340,
+      "end": 1701867792340,
       "order": "normal",
       "sourcemaps": null
     }
