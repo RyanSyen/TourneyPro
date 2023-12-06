@@ -1,0 +1,103 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import Container from '@mui/material/Container';\nimport BannerCarousel from 'components/surfaces/carousel/Carousel.tsx';\n\nconst App = () => {\n  return (\n    <>\n      <BannerCarousel />\n      <Container sx={{ height: '500px' }} />\n      <Container sx={{ height: '500px' }} />\n      <Container sx={{ height: '500px' }} />\n      <Container sx={{ height: '500px' }} />\n      <Container sx={{ height: '500px' }} />\n      <Container sx={{ height: '500px' }} />\n    </>\n  );\n};\n\nexport default App;\n",
+      "start": 1701766112454,
+      "end": 1701766112454
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112454,
+      "end": 1701766112454,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112454,
+      "end": 1701766112454,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112454,
+      "end": 1701766112454,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport { jsxDEV as _jsxDEV, Fragment as _Fragment } from \"react/jsx-dev-runtime\";\nimport Container from '@mui/material/Container';\nimport BannerCarousel from 'components/surfaces/carousel/Carousel.tsx';\nconst App = ()=>{\n    return /*#__PURE__*/ _jsxDEV(_Fragment, {\n        children: [\n            /*#__PURE__*/ _jsxDEV(BannerCarousel, {}, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 7,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 8,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 9,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 10,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 11,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 12,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 13,\n                columnNumber: 7\n            }, this)\n        ]\n    }, void 0, true);\n};\n_c = App;\nexport default App;\nvar _c;\n$RefreshReg$(_c, \"App\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701766112454,
+      "end": 1701766112475,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "App.tsx"
+        ],
+        "sourcesContent": [
+          "import Container from '@mui/material/Container';\nimport BannerCarousel from 'components/surfaces/carousel/Carousel.tsx';\n\nconst App = () => {\n  return (\n    <>\n      <BannerCarousel />\n      <Container sx={{ height: '500px' }} />\n      <Container sx={{ height: '500px' }} />\n      <Container sx={{ height: '500px' }} />\n      <Container sx={{ height: '500px' }} />\n      <Container sx={{ height: '500px' }} />\n      <Container sx={{ height: '500px' }} />\n    </>\n  );\n};\n\nexport default App;\n"
+        ],
+        "names": [
+          "Container",
+          "BannerCarousel",
+          "App",
+          "sx",
+          "height"
+        ],
+        "mappings": ";;;;;;;;;AAAA,OAAOA,eAAe,0BAA0B;AAChD,OAAOC,oBAAoB,4CAA4C;AAEvE,MAAMC,MAAM;IACV,qBACE;;0BACE,QAACD;;;;;0BACD,QAACD;gBAAUG,IAAI;oBAAEC,QAAQ;gBAAQ;;;;;;0BACjC,QAACJ;gBAAUG,IAAI;oBAAEC,QAAQ;gBAAQ;;;;;;0BACjC,QAACJ;gBAAUG,IAAI;oBAAEC,QAAQ;gBAAQ;;;;;;0BACjC,QAACJ;gBAAUG,IAAI;oBAAEC,QAAQ;gBAAQ;;;;;;0BACjC,QAACJ;gBAAUG,IAAI;oBAAEC,QAAQ;gBAAQ;;;;;;0BACjC,QAACJ;gBAAUG,IAAI;oBAAEC,QAAQ;gBAAQ;;;;;;;;AAGvC;KAZMF;AAcN,eAAeA,IAAI"
+      }
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112475,
+      "end": 1701766112475,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112475,
+      "end": 1701766112475,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112475,
+      "end": 1701766112476,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112476,
+      "end": 1701766112476,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112476,
+      "end": 1701766112476,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112476,
+      "end": 1701766112476,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112476,
+      "end": 1701766112476,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/App.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3c106fdb\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"]; const _Fragment = __vite__cjsImport1_react_jsxDevRuntime[\"Fragment\"];\nimport Container from \"/node_modules/.vite/deps/@mui_material_Container.js?v=3c106fdb\";\nimport BannerCarousel from \"/src/components/surfaces/carousel/Carousel.tsx\";\nconst App = ()=>{\n    return /*#__PURE__*/ _jsxDEV(_Fragment, {\n        children: [\n            /*#__PURE__*/ _jsxDEV(BannerCarousel, {}, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 7,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 8,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 9,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 10,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 11,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 12,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(Container, {\n                sx: {\n                    height: '500px'\n                }\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\",\n                lineNumber: 13,\n                columnNumber: 7\n            }, this)\n        ]\n    }, void 0, true);\n};\n_c = App;\nexport default App;\nvar _c;\n$RefreshReg$(_c, \"App\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/App.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701766112476,
+      "end": 1701766112478,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

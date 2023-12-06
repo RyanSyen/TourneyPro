@@ -1,0 +1,87 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/i18n/locales/zh/global.json",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "{\r\n  \"Button_BackToHome\": \"返回首页\",\r\n  \"Description_Error404\": \"请稍后重试或刷新页面.\",\r\n  \"ErrMsg_Address_Required\": \"请输入您的地址\",\r\n  \"ErrMsg_DateOfBirth_Required\": \"请输入你的生日\",\r\n  \"ErrMsg_Email_Invalid\": \"无效的邮件地址。请再试一次\",\r\n  \"ErrMsg_Email_MaxLength\": \"您的电子邮件不得超过 320 个字符\",\r\n  \"ErrMsg_Email_MinLength\": \"您的电子邮件必须超过 3 个字符\",\r\n  \"ErrMsg_Email_Required\": \"请输入您的电子邮件\",\r\n  \"ErrMsg_EmailorPassword\": \"电子邮件或密码无效。请再试一次\",\r\n  \"ErrMsg_FullName_MaxLength\": \"您的全名不得超过 300 个字符\",\r\n  \"ErrMsg_FullName_MinLength\": \"您的全名必须超过 3 个字符\",\r\n  \"ErrMsg_FullName_Required\": \"请输入您的全名\",\r\n  \"ErrMsg_Gender_Required\": \"请选择您的性别\",\r\n  \"ErrMsg_MobileNumber_Required\": \"请输入你的手机号码\",\r\n  \"ErrMsg_Occupation_Required\": \"请选择您的职业\",\r\n  \"ErrMsg_Pw_MaxLength\": \"您的密码不得超过 20 个字符\",\r\n  \"ErrMsg_Pw_MinLength\": \"您的密码必须至少为 8 个字符\",\r\n  \"ErrMsg_Pw_NumberorSpecialCharacter\": \"您的密码必须至少包含一个数字或一个特殊字符\",\r\n  \"ErrMsg_Pw_Required\": \"请输入您的密码\",\r\n  \"Label_Account\": \"账号\",\r\n  \"Label_Address\": \"地址\",\r\n  \"Label_Back\": \"回去\",\r\n  \"Label_Cancel\": \"取消\",\r\n  \"Label_Continue\": \"继续\",\r\n  \"Label_DateOfBirth\": \"出生日期\",\r\n  \"Label_Demographic\": \"人口统计\",\r\n  \"Label_EmailAddress\": \"电子邮件地址\",\r\n  \"Label_Employed\": \"工作\",\r\n  \"Label_Employment\": \"就业\",\r\n  \"Label_Female\": \"女性\",\r\n  \"Label_FullName\": \"全名\",\r\n  \"Label_Gender\": \"性别\",\r\n  \"Label_Male\": \"男性\",\r\n  \"Label_MobileNumber\": \"手机号码\",\r\n  \"Label_NoAccount\": \"没有账号\",\r\n  \"Label_NonBinary\": \"非二元\",\r\n  \"Label_NotEmployed\": \"没有工作\",\r\n  \"Label_Password\": \"密码\",\r\n  \"Label_Personal\": \"个人\",\r\n  \"Label_Retired\": \"退休\",\r\n  \"Label_SignIn\": \"登录\",\r\n  \"Label_Signup\": \"注册\",\r\n  \"Label_SignUpNow\": \"立即注册.\",\r\n  \"Label_Student\": \"学生\",\r\n  \"Label_WelcomeBack\": \"欢迎回来!\",\r\n  \"Placeholder_Address\": \"输入您的地址\",\r\n  \"Placeholder_EmailAddress\": \"输入电子邮件地址\",\r\n  \"Placeholder_FullName\": \"输入全名\",\r\n  \"Placeholder_Gender\": \"选择性别\",\r\n  \"Placeholder_MobileNumber\": \"输入你的手机号码\",\r\n  \"Placeholder_Occupation\": \"选择职业\",\r\n  \"Placeholder_Password\": \"输入密码\",\r\n  \"Title_Profile\": \"我的个人资料\",\r\n  \"Title_Error404\": \"抱歉，出了点问题.\",\r\n\r\n  \"Label_PrivacyPolicy\": \"Privacy Policy\",\r\n  \"Label_Terms&Conditions\": \"Terms and Conditions\",\r\n  \"Label_FullStackDeveloper\": \"Full Stack Developer\",\r\n  \"Label_DevelopedBy\": \"Developed By\"\r\n}\r\n",
+      "start": 1701766112408,
+      "end": 1701766112408
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "result": "export const Button_BackToHome = \"返回首页\";\nexport const Description_Error404 = \"请稍后重试或刷新页面.\";\nexport const ErrMsg_Address_Required = \"请输入您的地址\";\nexport const ErrMsg_DateOfBirth_Required = \"请输入你的生日\";\nexport const ErrMsg_Email_Invalid = \"无效的邮件地址。请再试一次\";\nexport const ErrMsg_Email_MaxLength = \"您的电子邮件不得超过 320 个字符\";\nexport const ErrMsg_Email_MinLength = \"您的电子邮件必须超过 3 个字符\";\nexport const ErrMsg_Email_Required = \"请输入您的电子邮件\";\nexport const ErrMsg_EmailorPassword = \"电子邮件或密码无效。请再试一次\";\nexport const ErrMsg_FullName_MaxLength = \"您的全名不得超过 300 个字符\";\nexport const ErrMsg_FullName_MinLength = \"您的全名必须超过 3 个字符\";\nexport const ErrMsg_FullName_Required = \"请输入您的全名\";\nexport const ErrMsg_Gender_Required = \"请选择您的性别\";\nexport const ErrMsg_MobileNumber_Required = \"请输入你的手机号码\";\nexport const ErrMsg_Occupation_Required = \"请选择您的职业\";\nexport const ErrMsg_Pw_MaxLength = \"您的密码不得超过 20 个字符\";\nexport const ErrMsg_Pw_MinLength = \"您的密码必须至少为 8 个字符\";\nexport const ErrMsg_Pw_NumberorSpecialCharacter = \"您的密码必须至少包含一个数字或一个特殊字符\";\nexport const ErrMsg_Pw_Required = \"请输入您的密码\";\nexport const Label_Account = \"账号\";\nexport const Label_Address = \"地址\";\nexport const Label_Back = \"回去\";\nexport const Label_Cancel = \"取消\";\nexport const Label_Continue = \"继续\";\nexport const Label_DateOfBirth = \"出生日期\";\nexport const Label_Demographic = \"人口统计\";\nexport const Label_EmailAddress = \"电子邮件地址\";\nexport const Label_Employed = \"工作\";\nexport const Label_Employment = \"就业\";\nexport const Label_Female = \"女性\";\nexport const Label_FullName = \"全名\";\nexport const Label_Gender = \"性别\";\nexport const Label_Male = \"男性\";\nexport const Label_MobileNumber = \"手机号码\";\nexport const Label_NoAccount = \"没有账号\";\nexport const Label_NonBinary = \"非二元\";\nexport const Label_NotEmployed = \"没有工作\";\nexport const Label_Password = \"密码\";\nexport const Label_Personal = \"个人\";\nexport const Label_Retired = \"退休\";\nexport const Label_SignIn = \"登录\";\nexport const Label_Signup = \"注册\";\nexport const Label_SignUpNow = \"立即注册.\";\nexport const Label_Student = \"学生\";\nexport const Label_WelcomeBack = \"欢迎回来!\";\nexport const Placeholder_Address = \"输入您的地址\";\nexport const Placeholder_EmailAddress = \"输入电子邮件地址\";\nexport const Placeholder_FullName = \"输入全名\";\nexport const Placeholder_Gender = \"选择性别\";\nexport const Placeholder_MobileNumber = \"输入你的手机号码\";\nexport const Placeholder_Occupation = \"选择职业\";\nexport const Placeholder_Password = \"输入密码\";\nexport const Title_Profile = \"我的个人资料\";\nexport const Title_Error404 = \"抱歉，出了点问题.\";\nexport const Label_PrivacyPolicy = \"Privacy Policy\";\nexport const Label_FullStackDeveloper = \"Full Stack Developer\";\nexport const Label_DevelopedBy = \"Developed By\";\nexport default {\n\tButton_BackToHome: Button_BackToHome,\n\tDescription_Error404: Description_Error404,\n\tErrMsg_Address_Required: ErrMsg_Address_Required,\n\tErrMsg_DateOfBirth_Required: ErrMsg_DateOfBirth_Required,\n\tErrMsg_Email_Invalid: ErrMsg_Email_Invalid,\n\tErrMsg_Email_MaxLength: ErrMsg_Email_MaxLength,\n\tErrMsg_Email_MinLength: ErrMsg_Email_MinLength,\n\tErrMsg_Email_Required: ErrMsg_Email_Required,\n\tErrMsg_EmailorPassword: ErrMsg_EmailorPassword,\n\tErrMsg_FullName_MaxLength: ErrMsg_FullName_MaxLength,\n\tErrMsg_FullName_MinLength: ErrMsg_FullName_MinLength,\n\tErrMsg_FullName_Required: ErrMsg_FullName_Required,\n\tErrMsg_Gender_Required: ErrMsg_Gender_Required,\n\tErrMsg_MobileNumber_Required: ErrMsg_MobileNumber_Required,\n\tErrMsg_Occupation_Required: ErrMsg_Occupation_Required,\n\tErrMsg_Pw_MaxLength: ErrMsg_Pw_MaxLength,\n\tErrMsg_Pw_MinLength: ErrMsg_Pw_MinLength,\n\tErrMsg_Pw_NumberorSpecialCharacter: ErrMsg_Pw_NumberorSpecialCharacter,\n\tErrMsg_Pw_Required: ErrMsg_Pw_Required,\n\tLabel_Account: Label_Account,\n\tLabel_Address: Label_Address,\n\tLabel_Back: Label_Back,\n\tLabel_Cancel: Label_Cancel,\n\tLabel_Continue: Label_Continue,\n\tLabel_DateOfBirth: Label_DateOfBirth,\n\tLabel_Demographic: Label_Demographic,\n\tLabel_EmailAddress: Label_EmailAddress,\n\tLabel_Employed: Label_Employed,\n\tLabel_Employment: Label_Employment,\n\tLabel_Female: Label_Female,\n\tLabel_FullName: Label_FullName,\n\tLabel_Gender: Label_Gender,\n\tLabel_Male: Label_Male,\n\tLabel_MobileNumber: Label_MobileNumber,\n\tLabel_NoAccount: Label_NoAccount,\n\tLabel_NonBinary: Label_NonBinary,\n\tLabel_NotEmployed: Label_NotEmployed,\n\tLabel_Password: Label_Password,\n\tLabel_Personal: Label_Personal,\n\tLabel_Retired: Label_Retired,\n\tLabel_SignIn: Label_SignIn,\n\tLabel_Signup: Label_Signup,\n\tLabel_SignUpNow: Label_SignUpNow,\n\tLabel_Student: Label_Student,\n\tLabel_WelcomeBack: Label_WelcomeBack,\n\tPlaceholder_Address: Placeholder_Address,\n\tPlaceholder_EmailAddress: Placeholder_EmailAddress,\n\tPlaceholder_FullName: Placeholder_FullName,\n\tPlaceholder_Gender: Placeholder_Gender,\n\tPlaceholder_MobileNumber: Placeholder_MobileNumber,\n\tPlaceholder_Occupation: Placeholder_Occupation,\n\tPlaceholder_Password: Placeholder_Password,\n\tTitle_Profile: Title_Profile,\n\tTitle_Error404: Title_Error404,\n\tLabel_PrivacyPolicy: Label_PrivacyPolicy,\n\t\"Label_Terms&Conditions\": \"Terms and Conditions\",\n\tLabel_FullStackDeveloper: Label_FullStackDeveloper,\n\tLabel_DevelopedBy: Label_DevelopedBy\n};\n",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    }
+  ]
+}

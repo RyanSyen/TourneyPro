@@ -1,0 +1,300 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #fcfcfc;
+  background-color: #26282f;
+  margin: 0;
+  min-width: 360px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+/* ::placeholder {
+   color: #545969;
+ } */
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+/* ::-webkit-scrollbar-button {
+} */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #b6b6b6;
+}
+::-webkit-scrollbar-track {
+  background: rgba(182, 182, 182, 0.5);
+  border-radius: 10px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-internal-autofill-selected,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fcfcfc;
+  -webkit-box-shadow: none;
+  caret-color: #fcfcfc;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+
+  height: 24px;
+  width: 24px;
+  margin: 3px 0 0 0.4em;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+  cursor: pointer;
+}
+
+input:autofill,
+input:-webkit-autofill {
+  background: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+figure,
+blockquote,
+dl,
+dd {
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+li {
+  list-style-type: none;
+}
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 75px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-left {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.transparent-nav {
+  background: transparent
+    linear-gradient(180deg, #26282f 0%, rgba(128, 128, 128, 0) 100%) 0% 0%
+    no-repeat padding-box !important;
+  box-shadow: none !important;
+}
+
+.required-star {
+  color: #e50b0d;
+}
+
+.error-illustration {
+  max-width: 300px;
+}
+
+/* mobile input input component */
+.react-tel-input.mobile-input {
+  margin-bottom: 0.25rem;
+
+  &::before {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    left: 0;
+    bottom: 0;
+    content: '\00a0';
+    position: absolute;
+    right: 0;
+    -webkit-transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1)
+      0ms;
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    pointer-events: none;
+  }
+
+  input.form-control {
+    width: 100%;
+    &:focus,
+    &:focus-visible {
+      border-bottom: 1px solid #e50b0d !important;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
+  }
+
+  input,
+  input .open,
+  .flag-dropdown,
+  .flag-dropdown.open,
+  .flag-dropdown.open .selected-flag {
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    color: #fcfcfc;
+  }
+
+  .selected-flag {
+    &:hover {
+      background: transparent !important;
+      border: none !important;
+    }
+  }
+
+  .country-list {
+    border: 2px solid #545969;
+    border-radius: 4px;
+    background-color: #2d3038;
+    width: max-content;
+
+    .search {
+      background-color: #2d3038;
+      padding: 15px 10px;
+    }
+
+    .country {
+      &:hover {
+        background-color: #c7cbd333 !important;
+      }
+
+      .dial-code {
+        color: #c7cbd3;
+      }
+    }
+
+    .country.highlight {
+      background-color: #c7cbd333 !important;
+    }
+  }
+}
+
+/* custom mui datepicker */
+.custom-datepicker {
+  width: 100%;
+  margin-bottom: 0.25rem !important;
+
+  .Mui-error {
+    fieldset.MuiOutlinedInput-notchedOutline {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .MuiInputBase-formControl {
+    &:hover {
+      fieldset.MuiOutlinedInput-notchedOutline {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+
+  input {
+    padding-bottom: 8px;
+    padding-left: 0;
+  }
+
+  fieldset.MuiOutlinedInput-notchedOutline {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+
+  .Mui-focused fieldset.MuiOutlinedInput-notchedOutline {
+    border-bottom: 1px solid #e50b0d !important;
+  }
+
+  .MuiPickersYear-root {
+    button.MuiPickersYear-yearButton.Mui-selected {
+      background-color: #e50b0d;
+    }
+  }
+}
+
+/* gender dropdown */
+#dropdownGender {
+  padding-right: 0;
+}

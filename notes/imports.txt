@@ -1,0 +1,21 @@
+- using default styled from '@emotion/styled' due to smaller package size compared to '@mui/material/styles'. If we need to access the theme, then we will use '@mui/material/styles'
+
+- according to webdevsimplified, the index.js file is used to expose public api for outside the folder. This file should only export the code you want accesible outside the folder. This way you have limited api to work with. You can enforce ESLint rule to prevent import from folder that does not come from index.js
+
+{
+  "rules": {
+    "no-restricted-imports": ["error", { "patterns": ["@/features/*/*"] }]
+  }
+}
+
+then in .jsconfig or .tsconfig,
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@features/*": ["src/features/*"],
+    }
+  }
+}
+
+

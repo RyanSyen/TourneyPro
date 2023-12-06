@@ -1,0 +1,107 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import Navbar from 'components/navigation/navbar/Navbar.tsx';\r\nimport React from 'react';\r\nimport App from 'src/App.tsx';\r\nimport AuthModal from 'src/features/auth/components/AuthModal.tsx';\r\nimport useMainLayout from 'src/hooks/useMainLayout.ts';\r\n\r\nimport Error404 from './error404.tsx';\r\n\r\nconst MainLayout = () => {\r\n  const { isLangValid } = useMainLayout();\r\n\r\n  return (\r\n    <>\r\n      {(() => {\r\n        if (isLangValid) {\r\n          return (\r\n            <>\r\n              <Navbar />\r\n              <AuthModal />\r\n              <App />\r\n            </>\r\n          );\r\n        }\r\n\r\n        return <Error404 />;\r\n      })()}\r\n    </>\r\n  );\r\n};\r\n\r\nexport default React.memo(MainLayout);\r\n",
+      "start": 1701766112404,
+      "end": 1701766112404
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport { jsxDEV as _jsxDEV, Fragment as _Fragment } from \"react/jsx-dev-runtime\";\nvar _s = $RefreshSig$();\nimport Navbar from 'components/navigation/navbar/Navbar.tsx';\nimport React from 'react';\nimport App from 'src/App.tsx';\nimport AuthModal from 'src/features/auth/components/AuthModal.tsx';\nimport useMainLayout from 'src/hooks/useMainLayout.ts';\nimport Error404 from './error404.tsx';\nconst MainLayout = ()=>{\n    _s();\n    const { isLangValid } = useMainLayout();\n    return /*#__PURE__*/ _jsxDEV(_Fragment, {\n        children: (()=>{\n            if (isLangValid) {\n                return /*#__PURE__*/ _jsxDEV(_Fragment, {\n                    children: [\n                        /*#__PURE__*/ _jsxDEV(Navbar, {}, void 0, false, {\n                            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\",\n                            lineNumber: 18,\n                            columnNumber: 15\n                        }, this),\n                        /*#__PURE__*/ _jsxDEV(AuthModal, {}, void 0, false, {\n                            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\",\n                            lineNumber: 19,\n                            columnNumber: 15\n                        }, this),\n                        /*#__PURE__*/ _jsxDEV(App, {}, void 0, false, {\n                            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\",\n                            lineNumber: 20,\n                            columnNumber: 15\n                        }, this)\n                    ]\n                }, void 0, true);\n            }\n            return /*#__PURE__*/ _jsxDEV(Error404, {}, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\",\n                lineNumber: 25,\n                columnNumber: 16\n            }, this);\n        })()\n    }, void 0, false);\n};\n_s(MainLayout, \"e9kY5qPP31BYVGIPje/GRd7LipM=\", false, function() {\n    return [\n        useMainLayout\n    ];\n});\n_c = MainLayout;\nexport default /*#__PURE__*/ _c1 = React.memo(MainLayout);\nvar _c, _c1;\n$RefreshReg$(_c, \"MainLayout\");\n$RefreshReg$(_c1, \"%default%\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701766112404,
+      "end": 1701766112435,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "layout.tsx"
+        ],
+        "sourcesContent": [
+          "import Navbar from 'components/navigation/navbar/Navbar.tsx';\r\nimport React from 'react';\r\nimport App from 'src/App.tsx';\r\nimport AuthModal from 'src/features/auth/components/AuthModal.tsx';\r\nimport useMainLayout from 'src/hooks/useMainLayout.ts';\r\n\r\nimport Error404 from './error404.tsx';\r\n\r\nconst MainLayout = () => {\r\n  const { isLangValid } = useMainLayout();\r\n\r\n  return (\r\n    <>\r\n      {(() => {\r\n        if (isLangValid) {\r\n          return (\r\n            <>\r\n              <Navbar />\r\n              <AuthModal />\r\n              <App />\r\n            </>\r\n          );\r\n        }\r\n\r\n        return <Error404 />;\r\n      })()}\r\n    </>\r\n  );\r\n};\r\n\r\nexport default React.memo(MainLayout);\r\n"
+        ],
+        "names": [
+          "Navbar",
+          "React",
+          "App",
+          "AuthModal",
+          "useMainLayout",
+          "Error404",
+          "MainLayout",
+          "isLangValid",
+          "memo"
+        ],
+        "mappings": ";;;;;;;;;;AAAA,OAAOA,YAAY,0CAA0C;AAC7D,OAAOC,WAAW,QAAQ;AAC1B,OAAOC,SAAS,cAAc;AAC9B,OAAOC,eAAe,6CAA6C;AACnE,OAAOC,mBAAmB,6BAA6B;AAEvD,OAAOC,cAAc,iBAAiB;AAEtC,MAAMC,aAAa;;IACjB,MAAM,EAAEC,WAAW,EAAE,GAAGH;IAExB,qBACE;kBACG,AAAC,CAAA;YACA,IAAIG,aAAa;gBACf,qBACE;;sCACE,QAACP;;;;;sCACD,QAACG;;;;;sCACD,QAACD;;;;;;;YAGP;YAEA,qBAAO,QAACG;;;;;QACV,CAAA;;AAGN;GApBMC;;QACoBF;;;KADpBE;AAsBN,mCAAeL,MAAMO,IAAI,CAACF,YAAY"
+      }
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112435,
+      "end": 1701766112435,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112435,
+      "end": 1701766112435,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112435,
+      "end": 1701766112435,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112435,
+      "end": 1701766112435,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112435,
+      "end": 1701766112435,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112435,
+      "end": 1701766112435,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112435,
+      "end": 1701766112435,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/pages/layout.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3c106fdb\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"]; const _Fragment = __vite__cjsImport1_react_jsxDevRuntime[\"Fragment\"];\nvar _s = $RefreshSig$();\nimport Navbar from \"/src/components/navigation/navbar/Navbar.tsx\";\nimport __vite__cjsImport3_react from \"/node_modules/.vite/deps/react.js?v=3c106fdb\"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react;\nimport App from \"/src/App.tsx\";\nimport AuthModal from \"/src/features/auth/components/AuthModal.tsx\";\nimport useMainLayout from \"/src/hooks/useMainLayout.ts\";\nimport Error404 from \"/src/pages/error404.tsx\";\nconst MainLayout = ()=>{\n    _s();\n    const { isLangValid } = useMainLayout();\n    return /*#__PURE__*/ _jsxDEV(_Fragment, {\n        children: (()=>{\n            if (isLangValid) {\n                return /*#__PURE__*/ _jsxDEV(_Fragment, {\n                    children: [\n                        /*#__PURE__*/ _jsxDEV(Navbar, {}, void 0, false, {\n                            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\",\n                            lineNumber: 18,\n                            columnNumber: 15\n                        }, this),\n                        /*#__PURE__*/ _jsxDEV(AuthModal, {}, void 0, false, {\n                            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\",\n                            lineNumber: 19,\n                            columnNumber: 15\n                        }, this),\n                        /*#__PURE__*/ _jsxDEV(App, {}, void 0, false, {\n                            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\",\n                            lineNumber: 20,\n                            columnNumber: 15\n                        }, this)\n                    ]\n                }, void 0, true);\n            }\n            return /*#__PURE__*/ _jsxDEV(Error404, {}, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\",\n                lineNumber: 25,\n                columnNumber: 16\n            }, this);\n        })()\n    }, void 0, false);\n};\n_s(MainLayout, \"e9kY5qPP31BYVGIPje/GRd7LipM=\", false, function() {\n    return [\n        useMainLayout\n    ];\n});\n_c = MainLayout;\nexport default /*#__PURE__*/ _c1 = React.memo(MainLayout);\nvar _c, _c1;\n$RefreshReg$(_c, \"MainLayout\");\n$RefreshReg$(_c1, \"%default%\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/layout.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701766112435,
+      "end": 1701766112440,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

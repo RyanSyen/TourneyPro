@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/react.js?v=3c106fdb",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "import {\n  require_react\n} from \"./chunk-ZGRSIX2Q.js\";\nimport \"./chunk-ROME4SDB.js\";\nexport default require_react();\n//# sourceMappingURL=react.js.map\n",
+      "start": 1701766112058,
+      "end": 1701766112082,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112082,
+      "end": 1701766112082,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112082,
+      "end": 1701766112082,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112082,
+      "end": 1701766112082,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701766112082,
+      "end": 1701766112082,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112082,
+      "end": 1701766112082,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112082,
+      "end": 1701766112082,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112082,
+      "end": 1701766112082,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112082,
+      "end": 1701766112082,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112082,
+      "end": 1701766112082,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112082,
+      "end": 1701766112082,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112082,
+      "end": 1701766112082,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import {\n  require_react\n} from \"/node_modules/.vite/deps/chunk-ZGRSIX2Q.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=3c106fdb\";\nexport default require_react();\n//# sourceMappingURL=react.js.map\n",
+      "start": 1701766112082,
+      "end": 1701766112084,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

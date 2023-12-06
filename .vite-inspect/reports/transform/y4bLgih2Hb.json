@@ -1,0 +1,87 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.styles.ts",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import styled from '@emotion/styled';\r\n\r\nconst buttonStyles = {\r\n  primary: {\r\n    backgroundColor: 'blue',\r\n    color: 'white',\r\n  },\r\n  secondary: {\r\n    backgroundColor: 'blue',\r\n    color: 'white',\r\n  },\r\n  //   login: {\r\n\r\n  //   }\r\n};\r\n\r\nconst VisuallyHiddenInput = styled('input')({\r\n  clip: 'rect(0 0 0 0)',\r\n  clipPath: 'inset(50%)',\r\n  height: 1,\r\n  overflow: 'hidden',\r\n  position: 'absolute',\r\n  bottom: 0,\r\n  left: 0,\r\n  whiteSpace: 'nowrap',\r\n  width: 1,\r\n});\r\n\r\nexport default VisuallyHiddenInput;\r\n",
+      "start": 1701766112630,
+      "end": 1701766112630
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112630,
+      "end": 1701766112630,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112630,
+      "end": 1701766112630,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112630,
+      "end": 1701766112630,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import styled from '@emotion/styled';\nconst buttonStyles = {\n    primary: {\n        backgroundColor: 'blue',\n        color: 'white'\n    },\n    secondary: {\n        backgroundColor: 'blue',\n        color: 'white'\n    }\n};\nconst VisuallyHiddenInput = styled('input')({\n    clip: 'rect(0 0 0 0)',\n    clipPath: 'inset(50%)',\n    height: 1,\n    overflow: 'hidden',\n    position: 'absolute',\n    bottom: 0,\n    left: 0,\n    whiteSpace: 'nowrap',\n    width: 1\n});\nexport default VisuallyHiddenInput;\n",
+      "start": 1701766112630,
+      "end": 1701766112658,
+      "order": "normal",
+      "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/inputs/button/Button.styles.ts\"],\"sourcesContent\":[\"import styled from '@emotion/styled';\\r\\n\\r\\nconst buttonStyles = {\\r\\n  primary: {\\r\\n    backgroundColor: 'blue',\\r\\n    color: 'white',\\r\\n  },\\r\\n  secondary: {\\r\\n    backgroundColor: 'blue',\\r\\n    color: 'white',\\r\\n  },\\r\\n  //   login: {\\r\\n\\r\\n  //   }\\r\\n};\\r\\n\\r\\nconst VisuallyHiddenInput = styled('input')({\\r\\n  clip: 'rect(0 0 0 0)',\\r\\n  clipPath: 'inset(50%)',\\r\\n  height: 1,\\r\\n  overflow: 'hidden',\\r\\n  position: 'absolute',\\r\\n  bottom: 0,\\r\\n  left: 0,\\r\\n  whiteSpace: 'nowrap',\\r\\n  width: 1,\\r\\n});\\r\\n\\r\\nexport default VisuallyHiddenInput;\\r\\n\"],\"names\":[\"styled\",\"buttonStyles\",\"primary\",\"backgroundColor\",\"color\",\"secondary\",\"VisuallyHiddenInput\",\"clip\",\"clipPath\",\"height\",\"overflow\",\"position\",\"bottom\",\"left\",\"whiteSpace\",\"width\"],\"mappings\":\"AAAA,OAAOA,YAAY,kBAAkB;AAErC,MAAMC,eAAe;IACnBC,SAAS;QACPC,iBAAiB;QACjBC,OAAO;IACT;IACAC,WAAW;QACTF,iBAAiB;QACjBC,OAAO;IACT;AAIF;AAEA,MAAME,sBAAsBN,OAAO,SAAS;IAC1CO,MAAM;IACNC,UAAU;IACVC,QAAQ;IACRC,UAAU;IACVC,UAAU;IACVC,QAAQ;IACRC,MAAM;IACNC,YAAY;IACZC,OAAO;AACT;AAEA,eAAeT,oBAAoB\"}"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112658,
+      "end": 1701766112658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112658,
+      "end": 1701766112658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112658,
+      "end": 1701766112658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112658,
+      "end": 1701766112658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112658,
+      "end": 1701766112658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112658,
+      "end": 1701766112658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112658,
+      "end": 1701766112658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import styled from \"/node_modules/.vite/deps/@emotion_styled.js?v=3c106fdb\";\nconst buttonStyles = {\n    primary: {\n        backgroundColor: 'blue',\n        color: 'white'\n    },\n    secondary: {\n        backgroundColor: 'blue',\n        color: 'white'\n    }\n};\nconst VisuallyHiddenInput = styled('input')({\n    clip: 'rect(0 0 0 0)',\n    clipPath: 'inset(50%)',\n    height: 1,\n    overflow: 'hidden',\n    position: 'absolute',\n    bottom: 0,\n    left: 0,\n    whiteSpace: 'nowrap',\n    width: 1\n});\nexport default VisuallyHiddenInput;\n",
+      "start": 1701766112658,
+      "end": 1701766112658,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

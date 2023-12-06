@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/chunk-HMTWVGVS.js?v=3c106fdb",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "import {\n  __esm\n} from \"./chunk-ROME4SDB.js\";\n\n// node_modules/@babel/runtime/helpers/esm/extends.js\nfunction _extends() {\n  _extends = Object.assign ? Object.assign.bind() : function(target) {\n    for (var i = 1; i < arguments.length; i++) {\n      var source = arguments[i];\n      for (var key in source) {\n        if (Object.prototype.hasOwnProperty.call(source, key)) {\n          target[key] = source[key];\n        }\n      }\n    }\n    return target;\n  };\n  return _extends.apply(this, arguments);\n}\nvar init_extends = __esm({\n  \"node_modules/@babel/runtime/helpers/esm/extends.js\"() {\n  }\n});\n\nexport {\n  _extends,\n  init_extends\n};\n//# sourceMappingURL=chunk-HMTWVGVS.js.map\n",
+      "start": 1701766112087,
+      "end": 1701766112404,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112404,
+      "end": 1701766112404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import {\n  __esm\n} from \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=3c106fdb\";\n\n// node_modules/@babel/runtime/helpers/esm/extends.js\nfunction _extends() {\n  _extends = Object.assign ? Object.assign.bind() : function(target) {\n    for (var i = 1; i < arguments.length; i++) {\n      var source = arguments[i];\n      for (var key in source) {\n        if (Object.prototype.hasOwnProperty.call(source, key)) {\n          target[key] = source[key];\n        }\n      }\n    }\n    return target;\n  };\n  return _extends.apply(this, arguments);\n}\nvar init_extends = __esm({\n  \"node_modules/@babel/runtime/helpers/esm/extends.js\"() {\n  }\n});\n\nexport {\n  _extends,\n  init_extends\n};\n//# sourceMappingURL=chunk-HMTWVGVS.js.map\n",
+      "start": 1701766112404,
+      "end": 1701766112405,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

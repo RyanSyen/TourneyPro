@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/chunk-WJIYT6DO.js?v=3c106fdb",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "import {\n  require_react\n} from \"./chunk-ZGRSIX2Q.js\";\nimport {\n  __toESM\n} from \"./chunk-ROME4SDB.js\";\n\n// node_modules/@mui/material/List/ListContext.js\nvar React = __toESM(require_react());\nvar ListContext = React.createContext({});\nif (true) {\n  ListContext.displayName = \"ListContext\";\n}\nvar ListContext_default = ListContext;\n\nexport {\n  ListContext_default\n};\n//# sourceMappingURL=chunk-WJIYT6DO.js.map\n",
+      "start": 1701766112550,
+      "end": 1701766112679,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import {\n  require_react\n} from \"/node_modules/.vite/deps/chunk-ZGRSIX2Q.js?v=3c106fdb\";\nimport {\n  __toESM\n} from \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=3c106fdb\";\n\n// node_modules/@mui/material/List/ListContext.js\nvar React = __toESM(require_react());\nvar ListContext = React.createContext({});\nif (true) {\n  ListContext.displayName = \"ListContext\";\n}\nvar ListContext_default = ListContext;\n\nexport {\n  ListContext_default\n};\n//# sourceMappingURL=chunk-WJIYT6DO.js.map\n",
+      "start": 1701766112679,
+      "end": 1701766112679,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

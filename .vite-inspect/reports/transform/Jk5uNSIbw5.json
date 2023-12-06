@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/chunk-NOQ2VBR3.js?v=3c106fdb",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "import {\n  debounce_default,\n  init_debounce,\n  init_ownerDocument,\n  init_ownerWindow,\n  init_useControlled,\n  ownerDocument_default,\n  ownerWindow_default,\n  useControlled_default\n} from \"./chunk-KVNTRPUC.js\";\nimport {\n  createSvgIcon,\n  init_createSvgIcon\n} from \"./chunk-N72BEXVQ.js\";\nimport {\n  init_isMuiElement,\n  isMuiElement_default\n} from \"./chunk-ESFGAHLM.js\";\nimport {\n  init_useEnhancedEffect,\n  useEnhancedEffect_default\n} from \"./chunk-FNPUJ6DQ.js\";\nimport {\n  init_useEventCallback,\n  useEventCallback_default\n} from \"./chunk-LKP4EHGH.js\";\nimport {\n  init_useIsFocusVisible,\n  useIsFocusVisible_default\n} from \"./chunk-KUYV4CAE.js\";\nimport {\n  capitalize_default,\n  init_capitalize\n} from \"./chunk-NSVM5MBA.js\";\nimport {\n  init_useForkRef,\n  useForkRef_default\n} from \"./chunk-23AETIBN.js\";\nimport {\n  ClassNameGenerator_default,\n  createChainedFunction,\n  deprecatedPropType,\n  init_esm,\n  requirePropFactory,\n  setRef,\n  unsupportedProp,\n  useId\n} from \"./chunk-6ZT6S2Z7.js\";\nimport {\n  __esm,\n  __export\n} from \"./chunk-ROME4SDB.js\";\n\n// node_modules/@mui/material/utils/createChainedFunction.js\nvar createChainedFunction_default;\nvar init_createChainedFunction = __esm({\n  \"node_modules/@mui/material/utils/createChainedFunction.js\"() {\n    init_esm();\n    createChainedFunction_default = createChainedFunction;\n  }\n});\n\n// node_modules/@mui/material/utils/deprecatedPropType.js\nvar deprecatedPropType_default;\nvar init_deprecatedPropType = __esm({\n  \"node_modules/@mui/material/utils/deprecatedPropType.js\"() {\n    init_esm();\n    deprecatedPropType_default = deprecatedPropType;\n  }\n});\n\n// node_modules/@mui/material/utils/requirePropFactory.js\nvar requirePropFactory_default;\nvar init_requirePropFactory = __esm({\n  \"node_modules/@mui/material/utils/requirePropFactory.js\"() {\n    init_esm();\n    requirePropFactory_default = requirePropFactory;\n  }\n});\n\n// node_modules/@mui/material/utils/setRef.js\nvar setRef_default;\nvar init_setRef = __esm({\n  \"node_modules/@mui/material/utils/setRef.js\"() {\n    init_esm();\n    setRef_default = setRef;\n  }\n});\n\n// node_modules/@mui/material/utils/useId.js\nvar useId_default;\nvar init_useId = __esm({\n  \"node_modules/@mui/material/utils/useId.js\"() {\n    \"use client\";\n    init_esm();\n    useId_default = useId;\n  }\n});\n\n// node_modules/@mui/material/utils/unsupportedProp.js\nvar unsupportedProp_default;\nvar init_unsupportedProp = __esm({\n  \"node_modules/@mui/material/utils/unsupportedProp.js\"() {\n    init_esm();\n    unsupportedProp_default = unsupportedProp;\n  }\n});\n\n// node_modules/@mui/base/ClassNameGenerator/index.js\nvar init_ClassNameGenerator = __esm({\n  \"node_modules/@mui/base/ClassNameGenerator/index.js\"() {\n    init_esm();\n  }\n});\n\n// node_modules/@mui/material/utils/index.js\nvar utils_exports = {};\n__export(utils_exports, {\n  capitalize: () => capitalize_default,\n  createChainedFunction: () => createChainedFunction_default,\n  createSvgIcon: () => createSvgIcon,\n  debounce: () => debounce_default,\n  deprecatedPropType: () => deprecatedPropType_default,\n  isMuiElement: () => isMuiElement_default,\n  ownerDocument: () => ownerDocument_default,\n  ownerWindow: () => ownerWindow_default,\n  requirePropFactory: () => requirePropFactory_default,\n  setRef: () => setRef_default,\n  unstable_ClassNameGenerator: () => unstable_ClassNameGenerator,\n  unstable_useEnhancedEffect: () => useEnhancedEffect_default,\n  unstable_useId: () => useId_default,\n  unsupportedProp: () => unsupportedProp_default,\n  useControlled: () => useControlled_default,\n  useEventCallback: () => useEventCallback_default,\n  useForkRef: () => useForkRef_default,\n  useIsFocusVisible: () => useIsFocusVisible_default\n});\nvar unstable_ClassNameGenerator;\nvar init_utils = __esm({\n  \"node_modules/@mui/material/utils/index.js\"() {\n    \"use client\";\n    init_ClassNameGenerator();\n    init_capitalize();\n    init_createChainedFunction();\n    init_createSvgIcon();\n    init_debounce();\n    init_deprecatedPropType();\n    init_isMuiElement();\n    init_ownerDocument();\n    init_ownerWindow();\n    init_requirePropFactory();\n    init_setRef();\n    init_useEnhancedEffect();\n    init_useId();\n    init_unsupportedProp();\n    init_useControlled();\n    init_useEventCallback();\n    init_useForkRef();\n    init_useIsFocusVisible();\n    unstable_ClassNameGenerator = {\n      configure: (generator) => {\n        if (true) {\n          console.warn([\"MUI: `ClassNameGenerator` import from `@mui/material/utils` is outdated and might cause unexpected issues.\", \"\", \"You should use `import { unstable_ClassNameGenerator } from '@mui/material/className'` instead\", \"\", \"The detail of the issue: https://github.com/mui/material-ui/issues/30011#issuecomment-1024993401\", \"\", \"The updated documentation: https://mui.com/guides/classname-generator/\"].join(\"\\n\"));\n        }\n        ClassNameGenerator_default.configure(generator);\n      }\n    };\n  }\n});\n\nexport {\n  createChainedFunction_default,\n  init_createChainedFunction,\n  deprecatedPropType_default,\n  requirePropFactory_default,\n  init_requirePropFactory,\n  setRef_default,\n  useId_default,\n  init_useId,\n  unsupportedProp_default,\n  init_unsupportedProp,\n  unstable_ClassNameGenerator,\n  utils_exports,\n  init_utils\n};\n//# sourceMappingURL=chunk-NOQ2VBR3.js.map\n",
+      "start": 1701766112550,
+      "end": 1701766112685,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112685,
+      "end": 1701766112685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112685,
+      "end": 1701766112685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112685,
+      "end": 1701766112685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701766112685,
+      "end": 1701766112685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112685,
+      "end": 1701766112685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112685,
+      "end": 1701766112685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112685,
+      "end": 1701766112685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112685,
+      "end": 1701766112685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112685,
+      "end": 1701766112685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112685,
+      "end": 1701766112685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112685,
+      "end": 1701766112685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import {\n  debounce_default,\n  init_debounce,\n  init_ownerDocument,\n  init_ownerWindow,\n  init_useControlled,\n  ownerDocument_default,\n  ownerWindow_default,\n  useControlled_default\n} from \"/node_modules/.vite/deps/chunk-KVNTRPUC.js?v=3c106fdb\";\nimport {\n  createSvgIcon,\n  init_createSvgIcon\n} from \"/node_modules/.vite/deps/chunk-N72BEXVQ.js?v=3c106fdb\";\nimport {\n  init_isMuiElement,\n  isMuiElement_default\n} from \"/node_modules/.vite/deps/chunk-ESFGAHLM.js?v=3c106fdb\";\nimport {\n  init_useEnhancedEffect,\n  useEnhancedEffect_default\n} from \"/node_modules/.vite/deps/chunk-FNPUJ6DQ.js?v=3c106fdb\";\nimport {\n  init_useEventCallback,\n  useEventCallback_default\n} from \"/node_modules/.vite/deps/chunk-LKP4EHGH.js?v=3c106fdb\";\nimport {\n  init_useIsFocusVisible,\n  useIsFocusVisible_default\n} from \"/node_modules/.vite/deps/chunk-KUYV4CAE.js?v=3c106fdb\";\nimport {\n  capitalize_default,\n  init_capitalize\n} from \"/node_modules/.vite/deps/chunk-NSVM5MBA.js?v=3c106fdb\";\nimport {\n  init_useForkRef,\n  useForkRef_default\n} from \"/node_modules/.vite/deps/chunk-23AETIBN.js?v=3c106fdb\";\nimport {\n  ClassNameGenerator_default,\n  createChainedFunction,\n  deprecatedPropType,\n  init_esm,\n  requirePropFactory,\n  setRef,\n  unsupportedProp,\n  useId\n} from \"/node_modules/.vite/deps/chunk-6ZT6S2Z7.js?v=3c106fdb\";\nimport {\n  __esm,\n  __export\n} from \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=3c106fdb\";\n\n// node_modules/@mui/material/utils/createChainedFunction.js\nvar createChainedFunction_default;\nvar init_createChainedFunction = __esm({\n  \"node_modules/@mui/material/utils/createChainedFunction.js\"() {\n    init_esm();\n    createChainedFunction_default = createChainedFunction;\n  }\n});\n\n// node_modules/@mui/material/utils/deprecatedPropType.js\nvar deprecatedPropType_default;\nvar init_deprecatedPropType = __esm({\n  \"node_modules/@mui/material/utils/deprecatedPropType.js\"() {\n    init_esm();\n    deprecatedPropType_default = deprecatedPropType;\n  }\n});\n\n// node_modules/@mui/material/utils/requirePropFactory.js\nvar requirePropFactory_default;\nvar init_requirePropFactory = __esm({\n  \"node_modules/@mui/material/utils/requirePropFactory.js\"() {\n    init_esm();\n    requirePropFactory_default = requirePropFactory;\n  }\n});\n\n// node_modules/@mui/material/utils/setRef.js\nvar setRef_default;\nvar init_setRef = __esm({\n  \"node_modules/@mui/material/utils/setRef.js\"() {\n    init_esm();\n    setRef_default = setRef;\n  }\n});\n\n// node_modules/@mui/material/utils/useId.js\nvar useId_default;\nvar init_useId = __esm({\n  \"node_modules/@mui/material/utils/useId.js\"() {\n    \"use client\";\n    init_esm();\n    useId_default = useId;\n  }\n});\n\n// node_modules/@mui/material/utils/unsupportedProp.js\nvar unsupportedProp_default;\nvar init_unsupportedProp = __esm({\n  \"node_modules/@mui/material/utils/unsupportedProp.js\"() {\n    init_esm();\n    unsupportedProp_default = unsupportedProp;\n  }\n});\n\n// node_modules/@mui/base/ClassNameGenerator/index.js\nvar init_ClassNameGenerator = __esm({\n  \"node_modules/@mui/base/ClassNameGenerator/index.js\"() {\n    init_esm();\n  }\n});\n\n// node_modules/@mui/material/utils/index.js\nvar utils_exports = {};\n__export(utils_exports, {\n  capitalize: () => capitalize_default,\n  createChainedFunction: () => createChainedFunction_default,\n  createSvgIcon: () => createSvgIcon,\n  debounce: () => debounce_default,\n  deprecatedPropType: () => deprecatedPropType_default,\n  isMuiElement: () => isMuiElement_default,\n  ownerDocument: () => ownerDocument_default,\n  ownerWindow: () => ownerWindow_default,\n  requirePropFactory: () => requirePropFactory_default,\n  setRef: () => setRef_default,\n  unstable_ClassNameGenerator: () => unstable_ClassNameGenerator,\n  unstable_useEnhancedEffect: () => useEnhancedEffect_default,\n  unstable_useId: () => useId_default,\n  unsupportedProp: () => unsupportedProp_default,\n  useControlled: () => useControlled_default,\n  useEventCallback: () => useEventCallback_default,\n  useForkRef: () => useForkRef_default,\n  useIsFocusVisible: () => useIsFocusVisible_default\n});\nvar unstable_ClassNameGenerator;\nvar init_utils = __esm({\n  \"node_modules/@mui/material/utils/index.js\"() {\n    \"use client\";\n    init_ClassNameGenerator();\n    init_capitalize();\n    init_createChainedFunction();\n    init_createSvgIcon();\n    init_debounce();\n    init_deprecatedPropType();\n    init_isMuiElement();\n    init_ownerDocument();\n    init_ownerWindow();\n    init_requirePropFactory();\n    init_setRef();\n    init_useEnhancedEffect();\n    init_useId();\n    init_unsupportedProp();\n    init_useControlled();\n    init_useEventCallback();\n    init_useForkRef();\n    init_useIsFocusVisible();\n    unstable_ClassNameGenerator = {\n      configure: (generator) => {\n        if (true) {\n          console.warn([\"MUI: `ClassNameGenerator` import from `@mui/material/utils` is outdated and might cause unexpected issues.\", \"\", \"You should use `import { unstable_ClassNameGenerator } from '@mui/material/className'` instead\", \"\", \"The detail of the issue: https://github.com/mui/material-ui/issues/30011#issuecomment-1024993401\", \"\", \"The updated documentation: https://mui.com/guides/classname-generator/\"].join(\"\\n\"));\n        }\n        ClassNameGenerator_default.configure(generator);\n      }\n    };\n  }\n});\n\nexport {\n  createChainedFunction_default,\n  init_createChainedFunction,\n  deprecatedPropType_default,\n  requirePropFactory_default,\n  init_requirePropFactory,\n  setRef_default,\n  useId_default,\n  init_useId,\n  unsupportedProp_default,\n  init_unsupportedProp,\n  unstable_ClassNameGenerator,\n  utils_exports,\n  init_utils\n};\n//# sourceMappingURL=chunk-NOQ2VBR3.js.map\n",
+      "start": 1701766112685,
+      "end": 1701766112686,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

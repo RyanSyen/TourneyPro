@@ -1,0 +1,138 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import { Box, Typography } from '@mui/material';\r\nimport { useEffect } from 'react';\r\nimport { useTranslation } from 'react-i18next';\r\nimport { useLocation, useNavigate } from 'react-router-dom';\r\nimport Btn from 'src/components/inputs/button/Button.tsx';\r\n\r\nimport illustration from '../assets/error404-illustration.png';\r\n\r\nconst Error404 = () => {\r\n  const navigate = useNavigate();\r\n  const location = useLocation();\r\n  const language = location.pathname.match(/^\\/([^/]+)/)![1] ?? null;\r\n  const { t: localizer, i18n } = useTranslation('global');\r\n\r\n  useEffect(() => {\r\n    // handle invalid links with translation\r\n    const validLang = i18n.languages.includes(language);\r\n    if (validLang) i18n.changeLanguage(language);\r\n  }, [language]);\r\n\r\n  return (\r\n    <div className=\"error-container\">\r\n      <div className=\"error-illustration\">\r\n        <img src={illustration} alt=\"error illustration\" loading=\"lazy\" />\r\n      </div>\r\n      <div className=\"error-description\">\r\n        <Typography\r\n          align=\"left\"\r\n          gutterBottom\r\n          noWrap\r\n          variant=\"h4\"\r\n          sx={{ color: '#fcfcfc', fontWeight: 600 }}\r\n        >\r\n          {localizer('Title_Error404')}\r\n        </Typography>\r\n        <Typography\r\n          align=\"left\"\r\n          gutterBottom\r\n          noWrap\r\n          variant=\"h6\"\r\n          sx={{ color: '#fcfcfc' }}\r\n        >\r\n          {localizer('Description_Error404')}\r\n        </Typography>\r\n        <Box sx={{ paddingTop: '1rem' }}>\r\n          <Btn\r\n            variant=\"filledPrimary\"\r\n            disabled={false}\r\n            size=\"medium\"\r\n            // startIcon={}\r\n            // endIcon={}\r\n            isUploadBtn={false}\r\n            text={localizer('Button_BackToHome')}\r\n            onClick={() => navigate('/')}\r\n          />\r\n        </Box>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default Error404;\r\n",
+      "start": 1701766112405,
+      "end": 1701766112405
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112405,
+      "end": 1701766112405,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112405,
+      "end": 1701766112405,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112405,
+      "end": 1701766112405,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport { jsxDEV as _jsxDEV } from \"react/jsx-dev-runtime\";\nvar _s = $RefreshSig$();\nimport { Box, Typography } from '@mui/material';\nimport { useEffect } from 'react';\nimport { useTranslation } from 'react-i18next';\nimport { useLocation, useNavigate } from 'react-router-dom';\nimport Btn from 'src/components/inputs/button/Button.tsx';\nimport illustration from '../assets/error404-illustration.png';\nconst Error404 = ()=>{\n    _s();\n    const navigate = useNavigate();\n    const location = useLocation();\n    const language = location.pathname.match(/^\\/([^/]+)/)[1] ?? null;\n    const { t: localizer, i18n } = useTranslation('global');\n    useEffect(()=>{\n        // handle invalid links with translation\n        const validLang = i18n.languages.includes(language);\n        if (validLang) i18n.changeLanguage(language);\n    }, [\n        language\n    ]);\n    return /*#__PURE__*/ _jsxDEV(\"div\", {\n        className: \"error-container\",\n        children: [\n            /*#__PURE__*/ _jsxDEV(\"div\", {\n                className: \"error-illustration\",\n                children: /*#__PURE__*/ _jsxDEV(\"img\", {\n                    src: illustration,\n                    alt: \"error illustration\",\n                    loading: \"lazy\"\n                }, void 0, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                    lineNumber: 24,\n                    columnNumber: 9\n                }, this)\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                lineNumber: 23,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(\"div\", {\n                className: \"error-description\",\n                children: [\n                    /*#__PURE__*/ _jsxDEV(Typography, {\n                        align: \"left\",\n                        gutterBottom: true,\n                        noWrap: true,\n                        variant: \"h4\",\n                        sx: {\n                            color: '#fcfcfc',\n                            fontWeight: 600\n                        },\n                        children: localizer('Title_Error404')\n                    }, void 0, false, {\n                        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                        lineNumber: 27,\n                        columnNumber: 9\n                    }, this),\n                    /*#__PURE__*/ _jsxDEV(Typography, {\n                        align: \"left\",\n                        gutterBottom: true,\n                        noWrap: true,\n                        variant: \"h6\",\n                        sx: {\n                            color: '#fcfcfc'\n                        },\n                        children: localizer('Description_Error404')\n                    }, void 0, false, {\n                        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                        lineNumber: 36,\n                        columnNumber: 9\n                    }, this),\n                    /*#__PURE__*/ _jsxDEV(Box, {\n                        sx: {\n                            paddingTop: '1rem'\n                        },\n                        children: /*#__PURE__*/ _jsxDEV(Btn, {\n                            variant: \"filledPrimary\",\n                            disabled: false,\n                            size: \"medium\",\n                            // startIcon={}\n                            // endIcon={}\n                            isUploadBtn: false,\n                            text: localizer('Button_BackToHome'),\n                            onClick: ()=>navigate('/')\n                        }, void 0, false, {\n                            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                            lineNumber: 46,\n                            columnNumber: 11\n                        }, this)\n                    }, void 0, false, {\n                        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                        lineNumber: 45,\n                        columnNumber: 9\n                    }, this)\n                ]\n            }, void 0, true, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                lineNumber: 26,\n                columnNumber: 7\n            }, this)\n        ]\n    }, void 0, true, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n        lineNumber: 22,\n        columnNumber: 5\n    }, this);\n};\n_s(Error404, \"WF9po1W3io5UGviYjUgwNYPDS4E=\", false, function() {\n    return [\n        useNavigate,\n        useLocation,\n        useTranslation\n    ];\n});\n_c = Error404;\nexport default Error404;\nvar _c;\n$RefreshReg$(_c, \"Error404\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701766112405,
+      "end": 1701766112441,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "error404.tsx"
+        ],
+        "sourcesContent": [
+          "import { Box, Typography } from '@mui/material';\r\nimport { useEffect } from 'react';\r\nimport { useTranslation } from 'react-i18next';\r\nimport { useLocation, useNavigate } from 'react-router-dom';\r\nimport Btn from 'src/components/inputs/button/Button.tsx';\r\n\r\nimport illustration from '../assets/error404-illustration.png';\r\n\r\nconst Error404 = () => {\r\n  const navigate = useNavigate();\r\n  const location = useLocation();\r\n  const language = location.pathname.match(/^\\/([^/]+)/)![1] ?? null;\r\n  const { t: localizer, i18n } = useTranslation('global');\r\n\r\n  useEffect(() => {\r\n    // handle invalid links with translation\r\n    const validLang = i18n.languages.includes(language);\r\n    if (validLang) i18n.changeLanguage(language);\r\n  }, [language]);\r\n\r\n  return (\r\n    <div className=\"error-container\">\r\n      <div className=\"error-illustration\">\r\n        <img src={illustration} alt=\"error illustration\" loading=\"lazy\" />\r\n      </div>\r\n      <div className=\"error-description\">\r\n        <Typography\r\n          align=\"left\"\r\n          gutterBottom\r\n          noWrap\r\n          variant=\"h4\"\r\n          sx={{ color: '#fcfcfc', fontWeight: 600 }}\r\n        >\r\n          {localizer('Title_Error404')}\r\n        </Typography>\r\n        <Typography\r\n          align=\"left\"\r\n          gutterBottom\r\n          noWrap\r\n          variant=\"h6\"\r\n          sx={{ color: '#fcfcfc' }}\r\n        >\r\n          {localizer('Description_Error404')}\r\n        </Typography>\r\n        <Box sx={{ paddingTop: '1rem' }}>\r\n          <Btn\r\n            variant=\"filledPrimary\"\r\n            disabled={false}\r\n            size=\"medium\"\r\n            // startIcon={}\r\n            // endIcon={}\r\n            isUploadBtn={false}\r\n            text={localizer('Button_BackToHome')}\r\n            onClick={() => navigate('/')}\r\n          />\r\n        </Box>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default Error404;\r\n"
+        ],
+        "names": [
+          "Box",
+          "Typography",
+          "useEffect",
+          "useTranslation",
+          "useLocation",
+          "useNavigate",
+          "Btn",
+          "illustration",
+          "Error404",
+          "navigate",
+          "location",
+          "language",
+          "pathname",
+          "match",
+          "t",
+          "localizer",
+          "i18n",
+          "validLang",
+          "languages",
+          "includes",
+          "changeLanguage",
+          "div",
+          "className",
+          "img",
+          "src",
+          "alt",
+          "loading",
+          "align",
+          "gutterBottom",
+          "noWrap",
+          "variant",
+          "sx",
+          "color",
+          "fontWeight",
+          "paddingTop",
+          "disabled",
+          "size",
+          "isUploadBtn",
+          "text",
+          "onClick"
+        ],
+        "mappings": ";;;;;;;;;;AAAA,SAASA,GAAG,EAAEC,UAAU,QAAQ,gBAAgB;AAChD,SAASC,SAAS,QAAQ,QAAQ;AAClC,SAASC,cAAc,QAAQ,gBAAgB;AAC/C,SAASC,WAAW,EAAEC,WAAW,QAAQ,mBAAmB;AAC5D,OAAOC,SAAS,0CAA0C;AAE1D,OAAOC,kBAAkB,sCAAsC;AAE/D,MAAMC,WAAW;;IACf,MAAMC,WAAWJ;IACjB,MAAMK,WAAWN;IACjB,MAAMO,WAAWD,SAASE,QAAQ,CAACC,KAAK,CAAC,aAAc,CAAC,EAAE,IAAI;IAC9D,MAAM,EAAEC,GAAGC,SAAS,EAAEC,IAAI,EAAE,GAAGb,eAAe;IAE9CD,UAAU;QACR,wCAAwC;QACxC,MAAMe,YAAYD,KAAKE,SAAS,CAACC,QAAQ,CAACR;QAC1C,IAAIM,WAAWD,KAAKI,cAAc,CAACT;IACrC,GAAG;QAACA;KAAS;IAEb,qBACE,QAACU;QAAIC,WAAU;;0BACb,QAACD;gBAAIC,WAAU;0BACb,cAAA,QAACC;oBAAIC,KAAKjB;oBAAckB,KAAI;oBAAqBC,SAAQ;;;;;;;;;;;0BAE3D,QAACL;gBAAIC,WAAU;;kCACb,QAACrB;wBACC0B,OAAM;wBACNC,YAAY;wBACZC,MAAM;wBACNC,SAAQ;wBACRC,IAAI;4BAAEC,OAAO;4BAAWC,YAAY;wBAAI;kCAEvClB,UAAU;;;;;;kCAEb,QAACd;wBACC0B,OAAM;wBACNC,YAAY;wBACZC,MAAM;wBACNC,SAAQ;wBACRC,IAAI;4BAAEC,OAAO;wBAAU;kCAEtBjB,UAAU;;;;;;kCAEb,QAACf;wBAAI+B,IAAI;4BAAEG,YAAY;wBAAO;kCAC5B,cAAA,QAAC5B;4BACCwB,SAAQ;4BACRK,UAAU;4BACVC,MAAK;4BACL,eAAe;4BACf,aAAa;4BACbC,aAAa;4BACbC,MAAMvB,UAAU;4BAChBwB,SAAS,IAAM9B,SAAS;;;;;;;;;;;;;;;;;;;;;;;AAMpC;GAnDMD;;QACaH;QACAD;QAEcD;;;KAJ3BK;AAqDN,eAAeA,SAAS"
+      }
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112441,
+      "end": 1701766112441,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112441,
+      "end": 1701766112441,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112441,
+      "end": 1701766112441,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112441,
+      "end": 1701766112441,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112441,
+      "end": 1701766112441,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112441,
+      "end": 1701766112441,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112441,
+      "end": 1701766112441,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/pages/error404.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3c106fdb\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"];\nvar _s = $RefreshSig$();\nimport { Box, Typography } from \"/node_modules/.vite/deps/@mui_material.js?v=3c106fdb\";\nimport __vite__cjsImport3_react from \"/node_modules/.vite/deps/react.js?v=3c106fdb\"; const useEffect = __vite__cjsImport3_react[\"useEffect\"];\nimport { useTranslation } from \"/node_modules/.vite/deps/react-i18next.js?v=3c106fdb\";\nimport { useLocation, useNavigate } from \"/node_modules/.vite/deps/react-router-dom.js?v=3c106fdb\";\nimport Btn from \"/src/components/inputs/button/Button.tsx\";\nimport illustration from \"/src/assets/error404-illustration.png?import\";\nconst Error404 = ()=>{\n    _s();\n    const navigate = useNavigate();\n    const location = useLocation();\n    const language = location.pathname.match(/^\\/([^/]+)/)[1] ?? null;\n    const { t: localizer, i18n } = useTranslation('global');\n    useEffect(()=>{\n        // handle invalid links with translation\n        const validLang = i18n.languages.includes(language);\n        if (validLang) i18n.changeLanguage(language);\n    }, [\n        language\n    ]);\n    return /*#__PURE__*/ _jsxDEV(\"div\", {\n        className: \"error-container\",\n        children: [\n            /*#__PURE__*/ _jsxDEV(\"div\", {\n                className: \"error-illustration\",\n                children: /*#__PURE__*/ _jsxDEV(\"img\", {\n                    src: illustration,\n                    alt: \"error illustration\",\n                    loading: \"lazy\"\n                }, void 0, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                    lineNumber: 24,\n                    columnNumber: 9\n                }, this)\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                lineNumber: 23,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ _jsxDEV(\"div\", {\n                className: \"error-description\",\n                children: [\n                    /*#__PURE__*/ _jsxDEV(Typography, {\n                        align: \"left\",\n                        gutterBottom: true,\n                        noWrap: true,\n                        variant: \"h4\",\n                        sx: {\n                            color: '#fcfcfc',\n                            fontWeight: 600\n                        },\n                        children: localizer('Title_Error404')\n                    }, void 0, false, {\n                        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                        lineNumber: 27,\n                        columnNumber: 9\n                    }, this),\n                    /*#__PURE__*/ _jsxDEV(Typography, {\n                        align: \"left\",\n                        gutterBottom: true,\n                        noWrap: true,\n                        variant: \"h6\",\n                        sx: {\n                            color: '#fcfcfc'\n                        },\n                        children: localizer('Description_Error404')\n                    }, void 0, false, {\n                        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                        lineNumber: 36,\n                        columnNumber: 9\n                    }, this),\n                    /*#__PURE__*/ _jsxDEV(Box, {\n                        sx: {\n                            paddingTop: '1rem'\n                        },\n                        children: /*#__PURE__*/ _jsxDEV(Btn, {\n                            variant: \"filledPrimary\",\n                            disabled: false,\n                            size: \"medium\",\n                            // startIcon={}\n                            // endIcon={}\n                            isUploadBtn: false,\n                            text: localizer('Button_BackToHome'),\n                            onClick: ()=>navigate('/')\n                        }, void 0, false, {\n                            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                            lineNumber: 46,\n                            columnNumber: 11\n                        }, this)\n                    }, void 0, false, {\n                        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                        lineNumber: 45,\n                        columnNumber: 9\n                    }, this)\n                ]\n            }, void 0, true, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n                lineNumber: 26,\n                columnNumber: 7\n            }, this)\n        ]\n    }, void 0, true, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\",\n        lineNumber: 22,\n        columnNumber: 5\n    }, this);\n};\n_s(Error404, \"WF9po1W3io5UGviYjUgwNYPDS4E=\", false, function() {\n    return [\n        useNavigate,\n        useLocation,\n        useTranslation\n    ];\n});\n_c = Error404;\nexport default Error404;\nvar _c;\n$RefreshReg$(_c, \"Error404\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/pages/error404.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701766112441,
+      "end": 1701766112444,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

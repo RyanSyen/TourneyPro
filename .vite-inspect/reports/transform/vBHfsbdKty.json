@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/@emotion_styled.js?v=3c106fdb",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "import {\n  init_emotion_styled_browser_esm,\n  newStyled\n} from \"./chunk-NV5PR45J.js\";\nimport \"./chunk-6XVPP5RS.js\";\nimport \"./chunk-HMTWVGVS.js\";\nimport \"./chunk-ZGRSIX2Q.js\";\nimport \"./chunk-ROME4SDB.js\";\ninit_emotion_styled_browser_esm();\nexport {\n  newStyled as default\n};\n//# sourceMappingURL=@emotion_styled.js.map\n",
+      "start": 1701766112655,
+      "end": 1701766112744,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112744,
+      "end": 1701766112744,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112744,
+      "end": 1701766112744,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112744,
+      "end": 1701766112745,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701766112745,
+      "end": 1701766112745,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112745,
+      "end": 1701766112745,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112745,
+      "end": 1701766112745,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112745,
+      "end": 1701766112745,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112745,
+      "end": 1701766112745,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112745,
+      "end": 1701766112745,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112745,
+      "end": 1701766112745,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112745,
+      "end": 1701766112745,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import {\n  init_emotion_styled_browser_esm,\n  newStyled\n} from \"/node_modules/.vite/deps/chunk-NV5PR45J.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-6XVPP5RS.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-HMTWVGVS.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-ZGRSIX2Q.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=3c106fdb\";\ninit_emotion_styled_browser_esm();\nexport {\n  newStyled as default\n};\n//# sourceMappingURL=@emotion_styled.js.map\n",
+      "start": 1701766112745,
+      "end": 1701766112745,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

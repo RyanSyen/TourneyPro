@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/assets/developer.svg",
+  "transforms": [
+    {
+      "name": "vite:asset",
+      "result": "export default \"/src/assets/developer.svg\"",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112495,
+      "end": 1701766112495,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "export default \"/src/assets/developer.svg\"",
+      "start": 1701766112495,
+      "end": 1701766112496,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

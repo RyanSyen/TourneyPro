@@ -1,0 +1,143 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import Button, { ButtonOwnProps, ButtonProps } from '@mui/material/Button';\r\nimport { styled as muiStyled } from '@mui/material/styles';\r\nimport Typography from '@mui/material/Typography';\r\nimport logo from 'assets/logo/logo.svg';\r\nimport { useCallback } from 'react';\r\nimport { useNavigate } from 'react-router-dom';\r\n\r\n// #region interface\r\n// interface LogoBtnProp extends ButtonProps, ButtonOwnProps {\r\n//   isOnClick?: boolean;\r\n//   isHidden?: boolean;\r\n// }\r\n\r\ninterface LogoBtnProp extends Omit<ButtonProps, 'classes'>, ButtonOwnProps {\r\n  enableOnclick?: boolean;\r\n  isHidden?: boolean;\r\n}\r\n\r\ninterface AppLogoProp extends LogoBtnProp {\r\n  textSize: string;\r\n}\r\n// #endregion\r\n\r\n// #region styles\r\nconst propForwardingConfig = {\r\n  shouldForwardProp: (prop: string) =>\r\n    !['enableOnclick', 'isHidden'].includes(prop),\r\n  label: 'StyledAppLogo',\r\n};\r\n\r\nconst StyledLogo = muiStyled(\r\n  Button,\r\n  propForwardingConfig\r\n)<LogoBtnProp>(({ theme, enableOnclick, isHidden }) => {\r\n  // console.log(theme);\r\n  // console.log(enableOnclick);\r\n  // console.log(isHidden);\r\n  return {\r\n    display: isHidden ? 'none' : 'flex',\r\n    alignItems: 'center',\r\n    padding: 0,\r\n    margin: 0,\r\n    cursor: 'pointer',\r\n    pointerEvents: enableOnclick ? 'auto' : 'none',\r\n    userSelect: 'none',\r\n    fontSize: theme.typography.button.fontSize,\r\n\r\n    img: {\r\n      paddingRight: '5px',\r\n    },\r\n  };\r\n});\r\n\r\nconst LogoImg = muiStyled('img')(({ theme }) => {\r\n  return {\r\n    width: '36px',\r\n    height: '36px',\r\n\r\n    [theme.breakpoints.up('sm')]: {\r\n      width: '42px',\r\n      height: '42px',\r\n    },\r\n  };\r\n});\r\n// #endregion\r\n\r\nconst AppLogo = (props: AppLogoProp) => {\r\n  const { textSize, enableOnclick, isHidden } = props;\r\n  const navigate = useNavigate();\r\n\r\n  const MemoizedComponent = useCallback(() => {\r\n    // console.log('inside useCallback');\r\n    return (\r\n      <StyledLogo\r\n        component=\"button\"\r\n        color=\"inherit\"\r\n        onClick={() => navigate(0)}\r\n        enableOnclick={enableOnclick}\r\n        isHidden={isHidden}\r\n      >\r\n        <LogoImg src={logo} alt=\"App Icon\" />\r\n        <Typography sx={{ fontSize: textSize }}>TourneyPro</Typography>\r\n      </StyledLogo>\r\n    );\r\n  }, []);\r\n\r\n  return <MemoizedComponent />;\r\n};\r\n\r\nAppLogo.defaultProps = {\r\n  enableOnclick: true,\r\n  isHidden: false,\r\n} as Partial<AppLogoProp>;\r\n\r\nexport default AppLogo;\r\n",
+      "start": 1701766112659,
+      "end": 1701766112659
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112659,
+      "end": 1701766112659,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112659,
+      "end": 1701766112659,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112659,
+      "end": 1701766112659,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport { jsxDEV as _jsxDEV } from \"react/jsx-dev-runtime\";\nvar _s = $RefreshSig$();\nimport Button from '@mui/material/Button';\nimport { styled as muiStyled } from '@mui/material/styles';\nimport Typography from '@mui/material/Typography';\nimport logo from 'assets/logo/logo.svg';\nimport { useCallback } from 'react';\nimport { useNavigate } from 'react-router-dom';\n// #endregion\n// #region styles\nconst propForwardingConfig = {\n    shouldForwardProp: (prop)=>![\n            'enableOnclick',\n            'isHidden'\n        ].includes(prop),\n    label: 'StyledAppLogo'\n};\nconst StyledLogo = muiStyled(Button, propForwardingConfig)(({ theme, enableOnclick, isHidden })=>{\n    // console.log(theme);\n    // console.log(enableOnclick);\n    // console.log(isHidden);\n    return {\n        display: isHidden ? 'none' : 'flex',\n        alignItems: 'center',\n        padding: 0,\n        margin: 0,\n        cursor: 'pointer',\n        pointerEvents: enableOnclick ? 'auto' : 'none',\n        userSelect: 'none',\n        fontSize: theme.typography.button.fontSize,\n        img: {\n            paddingRight: '5px'\n        }\n    };\n});\n_c = StyledLogo;\nconst LogoImg = muiStyled('img')(({ theme })=>{\n    return {\n        width: '36px',\n        height: '36px',\n        [theme.breakpoints.up('sm')]: {\n            width: '42px',\n            height: '42px'\n        }\n    };\n});\n_c1 = LogoImg;\n// #endregion\nconst AppLogo = (props)=>{\n    _s();\n    const { textSize, enableOnclick, isHidden } = props;\n    const navigate = useNavigate();\n    const MemoizedComponent = useCallback(()=>{\n        // console.log('inside useCallback');\n        return /*#__PURE__*/ _jsxDEV(StyledLogo, {\n            component: \"button\",\n            color: \"inherit\",\n            onClick: ()=>navigate(0),\n            enableOnclick: enableOnclick,\n            isHidden: isHidden,\n            children: [\n                /*#__PURE__*/ _jsxDEV(LogoImg, {\n                    src: logo,\n                    alt: \"App Icon\"\n                }, void 0, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\",\n                    lineNumber: 81,\n                    columnNumber: 9\n                }, this),\n                /*#__PURE__*/ _jsxDEV(Typography, {\n                    sx: {\n                        fontSize: textSize\n                    },\n                    children: \"TourneyPro\"\n                }, void 0, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\",\n                    lineNumber: 82,\n                    columnNumber: 9\n                }, this)\n            ]\n        }, void 0, true, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\",\n            lineNumber: 74,\n            columnNumber: 7\n        }, this);\n    }, []);\n    return /*#__PURE__*/ _jsxDEV(MemoizedComponent, {}, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\",\n        lineNumber: 87,\n        columnNumber: 10\n    }, this);\n};\n_s(AppLogo, \"WQwn2dLXg9idS9O7GeIpNcw/W7I=\", false, function() {\n    return [\n        useNavigate\n    ];\n});\n_c2 = AppLogo;\nAppLogo.defaultProps = {\n    enableOnclick: true,\n    isHidden: false\n};\nexport default AppLogo;\nvar _c, _c1, _c2;\n$RefreshReg$(_c, \"StyledLogo\");\n$RefreshReg$(_c1, \"LogoImg\");\n$RefreshReg$(_c2, \"AppLogo\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701766112659,
+      "end": 1701766112731,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "appLogo.tsx"
+        ],
+        "sourcesContent": [
+          "import Button, { ButtonOwnProps, ButtonProps } from '@mui/material/Button';\r\nimport { styled as muiStyled } from '@mui/material/styles';\r\nimport Typography from '@mui/material/Typography';\r\nimport logo from 'assets/logo/logo.svg';\r\nimport { useCallback } from 'react';\r\nimport { useNavigate } from 'react-router-dom';\r\n\r\n// #region interface\r\n// interface LogoBtnProp extends ButtonProps, ButtonOwnProps {\r\n//   isOnClick?: boolean;\r\n//   isHidden?: boolean;\r\n// }\r\n\r\ninterface LogoBtnProp extends Omit<ButtonProps, 'classes'>, ButtonOwnProps {\r\n  enableOnclick?: boolean;\r\n  isHidden?: boolean;\r\n}\r\n\r\ninterface AppLogoProp extends LogoBtnProp {\r\n  textSize: string;\r\n}\r\n// #endregion\r\n\r\n// #region styles\r\nconst propForwardingConfig = {\r\n  shouldForwardProp: (prop: string) =>\r\n    !['enableOnclick', 'isHidden'].includes(prop),\r\n  label: 'StyledAppLogo',\r\n};\r\n\r\nconst StyledLogo = muiStyled(\r\n  Button,\r\n  propForwardingConfig\r\n)<LogoBtnProp>(({ theme, enableOnclick, isHidden }) => {\r\n  // console.log(theme);\r\n  // console.log(enableOnclick);\r\n  // console.log(isHidden);\r\n  return {\r\n    display: isHidden ? 'none' : 'flex',\r\n    alignItems: 'center',\r\n    padding: 0,\r\n    margin: 0,\r\n    cursor: 'pointer',\r\n    pointerEvents: enableOnclick ? 'auto' : 'none',\r\n    userSelect: 'none',\r\n    fontSize: theme.typography.button.fontSize,\r\n\r\n    img: {\r\n      paddingRight: '5px',\r\n    },\r\n  };\r\n});\r\n\r\nconst LogoImg = muiStyled('img')(({ theme }) => {\r\n  return {\r\n    width: '36px',\r\n    height: '36px',\r\n\r\n    [theme.breakpoints.up('sm')]: {\r\n      width: '42px',\r\n      height: '42px',\r\n    },\r\n  };\r\n});\r\n// #endregion\r\n\r\nconst AppLogo = (props: AppLogoProp) => {\r\n  const { textSize, enableOnclick, isHidden } = props;\r\n  const navigate = useNavigate();\r\n\r\n  const MemoizedComponent = useCallback(() => {\r\n    // console.log('inside useCallback');\r\n    return (\r\n      <StyledLogo\r\n        component=\"button\"\r\n        color=\"inherit\"\r\n        onClick={() => navigate(0)}\r\n        enableOnclick={enableOnclick}\r\n        isHidden={isHidden}\r\n      >\r\n        <LogoImg src={logo} alt=\"App Icon\" />\r\n        <Typography sx={{ fontSize: textSize }}>TourneyPro</Typography>\r\n      </StyledLogo>\r\n    );\r\n  }, []);\r\n\r\n  return <MemoizedComponent />;\r\n};\r\n\r\nAppLogo.defaultProps = {\r\n  enableOnclick: true,\r\n  isHidden: false,\r\n} as Partial<AppLogoProp>;\r\n\r\nexport default AppLogo;\r\n"
+        ],
+        "names": [
+          "Button",
+          "styled",
+          "muiStyled",
+          "Typography",
+          "logo",
+          "useCallback",
+          "useNavigate",
+          "propForwardingConfig",
+          "shouldForwardProp",
+          "prop",
+          "includes",
+          "label",
+          "StyledLogo",
+          "theme",
+          "enableOnclick",
+          "isHidden",
+          "display",
+          "alignItems",
+          "padding",
+          "margin",
+          "cursor",
+          "pointerEvents",
+          "userSelect",
+          "fontSize",
+          "typography",
+          "button",
+          "img",
+          "paddingRight",
+          "LogoImg",
+          "width",
+          "height",
+          "breakpoints",
+          "up",
+          "AppLogo",
+          "props",
+          "textSize",
+          "navigate",
+          "MemoizedComponent",
+          "component",
+          "color",
+          "onClick",
+          "src",
+          "alt",
+          "sx",
+          "defaultProps"
+        ],
+        "mappings": ";;;;;;;;;;AAAA,OAAOA,YAA6C,uBAAuB;AAC3E,SAASC,UAAUC,SAAS,QAAQ,uBAAuB;AAC3D,OAAOC,gBAAgB,2BAA2B;AAClD,OAAOC,UAAU,uBAAuB;AACxC,SAASC,WAAW,QAAQ,QAAQ;AACpC,SAASC,WAAW,QAAQ,mBAAmB;AAgB/C,aAAa;AAEb,iBAAiB;AACjB,MAAMC,uBAAuB;IAC3BC,mBAAmB,CAACC,OAClB,CAAC;YAAC;YAAiB;SAAW,CAACC,QAAQ,CAACD;IAC1CE,OAAO;AACT;AAEA,MAAMC,aAAaV,UACjBF,QACAO,sBACa,CAAC,EAAEM,KAAK,EAAEC,aAAa,EAAEC,QAAQ,EAAE;IAChD,sBAAsB;IACtB,8BAA8B;IAC9B,yBAAyB;IACzB,OAAO;QACLC,SAASD,WAAW,SAAS;QAC7BE,YAAY;QACZC,SAAS;QACTC,QAAQ;QACRC,QAAQ;QACRC,eAAeP,gBAAgB,SAAS;QACxCQ,YAAY;QACZC,UAAUV,MAAMW,UAAU,CAACC,MAAM,CAACF,QAAQ;QAE1CG,KAAK;YACHC,cAAc;QAChB;IACF;AACF;KArBMf;AAuBN,MAAMgB,UAAU1B,UAAU,OAAO,CAAC,EAAEW,KAAK,EAAE;IACzC,OAAO;QACLgB,OAAO;QACPC,QAAQ;QAER,CAACjB,MAAMkB,WAAW,CAACC,EAAE,CAAC,MAAM,EAAE;YAC5BH,OAAO;YACPC,QAAQ;QACV;IACF;AACF;MAVMF;AAWN,aAAa;AAEb,MAAMK,UAAU,CAACC;;IACf,MAAM,EAAEC,QAAQ,EAAErB,aAAa,EAAEC,QAAQ,EAAE,GAAGmB;IAC9C,MAAME,WAAW9B;IAEjB,MAAM+B,oBAAoBhC,YAAY;QACpC,qCAAqC;QACrC,qBACE,QAACO;YACC0B,WAAU;YACVC,OAAM;YACNC,SAAS,IAAMJ,SAAS;YACxBtB,eAAeA;YACfC,UAAUA;;8BAEV,QAACa;oBAAQa,KAAKrC;oBAAMsC,KAAI;;;;;;8BACxB,QAACvC;oBAAWwC,IAAI;wBAAEpB,UAAUY;oBAAS;8BAAG;;;;;;;;;;;;IAG9C,GAAG,EAAE;IAEL,qBAAO,QAACE;;;;;AACV;GArBMJ;;QAEa3B;;;MAFb2B;AAuBNA,QAAQW,YAAY,GAAG;IACrB9B,eAAe;IACfC,UAAU;AACZ;AAEA,eAAekB,QAAQ"
+      }
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112731,
+      "end": 1701766112731,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112731,
+      "end": 1701766112731,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112731,
+      "end": 1701766112731,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112731,
+      "end": 1701766112731,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112731,
+      "end": 1701766112731,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112731,
+      "end": 1701766112731,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112731,
+      "end": 1701766112731,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/src/components/common/appLogo.tsx\");import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport __vite__cjsImport1_react_jsxDevRuntime from \"/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3c106fdb\"; const _jsxDEV = __vite__cjsImport1_react_jsxDevRuntime[\"jsxDEV\"];\nvar _s = $RefreshSig$();\nimport Button from \"/node_modules/.vite/deps/@mui_material_Button.js?v=3c106fdb\";\nimport { styled as muiStyled } from \"/node_modules/.vite/deps/@mui_material_styles.js?v=3c106fdb\";\nimport Typography from \"/node_modules/.vite/deps/@mui_material_Typography.js?v=3c106fdb\";\nimport logo from \"/src/assets/logo/logo.svg?import\";\nimport __vite__cjsImport6_react from \"/node_modules/.vite/deps/react.js?v=3c106fdb\"; const useCallback = __vite__cjsImport6_react[\"useCallback\"];\nimport { useNavigate } from \"/node_modules/.vite/deps/react-router-dom.js?v=3c106fdb\";\n// #endregion\n// #region styles\nconst propForwardingConfig = {\n    shouldForwardProp: (prop)=>![\n            'enableOnclick',\n            'isHidden'\n        ].includes(prop),\n    label: 'StyledAppLogo'\n};\nconst StyledLogo = muiStyled(Button, propForwardingConfig)(({ theme, enableOnclick, isHidden })=>{\n    // console.log(theme);\n    // console.log(enableOnclick);\n    // console.log(isHidden);\n    return {\n        display: isHidden ? 'none' : 'flex',\n        alignItems: 'center',\n        padding: 0,\n        margin: 0,\n        cursor: 'pointer',\n        pointerEvents: enableOnclick ? 'auto' : 'none',\n        userSelect: 'none',\n        fontSize: theme.typography.button.fontSize,\n        img: {\n            paddingRight: '5px'\n        }\n    };\n});\n_c = StyledLogo;\nconst LogoImg = muiStyled('img')(({ theme })=>{\n    return {\n        width: '36px',\n        height: '36px',\n        [theme.breakpoints.up('sm')]: {\n            width: '42px',\n            height: '42px'\n        }\n    };\n});\n_c1 = LogoImg;\n// #endregion\nconst AppLogo = (props)=>{\n    _s();\n    const { textSize, enableOnclick, isHidden } = props;\n    const navigate = useNavigate();\n    const MemoizedComponent = useCallback(()=>{\n        // console.log('inside useCallback');\n        return /*#__PURE__*/ _jsxDEV(StyledLogo, {\n            component: \"button\",\n            color: \"inherit\",\n            onClick: ()=>navigate(0),\n            enableOnclick: enableOnclick,\n            isHidden: isHidden,\n            children: [\n                /*#__PURE__*/ _jsxDEV(LogoImg, {\n                    src: logo,\n                    alt: \"App Icon\"\n                }, void 0, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\",\n                    lineNumber: 81,\n                    columnNumber: 9\n                }, this),\n                /*#__PURE__*/ _jsxDEV(Typography, {\n                    sx: {\n                        fontSize: textSize\n                    },\n                    children: \"TourneyPro\"\n                }, void 0, false, {\n                    fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\",\n                    lineNumber: 82,\n                    columnNumber: 9\n                }, this)\n            ]\n        }, void 0, true, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\",\n            lineNumber: 74,\n            columnNumber: 7\n        }, this);\n    }, []);\n    return /*#__PURE__*/ _jsxDEV(MemoizedComponent, {}, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\",\n        lineNumber: 87,\n        columnNumber: 10\n    }, this);\n};\n_s(AppLogo, \"WQwn2dLXg9idS9O7GeIpNcw/W7I=\", false, function() {\n    return [\n        useNavigate\n    ];\n});\n_c2 = AppLogo;\nAppLogo.defaultProps = {\n    enableOnclick: true,\n    isHidden: false\n};\nexport default AppLogo;\nvar _c, _c1, _c2;\n$RefreshReg$(_c, \"StyledLogo\");\n$RefreshReg$(_c1, \"LogoImg\");\n$RefreshReg$(_c2, \"AppLogo\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/common/appLogo.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701766112731,
+      "end": 1701766112735,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/hooks/useLogin.ts",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import { atom, useAtom } from 'jotai';\r\nimport { useCallback, useMemo } from 'react';\r\n\r\nconst isOpenLoginAtom = atom(false);\r\n\r\nconst useLogin = () => {\r\n  const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\r\n\r\n  const open = useCallback(() => {\r\n    setIsOpen(true);\r\n  }, []);\r\n\r\n  const close = useCallback(() => {\r\n    setIsOpen(false);\r\n  }, []);\r\n\r\n  // memoize the return object to ensure the same obj ref is returned if the props arent changed\r\n  return useMemo(\r\n    () => ({\r\n      isOpen,\r\n      open,\r\n      close,\r\n    }),\r\n    [isOpen, open, close]\r\n  );\r\n};\r\n\r\nexport default useLogin;\r\n",
+      "start": 1701766112648,
+      "end": 1701766112648
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112648,
+      "end": 1701766112648,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112648,
+      "end": 1701766112648,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112648,
+      "end": 1701766112648,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import { atom, useAtom } from 'jotai';\nimport { useCallback, useMemo } from 'react';\nconst isOpenLoginAtom = atom(false);\nconst useLogin = ()=>{\n    const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\n    const open = useCallback(()=>{\n        setIsOpen(true);\n    }, []);\n    const close = useCallback(()=>{\n        setIsOpen(false);\n    }, []);\n    // memoize the return object to ensure the same obj ref is returned if the props arent changed\n    return useMemo(()=>({\n            isOpen,\n            open,\n            close\n        }), [\n        isOpen,\n        open,\n        close\n    ]);\n};\nexport default useLogin;\n",
+      "start": 1701766112648,
+      "end": 1701766112699,
+      "order": "normal",
+      "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/hooks/useLogin.ts\"],\"sourcesContent\":[\"import { atom, useAtom } from 'jotai';\\r\\nimport { useCallback, useMemo } from 'react';\\r\\n\\r\\nconst isOpenLoginAtom = atom(false);\\r\\n\\r\\nconst useLogin = () => {\\r\\n  const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\\r\\n\\r\\n  const open = useCallback(() => {\\r\\n    setIsOpen(true);\\r\\n  }, []);\\r\\n\\r\\n  const close = useCallback(() => {\\r\\n    setIsOpen(false);\\r\\n  }, []);\\r\\n\\r\\n  // memoize the return object to ensure the same obj ref is returned if the props arent changed\\r\\n  return useMemo(\\r\\n    () => ({\\r\\n      isOpen,\\r\\n      open,\\r\\n      close,\\r\\n    }),\\r\\n    [isOpen, open, close]\\r\\n  );\\r\\n};\\r\\n\\r\\nexport default useLogin;\\r\\n\"],\"names\":[\"atom\",\"useAtom\",\"useCallback\",\"useMemo\",\"isOpenLoginAtom\",\"useLogin\",\"isOpen\",\"setIsOpen\",\"open\",\"close\"],\"mappings\":\"AAAA,SAASA,IAAI,EAAEC,OAAO,QAAQ,QAAQ;AACtC,SAASC,WAAW,EAAEC,OAAO,QAAQ,QAAQ;AAE7C,MAAMC,kBAAkBJ,KAAK;AAE7B,MAAMK,WAAW;IACf,MAAM,CAACC,QAAQC,UAAU,GAAGN,QAAQG;IAEpC,MAAMI,OAAON,YAAY;QACvBK,UAAU;IACZ,GAAG,EAAE;IAEL,MAAME,QAAQP,YAAY;QACxBK,UAAU;IACZ,GAAG,EAAE;IAEL,8FAA8F;IAC9F,OAAOJ,QACL,IAAO,CAAA;YACLG;YACAE;YACAC;QACF,CAAA,GACA;QAACH;QAAQE;QAAMC;KAAM;AAEzB;AAEA,eAAeJ,SAAS\"}"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112699,
+      "end": 1701766112699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112699,
+      "end": 1701766112699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112699,
+      "end": 1701766112699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112699,
+      "end": 1701766112699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112699,
+      "end": 1701766112699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112699,
+      "end": 1701766112699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112699,
+      "end": 1701766112699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import { atom, useAtom } from \"/node_modules/.vite/deps/jotai.js?v=3c106fdb\";\nimport __vite__cjsImport1_react from \"/node_modules/.vite/deps/react.js?v=3c106fdb\"; const useCallback = __vite__cjsImport1_react[\"useCallback\"]; const useMemo = __vite__cjsImport1_react[\"useMemo\"];\nconst isOpenLoginAtom = atom(false);\nconst useLogin = ()=>{\n    const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);\n    const open = useCallback(()=>{\n        setIsOpen(true);\n    }, []);\n    const close = useCallback(()=>{\n        setIsOpen(false);\n    }, []);\n    // memoize the return object to ensure the same obj ref is returned if the props arent changed\n    return useMemo(()=>({\n            isOpen,\n            open,\n            close\n        }), [\n        isOpen,\n        open,\n        close\n    ]);\n};\nexport default useLogin;\n",
+      "start": 1701766112699,
+      "end": 1701766112699,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

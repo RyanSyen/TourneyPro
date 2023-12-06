@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/@mui_material_Select.js?v=3c106fdb",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "\"use client\";\nimport {\n  Select_default,\n  getSelectUtilityClasses,\n  selectClasses_default\n} from \"./chunk-XGWVQ53X.js\";\nimport \"./chunk-HQMRDRXH.js\";\nimport \"./chunk-BA35FLOD.js\";\nimport \"./chunk-WJIYT6DO.js\";\nimport \"./chunk-EZVKLKBW.js\";\nimport \"./chunk-4VJ6DSDF.js\";\nimport \"./chunk-NHUKAZUT.js\";\nimport \"./chunk-ZFUPPDSN.js\";\nimport \"./chunk-GSZ7ISAW.js\";\nimport \"./chunk-KVNTRPUC.js\";\nimport \"./chunk-N72BEXVQ.js\";\nimport \"./chunk-FNPUJ6DQ.js\";\nimport \"./chunk-NSVM5MBA.js\";\nimport \"./chunk-23AETIBN.js\";\nimport \"./chunk-NEVWHIAS.js\";\nimport \"./chunk-FMFFUJ5P.js\";\nimport \"./chunk-JCF5JOWN.js\";\nimport \"./chunk-6ZT6S2Z7.js\";\nimport \"./chunk-U73TBONF.js\";\nimport \"./chunk-NV5PR45J.js\";\nimport \"./chunk-6XVPP5RS.js\";\nimport \"./chunk-HMTWVGVS.js\";\nimport \"./chunk-ZGRSIX2Q.js\";\nimport \"./chunk-ROME4SDB.js\";\nexport {\n  Select_default as default,\n  getSelectUtilityClasses,\n  selectClasses_default as selectClasses\n};\n//# sourceMappingURL=@mui_material_Select.js.map\n",
+      "start": 1701766112807,
+      "end": 1701766112813,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112813,
+      "end": 1701766112813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112813,
+      "end": 1701766112813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112813,
+      "end": 1701766112813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701766112813,
+      "end": 1701766112813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112813,
+      "end": 1701766112813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112813,
+      "end": 1701766112813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112813,
+      "end": 1701766112813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112813,
+      "end": 1701766112813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112813,
+      "end": 1701766112813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112813,
+      "end": 1701766112813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112813,
+      "end": 1701766112813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "\"use client\";\nimport {\n  Select_default,\n  getSelectUtilityClasses,\n  selectClasses_default\n} from \"/node_modules/.vite/deps/chunk-XGWVQ53X.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-HQMRDRXH.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-BA35FLOD.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-WJIYT6DO.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-EZVKLKBW.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-4VJ6DSDF.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-NHUKAZUT.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-ZFUPPDSN.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-GSZ7ISAW.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-KVNTRPUC.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-N72BEXVQ.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-FNPUJ6DQ.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-NSVM5MBA.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-23AETIBN.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-NEVWHIAS.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-FMFFUJ5P.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-JCF5JOWN.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-6ZT6S2Z7.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-U73TBONF.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-NV5PR45J.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-6XVPP5RS.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-HMTWVGVS.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-ZGRSIX2Q.js?v=3c106fdb\";\nimport \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=3c106fdb\";\nexport {\n  Select_default as default,\n  getSelectUtilityClasses,\n  selectClasses_default as selectClasses\n};\n//# sourceMappingURL=@mui_material_Select.js.map\n",
+      "start": 1701766112813,
+      "end": 1701766112815,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/chunk-KPN65BRZ.js?v=3c106fdb",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "import {\n  init_utils,\n  utils_exports\n} from \"./chunk-NOQ2VBR3.js\";\nimport {\n  __commonJS,\n  __toCommonJS\n} from \"./chunk-ROME4SDB.js\";\n\n// node_modules/@babel/runtime/helpers/interopRequireDefault.js\nvar require_interopRequireDefault = __commonJS({\n  \"node_modules/@babel/runtime/helpers/interopRequireDefault.js\"(exports, module) {\n    function _interopRequireDefault(obj) {\n      return obj && obj.__esModule ? obj : {\n        \"default\": obj\n      };\n    }\n    module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports[\"default\"] = module.exports;\n  }\n});\n\n// node_modules/@mui/icons-material/utils/createSvgIcon.js\nvar require_createSvgIcon = __commonJS({\n  \"node_modules/@mui/icons-material/utils/createSvgIcon.js\"(exports) {\n    \"use strict\";\n    \"use client\";\n    Object.defineProperty(exports, \"__esModule\", {\n      value: true\n    });\n    Object.defineProperty(exports, \"default\", {\n      enumerable: true,\n      get: function() {\n        return _utils.createSvgIcon;\n      }\n    });\n    var _utils = (init_utils(), __toCommonJS(utils_exports));\n  }\n});\n\nexport {\n  require_interopRequireDefault,\n  require_createSvgIcon\n};\n//# sourceMappingURL=chunk-KPN65BRZ.js.map\n",
+      "start": 1701766112635,
+      "end": 1701766112743,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import {\n  init_utils,\n  utils_exports\n} from \"/node_modules/.vite/deps/chunk-NOQ2VBR3.js?v=3c106fdb\";\nimport {\n  __commonJS,\n  __toCommonJS\n} from \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=3c106fdb\";\n\n// node_modules/@babel/runtime/helpers/interopRequireDefault.js\nvar require_interopRequireDefault = __commonJS({\n  \"node_modules/@babel/runtime/helpers/interopRequireDefault.js\"(exports, module) {\n    function _interopRequireDefault(obj) {\n      return obj && obj.__esModule ? obj : {\n        \"default\": obj\n      };\n    }\n    module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports[\"default\"] = module.exports;\n  }\n});\n\n// node_modules/@mui/icons-material/utils/createSvgIcon.js\nvar require_createSvgIcon = __commonJS({\n  \"node_modules/@mui/icons-material/utils/createSvgIcon.js\"(exports) {\n    \"use strict\";\n    \"use client\";\n    Object.defineProperty(exports, \"__esModule\", {\n      value: true\n    });\n    Object.defineProperty(exports, \"default\", {\n      enumerable: true,\n      get: function() {\n        return _utils.createSvgIcon;\n      }\n    });\n    var _utils = (init_utils(), __toCommonJS(utils_exports));\n  }\n});\n\nexport {\n  require_interopRequireDefault,\n  require_createSvgIcon\n};\n//# sourceMappingURL=chunk-KPN65BRZ.js.map\n",
+      "start": 1701766112743,
+      "end": 1701766112743,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

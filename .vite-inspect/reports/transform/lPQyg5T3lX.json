@@ -1,0 +1,87 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/i18n/config.ts",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import i18next from 'i18next';\r\nimport LanguageDetector from 'i18next-browser-languagedetector';\r\nimport global_en from 'lib/i18n/locales/en/global.json';\r\nimport global_ms from 'lib/i18n/locales/ms/global.json';\r\nimport global_zh from 'lib/i18n/locales/zh/global.json';\r\nimport { initReactI18next } from 'react-i18next';\r\n\r\ni18next\r\n  // detect user language\r\n  // learn more: https://github.com/i18next/i18next-browser-languageDetector\r\n  .use(LanguageDetector)\r\n  // pass the i18n instance to react-i18next.\r\n  .use(initReactI18next)\r\n  // init i18next\r\n  // for all options read: https://www.i18next.com/overview/configuration-options\r\n  .init({\r\n    interpolation: { escapeValue: false }, // not needed for react as it escapes by default\r\n    // lng: 'auto', // auto detect lang based on user's browser lang, turn off for language detector to work\r\n    // fallbackLng: 'en', // if auto detect fail or translation not found then default will be English\r\n    fallbackLng: ['en', 'ms', 'zh'],\r\n    debug: false,\r\n    resources: {\r\n      en: {\r\n        global: global_en,\r\n      },\r\n      zh: {\r\n        global: global_zh,\r\n      },\r\n      ms: {\r\n        global: global_ms,\r\n      },\r\n    },\r\n  });\r\n\r\nexport default i18next;\r\n",
+      "start": 1701766112123,
+      "end": 1701766112123
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112123,
+      "end": 1701766112123,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112123,
+      "end": 1701766112123,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112123,
+      "end": 1701766112123,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import i18next from 'i18next';\nimport LanguageDetector from 'i18next-browser-languagedetector';\nimport global_en from 'lib/i18n/locales/en/global.json';\nimport global_ms from 'lib/i18n/locales/ms/global.json';\nimport global_zh from 'lib/i18n/locales/zh/global.json';\nimport { initReactI18next } from 'react-i18next';\ni18next// detect user language\n// learn more: https://github.com/i18next/i18next-browser-languageDetector\n.use(LanguageDetector)// pass the i18n instance to react-i18next.\n.use(initReactI18next)// init i18next\n// for all options read: https://www.i18next.com/overview/configuration-options\n.init({\n    interpolation: {\n        escapeValue: false\n    },\n    // lng: 'auto', // auto detect lang based on user's browser lang, turn off for language detector to work\n    // fallbackLng: 'en', // if auto detect fail or translation not found then default will be English\n    fallbackLng: [\n        'en',\n        'ms',\n        'zh'\n    ],\n    debug: false,\n    resources: {\n        en: {\n            global: global_en\n        },\n        zh: {\n            global: global_zh\n        },\n        ms: {\n            global: global_ms\n        }\n    }\n});\nexport default i18next;\n",
+      "start": 1701766112123,
+      "end": 1701766112143,
+      "order": "normal",
+      "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/i18n/config.ts\"],\"sourcesContent\":[\"import i18next from 'i18next';\\r\\nimport LanguageDetector from 'i18next-browser-languagedetector';\\r\\nimport global_en from 'lib/i18n/locales/en/global.json';\\r\\nimport global_ms from 'lib/i18n/locales/ms/global.json';\\r\\nimport global_zh from 'lib/i18n/locales/zh/global.json';\\r\\nimport { initReactI18next } from 'react-i18next';\\r\\n\\r\\ni18next\\r\\n  // detect user language\\r\\n  // learn more: https://github.com/i18next/i18next-browser-languageDetector\\r\\n  .use(LanguageDetector)\\r\\n  // pass the i18n instance to react-i18next.\\r\\n  .use(initReactI18next)\\r\\n  // init i18next\\r\\n  // for all options read: https://www.i18next.com/overview/configuration-options\\r\\n  .init({\\r\\n    interpolation: { escapeValue: false }, // not needed for react as it escapes by default\\r\\n    // lng: 'auto', // auto detect lang based on user's browser lang, turn off for language detector to work\\r\\n    // fallbackLng: 'en', // if auto detect fail or translation not found then default will be English\\r\\n    fallbackLng: ['en', 'ms', 'zh'],\\r\\n    debug: false,\\r\\n    resources: {\\r\\n      en: {\\r\\n        global: global_en,\\r\\n      },\\r\\n      zh: {\\r\\n        global: global_zh,\\r\\n      },\\r\\n      ms: {\\r\\n        global: global_ms,\\r\\n      },\\r\\n    },\\r\\n  });\\r\\n\\r\\nexport default i18next;\\r\\n\"],\"names\":[\"i18next\",\"LanguageDetector\",\"global_en\",\"global_ms\",\"global_zh\",\"initReactI18next\",\"use\",\"init\",\"interpolation\",\"escapeValue\",\"fallbackLng\",\"debug\",\"resources\",\"en\",\"global\",\"zh\",\"ms\"],\"mappings\":\"AAAA,OAAOA,aAAa,UAAU;AAC9B,OAAOC,sBAAsB,mCAAmC;AAChE,OAAOC,eAAe,kCAAkC;AACxD,OAAOC,eAAe,kCAAkC;AACxD,OAAOC,eAAe,kCAAkC;AACxD,SAASC,gBAAgB,QAAQ,gBAAgB;AAEjDL,OACE,uBAAuB;AACvB,0EAA0E;CACzEM,GAAG,CAACL,iBACL,2CAA2C;CAC1CK,GAAG,CAACD,iBACL,eAAe;AACf,+EAA+E;CAC9EE,IAAI,CAAC;IACJC,eAAe;QAAEC,aAAa;IAAM;IACpC,wGAAwG;IACxG,kGAAkG;IAClGC,aAAa;QAAC;QAAM;QAAM;KAAK;IAC/BC,OAAO;IACPC,WAAW;QACTC,IAAI;YACFC,QAAQZ;QACV;QACAa,IAAI;YACFD,QAAQV;QACV;QACAY,IAAI;YACFF,QAAQX;QACV;IACF;AACF;AAEF,eAAeH,QAAQ\"}"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112143,
+      "end": 1701766112143,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112143,
+      "end": 1701766112143,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112143,
+      "end": 1701766112143,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112143,
+      "end": 1701766112143,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112143,
+      "end": 1701766112143,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112143,
+      "end": 1701766112143,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112143,
+      "end": 1701766112143,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import i18next from \"/node_modules/.vite/deps/i18next.js?v=3c106fdb\";\nimport LanguageDetector from \"/node_modules/.vite/deps/i18next-browser-languagedetector.js?v=3c106fdb\";\nimport global_en from \"/src/lib/i18n/locales/en/global.json?import\";\nimport global_ms from \"/src/lib/i18n/locales/ms/global.json?import\";\nimport global_zh from \"/src/lib/i18n/locales/zh/global.json?import\";\nimport { initReactI18next } from \"/node_modules/.vite/deps/react-i18next.js?v=3c106fdb\";\ni18next// detect user language\n// learn more: https://github.com/i18next/i18next-browser-languageDetector\n.use(LanguageDetector)// pass the i18n instance to react-i18next.\n.use(initReactI18next)// init i18next\n// for all options read: https://www.i18next.com/overview/configuration-options\n.init({\n    interpolation: {\n        escapeValue: false\n    },\n    // lng: 'auto', // auto detect lang based on user's browser lang, turn off for language detector to work\n    // fallbackLng: 'en', // if auto detect fail or translation not found then default will be English\n    fallbackLng: [\n        'en',\n        'ms',\n        'zh'\n    ],\n    debug: false,\n    resources: {\n        en: {\n            global: global_en\n        },\n        zh: {\n            global: global_zh\n        },\n        ms: {\n            global: global_ms\n        }\n    }\n});\nexport default i18next;\n",
+      "start": 1701766112143,
+      "end": 1701766112146,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

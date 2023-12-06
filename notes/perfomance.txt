@@ -1,0 +1,77 @@
+------------------------
+Performance Optimization
+------------------------
+
+------------------------ VITE ------------------------
+
+1. Reduce Resolve Operations ✔️
+--------------------------------------------------------
+Resolving import paths can be expensive during the worse case scenario. 
+
+E.g. Vite supports "guessing" import paths with the resolve.extensions option, which defaults to ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json'].
+
+When you try to import ./Component.jsx with import './Component', Vite will run these steps to resolve it:
+
+Check if ./Component exists, no.
+Check if ./Component.mjs exists, no.
+Check if ./Component.js exists, no.
+Check if ./Component.mts exists, no.
+Check if ./Component.ts exists, no.
+Check if ./Component.jsx exists, yes!
+
+A total of 6 filesystem checks are req to resolve an import path. The more implicit imports, the more time it needs to resolve it. Hence, it is better to be explicit with your import paths which automatically narrow down the list for resolve.extensions to reduce the filechecks.
+
+If you are using TypeScript, enable "moduleResolution": "bundler" and "allowImportingTsExtensions": true in your tsconfig.json's compilerOptions to use .ts and .tsx extensions directly in your code.
+
+2. Avoid Barrel files ✔️
+--------------------------------------------------------
+Barrel files are files that re-export APIs of other files in the same directory. E.g. 
+export * from './color.js'
+
+All the barrel files need to be fetched and transformed, meaning you are loading more files than required on initial page load, resulting in slower page load.
+
+If possible, you should avoid barrel files and import the individual APIs directly, e.g. import { slash } from './utils/slash.js'.
+
+3. Warm up frequently used files ❌ need vite v5
+--------------------------------------------------------
+The vite dev server only transforms files requested by the browser, however, request waterfalls may occur if some files take longer time to transform.
+
+main.js -> bigcomponent.js -> big-util.js -> large-data.json
+
+if bigcomponent.js needs more time to transform, big-util.js need to wait which causes an internal waterfall. Vite allows you to warm up common or frequently used files using server.warmup This way big-util.js will be ready and cached to be served immediately when requested.
+
+You can find files that are frequently used by running DEBUG="vite:transform" vite and inspect the logs:
+
+vite:transform 28.72ms /@vite/client +1ms
+vite:transform 62.95ms /src/components/BigComponent.vue +1ms
+vite:transform 102.54ms /src/utils/big-utils.js +1ms
+
+export default defineConfig({
+  server: {
+    warmup: {
+      clientFiles: [
+        './src/components/BigComponent.vue',
+        './src/utils/big-utils.js',
+      ],
+    },
+  },
+})
+
+NOTE: you should only warm up filse that are frequently used, to prevent overload the vite dev server on startup
+
+IMPORTANT: 
+warmup is a new feature in vite v5 current version is 4.5. 
+v5 is published on 16/11/2023 and it is still quite new
+We dont want to upgrade first as there are reports of functions breaking such as: 
+https://stackoverflow.com/questions/77522023/vite-5-0-hot-reload-not-working-after-upgrading-from-4-5-0
+
+4. Use lesser or Native tooling ✔️
+--------------------------------------------------------
+Keeping Vite fast with a growing codebase is about reducing the amount of work for the source files. E.g.
+- using css instead of preporcessors such as sass ✅
+- import svgs as strings instead of transforming them into components ❌ (not applicable)
+- use @vitejs/plugin-react-swc instead of @vitejs/plugin-react ✅
+
+We can try out the experimental support for lightningCSS. (in the future) - since we are using mui and styled-components which uses javascript (CSS-in-JS) for styling components, it does not affect us in this case 
+
+------------------------ VITE ------------------------

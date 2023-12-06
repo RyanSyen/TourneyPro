@@ -1,0 +1,86 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/.vite/deps/chunk-UE4NI5BP.js?v=3c106fdb",
+  "transforms": [
+    {
+      "name": "vite:optimized-deps",
+      "result": "import {\n  ListContext_default\n} from \"./chunk-WJIYT6DO.js\";\nimport {\n  Typography_default\n} from \"./chunk-CSMRWV63.js\";\nimport {\n  init_composeClasses\n} from \"./chunk-NEVWHIAS.js\";\nimport {\n  _objectWithoutPropertiesLoose,\n  clsx_default,\n  composeClasses,\n  generateUtilityClass,\n  generateUtilityClasses,\n  init_clsx,\n  init_esm,\n  init_generateUtilityClass,\n  init_objectWithoutPropertiesLoose,\n  init_styled,\n  init_useThemeProps,\n  require_prop_types,\n  styled_default,\n  useThemeProps2 as useThemeProps\n} from \"./chunk-6ZT6S2Z7.js\";\nimport {\n  require_jsx_runtime\n} from \"./chunk-U73TBONF.js\";\nimport {\n  _extends,\n  init_extends\n} from \"./chunk-HMTWVGVS.js\";\nimport {\n  require_react\n} from \"./chunk-ZGRSIX2Q.js\";\nimport {\n  __toESM\n} from \"./chunk-ROME4SDB.js\";\n\n// node_modules/@mui/material/ListItemText/ListItemText.js\ninit_objectWithoutPropertiesLoose();\ninit_extends();\nvar React = __toESM(require_react());\nvar import_prop_types = __toESM(require_prop_types());\ninit_clsx();\ninit_composeClasses();\ninit_useThemeProps();\ninit_styled();\n\n// node_modules/@mui/material/ListItemText/listItemTextClasses.js\ninit_esm();\ninit_generateUtilityClass();\nfunction getListItemTextUtilityClass(slot) {\n  return generateUtilityClass(\"MuiListItemText\", slot);\n}\nvar listItemTextClasses = generateUtilityClasses(\"MuiListItemText\", [\"root\", \"multiline\", \"dense\", \"inset\", \"primary\", \"secondary\"]);\nvar listItemTextClasses_default = listItemTextClasses;\n\n// node_modules/@mui/material/ListItemText/ListItemText.js\nvar import_jsx_runtime = __toESM(require_jsx_runtime());\nvar import_jsx_runtime2 = __toESM(require_jsx_runtime());\nvar _excluded = [\"children\", \"className\", \"disableTypography\", \"inset\", \"primary\", \"primaryTypographyProps\", \"secondary\", \"secondaryTypographyProps\"];\nvar useUtilityClasses = (ownerState) => {\n  const {\n    classes,\n    inset,\n    primary,\n    secondary,\n    dense\n  } = ownerState;\n  const slots = {\n    root: [\"root\", inset && \"inset\", dense && \"dense\", primary && secondary && \"multiline\"],\n    primary: [\"primary\"],\n    secondary: [\"secondary\"]\n  };\n  return composeClasses(slots, getListItemTextUtilityClass, classes);\n};\nvar ListItemTextRoot = styled_default(\"div\", {\n  name: \"MuiListItemText\",\n  slot: \"Root\",\n  overridesResolver: (props, styles) => {\n    const {\n      ownerState\n    } = props;\n    return [{\n      [`& .${listItemTextClasses_default.primary}`]: styles.primary\n    }, {\n      [`& .${listItemTextClasses_default.secondary}`]: styles.secondary\n    }, styles.root, ownerState.inset && styles.inset, ownerState.primary && ownerState.secondary && styles.multiline, ownerState.dense && styles.dense];\n  }\n})(({\n  ownerState\n}) => _extends({\n  flex: \"1 1 auto\",\n  minWidth: 0,\n  marginTop: 4,\n  marginBottom: 4\n}, ownerState.primary && ownerState.secondary && {\n  marginTop: 6,\n  marginBottom: 6\n}, ownerState.inset && {\n  paddingLeft: 56\n}));\nvar ListItemText = React.forwardRef(function ListItemText2(inProps, ref) {\n  const props = useThemeProps({\n    props: inProps,\n    name: \"MuiListItemText\"\n  });\n  const {\n    children,\n    className,\n    disableTypography = false,\n    inset = false,\n    primary: primaryProp,\n    primaryTypographyProps,\n    secondary: secondaryProp,\n    secondaryTypographyProps\n  } = props, other = _objectWithoutPropertiesLoose(props, _excluded);\n  const {\n    dense\n  } = React.useContext(ListContext_default);\n  let primary = primaryProp != null ? primaryProp : children;\n  let secondary = secondaryProp;\n  const ownerState = _extends({}, props, {\n    disableTypography,\n    inset,\n    primary: !!primary,\n    secondary: !!secondary,\n    dense\n  });\n  const classes = useUtilityClasses(ownerState);\n  if (primary != null && primary.type !== Typography_default && !disableTypography) {\n    primary = (0, import_jsx_runtime.jsx)(Typography_default, _extends({\n      variant: dense ? \"body2\" : \"body1\",\n      className: classes.primary,\n      component: primaryTypographyProps != null && primaryTypographyProps.variant ? void 0 : \"span\",\n      display: \"block\"\n    }, primaryTypographyProps, {\n      children: primary\n    }));\n  }\n  if (secondary != null && secondary.type !== Typography_default && !disableTypography) {\n    secondary = (0, import_jsx_runtime.jsx)(Typography_default, _extends({\n      variant: \"body2\",\n      className: classes.secondary,\n      color: \"text.secondary\",\n      display: \"block\"\n    }, secondaryTypographyProps, {\n      children: secondary\n    }));\n  }\n  return (0, import_jsx_runtime2.jsxs)(ListItemTextRoot, _extends({\n    className: clsx_default(classes.root, className),\n    ownerState,\n    ref\n  }, other, {\n    children: [primary, secondary]\n  }));\n});\ntrue ? ListItemText.propTypes = {\n  // ----------------------------- Warning --------------------------------\n  // | These PropTypes are generated from the TypeScript type definitions |\n  // |     To update them edit the d.ts file and run \"yarn proptypes\"     |\n  // ----------------------------------------------------------------------\n  /**\n   * Alias for the `primary` prop.\n   */\n  children: import_prop_types.default.node,\n  /**\n   * Override or extend the styles applied to the component.\n   */\n  classes: import_prop_types.default.object,\n  /**\n   * @ignore\n   */\n  className: import_prop_types.default.string,\n  /**\n   * If `true`, the children won't be wrapped by a Typography component.\n   * This can be useful to render an alternative Typography variant by wrapping\n   * the `children` (or `primary`) text, and optional `secondary` text\n   * with the Typography component.\n   * @default false\n   */\n  disableTypography: import_prop_types.default.bool,\n  /**\n   * If `true`, the children are indented.\n   * This should be used if there is no left avatar or left icon.\n   * @default false\n   */\n  inset: import_prop_types.default.bool,\n  /**\n   * The main content element.\n   */\n  primary: import_prop_types.default.node,\n  /**\n   * These props will be forwarded to the primary typography component\n   * (as long as disableTypography is not `true`).\n   */\n  primaryTypographyProps: import_prop_types.default.object,\n  /**\n   * The secondary content element.\n   */\n  secondary: import_prop_types.default.node,\n  /**\n   * These props will be forwarded to the secondary typography component\n   * (as long as disableTypography is not `true`).\n   */\n  secondaryTypographyProps: import_prop_types.default.object,\n  /**\n   * The system prop that allows defining system overrides as well as additional CSS styles.\n   */\n  sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object])\n} : void 0;\nvar ListItemText_default = ListItemText;\n\nexport {\n  getListItemTextUtilityClass,\n  listItemTextClasses_default,\n  ListItemText_default\n};\n//# sourceMappingURL=chunk-UE4NI5BP.js.map\n",
+      "start": 1701766112550,
+      "end": 1701766112673,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112673,
+      "end": 1701766112673,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112673,
+      "end": 1701766112673,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112673,
+      "end": 1701766112673,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701766112673,
+      "end": 1701766112673,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112673,
+      "end": 1701766112673,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112673,
+      "end": 1701766112673,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112673,
+      "end": 1701766112673,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112673,
+      "end": 1701766112673,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112673,
+      "end": 1701766112673,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112673,
+      "end": 1701766112673,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112673,
+      "end": 1701766112673,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import {\n  ListContext_default\n} from \"/node_modules/.vite/deps/chunk-WJIYT6DO.js?v=3c106fdb\";\nimport {\n  Typography_default\n} from \"/node_modules/.vite/deps/chunk-CSMRWV63.js?v=3c106fdb\";\nimport {\n  init_composeClasses\n} from \"/node_modules/.vite/deps/chunk-NEVWHIAS.js?v=3c106fdb\";\nimport {\n  _objectWithoutPropertiesLoose,\n  clsx_default,\n  composeClasses,\n  generateUtilityClass,\n  generateUtilityClasses,\n  init_clsx,\n  init_esm,\n  init_generateUtilityClass,\n  init_objectWithoutPropertiesLoose,\n  init_styled,\n  init_useThemeProps,\n  require_prop_types,\n  styled_default,\n  useThemeProps2 as useThemeProps\n} from \"/node_modules/.vite/deps/chunk-6ZT6S2Z7.js?v=3c106fdb\";\nimport {\n  require_jsx_runtime\n} from \"/node_modules/.vite/deps/chunk-U73TBONF.js?v=3c106fdb\";\nimport {\n  _extends,\n  init_extends\n} from \"/node_modules/.vite/deps/chunk-HMTWVGVS.js?v=3c106fdb\";\nimport {\n  require_react\n} from \"/node_modules/.vite/deps/chunk-ZGRSIX2Q.js?v=3c106fdb\";\nimport {\n  __toESM\n} from \"/node_modules/.vite/deps/chunk-ROME4SDB.js?v=3c106fdb\";\n\n// node_modules/@mui/material/ListItemText/ListItemText.js\ninit_objectWithoutPropertiesLoose();\ninit_extends();\nvar React = __toESM(require_react());\nvar import_prop_types = __toESM(require_prop_types());\ninit_clsx();\ninit_composeClasses();\ninit_useThemeProps();\ninit_styled();\n\n// node_modules/@mui/material/ListItemText/listItemTextClasses.js\ninit_esm();\ninit_generateUtilityClass();\nfunction getListItemTextUtilityClass(slot) {\n  return generateUtilityClass(\"MuiListItemText\", slot);\n}\nvar listItemTextClasses = generateUtilityClasses(\"MuiListItemText\", [\"root\", \"multiline\", \"dense\", \"inset\", \"primary\", \"secondary\"]);\nvar listItemTextClasses_default = listItemTextClasses;\n\n// node_modules/@mui/material/ListItemText/ListItemText.js\nvar import_jsx_runtime = __toESM(require_jsx_runtime());\nvar import_jsx_runtime2 = __toESM(require_jsx_runtime());\nvar _excluded = [\"children\", \"className\", \"disableTypography\", \"inset\", \"primary\", \"primaryTypographyProps\", \"secondary\", \"secondaryTypographyProps\"];\nvar useUtilityClasses = (ownerState) => {\n  const {\n    classes,\n    inset,\n    primary,\n    secondary,\n    dense\n  } = ownerState;\n  const slots = {\n    root: [\"root\", inset && \"inset\", dense && \"dense\", primary && secondary && \"multiline\"],\n    primary: [\"primary\"],\n    secondary: [\"secondary\"]\n  };\n  return composeClasses(slots, getListItemTextUtilityClass, classes);\n};\nvar ListItemTextRoot = styled_default(\"div\", {\n  name: \"MuiListItemText\",\n  slot: \"Root\",\n  overridesResolver: (props, styles) => {\n    const {\n      ownerState\n    } = props;\n    return [{\n      [`& .${listItemTextClasses_default.primary}`]: styles.primary\n    }, {\n      [`& .${listItemTextClasses_default.secondary}`]: styles.secondary\n    }, styles.root, ownerState.inset && styles.inset, ownerState.primary && ownerState.secondary && styles.multiline, ownerState.dense && styles.dense];\n  }\n})(({\n  ownerState\n}) => _extends({\n  flex: \"1 1 auto\",\n  minWidth: 0,\n  marginTop: 4,\n  marginBottom: 4\n}, ownerState.primary && ownerState.secondary && {\n  marginTop: 6,\n  marginBottom: 6\n}, ownerState.inset && {\n  paddingLeft: 56\n}));\nvar ListItemText = React.forwardRef(function ListItemText2(inProps, ref) {\n  const props = useThemeProps({\n    props: inProps,\n    name: \"MuiListItemText\"\n  });\n  const {\n    children,\n    className,\n    disableTypography = false,\n    inset = false,\n    primary: primaryProp,\n    primaryTypographyProps,\n    secondary: secondaryProp,\n    secondaryTypographyProps\n  } = props, other = _objectWithoutPropertiesLoose(props, _excluded);\n  const {\n    dense\n  } = React.useContext(ListContext_default);\n  let primary = primaryProp != null ? primaryProp : children;\n  let secondary = secondaryProp;\n  const ownerState = _extends({}, props, {\n    disableTypography,\n    inset,\n    primary: !!primary,\n    secondary: !!secondary,\n    dense\n  });\n  const classes = useUtilityClasses(ownerState);\n  if (primary != null && primary.type !== Typography_default && !disableTypography) {\n    primary = (0, import_jsx_runtime.jsx)(Typography_default, _extends({\n      variant: dense ? \"body2\" : \"body1\",\n      className: classes.primary,\n      component: primaryTypographyProps != null && primaryTypographyProps.variant ? void 0 : \"span\",\n      display: \"block\"\n    }, primaryTypographyProps, {\n      children: primary\n    }));\n  }\n  if (secondary != null && secondary.type !== Typography_default && !disableTypography) {\n    secondary = (0, import_jsx_runtime.jsx)(Typography_default, _extends({\n      variant: \"body2\",\n      className: classes.secondary,\n      color: \"text.secondary\",\n      display: \"block\"\n    }, secondaryTypographyProps, {\n      children: secondary\n    }));\n  }\n  return (0, import_jsx_runtime2.jsxs)(ListItemTextRoot, _extends({\n    className: clsx_default(classes.root, className),\n    ownerState,\n    ref\n  }, other, {\n    children: [primary, secondary]\n  }));\n});\ntrue ? ListItemText.propTypes = {\n  // ----------------------------- Warning --------------------------------\n  // | These PropTypes are generated from the TypeScript type definitions |\n  // |     To update them edit the d.ts file and run \"yarn proptypes\"     |\n  // ----------------------------------------------------------------------\n  /**\n   * Alias for the `primary` prop.\n   */\n  children: import_prop_types.default.node,\n  /**\n   * Override or extend the styles applied to the component.\n   */\n  classes: import_prop_types.default.object,\n  /**\n   * @ignore\n   */\n  className: import_prop_types.default.string,\n  /**\n   * If `true`, the children won't be wrapped by a Typography component.\n   * This can be useful to render an alternative Typography variant by wrapping\n   * the `children` (or `primary`) text, and optional `secondary` text\n   * with the Typography component.\n   * @default false\n   */\n  disableTypography: import_prop_types.default.bool,\n  /**\n   * If `true`, the children are indented.\n   * This should be used if there is no left avatar or left icon.\n   * @default false\n   */\n  inset: import_prop_types.default.bool,\n  /**\n   * The main content element.\n   */\n  primary: import_prop_types.default.node,\n  /**\n   * These props will be forwarded to the primary typography component\n   * (as long as disableTypography is not `true`).\n   */\n  primaryTypographyProps: import_prop_types.default.object,\n  /**\n   * The secondary content element.\n   */\n  secondary: import_prop_types.default.node,\n  /**\n   * These props will be forwarded to the secondary typography component\n   * (as long as disableTypography is not `true`).\n   */\n  secondaryTypographyProps: import_prop_types.default.object,\n  /**\n   * The system prop that allows defining system overrides as well as additional CSS styles.\n   */\n  sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object])\n} : void 0;\nvar ListItemText_default = ListItemText;\n\nexport {\n  getListItemTextUtilityClass,\n  listItemTextClasses_default,\n  ListItemText_default\n};\n//# sourceMappingURL=chunk-UE4NI5BP.js.map\n",
+      "start": 1701766112673,
+      "end": 1701766112674,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

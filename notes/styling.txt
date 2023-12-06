@@ -1,0 +1,40 @@
+Styling with theme
+- using styledcomponents with the theme provider 
+- using emotion with the theme interface from material/styles ✅ 
+
+Pros and Cons of Styled Components
+- theming functionality allows you to use mui theme without passing props manually
+- larger bundle size than Emotion which results longer load time
+- profiling and debugging is hard as component names is replaced with class names in devtools
+- lower performance than Emotion
+
+Pros and Cons of Styled Components
+- Emotion has smaller bundle size which results in better page load performance
+- Emotion is better in rendering, speeding up page interactivity times
+- css prop produces cleaner syntax for inline styling
+
+Example of using Emotion in react typescript:
+import { Theme as MuiTheme } from '@material-ui/core/styles';
+
+// Material-UI theme interface
+interface MaterialUITheme extends MuiTheme {}
+
+// Custom theme or styling interfaces
+interface MyCustomTheme {
+  // Add your custom theme properties here
+  customColor: string;
+}
+
+// Combined theme interface
+interface AppTheme extends MaterialUITheme, MyCustomTheme {}
+
+// Combined theme interface
+interface AppTheme extends MaterialUITheme, MyCustomTheme {}
+
+// Props interface that includes theme and other props
+interface ThemedLinkProps {
+  theme: AppTheme;
+  // Add other props as needed
+  to: string;
+  onClick?: () => void;
+}

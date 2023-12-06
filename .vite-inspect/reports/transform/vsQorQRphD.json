@@ -1,0 +1,87 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/lib/i18n/locales/en/global.json",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "{\r\n  \"Button_BackToHome\": \"Back to home\",\r\n  \"Description_Error404\": \"Please try again later or refresh the page.\",\r\n  \"ErrMsg_Address_Required\": \"Please enter your address\",\r\n  \"ErrMsg_DateOfBirth_Required\": \"Please enter your date of birth\",\r\n  \"ErrMsg_Email_Invalid\": \"Invalid email address. Please try again\",\r\n  \"ErrMsg_Email_MaxLength\": \"Your email must not exceed more than 320 characters\",\r\n  \"ErrMsg_Email_MinLength\": \"Your email must be more than 3 characters\",\r\n  \"ErrMsg_Email_Required\": \"Please enter your email\",\r\n  \"ErrMsg_EmailorPassword\": \"Email or password is invalid. Please try again\",\r\n  \"ErrMsg_FullName_MaxLength\": \"Your full name must not exceed more than 300 characters\",\r\n  \"ErrMsg_FullName_MinLength\": \"Your full name must be more than 3 characters\",\r\n  \"ErrMsg_FullName_Required\": \"Please enter your full name\",\r\n  \"ErrMsg_Gender_Required\": \"Please select your gender\",\r\n  \"ErrMsg_MobileNumber_Required\": \"Please enter your mobile number\",\r\n  \"ErrMsg_Occupation_Required\": \"Please select your occupation\",\r\n  \"ErrMsg_Pw_MaxLength\": \"Your password must not exceed 20 characters\",\r\n  \"ErrMsg_Pw_MinLength\": \"Your password must be at least 8 characters\",\r\n  \"ErrMsg_Pw_NumberorSpecialCharacter\": \"Your password must have at least one number or one special character\",\r\n  \"ErrMsg_Pw_Required\": \"Please enter your password\",\r\n  \"ErrMsg_Required\": \"Please select employment\",\r\n  \"Label_Account\": \"Account\",\r\n  \"Label_Address\": \"Address\",\r\n  \"Label_Back\": \"Back\",\r\n  \"Label_Cancel\": \"Cancel\",\r\n  \"Label_Continue\": \"Continue\",\r\n  \"Label_DateOfBirth\": \"Date of Birth\",\r\n  \"Label_Demographic\": \"Demographic\",\r\n  \"Label_EmailAddress\": \"Email Address\",\r\n  \"Label_Employed\": \"Employed\",\r\n  \"Label_Employment\": \"Occupation\",\r\n  \"Label_Female\": \"Female\",\r\n  \"Label_FullName\": \"Full Name\",\r\n  \"Label_Gender\": \"Gender\",\r\n  \"Label_Male\": \"Male\",\r\n  \"Label_MobileNumber\": \"Mobile Number\",\r\n  \"Label_NoAccount\": \"No account?\",\r\n  \"Label_NonBinary\": \"Non-binary\",\r\n  \"Label_NotEmployed\": \"Not Employed\",\r\n  \"Label_Password\": \"Password\",\r\n  \"Label_Personal\": \"Personal\",\r\n  \"Label_Retired\": \"Retired\",\r\n  \"Label_SignIn\": \"Sign In\",\r\n  \"Label_SignUp\": \"Sign Up\",\r\n  \"Label_SignUpNow\": \"Sign up now.\",\r\n  \"Label_Student\": \"Student\",\r\n  \"Label_WelcomeBack\": \"Welcome Back!\",\r\n  \"Placeholder_Address\": \"Enter your address\",\r\n  \"Placeholder_EmailAddress\": \"Enter email\",\r\n  \"Placeholder_FullName\": \"Enter full name\",\r\n  \"Placeholder_Gender\": \"Select gender\",\r\n  \"Placeholder_MobileNumber\": \"Enter your mobile number\",\r\n  \"Placeholder_Occupation\": \"Select occupation\",\r\n  \"Placeholder_Password\": \"Enter password\",\r\n  \"Placeholder\": \"Select employment\",\r\n  \"Title_Profile\": \"My Profile\",\r\n  \"Title_Error404\": \"Oops! Something went wrong.\",\r\n\r\n  \"Label_PrivacyPolicy\": \"Privacy Policy\",\r\n  \"Label_Terms&Conditions\": \"Terms and Conditions\",\r\n  \"Label_FullStackDeveloper\": \"Full Stack Developer\",\r\n  \"Label_DevelopedBy\": \"Developed By\"\r\n}\r\n",
+      "start": 1701766112406,
+      "end": 1701766112406
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112406,
+      "end": 1701766112406,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "result": "export const Button_BackToHome = \"Back to home\";\nexport const Description_Error404 = \"Please try again later or refresh the page.\";\nexport const ErrMsg_Address_Required = \"Please enter your address\";\nexport const ErrMsg_DateOfBirth_Required = \"Please enter your date of birth\";\nexport const ErrMsg_Email_Invalid = \"Invalid email address. Please try again\";\nexport const ErrMsg_Email_MaxLength = \"Your email must not exceed more than 320 characters\";\nexport const ErrMsg_Email_MinLength = \"Your email must be more than 3 characters\";\nexport const ErrMsg_Email_Required = \"Please enter your email\";\nexport const ErrMsg_EmailorPassword = \"Email or password is invalid. Please try again\";\nexport const ErrMsg_FullName_MaxLength = \"Your full name must not exceed more than 300 characters\";\nexport const ErrMsg_FullName_MinLength = \"Your full name must be more than 3 characters\";\nexport const ErrMsg_FullName_Required = \"Please enter your full name\";\nexport const ErrMsg_Gender_Required = \"Please select your gender\";\nexport const ErrMsg_MobileNumber_Required = \"Please enter your mobile number\";\nexport const ErrMsg_Occupation_Required = \"Please select your occupation\";\nexport const ErrMsg_Pw_MaxLength = \"Your password must not exceed 20 characters\";\nexport const ErrMsg_Pw_MinLength = \"Your password must be at least 8 characters\";\nexport const ErrMsg_Pw_NumberorSpecialCharacter = \"Your password must have at least one number or one special character\";\nexport const ErrMsg_Pw_Required = \"Please enter your password\";\nexport const ErrMsg_Required = \"Please select employment\";\nexport const Label_Account = \"Account\";\nexport const Label_Address = \"Address\";\nexport const Label_Back = \"Back\";\nexport const Label_Cancel = \"Cancel\";\nexport const Label_Continue = \"Continue\";\nexport const Label_DateOfBirth = \"Date of Birth\";\nexport const Label_Demographic = \"Demographic\";\nexport const Label_EmailAddress = \"Email Address\";\nexport const Label_Employed = \"Employed\";\nexport const Label_Employment = \"Occupation\";\nexport const Label_Female = \"Female\";\nexport const Label_FullName = \"Full Name\";\nexport const Label_Gender = \"Gender\";\nexport const Label_Male = \"Male\";\nexport const Label_MobileNumber = \"Mobile Number\";\nexport const Label_NoAccount = \"No account?\";\nexport const Label_NonBinary = \"Non-binary\";\nexport const Label_NotEmployed = \"Not Employed\";\nexport const Label_Password = \"Password\";\nexport const Label_Personal = \"Personal\";\nexport const Label_Retired = \"Retired\";\nexport const Label_SignIn = \"Sign In\";\nexport const Label_SignUp = \"Sign Up\";\nexport const Label_SignUpNow = \"Sign up now.\";\nexport const Label_Student = \"Student\";\nexport const Label_WelcomeBack = \"Welcome Back!\";\nexport const Placeholder_Address = \"Enter your address\";\nexport const Placeholder_EmailAddress = \"Enter email\";\nexport const Placeholder_FullName = \"Enter full name\";\nexport const Placeholder_Gender = \"Select gender\";\nexport const Placeholder_MobileNumber = \"Enter your mobile number\";\nexport const Placeholder_Occupation = \"Select occupation\";\nexport const Placeholder_Password = \"Enter password\";\nexport const Placeholder = \"Select employment\";\nexport const Title_Profile = \"My Profile\";\nexport const Title_Error404 = \"Oops! Something went wrong.\";\nexport const Label_PrivacyPolicy = \"Privacy Policy\";\nexport const Label_FullStackDeveloper = \"Full Stack Developer\";\nexport const Label_DevelopedBy = \"Developed By\";\nexport default {\n\tButton_BackToHome: Button_BackToHome,\n\tDescription_Error404: Description_Error404,\n\tErrMsg_Address_Required: ErrMsg_Address_Required,\n\tErrMsg_DateOfBirth_Required: ErrMsg_DateOfBirth_Required,\n\tErrMsg_Email_Invalid: ErrMsg_Email_Invalid,\n\tErrMsg_Email_MaxLength: ErrMsg_Email_MaxLength,\n\tErrMsg_Email_MinLength: ErrMsg_Email_MinLength,\n\tErrMsg_Email_Required: ErrMsg_Email_Required,\n\tErrMsg_EmailorPassword: ErrMsg_EmailorPassword,\n\tErrMsg_FullName_MaxLength: ErrMsg_FullName_MaxLength,\n\tErrMsg_FullName_MinLength: ErrMsg_FullName_MinLength,\n\tErrMsg_FullName_Required: ErrMsg_FullName_Required,\n\tErrMsg_Gender_Required: ErrMsg_Gender_Required,\n\tErrMsg_MobileNumber_Required: ErrMsg_MobileNumber_Required,\n\tErrMsg_Occupation_Required: ErrMsg_Occupation_Required,\n\tErrMsg_Pw_MaxLength: ErrMsg_Pw_MaxLength,\n\tErrMsg_Pw_MinLength: ErrMsg_Pw_MinLength,\n\tErrMsg_Pw_NumberorSpecialCharacter: ErrMsg_Pw_NumberorSpecialCharacter,\n\tErrMsg_Pw_Required: ErrMsg_Pw_Required,\n\tErrMsg_Required: ErrMsg_Required,\n\tLabel_Account: Label_Account,\n\tLabel_Address: Label_Address,\n\tLabel_Back: Label_Back,\n\tLabel_Cancel: Label_Cancel,\n\tLabel_Continue: Label_Continue,\n\tLabel_DateOfBirth: Label_DateOfBirth,\n\tLabel_Demographic: Label_Demographic,\n\tLabel_EmailAddress: Label_EmailAddress,\n\tLabel_Employed: Label_Employed,\n\tLabel_Employment: Label_Employment,\n\tLabel_Female: Label_Female,\n\tLabel_FullName: Label_FullName,\n\tLabel_Gender: Label_Gender,\n\tLabel_Male: Label_Male,\n\tLabel_MobileNumber: Label_MobileNumber,\n\tLabel_NoAccount: Label_NoAccount,\n\tLabel_NonBinary: Label_NonBinary,\n\tLabel_NotEmployed: Label_NotEmployed,\n\tLabel_Password: Label_Password,\n\tLabel_Personal: Label_Personal,\n\tLabel_Retired: Label_Retired,\n\tLabel_SignIn: Label_SignIn,\n\tLabel_SignUp: Label_SignUp,\n\tLabel_SignUpNow: Label_SignUpNow,\n\tLabel_Student: Label_Student,\n\tLabel_WelcomeBack: Label_WelcomeBack,\n\tPlaceholder_Address: Placeholder_Address,\n\tPlaceholder_EmailAddress: Placeholder_EmailAddress,\n\tPlaceholder_FullName: Placeholder_FullName,\n\tPlaceholder_Gender: Placeholder_Gender,\n\tPlaceholder_MobileNumber: Placeholder_MobileNumber,\n\tPlaceholder_Occupation: Placeholder_Occupation,\n\tPlaceholder_Password: Placeholder_Password,\n\tPlaceholder: Placeholder,\n\tTitle_Profile: Title_Profile,\n\tTitle_Error404: Title_Error404,\n\tLabel_PrivacyPolicy: Label_PrivacyPolicy,\n\t\"Label_Terms&Conditions\": \"Terms and Conditions\",\n\tLabel_FullStackDeveloper: Label_FullStackDeveloper,\n\tLabel_DevelopedBy: Label_DevelopedBy\n};\n",
+      "start": 1701766112406,
+      "end": 1701766112407,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "start": 1701766112408,
+      "end": 1701766112408,
+      "order": "normal"
+    }
+  ]
+}

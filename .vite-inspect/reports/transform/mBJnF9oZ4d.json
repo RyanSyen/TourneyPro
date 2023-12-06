@@ -1,0 +1,87 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.styled.tsx",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import 'slick-carousel/slick/slick.css';\r\nimport 'slick-carousel/slick/slick-theme.css';\r\n\r\nimport styled from '@emotion/styled';\r\nimport { Box } from '@mui/material';\r\nimport { styled as muiStyled } from '@mui/material/styles';\r\nimport Slider from 'react-slick';\r\n\r\nconst SliderContainer = muiStyled(Box)(({ theme }) => {\r\n  // console.log('test');\r\n\r\n  return {\r\n    position: 'relative',\r\n    width: '100%',\r\n    paddingBottom: '98%',\r\n\r\n    [theme.breakpoints.up('md')]: {\r\n      paddingBottom: '40%',\r\n    },\r\n  };\r\n});\r\n\r\nconst CarouselSlider = styled(Slider)`\r\n  position: absolute;\r\n  object-fit: cover;\r\n  object-position: center;\r\n  width: 100%;\r\n  height: 100%;\r\n\r\n  .slick-list,\r\n  .slick-track,\r\n  .slick-slide,\r\n  .slick-slide * {\r\n    height: 100%;\r\n  }\r\n\r\n  .slick-dots {\r\n    bottom: 5%;\r\n    position: absolute;\r\n    display: block;\r\n    width: 100%;\r\n    padding: 0;\r\n    margin: 0;\r\n    list-style: none;\r\n    text-align: center;\r\n  }\r\n\r\n  .slick-dots button {\r\n    font-size: 0;\r\n    line-height: 0;\r\n    display: block;\r\n    width: 15px;\r\n    height: 15px;\r\n    padding: 5px;\r\n    cursor: pointer;\r\n    color: transparent;\r\n    border: 3px solid #fff;\r\n    outline: none;\r\n    background: #000;\r\n    border-radius: 50%;\r\n    opacity: 0.5;\r\n  }\r\n\r\n  .slick-active button {\r\n    opacity: 1;\r\n    color: #000;\r\n  }\r\n`;\r\n\r\nexport { CarouselSlider, SliderContainer };\r\n",
+      "start": 1701766112744,
+      "end": 1701766112744
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112744,
+      "end": 1701766112744,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112744,
+      "end": 1701766112744,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112744,
+      "end": 1701766112744,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import 'slick-carousel/slick/slick.css';\nimport 'slick-carousel/slick/slick-theme.css';\nimport styled from '@emotion/styled';\nimport { Box } from '@mui/material';\nimport { styled as muiStyled } from '@mui/material/styles';\nimport Slider from 'react-slick';\nconst SliderContainer = muiStyled(Box)(({ theme })=>{\n    // console.log('test');\n    return {\n        position: 'relative',\n        width: '100%',\n        paddingBottom: '98%',\n        [theme.breakpoints.up('md')]: {\n            paddingBottom: '40%'\n        }\n    };\n});\nconst CarouselSlider = styled(Slider)`\r\n  position: absolute;\r\n  object-fit: cover;\r\n  object-position: center;\r\n  width: 100%;\r\n  height: 100%;\r\n\r\n  .slick-list,\r\n  .slick-track,\r\n  .slick-slide,\r\n  .slick-slide * {\r\n    height: 100%;\r\n  }\r\n\r\n  .slick-dots {\r\n    bottom: 5%;\r\n    position: absolute;\r\n    display: block;\r\n    width: 100%;\r\n    padding: 0;\r\n    margin: 0;\r\n    list-style: none;\r\n    text-align: center;\r\n  }\r\n\r\n  .slick-dots button {\r\n    font-size: 0;\r\n    line-height: 0;\r\n    display: block;\r\n    width: 15px;\r\n    height: 15px;\r\n    padding: 5px;\r\n    cursor: pointer;\r\n    color: transparent;\r\n    border: 3px solid #fff;\r\n    outline: none;\r\n    background: #000;\r\n    border-radius: 50%;\r\n    opacity: 0.5;\r\n  }\r\n\r\n  .slick-active button {\r\n    opacity: 1;\r\n    color: #000;\r\n  }\r\n`;\nexport { CarouselSlider, SliderContainer };\n",
+      "start": 1701766112744,
+      "end": 1701766112760,
+      "order": "normal",
+      "sourcemaps": "{\"version\":3,\"sources\":[\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/components/surfaces/carousel/Carousel.styled.tsx\"],\"sourcesContent\":[\"import 'slick-carousel/slick/slick.css';\\r\\nimport 'slick-carousel/slick/slick-theme.css';\\r\\n\\r\\nimport styled from '@emotion/styled';\\r\\nimport { Box } from '@mui/material';\\r\\nimport { styled as muiStyled } from '@mui/material/styles';\\r\\nimport Slider from 'react-slick';\\r\\n\\r\\nconst SliderContainer = muiStyled(Box)(({ theme }) => {\\r\\n  // console.log('test');\\r\\n\\r\\n  return {\\r\\n    position: 'relative',\\r\\n    width: '100%',\\r\\n    paddingBottom: '98%',\\r\\n\\r\\n    [theme.breakpoints.up('md')]: {\\r\\n      paddingBottom: '40%',\\r\\n    },\\r\\n  };\\r\\n});\\r\\n\\r\\nconst CarouselSlider = styled(Slider)`\\r\\n  position: absolute;\\r\\n  object-fit: cover;\\r\\n  object-position: center;\\r\\n  width: 100%;\\r\\n  height: 100%;\\r\\n\\r\\n  .slick-list,\\r\\n  .slick-track,\\r\\n  .slick-slide,\\r\\n  .slick-slide * {\\r\\n    height: 100%;\\r\\n  }\\r\\n\\r\\n  .slick-dots {\\r\\n    bottom: 5%;\\r\\n    position: absolute;\\r\\n    display: block;\\r\\n    width: 100%;\\r\\n    padding: 0;\\r\\n    margin: 0;\\r\\n    list-style: none;\\r\\n    text-align: center;\\r\\n  }\\r\\n\\r\\n  .slick-dots button {\\r\\n    font-size: 0;\\r\\n    line-height: 0;\\r\\n    display: block;\\r\\n    width: 15px;\\r\\n    height: 15px;\\r\\n    padding: 5px;\\r\\n    cursor: pointer;\\r\\n    color: transparent;\\r\\n    border: 3px solid #fff;\\r\\n    outline: none;\\r\\n    background: #000;\\r\\n    border-radius: 50%;\\r\\n    opacity: 0.5;\\r\\n  }\\r\\n\\r\\n  .slick-active button {\\r\\n    opacity: 1;\\r\\n    color: #000;\\r\\n  }\\r\\n`;\\r\\n\\r\\nexport { CarouselSlider, SliderContainer };\\r\\n\"],\"names\":[\"styled\",\"Box\",\"muiStyled\",\"Slider\",\"SliderContainer\",\"theme\",\"position\",\"width\",\"paddingBottom\",\"breakpoints\",\"up\",\"CarouselSlider\"],\"mappings\":\"AAAA,OAAO,iCAAiC;AACxC,OAAO,uCAAuC;AAE9C,OAAOA,YAAY,kBAAkB;AACrC,SAASC,GAAG,QAAQ,gBAAgB;AACpC,SAASD,UAAUE,SAAS,QAAQ,uBAAuB;AAC3D,OAAOC,YAAY,cAAc;AAEjC,MAAMC,kBAAkBF,UAAUD,KAAK,CAAC,EAAEI,KAAK,EAAE;IAC/C,uBAAuB;IAEvB,OAAO;QACLC,UAAU;QACVC,OAAO;QACPC,eAAe;QAEf,CAACH,MAAMI,WAAW,CAACC,EAAE,CAAC,MAAM,EAAE;YAC5BF,eAAe;QACjB;IACF;AACF;AAEA,MAAMG,iBAAiBX,OAAOG,OAAO,CAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AA6CtC,CAAC;AAED,SAASQ,cAAc,EAAEP,eAAe,GAAG\"}"
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112760,
+      "end": 1701766112761,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112761,
+      "end": 1701766112761,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112761,
+      "end": 1701766112761,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112761,
+      "end": 1701766112761,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112761,
+      "end": 1701766112761,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112761,
+      "end": 1701766112761,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112761,
+      "end": 1701766112761,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "import \"/node_modules/slick-carousel/slick/slick.css\";\nimport \"/node_modules/slick-carousel/slick/slick-theme.css\";\nimport styled from \"/node_modules/.vite/deps/@emotion_styled.js?v=3c106fdb\";\nimport { Box } from \"/node_modules/.vite/deps/@mui_material.js?v=3c106fdb\";\nimport { styled as muiStyled } from \"/node_modules/.vite/deps/@mui_material_styles.js?v=3c106fdb\";\nimport __vite__cjsImport5_reactSlick from \"/node_modules/.vite/deps/react-slick.js?v=3c106fdb\"; const Slider = __vite__cjsImport5_reactSlick.__esModule ? __vite__cjsImport5_reactSlick.default : __vite__cjsImport5_reactSlick;\nconst SliderContainer = muiStyled(Box)(({ theme })=>{\n    // console.log('test');\n    return {\n        position: 'relative',\n        width: '100%',\n        paddingBottom: '98%',\n        [theme.breakpoints.up('md')]: {\n            paddingBottom: '40%'\n        }\n    };\n});\nconst CarouselSlider = styled(Slider)`\r\n  position: absolute;\r\n  object-fit: cover;\r\n  object-position: center;\r\n  width: 100%;\r\n  height: 100%;\r\n\r\n  .slick-list,\r\n  .slick-track,\r\n  .slick-slide,\r\n  .slick-slide * {\r\n    height: 100%;\r\n  }\r\n\r\n  .slick-dots {\r\n    bottom: 5%;\r\n    position: absolute;\r\n    display: block;\r\n    width: 100%;\r\n    padding: 0;\r\n    margin: 0;\r\n    list-style: none;\r\n    text-align: center;\r\n  }\r\n\r\n  .slick-dots button {\r\n    font-size: 0;\r\n    line-height: 0;\r\n    display: block;\r\n    width: 15px;\r\n    height: 15px;\r\n    padding: 5px;\r\n    cursor: pointer;\r\n    color: transparent;\r\n    border: 3px solid #fff;\r\n    outline: none;\r\n    background: #000;\r\n    border-radius: 50%;\r\n    opacity: 0.5;\r\n  }\r\n\r\n  .slick-active button {\r\n    opacity: 1;\r\n    color: #000;\r\n  }\r\n`;\nexport { CarouselSlider, SliderContainer };\n",
+      "start": 1701766112761,
+      "end": 1701766112771,
+      "order": "normal",
+      "sourcemaps": null
+    }
+  ]
+}

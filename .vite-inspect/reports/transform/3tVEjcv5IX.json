@@ -1,0 +1,191 @@
+{
+  "resolvedId": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "import BaseModal from 'components/feedback/modal/Modal.tsx';\r\nimport useLogin from 'features/auth/hooks/useLogin.ts';\r\nimport useRegister from 'features/auth/hooks/useRegister.ts';\r\nimport { useTranslation } from 'react-i18next';\r\n\r\nimport AuthWrapper from './AuthModal.styles.ts';\r\n\r\nconst AuthModal = () => {\r\n  const { t: localizer } = useTranslation('global');\r\n  const login = useLogin();\r\n  const register = useRegister();\r\n\r\n  if (register.isSignUp) {\r\n    return (\r\n      <BaseModal\r\n        open={register.isSignUp}\r\n        onClose={register.close}\r\n        title={localizer('Label_SignUp')}\r\n        desc=\"\"\r\n      >\r\n        <AuthWrapper>Sign up</AuthWrapper>\r\n      </BaseModal>\r\n    );\r\n  }\r\n  return (\r\n    <BaseModal\r\n      open={login.isOpen}\r\n      onClose={login.close}\r\n      title={localizer('Label_SignIn')}\r\n      desc={localizer('Label_WelcomeBack')}\r\n    >\r\n      <AuthWrapper>Sign in</AuthWrapper>\r\n    </BaseModal>\r\n  );\r\n};\r\n\r\nexport default AuthModal;\r\n",
+      "start": 1701766112658,
+      "end": 1701766112658
+    },
+    {
+      "name": "vite:css",
+      "start": 1701766112658,
+      "end": 1701766112658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1701766112658,
+      "end": 1701766112658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1701766112658,
+      "end": 1701766112658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:react-swc",
+      "result": "import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport { jsxDEV as _jsxDEV } from \"react/jsx-dev-runtime\";\nvar _s = $RefreshSig$();\nimport BaseModal from 'components/feedback/modal/Modal.tsx';\nimport useLogin from 'features/auth/hooks/useLogin.ts';\nimport useRegister from 'features/auth/hooks/useRegister.ts';\nimport { useTranslation } from 'react-i18next';\nimport AuthWrapper from './AuthModal.styles.ts';\nconst AuthModal = ()=>{\n    _s();\n    const { t: localizer } = useTranslation('global');\n    const login = useLogin();\n    const register = useRegister();\n    if (register.isSignUp) {\n        return /*#__PURE__*/ _jsxDEV(BaseModal, {\n            open: register.isSignUp,\n            onClose: register.close,\n            title: localizer('Label_SignUp'),\n            desc: \"\",\n            children: /*#__PURE__*/ _jsxDEV(AuthWrapper, {\n                children: \"Sign up\"\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\",\n                lineNumber: 21,\n                columnNumber: 9\n            }, this)\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\",\n            lineNumber: 15,\n            columnNumber: 7\n        }, this);\n    }\n    return /*#__PURE__*/ _jsxDEV(BaseModal, {\n        open: login.isOpen,\n        onClose: login.close,\n        title: localizer('Label_SignIn'),\n        desc: localizer('Label_WelcomeBack'),\n        children: /*#__PURE__*/ _jsxDEV(AuthWrapper, {\n            children: \"Sign in\"\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\",\n            lineNumber: 32,\n            columnNumber: 7\n        }, this)\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\",\n        lineNumber: 26,\n        columnNumber: 5\n    }, this);\n};\n_s(AuthModal, \"iZN7ruh1LyjTH/RpmOUcBnZRDR0=\", false, function() {\n    return [\n        useTranslation,\n        useLogin,\n        useRegister\n    ];\n});\n_c = AuthModal;\nexport default AuthModal;\nvar _c;\n$RefreshReg$(_c, \"AuthModal\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+      "start": 1701766112658,
+      "end": 1701766112714,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx"
+        ],
+        "sourcesContent": [
+          "import BaseModal from 'components/feedback/modal/Modal.tsx';\r\nimport useLogin from 'features/auth/hooks/useLogin.ts';\r\nimport useRegister from 'features/auth/hooks/useRegister.ts';\r\nimport { useTranslation } from 'react-i18next';\r\n\r\nimport AuthWrapper from './AuthModal.styles.ts';\r\n\r\nconst AuthModal = () => {\r\n  const { t: localizer } = useTranslation('global');\r\n  const login = useLogin();\r\n  const register = useRegister();\r\n\r\n  if (register.isSignUp) {\r\n    return (\r\n      <BaseModal\r\n        open={register.isSignUp}\r\n        onClose={register.close}\r\n        title={localizer('Label_SignUp')}\r\n        desc=\"\"\r\n      >\r\n        <AuthWrapper>Sign up</AuthWrapper>\r\n      </BaseModal>\r\n    );\r\n  }\r\n  return (\r\n    <BaseModal\r\n      open={login.isOpen}\r\n      onClose={login.close}\r\n      title={localizer('Label_SignIn')}\r\n      desc={localizer('Label_WelcomeBack')}\r\n    >\r\n      <AuthWrapper>Sign in</AuthWrapper>\r\n    </BaseModal>\r\n  );\r\n};\r\n\r\nexport default AuthModal;\r\n"
+        ],
+        "names": [
+          "BaseModal",
+          "useLogin",
+          "useRegister",
+          "useTranslation",
+          "AuthWrapper",
+          "AuthModal",
+          "t",
+          "localizer",
+          "login",
+          "register",
+          "isSignUp",
+          "open",
+          "onClose",
+          "close",
+          "title",
+          "desc",
+          "isOpen"
+        ],
+        "mappings": ";;;;;;;;;;AAAA,OAAOA,eAAe,sCAAsC;AAC5D,OAAOC,cAAc,kCAAkC;AACvD,OAAOC,iBAAiB,qCAAqC;AAC7D,SAASC,cAAc,QAAQ,gBAAgB;AAE/C,OAAOC,iBAAiB,wBAAwB;AAEhD,MAAMC,YAAY;;IAChB,MAAM,EAAEC,GAAGC,SAAS,EAAE,GAAGJ,eAAe;IACxC,MAAMK,QAAQP;IACd,MAAMQ,WAAWP;IAEjB,IAAIO,SAASC,QAAQ,EAAE;QACrB,qBACE,QAACV;YACCW,MAAMF,SAASC,QAAQ;YACvBE,SAASH,SAASI,KAAK;YACvBC,OAAOP,UAAU;YACjBQ,MAAK;sBAEL,cAAA,QAACX;0BAAY;;;;;;;;;;;IAGnB;IACA,qBACE,QAACJ;QACCW,MAAMH,MAAMQ,MAAM;QAClBJ,SAASJ,MAAMK,KAAK;QACpBC,OAAOP,UAAU;QACjBQ,MAAMR,UAAU;kBAEhB,cAAA,QAACH;sBAAY;;;;;;;;;;;AAGnB;GA3BMC;;QACqBF;QACXF;QACGC;;;KAHbG;AA6BN,eAAeA,UAAU"
+      }
+    },
+    {
+      "name": "vite:define",
+      "start": 1701766112714,
+      "end": 1701766112714,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1701766112714,
+      "end": 1701766112714,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1701766112714,
+      "end": 1701766112714,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1701766112714,
+      "end": 1701766112714,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1701766112715,
+      "end": 1701766112715,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1701766112715,
+      "end": 1701766112715,
+      "order": "normal"
+    },
+    {
+      "name": "vite:client-inject",
+      "start": 1701766112715,
+      "end": 1701766112715,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-analysis",
+      "result": "[Error]",
+      "start": 1701766112715,
+      "end": 1701766112720,
+      "order": "normal",
+      "error": {
+        "message": "Failed to resolve import \"features/auth/hooks/useLogin.ts\" from \"src\\features\\auth\\components\\AuthModal.tsx\". Does the file exist?",
+        "stack": [
+          {
+            "functionName": "formatError",
+            "fileName": "file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js",
+            "lineNumber": 44062,
+            "columnNumber": 46,
+            "source": "    at formatError (file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44062:46)"
+          },
+          {
+            "functionName": "TransformContext.error",
+            "fileName": "file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js",
+            "lineNumber": 44058,
+            "columnNumber": 19,
+            "source": "    at TransformContext.error (file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44058:19)"
+          },
+          {
+            "functionName": "normalizeUrl",
+            "fileName": "file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js",
+            "lineNumber": 41844,
+            "columnNumber": 33,
+            "source": "    at normalizeUrl (file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41844:33)"
+          },
+          {
+            "fileName": "async file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js",
+            "lineNumber": 41998,
+            "columnNumber": 47,
+            "source": "    at async file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41998:47"
+          },
+          {
+            "functionName": "async TransformContext.transform",
+            "fileName": "file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js",
+            "lineNumber": 41914,
+            "columnNumber": 13,
+            "source": "    at async TransformContext.transform (file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41914:13)"
+          },
+          {
+            "fileName": "async file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite-plugin-inspect/dist/index.mjs",
+            "lineNumber": 372,
+            "columnNumber": 17,
+            "source": "    at async file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite-plugin-inspect/dist/index.mjs:372:17"
+          },
+          {
+            "functionName": "async Object.transform",
+            "fileName": "file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js",
+            "lineNumber": 44352,
+            "columnNumber": 30,
+            "source": "    at async Object.transform (file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44352:30)"
+          },
+          {
+            "functionName": "async loadAndTransform",
+            "fileName": "file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js",
+            "lineNumber": 55026,
+            "columnNumber": 29,
+            "source": "    at async loadAndTransform (file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:55026:29)"
+          },
+          {
+            "functionName": "async viteTransformMiddleware",
+            "fileName": "file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js",
+            "lineNumber": 64430,
+            "columnNumber": 32,
+            "source": "    at async viteTransformMiddleware (file:///C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:64430:32)"
+          }
+        ],
+        "raw": {
+          "plugin": "vite:import-analysis",
+          "id": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx",
+          "pluginCode": "import * as RefreshRuntime from \"/@react-refresh\";\n\nif (!window.$RefreshReg$) throw new Error(\"React refresh preamble was not loaded. Something is wrong.\");\nconst prevRefreshReg = window.$RefreshReg$;\nconst prevRefreshSig = window.$RefreshSig$;\nwindow.$RefreshReg$ = RefreshRuntime.getRefreshReg(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\");\nwindow.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;\n\nimport { jsxDEV as _jsxDEV } from \"react/jsx-dev-runtime\";\nvar _s = $RefreshSig$();\nimport BaseModal from 'components/feedback/modal/Modal.tsx';\nimport useLogin from 'features/auth/hooks/useLogin.ts';\nimport useRegister from 'features/auth/hooks/useRegister.ts';\nimport { useTranslation } from 'react-i18next';\nimport AuthWrapper from './AuthModal.styles.ts';\nconst AuthModal = ()=>{\n    _s();\n    const { t: localizer } = useTranslation('global');\n    const login = useLogin();\n    const register = useRegister();\n    if (register.isSignUp) {\n        return /*#__PURE__*/ _jsxDEV(BaseModal, {\n            open: register.isSignUp,\n            onClose: register.close,\n            title: localizer('Label_SignUp'),\n            desc: \"\",\n            children: /*#__PURE__*/ _jsxDEV(AuthWrapper, {\n                children: \"Sign up\"\n            }, void 0, false, {\n                fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\",\n                lineNumber: 21,\n                columnNumber: 9\n            }, this)\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\",\n            lineNumber: 15,\n            columnNumber: 7\n        }, this);\n    }\n    return /*#__PURE__*/ _jsxDEV(BaseModal, {\n        open: login.isOpen,\n        onClose: login.close,\n        title: localizer('Label_SignIn'),\n        desc: localizer('Label_WelcomeBack'),\n        children: /*#__PURE__*/ _jsxDEV(AuthWrapper, {\n            children: \"Sign in\"\n        }, void 0, false, {\n            fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\",\n            lineNumber: 32,\n            columnNumber: 7\n        }, this)\n    }, void 0, false, {\n        fileName: \"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\",\n        lineNumber: 26,\n        columnNumber: 5\n    }, this);\n};\n_s(AuthModal, \"iZN7ruh1LyjTH/RpmOUcBnZRDR0=\", false, function() {\n    return [\n        useTranslation,\n        useLogin,\n        useRegister\n    ];\n});\n_c = AuthModal;\nexport default AuthModal;\nvar _c;\n$RefreshReg$(_c, \"AuthModal\");\n\n\nwindow.$RefreshReg$ = prevRefreshReg;\nwindow.$RefreshSig$ = prevRefreshSig;\nRefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {\n  RefreshRuntime.registerExportsForReactRefresh(\"C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx\", currentExports);\n  import.meta.hot.accept((nextExports) => {\n    if (!nextExports) return;\n    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);\n    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);\n  });\n});\n",
+          "loc": {
+            "file": "C:/Users/ryan.wong/Desktop/dev/TourneyPro_v2/src/features/auth/components/AuthModal.tsx",
+            "line": 2,
+            "column": 21
+          },
+          "frame": "10 |  var _s = $RefreshSig$();\n11 |  import BaseModal from 'components/feedback/modal/Modal.tsx';\n12 |  import useLogin from 'features/auth/hooks/useLogin.ts';\n   |                        ^\n13 |  import useRegister from 'features/auth/hooks/useRegister.ts';\n14 |  import { useTranslation } from 'react-i18next';"
+        }
+      }
+    }
+  ]
+}
