@@ -1,0 +1,9 @@
+Issues when using Controller
+Controller - a wrapper component for controlled CustomInputProps
+FormProvider - host context obj and allow consuming components to subscribe to context and useForm props and methods
+
+https://react-hook-form.com/docs/usecontroller/controller
+
+when you pass the control obj, using useForm(), it will throw an err "Cannot read properties of null (reading 'control')" this is because it needs to be wrapped with the FormProvider
+
+however to use the FormProvider, we need to pass in all the useForm methods through props spreading but our eslint config suggests that we do not use prop spreading for code readability and avoid passing unnecessary props 
