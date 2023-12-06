@@ -8,17 +8,6 @@ import { useTranslation } from 'react-i18next';
 import useLogin from '../hooks/useLogin.ts';
 import StyledSignInForm from './SignInForm.styles.ts';
 
-declare module '@mui/material/TextField' {
-  interface TextFieldPropsVariantOverrides {
-    lineInput: true;
-  }
-  // export type ExtendedVariant = TextFieldVariants | 'lineInput';
-}
-
-// type ExtendedVariant = TextFieldVariants | 'lineInput';
-
-//   export type TextFieldVariants ='originalVariant1' | 'originalVariant2' | 'yourCustomVariant1' | 'yourCustomVariant2';
-
 const SignInForm = (props) => {
   const { t: localizer } = useTranslation('global');
   const { register, control, togglePw, submit, Controller } = useLogin();
@@ -36,7 +25,7 @@ const SignInForm = (props) => {
             render={({ field: { onChange, onBlur, value, ref } }) => (
               <TextField
                 // variant={'lineInput' as ExtendedVariant}
-                variant="lineInput"
+                variant="outlined"
                 onChange={onChange} // send value to hook form
                 onBlur={onBlur} // notify when input is touched/blur
                 value={value}
