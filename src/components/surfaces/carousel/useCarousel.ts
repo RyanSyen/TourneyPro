@@ -37,6 +37,14 @@ const useCarousel = () => {
       views: '5,404,984',
       published: '2018-08-17T07:01:09.000Z',
     },
+    {
+      id: 3,
+      name: 'Petronas Malaysia Open 2024',
+      src: 'Ticket2u',
+      url: 'https://images.t2u.io/upload/event/listing/0-33423-AWSS35bbd68b8-2e92-4569-b796-3925fc359681-PyOT.jpg',
+      views: '5,404,984',
+      published: '2018-08-17T07:01:09.000Z',
+    },
   ];
 
   return {

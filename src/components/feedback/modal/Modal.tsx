@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 
-import AppLogo from '../../common/appLogo.tsx';
+import AppLogo from '../../common/AppLogo.tsx';
 import { CloseBtnLink, ContentWrapper, StyledModal } from './Modal.styles.ts';
 
 interface CustomModalProps {
@@ -45,7 +45,10 @@ const BaseModal = (props: CustomModalProps) => {
       }}
     >
       <ContentWrapper>
-        <Box className="flex-center" sx={{ padding: '30px 0' }}>
+        <Box
+          className="flex-center"
+          sx={{ padding: '30px 0', overflow: 'none' }}
+        >
           <AppLogo
             enableOnclick={false}
             textSize="clamp(1.5rem, 0.9643rem + 1.4286vw, 2.25rem)"

@@ -14,7 +14,7 @@ const StyledModal = styled(Dialog)<MuiThemeInterface>(({ theme }) => {
     right: 0,
     left: 0,
     bottom: 0,
-    zIndex: 100,
+    zIndex: 110,
     borderRadius: '1rem',
   };
 });
@@ -28,7 +28,6 @@ const ContentWrapper = styled(Box)<MuiThemeInterface>({
   maxWidth: '100%',
   width: '32rem',
   backgroundColor: '#26282F',
-  borderRadius: '1rem',
   padding: '1.25rem',
 });
 

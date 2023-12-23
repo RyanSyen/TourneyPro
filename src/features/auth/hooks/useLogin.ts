@@ -2,9 +2,8 @@ import { atom, useAtom } from 'jotai';
 import auth from 'lib/firebase/initAuth';
 import { useCallback, useMemo } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { FieldValues, FormSubmitHandler, useForm } from 'react-hook-form';
 
-const isOpenLoginAtom = atom(false);
 const isShowPasswordAtom = atom(false);
 
 type FormValues = {
@@ -13,57 +12,55 @@ type FormValues = {
 };
 
 const useLogin = () => {
-  const [isOpen, setIsOpen] = useAtom(isOpenLoginAtom);
   const [isShowPw, setIsShowPw] = useAtom(isShowPasswordAtom);
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<FormValues>();
 
-  const [signInWithEmailAndPassword, loading, error] =
+  const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  const open = useCallback(() => {
-    setIsOpen(true);
-  }, []);
+  const togglePw = useCallback(() => {
+    setIsShowPw(!isShowPw);
+  }, [isShowPw]);
 
-  const close = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
-  const togglePw = useCallback((show: boolean) => {
-    setIsShowPw(show);
-  }, []);
-
-  const submit: SubmitHandler<FormValues> = (data) => {
-    const { Email, Password } = data;
+  const submit: FormSubmitHandler<FieldValues> = (
+    formObj: FieldValues,
+    e?: React.BaseSyntheticEvent
+  ) => {
+    const { Email, Password } = formObj.data;
     signInWithEmailAndPassword(Email, Password);
+    // close();
   };
 
   // memoize the return object to ensure the same obj ref is returned if the props arent changed
   return useMemo(
     () => ({
-      isOpen,
-      open,
-      close,
       register,
       togglePw,
       isShowPw,
       submit,
       errors,
       handleSubmit,
+      control,
+      user,
+      loading,
+      error,
     }),
     [
-      isOpen,
-      open,
-      close,
       register,
       togglePw,
       isShowPw,
       submit,
       errors,
       handleSubmit,
+      control,
+      user,
+      loading,
+      error,
     ]
   );
 };

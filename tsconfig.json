@@ -18,6 +18,8 @@
     },
     "types": ["vite/client"],
     "allowJs": true,
+    "esModuleInterop": true, // for dayjs
+    "allowSyntheticDefaultImports": true, // for dayjs
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -35,6 +37,6 @@
     "noFallthroughCasesInSwitch": true
   },
   // need to include eslintrc.cjs to be in sync
-  "include": ["src", ".eslintrc.cjs", "vite.config.ts"],
+  "include": ["src", ".eslintrc.cjs", "vite.config.ts", "wdyr.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

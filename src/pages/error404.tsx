@@ -50,9 +50,10 @@ const Error404 = () => {
             // startIcon={}
             // endIcon={}
             isUploadBtn={false}
-            text={localizer('Button_BackToHome')}
             onClick={() => navigate('/')}
-          />
+          >
+            {localizer('Button_BackToHome')}
+          </Btn>
         </Box>
       </div>
     </div>

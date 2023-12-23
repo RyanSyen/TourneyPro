@@ -8,17 +8,18 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import Developer from 'assets/developer.svg';
-import AppLogo from 'components/common/appLogo.tsx';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import CustomAvatar from 'src/components/common/avatar.tsx';
+import AppLogo from 'src/components/common/AppLogo.tsx';
+import CustomAvatar from 'src/components/common/Avatar.tsx';
 import Btn from 'src/components/inputs/button/Button.tsx';
-import LanguageDropdown from 'src/components/inputs/dropdown/language/LanguageDropdown.tsx';
-import useLogin from 'src/features/auth/hooks/useLogin.ts';
+import { useUserContext } from 'src/context/userContext.tsx';
+import LanguageDropdown from 'src/features/navbar/components/LanguageDropdown.tsx';
 
+import useModal from '../hooks/useModal.ts';
+import useNavbar from '../hooks/useNavbar.ts';
 import { NavbarWrapper, NavBurgerContainer } from './Navbar.styles.ts';
-import useNavbar from './useNavbar.ts';
+import UserControlDropdown from './UserCtrlDropdown.tsx';
 
 const MobileNavList = React.memo(() => {
   const { t: localizer } = useTranslation('global');
@@ -96,9 +97,9 @@ const MobileNavList = React.memo(() => {
 
 const Navbar = () => {
   const navbar = useNavbar();
-  const navigate = useNavigate();
-  const { t: localizer, i18n } = useTranslation('global');
-  const { open } = useLogin();
+  const { t: localizer } = useTranslation('global');
+  const { open } = useModal();
+  const userData = useUserContext();
 
   return (
     <NavbarWrapper className={navbar.isScrolled ? '' : 'transparent-nav'}>
@@ -119,14 +120,20 @@ const Navbar = () => {
       </div>
       <div className="flex-center">
         <LanguageDropdown />
-        <Btn
-          variant="login"
-          disabled={false}
-          size="medium"
-          isUploadBtn={false}
-          text={localizer('Label_SignIn')}
-          onClick={open}
-        />
+        {userData ? (
+          <UserControlDropdown />
+        ) : (
+          <Btn
+            variant="login"
+            disabled={false}
+            size="medium"
+            isUploadBtn={false}
+            type="button"
+            onClick={open}
+          >
+            {localizer('Label_SignIn')}
+          </Btn>
+        )}
       </div>
     </NavbarWrapper>
   );

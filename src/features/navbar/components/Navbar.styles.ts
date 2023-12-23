@@ -11,7 +11,7 @@ const NavbarWrapper = styled.nav`
   background-color: #26282f;
   color: #fcfcfc;
   box-shadow: 0 3px 30px rgba(11, 11, 11, 0.6);
-  z-index: 1000;
+  z-index: 100;
 `;
 
 const NavbarLogo = styled.a`

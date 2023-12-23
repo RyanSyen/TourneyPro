@@ -1,0 +1,16 @@
+src/
+├── features/
+│   ├── dashboard/  # Dashboard components and logic
+│   ├── products/    # Product list, details, etc.
+│   ├── cart/        # Shopping cart components and logic
+│   └── ...
+├── components/   # Shared components used across features
+├── styles/
+├── utils/
+└── ...
+
+components are organized and grouped by feature. This promotes:
+- clarity and maintainability
+- reusability
+- separation of concerns
+- improves readability

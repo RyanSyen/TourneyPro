@@ -5,9 +5,9 @@ import localeList from 'lib/i18n/locales/localeList.ts';
 import React from 'react';
 import { v1 as uuidv1 } from 'uuid';
 
-import Dropdown from '../Dropdown.tsx';
+import Dropdown from '../../../components/inputs/dropdown/Dropdown.tsx';
+import useLanguageDropdown from '../hooks/useLanguageDropdown.ts';
 import DropdownContainer from './LanguageDropdown.styles.ts';
-import useLanguageDropdown from './useLanguageDropdown.ts';
 
 const Languages = localeList.map((lang) => {
   return (

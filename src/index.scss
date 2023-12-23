@@ -178,75 +178,77 @@ select {
 }
 
 /* mobile input input component */
-.react-tel-input.mobile-input {
-  margin-bottom: 0.25rem;
+.mobile-input {
+  .react-tel-input {
+    margin-bottom: 0.25rem;
 
-  &::before {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    left: 0;
-    bottom: 0;
-    content: '\00a0';
-    position: absolute;
-    right: 0;
-    -webkit-transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1)
-      0ms;
-    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    pointer-events: none;
-  }
-
-  input.form-control {
-    width: 100%;
-    &:focus,
-    &:focus-visible {
-      border-bottom: 1px solid #e50b0d !important;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      border-radius: 0;
-    }
-  }
-
-  input,
-  input .open,
-  .flag-dropdown,
-  .flag-dropdown.open,
-  .flag-dropdown.open .selected-flag {
-    background: transparent;
-    border: none;
-    font-size: 1rem;
-    color: #fcfcfc;
-  }
-
-  .selected-flag {
-    &:hover {
-      background: transparent !important;
-      border: none !important;
-    }
-  }
-
-  .country-list {
-    border: 2px solid #545969;
-    border-radius: 4px;
-    background-color: #2d3038;
-    width: max-content;
-
-    .search {
-      background-color: #2d3038;
-      padding: 15px 10px;
+    &::before {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      left: 0;
+      bottom: 0;
+      content: '\00a0';
+      position: absolute;
+      right: 0;
+      -webkit-transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1)
+        0ms;
+      transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      pointer-events: none;
     }
 
-    .country {
+    input.form-control {
+      width: 100%;
+      &:focus,
+      &:focus-visible {
+        border-bottom: 1px solid #e50b0d !important;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+      }
+    }
+
+    input,
+    input .open,
+    .flag-dropdown,
+    .flag-dropdown.open,
+    .flag-dropdown.open .selected-flag {
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+      color: #fcfcfc;
+    }
+
+    .selected-flag {
       &:hover {
+        background: transparent !important;
+        border: none !important;
+      }
+    }
+
+    .country-list {
+      border: 2px solid #545969;
+      border-radius: 4px;
+      background-color: #2d3038;
+      width: max-content;
+
+      .search {
+        background-color: #2d3038;
+        padding: 15px 10px;
+      }
+
+      .country {
+        &:hover {
+          background-color: #c7cbd333 !important;
+        }
+
+        .dial-code {
+          color: #c7cbd3;
+        }
+      }
+
+      .country.highlight {
         background-color: #c7cbd333 !important;
       }
-
-      .dial-code {
-        color: #c7cbd3;
-      }
-    }
-
-    .country.highlight {
-      background-color: #c7cbd333 !important;
     }
   }
 }

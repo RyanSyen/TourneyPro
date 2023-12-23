@@ -1,37 +1,33 @@
 import BaseModal from 'components/feedback/modal/Modal.tsx';
-import useLogin from 'features/auth/hooks/useLogin.ts';
 import useRegister from 'features/auth/hooks/useRegister.ts';
 import { useTranslation } from 'react-i18next';
+import useModal from 'src/features/navbar/hooks/useModal.ts';
 
 import AuthWrapper from './AuthModal.styles.ts';
 import SignInForm from './SignInForm.tsx';
+import SignUpForm from './SignUpForm.tsx';
 
 const AuthModal = () => {
   const { t: localizer } = useTranslation('global');
-  const login = useLogin();
   const register = useRegister();
+  const { isOpenModal, close } = useModal();
 
-  if (register.isSignUp) {
-    return (
-      <BaseModal
-        open={register.isSignUp}
-        onClose={register.close}
-        title={localizer('Label_SignUp')}
-        desc=""
-      >
-        <AuthWrapper>Sign up</AuthWrapper>
-      </BaseModal>
-    );
-  }
   return (
     <BaseModal
-      open={login.isOpen}
-      onClose={login.close}
-      title={localizer('Label_SignIn')}
-      desc={localizer('Label_WelcomeBack')}
+      open={isOpenModal}
+      onClose={() => {
+        register.close(); // reset to open sign in form
+        close();
+      }}
+      title={
+        register.isSignUp
+          ? localizer('Label_SignUp')
+          : localizer('Label_SignIn')
+      }
+      desc={register.isSignUp ? '' : localizer('Label_WelcomeBack')}
     >
       <AuthWrapper>
-        <SignInForm />
+        {register.isSignUp ? <SignUpForm /> : <SignInForm />}
       </AuthWrapper>
     </BaseModal>
   );

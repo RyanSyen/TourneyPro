@@ -122,6 +122,47 @@ const themesOption = {
       },
     },
     MuiButton: GlobalButtonStyle,
+    MuiOutlinedInput: {
+      styleOverrides: {
+        notchedOutline: {
+          borderColor: 'transparent',
+        },
+        root: {
+          borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+          borderRadius: 0,
+
+          '&:hover': {
+            '& fieldset': {
+              borderColor: 'transparent !important',
+            },
+
+            // Reset on touch devices, it doesn't add specificity
+            '@media (hover: none)': {
+              backgroundColor: 'transparent',
+            },
+          },
+
+          '& .MuiOutlinedInput-input': {
+            padding: '8px 0 0 0',
+
+            '&:-webkit-autofill': {
+              WebkitBoxShadow: 'none',
+            },
+          },
+
+          '& input::placeholder': {
+            color: '#777D92',
+          },
+
+          '&.Mui-focused': {
+            borderColor: '#E50B0D',
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: 'transparent',
+            },
+          },
+        },
+      },
+    },
     MuiInput: {
       styleOverrides: {
         root: {
@@ -178,7 +219,7 @@ const themesOption = {
     MuiTypography: {
       variants: [
         {
-          props: { variant: 'err-msg' },
+          props: { variant: 'errMsg' },
           style: {
             display: 'flex',
             alignItems: 'center',
@@ -214,6 +255,14 @@ const themesOption = {
     },
     MuiDialog: {
       styleOverrides: {
+        root: {
+          // '& .MuiDialog-scrollPaper': {
+          //   borderBottom: `2px solid ${'#E50B0D'}`,
+          //   height: 'unset',
+          //   marginTop: '100px',
+          // },
+        },
+
         paper: {
           borderRadius: '1rem',
         },

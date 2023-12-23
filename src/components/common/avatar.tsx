@@ -3,7 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import { MuiThemeInterface } from 'src/common';
 
 interface AvatarProps {
-  username?: string;
+  username?: string | null | undefined;
   photoUrl?: string;
 }
 
@@ -21,13 +21,11 @@ const StyledAvatar = styled(Avatar)<MuiThemeInterface>(({ theme }) => {
 
 const CustomAvatar = (props: AvatarProps) => {
   const { photoUrl, username } = props;
-  console.log('custom avatar');
 
-  if (photoUrl == null) {
+  if (!photoUrl) {
     return (
       <StyledAvatar alt="profile picture">
-        {/* optional chaining operator (?.)  */}
-        {username?.[0].toUpperCase()}
+        {username?.split('')[0].toUpperCase()}
       </StyledAvatar>
     );
   }
