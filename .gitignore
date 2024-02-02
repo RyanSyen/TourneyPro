@@ -27,6 +27,8 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
+.env*.production
 
 # vercel
 .vercel
@@ -34,3 +36,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+src\lib\firebase\tourneypro1007-firebase-adminsdk-98ead-b6bb23a5bf.json
