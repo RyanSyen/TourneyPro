@@ -8,6 +8,8 @@ import Github from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import Twitter from "next-auth/providers/twitter";
 
+import { firestore } from "@/lib/firebase/firestore";
+
 interface jwtProps {
   token: JWT;
   account: Account | null;
@@ -15,13 +17,7 @@ interface jwtProps {
 }
 
 export const authOptions = {
-  adapter: FirestoreAdapter({
-    credential: cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY,
-    }),
-  }) as Adapter,
+  adapter: FirestoreAdapter(firestore) as Adapter,
   providers: [
     Github({
       clientId: process.env.GITHUB_CLIENT_ID as string,
