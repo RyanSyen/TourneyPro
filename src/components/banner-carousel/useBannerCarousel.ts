@@ -1,16 +1,8 @@
-"use client";
-import Autoplay from "embla-carousel-autoplay";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { type CarouselApi } from "@/components/ui/carousel";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
 
-const Playground = () => {
+const useBannerCarousel = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const images = [
@@ -58,51 +50,16 @@ const Playground = () => {
     });
   }, [api]);
 
-  return (
-    <>
-      <Carousel
-        setApi={setApi}
-        className="flex flex-col w-full"
-        plugins={[
-          Autoplay({ delay: 5500, stopOnInteraction: false, jump: false }),
-        ]}
-      >
-        <CarouselContent>
-          {images.map((img) => (
-            <CarouselItem key={img.id}>
-              <div className="w-full h-96 md:pb-[35%] relative">
-                <Image
-                  className="w-full h-full object-cover"
-                  src={img.url}
-                  alt={img.name}
-                  data-img-src={img.src}
-                  data-img-views={img.views}
-                  data-img-published={img.published}
-                  fill
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <div className="flex justify-center gap-2 absolute pt-3 bottom-3 left-1/2">
-          {images.map((img) => (
-            <div
-              key={img.id}
-              onClick={() => api?.scrollTo(img.id)}
-              className={`w-2 h-2 p-1.5 cursor-pointer rounded-[50%]  ${
-                current === img.id ? "bg-red-600" : "bg-gray-500"
-              }`}
-            ></div>
-          ))}
-        </div>
-      </Carousel>
-      <div className="h-96">test</div>
-      <div className="h-96">test</div>
-      <div className="h-96">test</div>
-      <div className="h-96">test</div>
-      <div className="h-96">test</div>
-    </>
-  );
+  const slideTo = (slideId: number) => {
+    api?.scrollTo(slideId);
+  };
+
+  return {
+    setApi,
+    images,
+    slideTo,
+    current,
+  };
 };
 
-export default Playground;
+export default useBannerCarousel;

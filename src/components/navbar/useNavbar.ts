@@ -1,36 +1,61 @@
+import { usePathname } from "next/navigation";
+import { getProviders } from "next-auth/react";
 import { useCallback, useEffect, useState } from "react";
 
+import { ProviderType } from "@/types/next-auth";
+
 const useNavbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const pathName = usePathname();
+  const [open, setOpen] = useState(false);
+  const [isTransparent, setIsTransparent] = useState(true);
+  const [providers, setProviders] = useState<ProviderType>({
+    providerData: null,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
-      // y position > 100 pixels
-      //   if (window.scrollY > 100) {
-      //     setIsScrolled(true);
-      //   } else {
-      //     setIsScrolled(false);
-      //   }
-      window.scrollY > 100 ? setIsScrolled(true) : setIsScrolled(false);
+      window.scrollY > 100
+        ? setIsTransparent(false)
+        : setIsTransparent(pathName.trim() === "/");
     };
 
-    window.addEventListener("scroll", handleScroll);
-
-    // removes the event listener when component unmounts to prev memory leak
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+    const fetchProviders = async () => {
+      try {
+        const providers = await getProviders();
+        setProviders((prevState) => ({
+          ...prevState,
+          providerData: providers,
+        }));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
-  }, []);
 
-  const open = () => setIsOpen(true);
-  const close = () => setIsScrolled(false);
+    fetchProviders();
+
+    if (pathName.trim() === "/") {
+      setIsTransparent(true);
+      window.addEventListener("scroll", handleScroll);
+
+      // removes the event listener when component unmounts to prev memory leak
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    } else {
+      setIsTransparent(false);
+    }
+  }, [pathName]);
+
+  const closeAuthDialog = () => {
+    setOpen(false);
+  };
 
   return {
-    isScrolled,
-    isOpen,
+    isTransparent,
     open,
-    close,
+    setOpen,
+    providers,
+    closeAuthDialog,
   };
 };
 

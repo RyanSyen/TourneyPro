@@ -88,3 +88,10 @@ declare module "next-auth" {
 
   //   interface User extends Record<string, unknown>, DefaultUser {}
 }
+
+export interface ProviderType {
+  providerData: Record<
+    LiteralUnion<BuiltInProviderType, string>,
+    ClientSafeProvider
+  > | null;
+}

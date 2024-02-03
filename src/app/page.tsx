@@ -1,7 +1,17 @@
-import Image from "next/image";
+"use client";
 
-import Navbar from "@/components/navbar/navbar";
+import BannerCarousel from "@/components/banner-carousel/banner-carousel";
 
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <>
+      <BannerCarousel />
+      <div>Home</div>
+      <div className="h-96">test</div>
+      <div className="h-96">test</div>
+      <div className="h-96">test</div>
+      <div className="h-96">test</div>
+      <div className="h-96">test</div>
+    </>
+  );
 }

@@ -2,11 +2,11 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { getServerSession } from "next-auth";
+import { headers } from "next/headers";
+import { Session } from "next-auth";
 
 import Navbar from "@/components/navbar/navbar";
-
-import SessionProvider from "./sessionProvider";
+import AuthContext from "@/context/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,24 +15,32 @@ export const metadata: Metadata = {
   description: process.env.PROJECT_DESC,
 };
 
+async function getSession(cookie: string): Promise<Session> {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/session`, {
+    headers: {
+      cookie,
+    },
+  });
+
+  const session = await res.json();
+
+  return Object.keys(session).length > 0 ? session : null;
+}
+
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession();
+  const session = await getSession(headers().get("cookie") ?? "");
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <SessionProvider
-          session={session}
-          refetchInterval={5 * 60}
-          refetchOnWindowFocus={true}
-        >
+      <body className={`${inter.className} !overflow-auto !mr-0`}>
+        <AuthContext session={session}>
           <Navbar />
-          <main className="pt-24">{children}</main>
-        </SessionProvider>
+          {children}
+        </AuthContext>
       </body>
     </html>
   );
