@@ -33,7 +33,7 @@ export const authOptions = {
       clientSecret: process.env.TWITTER_CLIENT_SECRET as string,
     }),
   ],
-  secret: process.env.SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     // signIn: "/signin",
   },
