@@ -1,4 +1,5 @@
 import { FirestoreAdapter } from "@auth/firebase-adapter";
+import { cert } from "firebase-admin/app";
 import { Account, Profile } from "next-auth";
 import type { Adapter } from "next-auth/adapters";
 import { JWT } from "next-auth/jwt";
@@ -14,7 +15,13 @@ interface jwtProps {
 }
 
 export const authOptions = {
-  adapter: FirestoreAdapter() as Adapter,
+  adapter: FirestoreAdapter({
+    credential: cert({
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY,
+    }),
+  }) as Adapter,
   providers: [
     Github({
       clientId: process.env.GITHUB_CLIENT_ID as string,
