@@ -6,7 +6,7 @@ import { ProviderType } from "@/types/next-auth";
 
 const useNavbar = () => {
   const pathName = usePathname();
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false); // we are using url params to open the modal
   const [isTransparent, setIsTransparent] = useState(true);
   const [providers, setProviders] = useState<ProviderType>({
     providerData: null,
@@ -46,16 +46,16 @@ const useNavbar = () => {
     }
   }, [pathName]);
 
-  const closeAuthDialog = () => {
-    setOpen(false);
-  };
+  // const closeAuthDialog = () => {
+  //   setOpen(false);
+  // };
 
   return {
     isTransparent,
-    open,
-    setOpen,
+    // open,
+    // setOpen,
     providers,
-    closeAuthDialog,
+    // closeAuthDialog,
   };
 };
 

@@ -4,20 +4,10 @@ import { DropdownMenuArrow } from "@radix-ui/react-dropdown-menu";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
-import { DefaultSession, Session } from "next-auth";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { Dispatch, SetStateAction } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import {
   Drawer,
   DrawerClose,
@@ -37,29 +27,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ProviderType } from "@/types/next-auth";
+import { useUserContext } from "@/context/UserProvider";
+import useAuth from "@/hooks/useAuth";
 
+import SignInDialog from "../auth/sign-in/signInDialog";
+import SignUpDialog from "../auth/sign-up/signUpDialog";
 import AppLogo from "../common/appLogo";
-import { Skeleton } from "../ui/skeleton";
 import useNavbar from "./useNavbar";
-
-//#region interface
-interface UserStatusProps {
-  session: Session | null;
-  status: "loading" | "authenticated" | "unauthenticated";
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-  providers: ProviderType;
-  closeAuthDialog: () => void;
-}
-
-interface SignInDialogProps {
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-  providers: ProviderType;
-  closeAuthDialog: () => void;
-}
-//#endregion
 
 //#region styled wrappers & sub-components
 const NavBurger = () => {
@@ -90,8 +64,9 @@ const NavDrawer = () => {
   );
 };
 
-const ProfileDropdown = ({ user }: DefaultSession) => {
-  const firstLetter = user?.name?.split("")[0];
+const ProfileDropdown = (props: { fullName: string; photoURL: string }) => {
+  const firstLetter = props.fullName?.split("")[0];
+  const { logOut } = useAuth();
 
   const items = [
     {
@@ -120,8 +95,14 @@ const ProfileDropdown = ({ user }: DefaultSession) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="rounded-[50%] cursor-pointer">
-          {user?.image ? (
-            <AvatarImage src={user.image} />
+          {props.photoURL ? (
+            // <AvatarImage src={props.photoURL} />
+            <Image
+              src={props.photoURL}
+              alt="profile pic"
+              width={64}
+              height={64}
+            />
           ) : (
             <AvatarFallback className="bg-[#999] text-[#121212]">
               {firstLetter}
@@ -139,8 +120,8 @@ const ProfileDropdown = ({ user }: DefaultSession) => {
         <DropdownMenuLabel className="flex gap-3 py-3">
           <div className="flex justify-center items-center">
             <Avatar className="rounded-[50%] cursor-pointer">
-              {user?.image ? (
-                <AvatarImage src={user.image} />
+              {props.photoURL ? (
+                <AvatarImage src={props.photoURL} />
               ) : (
                 <AvatarFallback className="bg-[#999] text-[#121212]">
                   {firstLetter}
@@ -150,7 +131,7 @@ const ProfileDropdown = ({ user }: DefaultSession) => {
           </div>
           <div>
             <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-              {user?.name}
+              {props.fullName}
             </h4>
             <p className="text-sm font-normal text-[#8c94a1]">Administrator</p>
           </div>
@@ -164,106 +145,33 @@ const ProfileDropdown = ({ user }: DefaultSession) => {
               </DropdownMenuItem>
             </Link>
           ))}
-          <DropdownMenuItem onClick={() => signOut()}>
-            Sign Out
-          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => logOut()}>Sign Out</DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 };
 
-const UserStatus = (props: UserStatusProps) => {
-  const { session, status, open, setOpen, providers, closeAuthDialog } = props;
+const UserStatus = () => {
+  const userData = useUserContext();
 
-  if (status === "loading") {
-    return (
-      <div className="flex items-center space-x-4">
-        <Skeleton className="h-10 w-10 rounded-full bg-[#ccc]" />
-      </div>
-    );
-  } else if (session?.user && status === "authenticated") {
-    return <ProfileDropdown user={session.user} expires={session.expires} />;
+  if (userData) {
+    const name = userData.fullName ?? "";
+    const pic = userData.photoURL ?? "";
+    return <ProfileDropdown fullName={name} photoURL={pic} />;
   } else {
     return (
-      <SignInDialog
-        open={open}
-        setOpen={setOpen}
-        providers={providers}
-        closeAuthDialog={closeAuthDialog}
-      />
+      <>
+        <SignInDialog />
+        <SignUpDialog />
+      </>
     );
   }
-};
-
-const SignInDialog = (props: SignInDialogProps) => {
-  const { open, setOpen, providers, closeAuthDialog } = props;
-
-  return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger
-        className="py-2 px-6 rounded-3xl bg-gradient-to-r from-[#E50B0D] to-[#CF0868] hover:from-[#c3090c] hover:to-[#b10659] transition-colors"
-        type="button"
-        onClick={() => console.log("open sign in dialog")}
-      >
-        Sign In
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader className="justify-center items-center">
-          <div className="py-8">
-            <AppLogo enableOnClick={false} />
-          </div>
-          <DialogTitle className="text-2xl font-medium tracking-normal pb-4">
-            Welcome back player
-          </DialogTitle>
-          {/* <DialogDescription className="pt-6">
-                    Welcome Back!
-                  </DialogDescription> */}
-        </DialogHeader>
-        <div className="flex flex-col justify-center gap-3">
-          {providers.providerData &&
-            Object.values(providers.providerData).map((provider) => {
-              if (provider.id === "facebook") return;
-              //console.log(provider);
-              return (
-                <div
-                  key={provider.name}
-                  className="flex justify-center items-center"
-                >
-                  <button
-                    className="flex justify-start items-center gap-3 bg-[#fcfcfc] text-slate-950 px-10 py-3 rounded-xl w-3/4 hover:scale-105 transition duration-200 ease-in-out text-sm"
-                    onClick={() => signIn(provider.id)}
-                  >
-                    <Image
-                      src={`/logo/social-login/${provider.id}-icon.svg`}
-                      alt={`${provider.id} icon`}
-                      width={28}
-                      height={28}
-                    />
-                    Continue with {provider.name}
-                  </button>
-                </div>
-              );
-            })}
-        </div>
-        <DialogFooter className="block w-full text-center pt-8 pb-4">
-          <a
-            className="text-sm cursor-pointer text-[#8C94A1] hover:text-[#FF2D2F]"
-            onClick={closeAuthDialog}
-          >
-            Close
-          </a>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
 };
 //#endregion
 
 const Navbar = () => {
-  const { isTransparent, open, setOpen, providers, closeAuthDialog } =
-    useNavbar();
-  const { data: session, status } = useSession();
+  const { isTransparent } = useNavbar();
 
   return (
     <>
@@ -277,14 +185,7 @@ const Navbar = () => {
           <AppLogo />
         </div>
         <div className="flex justify-center items-center">
-          <UserStatus
-            session={session}
-            status={status}
-            open={open}
-            setOpen={setOpen}
-            providers={providers}
-            closeAuthDialog={closeAuthDialog}
-          />
+          <UserStatus />
         </div>
       </nav>
     </>

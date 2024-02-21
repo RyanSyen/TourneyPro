@@ -19,7 +19,7 @@ const AppLogo = ({ enableOnClick = true, isHidden = false }: AppLogoProp) => {
         isHidden ? "none" : "flex"
       } items-center p-0 m-0 cursor-pointer ${
         enableOnClick ? "pointer-events-auto" : "pointer-events-none"
-      } select-none text-xl gap-1 bg-transparent`}
+      } select-none text-xl gap-1 bg-transparent outline-none`}
       onClick={redirectToIndex}
     >
       <Image src={logo} alt="App Icon" className="w-9 h-9 sm:w-11 sm:h-11" />
