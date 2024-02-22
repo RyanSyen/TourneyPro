@@ -104,7 +104,7 @@ const SignUpDialog = () => {
 
   return (
     <Dialog open={isSignUp}>
-      <DialogContent>
+      <DialogContent className="max-w-md sm:max-w-2xl">
         <DialogHeader className="justify-center items-center">
           <div className="py-8">
             <AppLogo enableOnClick={false} />

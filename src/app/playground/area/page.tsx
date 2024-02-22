@@ -14,6 +14,8 @@ interface SearchResult {
 //   state: string;
 // }
 
+// https://github.com/AsyrafHussin/malaysia-postcodes/blob/main/all.json
+
 const SearchArea = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResult, setSearchResult] = useState<SearchResult[] | null>(null);

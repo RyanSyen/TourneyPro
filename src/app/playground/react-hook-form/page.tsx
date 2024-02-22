@@ -1,8 +1,10 @@
 "use client";
+import "react-phone-input-2/lib/style.css";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import { z } from "zod";
@@ -25,16 +27,17 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
-  // fullName,
-  // email,
-  // phoneNumber,
-  // dob,
-  // gender,
-  // area
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
@@ -46,6 +49,9 @@ const formSchema = z.object({
   }),
   phonenumber: z.string().min(1, {
     message: "Please enter your phone number.",
+  }),
+  area: z.string({
+    required_error: "Please select an email to display.",
   }),
 });
 
@@ -169,17 +175,43 @@ const PlaygroundReactHookForm = () => {
           name="phonenumber"
           defaultValue=""
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="mobile-input">
               <FormLabel>Mobile Number</FormLabel>
               <FormControl>
                 <PhoneInput
                   {...field}
                   placeholder="Please enter phone number"
-                  country={"us"}
+                  country={"my"}
                   inputStyle={{ width: "100%", color: "#000" }}
                   containerStyle={{ marginBottom: "1rem" }}
                 />
               </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="area"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a verified email to display" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="m@example.com">m@example.com</SelectItem>
+                  <SelectItem value="m@google.com">m@google.com</SelectItem>
+                  <SelectItem value="m@support.com">m@support.com</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                You can manage email addresses in your{" "}
+                <Link href="/examples/forms">email settings</Link>.
+              </FormDescription>
+              <FormMessage />
             </FormItem>
           )}
         />

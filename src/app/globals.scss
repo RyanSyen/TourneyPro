@@ -43,6 +43,7 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: none;
   caret-color: #fcfcfc;
   transition: background-color 5000s ease-in-out 0s;
+  background-color: transparent !important;
 }
 
 input[type="search"]::-webkit-search-cancel-button {
@@ -164,10 +165,11 @@ select {
 /* mobile input input component */
 .mobile-input {
   .react-tel-input {
+    background-color: transparent;
     margin-bottom: 0.25rem;
 
     &::before {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      border-bottom: 1px solid #444548;
       left: 0;
       bottom: 0;
       content: "\00a0";
@@ -180,6 +182,8 @@ select {
     }
 
     input.form-control {
+      background-color: inherit;
+      color: #fcfcfc !important;
       width: 100%;
       &:focus,
       &:focus-visible {
