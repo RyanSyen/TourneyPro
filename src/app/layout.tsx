@@ -9,8 +9,8 @@ import Navbar from "@/components/navbar/navbar";
 import AuthContext from "@/context/AuthProvider";
 import { UserContextProvider } from "@/context/UserProvider";
 
-import { auth } from "./api/auth/[...nextauth]/auth";
-import { authOptions } from "./api/auth/[...nextauth]/options";
+// import { auth } from "./api/auth/[...nextauth]/auth";
+// import { authOptions } from "./api/auth/[...nextauth]/options";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   // const data = await auth(); // helper function not working?
-  const session = await getServerSession(authOptions);
+  // const session = await getServerSession(authOptions);
 
   return (
     <html lang="en">
