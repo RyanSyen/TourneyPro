@@ -1,16 +1,9 @@
 import { usePathname } from "next/navigation";
-import { getProviders } from "next-auth/react";
-import { useCallback, useEffect, useState } from "react";
-
-import { ProviderType } from "@/types/next-auth";
+import { useEffect, useState } from "react";
 
 const useNavbar = () => {
   const pathName = usePathname();
-  // const [open, setOpen] = useState(false); // we are using url params to open the modal
   const [isTransparent, setIsTransparent] = useState(true);
-  const [providers, setProviders] = useState<ProviderType>({
-    providerData: null,
-  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,20 +11,6 @@ const useNavbar = () => {
         ? setIsTransparent(false)
         : setIsTransparent(pathName.trim() === "/");
     };
-
-    const fetchProviders = async () => {
-      try {
-        const providers = await getProviders();
-        setProviders((prevState) => ({
-          ...prevState,
-          providerData: providers,
-        }));
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchProviders();
 
     if (pathName.trim() === "/") {
       setIsTransparent(true);
@@ -46,16 +25,8 @@ const useNavbar = () => {
     }
   }, [pathName]);
 
-  // const closeAuthDialog = () => {
-  //   setOpen(false);
-  // };
-
   return {
     isTransparent,
-    // open,
-    // setOpen,
-    providers,
-    // closeAuthDialog,
   };
 };
 

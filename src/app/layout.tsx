@@ -3,10 +3,8 @@ import "./globals.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { headers } from "next/headers";
-import { getServerSession, Session } from "next-auth";
 
 import Navbar from "@/components/navbar/navbar";
-import AuthContext from "@/context/AuthProvider";
 import { UserContextProvider } from "@/context/UserProvider";
 
 // import { auth } from "./api/auth/[...nextauth]/auth";

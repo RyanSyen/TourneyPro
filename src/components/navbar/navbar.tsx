@@ -4,8 +4,8 @@ import { DropdownMenuArrow } from "@radix-ui/react-dropdown-menu";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
 
+// import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -56,7 +56,7 @@ const NavDrawer = () => {
           <DrawerDescription>This action cannot be undone.</DrawerDescription>
         </DrawerHeader>
         <DrawerFooter>
-          <Button onClick={() => signOut()}>Submit</Button>
+          <Button>Submit</Button>
           <DrawerClose>Cancel</DrawerClose>
         </DrawerFooter>
       </DrawerContent>
