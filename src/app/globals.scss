@@ -182,9 +182,9 @@ select {
     }
 
     input.form-control {
-      background-color: inherit;
-      color: #fcfcfc !important;
-      width: 100%;
+      background-color: inherit; // follow component standard
+      color: #fcfcfc !important; // follow component standard
+      width: 100%; // follow component standard
       &:focus,
       &:focus-visible {
         border-bottom: 1px solid #e50b0d !important;

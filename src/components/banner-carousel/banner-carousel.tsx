@@ -32,6 +32,7 @@ const BannerCarousel = () => {
                 data-img-views={img.views}
                 data-img-published={img.published}
                 fill
+                priority
               />
             </div>
           </CarouselItem>

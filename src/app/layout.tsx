@@ -5,10 +5,8 @@ import { Inter } from "next/font/google";
 import { headers } from "next/headers";
 
 import Navbar from "@/components/navbar/navbar";
+import { ThemeProvider } from "@/components/theme-provider";
 import { UserContextProvider } from "@/context/UserProvider";
-
-// import { auth } from "./api/auth/[...nextauth]/auth";
-// import { authOptions } from "./api/auth/[...nextauth]/options";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,19 +16,20 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
-  // const data = await auth(); // helper function not working?
-  // const session = await getServerSession(authOptions);
-
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} !overflow-auto !mr-0`}>
-        {/* <AuthContext session={session}> */}
-        <UserContextProvider>
-          <Navbar />
-          {props.children}
-        </UserContextProvider>
-
-        {/* </AuthContext> */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <UserContextProvider>
+            <Navbar />
+            {props.children}
+          </UserContextProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

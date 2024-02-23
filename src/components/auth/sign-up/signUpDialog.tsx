@@ -76,17 +76,10 @@ const PreSignUp = ({ continueFn }: PreSignUpProps) => {
 
       <hr className="h-[1px] border-[#8c94a1] my-4" />
       <div className="flex justify-center gap-4">
-        <Button
-          className="bg-[#545969] rounded-3xl py-2 px-6 hover:bg-[#78749a]"
-          onClick={() => router.back()}
-        >
+        <Button variant={"cancel"} onClick={() => router.back()}>
           Cancel
         </Button>
-        <Button
-          className="bg-[#e50b0d] rounded-3xl py-2 px-6 hover:bg-[#ff5657]"
-          disabled={!isChecked}
-          onClick={continueFn}
-        >
+        <Button variant={"continue"} disabled={!isChecked} onClick={continueFn}>
           Continue
         </Button>
       </div>
