@@ -1,18 +1,7 @@
-import { initFirestore } from "@auth/firebase-adapter";
 import admin from "firebase-admin";
-import { cert, FirebaseError } from "firebase-admin/app";
 
-import serviceAccount from "../firebase/tourneypro1007-firebase-adminsdk-98ead-b6bb23a5bf.json";
-
-// export const firestore = initFirestore({
-//   credential: cert({
-//     projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-//     clientEmail: process.env.NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL,
-//     privateKey: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY
-//       ? process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY.replace(/\\n/gm, "\n")
-//       : undefined,
-//   }),
-// });
+// previously firestore admin is used for next auth to insert user records, sessions and accounts into firestore when user sign in or sign up
+// not using but keep code for future use
 
 if (admin.apps.length) {
   try {
@@ -26,4 +15,4 @@ if (admin.apps.length) {
   }
 }
 
-export default admin.firestore;
+export default admin.firestore();
