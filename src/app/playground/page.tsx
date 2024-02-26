@@ -70,10 +70,25 @@ const Playground = () => {
       desc: "quick demo",
       url: "/playground/react-hook-form",
     },
+    {
+      name: "area search bar",
+      desc: "quick search on Malaysia's city/state/postcode",
+      url: "/playground/area",
+    },
+    {
+      name: "react-tel-input",
+      desc: "telephone input with country code",
+      url: "/playground/react-tel-input",
+    },
+    {
+      name: "react query with shadcn tabs",
+      desc: "react query with nextjs example: https://medium.com/@aalam-info-solutions-llp/react-query-integration-from-the-scratch-in-next-js-and-react-js-91d585a0a65e",
+      url: "/playground/react-query",
+    },
   ];
 
   return (
-    <div>
+    <div className="pb-16">
       <h2 className="scroll-m-20 border-b pb-6 text-3xl font-semibold tracking-tight first:mt-0">
         Playground Directory
       </h2>
@@ -86,15 +101,17 @@ const Playground = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {routes.map((route) => (
-            <TableRow key={route.name} className="hover:bg-slate-700">
-              <TableCell>{route.name}</TableCell>
-              <TableCell>{route.desc}</TableCell>
-              <TableCell>
-                <Link href={route.url}>GO</Link>
-              </TableCell>
-            </TableRow>
-          ))}
+          {routes
+            .sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
+            .map((route) => (
+              <TableRow key={route.name} className="hover:bg-slate-700">
+                <TableCell>{route.name}</TableCell>
+                <TableCell>{route.desc}</TableCell>
+                <TableCell>
+                  <Link href={route.url}>GO</Link>
+                </TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </div>
