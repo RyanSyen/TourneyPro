@@ -24,7 +24,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { DatatableColumnVisibility } from "./dataTableColumnVisibility";
+import { PaymentDatatableColumnVisibility } from "./dataTableColumnVisibility";
 import {
   DataTablePagination,
   DataTableSimplePagination,
@@ -80,7 +80,7 @@ export function DataTable<TData, TValue>({
       {/* search bar section */}
       <DatatableSearchBar table={table} />
       {/* column visibility dropdown section */}
-      <DatatableColumnVisibility table={table} />
+      <PaymentDatatableColumnVisibility table={table} />
       {/* datatable section */}
       <div className="rounded-md border">
         <Table>
