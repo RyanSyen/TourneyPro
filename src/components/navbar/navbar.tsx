@@ -77,7 +77,7 @@ const ProfileDropdown = (props: { fullName: string; photoURL: string }) => {
     {
       id: 1,
       name: "Administration",
-      url: "/admin/administration",
+      url: "/admin/account/list",
     },
     {
       id: 2,
@@ -111,7 +111,7 @@ const ProfileDropdown = (props: { fullName: string; photoURL: string }) => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-56 bg-[#26282f] border-[3px] border-[#333741] text-slate-100 z-100 p-0"
+        className="w-56 border-[3px] !border-[#333741] text-slate-100 z-100 p-0"
         align="end"
         side="bottom"
         avoidCollisions

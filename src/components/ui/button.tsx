@@ -15,15 +15,16 @@ const buttonVariants = cva(
           "bg-red-500 text-slate-50 shadow-sm hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
         outline:
           "border border-slate-200 bg-white shadow-sm hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
-        secondary:
-          "bg-slate-100 text-slate-900 shadow-sm hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+        // secondary:
+        //   "bg-slate-100 text-slate-900 shadow-sm hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
         ghost:
           "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
         lineInput:
           "text-left font-normal text-[#fcfcfc] border-b border-[#444548] rounded-none",
-        continue: "bg-[#e50b0d] rounded-3xl py-2 px-6 hover:bg-[#ff5657]",
-        cancel: "bg-[#545969] rounded-3xl py-2 px-6 hover:bg-[#78749a]",
+        main: "bg-[#e50b0d] rounded-3xl py-2 px-6 hover:bg-[#ff5657]",
+        secondary: "bg-[#545969] rounded-3xl py-2 px-6 hover:bg-[#78749a]",
+        dropdown: "bg-[#2d3038] !ring-0",
       },
       size: {
         default: "h-9 px-4 py-2",

@@ -1,17 +1,27 @@
 "use client";
 
-import { DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
+import {
+  collection,
+  DocumentData,
+  QueryDocumentSnapshot,
+} from "firebase/firestore";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import React, { FormEvent, useEffect, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { useClickAway } from "react-use";
 
-import {
-  addTodo,
-  deleteTodo,
-  fetchTodos,
-} from "@/controller/(playground)/todoController";
+import CustomLoader from "@/components/common/customLoader";
+import { db } from "@/lib/firebase";
 
-import useTodoList from "./useTodoList";
+import { addTodo, updateTodo } from "./todoService";
+import useTodoInput from "./useTodoInput";
 
 interface Todo {
   id: string;
@@ -32,11 +42,9 @@ const TodoForm = () => {
   const [text, setText] = useState("");
   const router = useRouter();
   const pathName = usePathname();
-  const { addTodoList } = useTodoList();
 
   const handleSubmit = async () => {
-    // const newTodo = await addTodo(text);
-    const newTodo = await addTodoList(text);
+    const newTodo = await addTodo(text);
     console.log(newTodo);
 
     setText("");
@@ -61,89 +69,72 @@ const TodoForm = () => {
 
 const TodoList = (props: TodoList) => {
   return (
-    <ul>
-      {/* {props.list?.map((todo: Todo) => (
-        <TodoItem
-          key={todo.id}
-          id={todo.id}
-          text={todo.text}
-          isCompleted={todo.isCompleted}
-        />
-      ))} */}
-      {/* {props.list?.map(
-        (todo: QueryDocumentSnapshot<DocumentData, DocumentData>) => (
-          <TodoItem
-            key={todo.id}
-            id={todo.id}
-            text={todo.text}
-            isCompleted={todo.isCompleted}
-          />
-        )
-      )} */}
+    <ul className="flex flex-col gap-6">
       {props.list?.map(
         (todo: QueryDocumentSnapshot<DocumentData, DocumentData>) => {
-          console.log(todo.data);
-          return <div key={todo.id}>test</div>;
+          const todoObj: Todo = {
+            id: todo.id,
+            text: todo.data().text,
+            isCompleted: todo.data().isCompleted,
+          };
+          return <TodoItem key={todo.id} todo={todoObj} />;
         }
       )}
     </ul>
   );
 };
 
-const TodoItem = (props: Todo) => {
-  const onToggleCompleteTodo = () => {
-    console.log(!props.isCompleted);
-  };
+const TodoItem = ({ todo }: { todo: Todo }) => {
+  const { task, isCompleted, onChangeTask, onChangeIsCompleted } =
+    useTodoInput(todo);
+  const [isEdit, setIsEdit] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const onDeleteTodo = async (id: string) => {
-    // const res = await deleteTodo(id);
-    // console.log("delete todo: ", res);
+  useClickAway(inputRef, async (event: Event) => {
+    const targetInput = event.target as HTMLInputElement;
+    setIsEdit(false);
+
+    // update todo
+    console.log("todo id: ", todo);
+    const task = inputRef.current!.value;
+    const res = await updateTodo(todo.id, task);
+  });
+
+  const onEditTask = () => {
+    if (!isEdit) setIsEdit(true);
   };
 
   return (
-    <li>
+    <li className="flex gap-3 items-center">
       <input
         type="checkbox"
-        checked={props.isCompleted}
-        onChange={onToggleCompleteTodo}
+        checked={isCompleted}
+        onChange={onChangeIsCompleted}
       />
-      <span
-        className={`${props.isCompleted ? "line-through" : "no-underline"}`}
-      >
-        {props.text}
-      </span>
-      <button onClick={() => onDeleteTodo(props.id)}>🗑️</button>
+      <input
+        ref={inputRef}
+        type={isEdit ? "text" : "button"}
+        className={`${!isEdit ? "cursor-pointer" : ""}`}
+        value={task}
+        onClick={onEditTask}
+        onChange={onChangeTask}
+        data-input="taskInput"
+      />
     </li>
   );
 };
 
 const Todo = () => {
-  // const [list, setList] = useState();
-  const { value, loading, error } = useTodoList();
+  const [value, loading, error] = useCollection(collection(db, "todo"), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
 
-  // useEffect(() => {
-  //   async function initFetchTodos() {
-  //     // const todos = await fetchTodos();
-  //     const todos =
-
-  //     console.log(todos);
-
-  //     setList(todos.lists);
-  //   }
-
-  //   initFetchTodos();
-  // }, []);
+  if (loading) return <CustomLoader />;
 
   return (
-    <main>
+    <main className="flex flex-col gap-8">
       <TodoForm />
       <TodoList list={value?.docs} />
-      <Image
-        src={"/login.svg"}
-        alt="login sports background"
-        width={256}
-        height={256}
-      />
     </main>
   );
 };

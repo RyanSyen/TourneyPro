@@ -76,10 +76,10 @@ const PreSignUp = ({ continueFn }: PreSignUpProps) => {
 
       <hr className="h-[1px] border-[#8c94a1] my-4" />
       <div className="flex justify-center gap-4">
-        <Button variant={"cancel"} onClick={() => router.back()}>
+        <Button variant={"secondary"} onClick={() => router.back()}>
           Cancel
         </Button>
-        <Button variant={"continue"} disabled={!isChecked} onClick={continueFn}>
+        <Button variant={"main"} disabled={!isChecked} onClick={continueFn}>
           Continue
         </Button>
       </div>
@@ -107,7 +107,7 @@ const SignUpDialog = () => {
           </DialogTitle>
         </DialogHeader>
         {isContinueSignUp ? (
-          <SignUpForm />
+          <SignUpForm isDialog />
         ) : (
           <PreSignUp continueFn={onContinueSignUp} />
         )}

@@ -85,6 +85,11 @@ const Playground = () => {
       desc: "react query with nextjs example: https://medium.com/@aalam-info-solutions-llp/react-query-integration-from-the-scratch-in-next-js-and-react-js-91d585a0a65e",
       url: "/playground/react-query",
     },
+    {
+      name: "toast playground",
+      desc: "radix toast component",
+      url: "/playground/toast",
+    },
   ];
 
   return (

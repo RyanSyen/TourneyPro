@@ -12,24 +12,21 @@ interface DataTableColumnVisibilityProps<TData> {
   table: Table<TData>;
 }
 
-export function PaymentDatatableColumnVisibility<TData>({
+export function DatatableColumnVisibility<TData>({
   table,
 }: DataTableColumnVisibilityProps<TData>) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="">
+        <Button variant="dropdown" className="">
           Columns
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="start">
         {table
           .getAllColumns()
           .filter((column) => column.getCanHide())
-          .map(async (column) => {
-            const header = await column.columnDef.header;
-            // console.log(column);
-            // console.log("flat headers: ", column.getFlatColumns());
+          .map((column) => {
             return (
               <DropdownMenuCheckboxItem
                 key={column.id}

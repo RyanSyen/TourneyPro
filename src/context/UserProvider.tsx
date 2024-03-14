@@ -5,7 +5,7 @@ import { createContext, ReactNode, useContext } from "react";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import { getUser } from "@/app/service/user/userService";
+import { getUserByEmail } from "@/app/service/user/userService";
 import { auth } from "@/lib/firebase/index";
 
 interface IUserData {
@@ -32,7 +32,7 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
   if (user) {
     console.log("user", user);
     // check if user exist
-    const targetUser = getUser(user.uid);
+    const targetUser = getUserByEmail(user.email!);
     console.log("targetUser: ", targetUser);
 
     userData = {

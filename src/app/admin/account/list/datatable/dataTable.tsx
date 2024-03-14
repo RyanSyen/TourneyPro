@@ -1,5 +1,4 @@
 "use client";
-
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -14,7 +13,17 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
+import { DataTablePagination } from "@/app/playground/payments-datatable/dataTablePagination";
+import { DatatableSearchBar } from "@/app/playground/payments-datatable/dataTableSearchBar";
+import { DatatableColumnVisibility } from "@/components/datatable/columnVisibility";
+import DatatableRowSizeDropdown from "@/components/datatable/rowSizeDropdown";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -24,28 +33,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { DatatableColumnVisibility } from "./dataTableColumnVisibility";
-import {
-  DataTablePagination,
-  DataTableSimplePagination,
-} from "./dataTablePagination";
-import { DatatableSearchBar } from "./dataTableSearchBar";
-
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-/**
- * @description This component renders a payment datatable example.
- * @summary Shadcn Tanstack Datatable features: cell formating, row actions, pagination, sorting, filtering, column visibility, row selection
- * @todo we can make this datatable reusable by extracting it to components/ui/data-table.tsx
- * @link https://ui.shadcn.com/docs/components/data-table
- *
- * @param {ColumnDef<TData, TValue>[]} columns The datatable columns.
- * @param {TData[]} data The datatable data.
- * @returns {ReactNode} Returns a TanStack React DataTable.
- */
 export function DataTable<TData, TValue>({
   columns,
   data,
@@ -78,11 +70,15 @@ export function DataTable<TData, TValue>({
   return (
     <div>
       {/* search bar section */}
-      <DatatableSearchBar table={table} />
+      {/* <DatatableSearchBar table={table} /> */}
       {/* column visibility dropdown section */}
-      <DatatableColumnVisibility table={table} />
+      <div className="flex justify-between pb-4">
+        <DatatableColumnVisibility table={table} />
+        <DatatableRowSizeDropdown table={table} />
+      </div>
+
       {/* datatable section */}
-      <div className="rounded-md border">
+      <div className="">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -134,7 +130,7 @@ export function DataTable<TData, TValue>({
       </div>
       {/* pagination footer section */}
       {/* <DataTableSimplePagination table={table} /> */}
-      <DataTablePagination table={table} showTotalSelected />
+      <DataTablePagination table={table} showTotalSelected={false} />
     </div>
   );
 }

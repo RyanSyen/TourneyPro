@@ -20,6 +20,8 @@ const SignInDialog = () => {
   const router = useRouter();
   const isSignIn = params.get("signin") === "true";
 
+  if (!isSignIn) router.push("/");
+
   return (
     <Dialog open={isSignIn}>
       <DialogTrigger

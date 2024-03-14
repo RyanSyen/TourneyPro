@@ -149,6 +149,20 @@ select {
 }
 /* #endregion */
 
+.fadein {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* dropdown component */
 .dropdown-arrow polygon {
   fill: #333741;

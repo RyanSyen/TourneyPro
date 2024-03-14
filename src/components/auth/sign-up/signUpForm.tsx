@@ -3,11 +3,13 @@ import "react-phone-input-2/lib/style.css";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import { z } from "zod";
 
+import { registerUser } from "@/app/service/user/userService";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -31,34 +33,20 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
 
 import MalaysiaPostcodes from "../../../../public/data/MalaysiaPostcodes.json";
+import formSchema from "./formSchema";
+import { onSubmitAction } from "./formSubmit";
 
 interface SearchResult {
   city: string;
   state: string;
 }
 
-const formSchema = z.object({
-  fullName: z.string().min(1, {
-    message: "Full Name is required.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  phoneNumber: z.string().min(10, {
-    message: "Please enter a valid phone number.",
-  }),
-  area: z.string().min(1, {
-    message: "Please enter your city or postcode.",
-  }),
-  dob: z.date({
-    required_error: "A date of birth is required.",
-  }),
-  gender: z.enum(["male", "female"], {
-    required_error: "You need to select a gender.",
-  }),
-});
+interface props {
+  isDialog: boolean;
+}
 
-const SignUpForm = () => {
+const SignUpForm = (props: props) => {
+  const route = useRouter();
   //#region react-hook-form
   // define form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -73,9 +61,9 @@ const SignUpForm = () => {
   });
 
   // define submit handler
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-  };
+  // const onSubmit = (values: z.infer<typeof formSchema>) => {
+  //   console.log(values);
+  // };
   //#endregion
 
   //#region search area
@@ -139,10 +127,42 @@ const SignUpForm = () => {
     form.setValue("area", searchTerm);
   }, [searchTerm]);
 
+  const onSubmit = async (data: z.output<typeof formSchema>) => {
+    registerUser(data);
+    // // create form object
+    // console.log("data: ", data);
+    // var formData = new FormData();
+    // // formData.append("fullName", data.fullName);
+    // // formData.append("email", data.email);
+    // // formData.append("phoneNumber", data.phoneNumber);
+    // // formData.append("area", data.area);
+    // // formData.append("dob", data.dob.toString());
+    // // formData.append("gender", data.gender);
+    // // console.log("form data: ", formData);
+    // // // const res = await onSubmitAction(formData);
+    // // console.log(await onSubmitAction(formData));
+    // // // console.log(res);
+    // formData.append("fullName", data.fullName || ""); // handle undefined values
+    // formData.append("email", data.email || "");
+    // formData.append("phoneNumber", data.phoneNumber || "");
+    // formData.append("area", data.area || "");
+    // formData.append("dob", data.dob?.toString() || ""); // handle undefined or null
+    // formData.append("gender", data.gender || "");
+
+    // console.log("form data: ", formData);
+
+    // const res = await onSubmitAction(formData);
+    // console.log(res.message);
+  };
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <main className="space-y-4 max-h-64 overflow-y-auto pr-4">
+        <main
+          className={`space-y-4 overflow-y-auto pr-4 ${
+            props.isDialog && "max-h-64"
+          }`}
+        >
           <section className="flex-wrap items-center grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-12">
             {/* Full Name */}
             <FormField
@@ -326,11 +346,22 @@ const SignUpForm = () => {
           </section>
         </main>
 
-        <section className="flex justify-center items-center pt-8">
-          <Button type="submit" variant={"continue"}>
-            Submit
-          </Button>
-        </section>
+        {props.isDialog ? (
+          <section className="flex justify-center items-center pt-8">
+            <Button type="submit" variant={"main"}>
+              Submit
+            </Button>
+          </section>
+        ) : (
+          <section className="flex justify-end items-center gap-2 pt-8">
+            <Button variant={"secondary"} onClick={() => route.back()}>
+              Cancel
+            </Button>
+            <Button type="submit" variant={"main"}>
+              Create
+            </Button>
+          </section>
+        )}
       </form>
     </Form>
   );

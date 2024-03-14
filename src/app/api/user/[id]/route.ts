@@ -3,10 +3,13 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  setDoc,
   updateDoc,
 } from "firebase/firestore";
 import { NextRequest, NextResponse } from "next/server";
+import { v4 as uuidv4 } from "uuid";
 
+import formSchema from "@/components/auth/sign-up/formSchema";
 import { db } from "@/lib/firebase";
 
 interface UserRequest {
@@ -67,7 +70,32 @@ export async function GET(
 }
 
 export async function POST(request: Request) {
-  return NextResponse.json({ message: "Test" }, { status: 200 });
+  const data = await request.json();
+  const userId = uuidv4();
+  const userRef = doc(db, table, userId);
+  const res = await setDoc(userRef, data);
+  console.log("res: ", res);
+
+  return NextResponse.json({ message: "User registered" }, { status: 200 });
+  // try {
+  //   console.log("req: ", request.json());
+  //   const data = await request.json();
+  //   const parsed = formSchema.safeParse(data);
+
+  //   if (parsed.success) {
+  //     const userId = uuidv4();
+  //     const userRef = doc(db, table, userId);
+  //     const res = await setDoc(userRef, data);
+  //     console.log("res: ", res);
+
+  //     return NextResponse.json({ message: "User registered" }, { status: 200 });
+  //   }
+
+  //   return NextResponse.json({ message: "Invalid form data" }, { status: 500 });
+  // } catch (error) {
+  //   console.error(error);
+  //   return NextResponse.json({ message: "Server error!" }, { status: 500 });
+  // }
 }
 
 export async function PUT(request: Request) {
