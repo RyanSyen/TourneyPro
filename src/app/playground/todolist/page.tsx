@@ -58,7 +58,7 @@ const TodoForm = () => {
         placeholder="Add new todo"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className="text-black p-1.5 rounded-md"
+        className="outline-none p-1.5 rounded-md"
       />
       <button type="button" onClick={handleSubmit}>
         Add
@@ -69,7 +69,7 @@ const TodoForm = () => {
 
 const TodoList = (props: TodoList) => {
   return (
-    <ul className="flex flex-col gap-6">
+    <ul className="flex flex-col gap-4">
       {props.list?.map(
         (todo: QueryDocumentSnapshot<DocumentData, DocumentData>) => {
           const todoObj: Todo = {
@@ -114,7 +114,9 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
       <input
         ref={inputRef}
         type={isEdit ? "text" : "button"}
-        className={`${!isEdit ? "cursor-pointer" : ""}`}
+        className={`max-w-sm text-wrap text-left ${
+          !isEdit ? "cursor-pointer" : ""
+        }`}
         value={task}
         onClick={onEditTask}
         onChange={onChangeTask}
