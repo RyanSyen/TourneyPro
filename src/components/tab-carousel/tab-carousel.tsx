@@ -11,7 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { IAdminTabLookup } from "@/lookups/admin/ILookup";
+import { IAdminTabLookup } from "@/lookups/admin/IAdminLookup";
 
 import Tab from "../common/tab";
 import useTabCarousel from "./useTabCarousel";

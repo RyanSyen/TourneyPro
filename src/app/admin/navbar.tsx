@@ -3,7 +3,7 @@ import { ChevronRightIcon } from "@radix-ui/react-icons";
 import Breadcrumb from "@/components/common/breadcrumb";
 import Tab from "@/components/common/tab";
 import CustomLink from "@/components/ui/link";
-import { AdminTabLookup as tabList } from "@/lookups/admin/lookup";
+import { AdminTabLookup as tabList } from "@/lookups/admin/adminLookup";
 
 import AdminBreadcrumb from "./breadcrumb";
 
