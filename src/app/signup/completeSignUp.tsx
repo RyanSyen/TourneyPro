@@ -14,7 +14,14 @@ const CompleteSignUp = () => {
     }, delay);
 
     const interval = setInterval(() => {
-      setSecs((prev) => prev - 1);
+      setSecs((prev) => {
+        if (prev === 0) {
+          clearInterval(interval);
+          return prev;
+        } else {
+          return prev - 1;
+        }
+      });
     }, 1000);
 
     return () => {
