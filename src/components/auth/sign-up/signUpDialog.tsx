@@ -12,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useUserContext } from "@/context/UserProvider";
 
 import SignUpForm from "./signUpForm";
 
@@ -89,6 +90,7 @@ const PreSignUp = ({ continueFn }: PreSignUpProps) => {
 
 const SignUpDialog = () => {
   const params = useSearchParams();
+  const userData = useUserContext();
   const isSignUp = params.get("signup") === "true";
 
   const [isContinueSignUp, setIsContinueSignUp] = useState(false);
@@ -103,11 +105,11 @@ const SignUpDialog = () => {
             <AppLogo enableOnClick={false} />
           </div>
           <DialogTitle className="text-2xl font-medium tracking-normal pb-4">
-            Sign Up
+            Welcome to TourneyPro
           </DialogTitle>
         </DialogHeader>
         {isContinueSignUp ? (
-          <SignUpForm isDialog />
+          <SignUpForm isDialog user={userData} />
         ) : (
           <PreSignUp continueFn={onContinueSignUp} />
         )}

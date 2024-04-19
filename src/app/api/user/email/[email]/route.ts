@@ -38,6 +38,7 @@ export async function GET(
   { params }: { params: { email: string } }
 ) {
   // console.log("email: ", params.email);
+  let data;
   const userRef = collection(db, table);
   const findUserByEmailQuery = query(
     userRef,
@@ -46,42 +47,16 @@ export async function GET(
   const querySnapshot = await getDocs(findUserByEmailQuery);
 
   querySnapshot.forEach((doc) => {
-    // console.log(doc.id, " => ", doc.data());
     if (doc.exists()) {
-      const data = doc.data();
-      // console.log("data: ", data);
-      /*
-      data:  {
-  email: 'yisyen123@gmail.com',
-  area: 'Puchong, Selangor',
-  phoneNumber: '601112836502',
-  fullName: 'Ryan Wong',
-  dob: '2024-03-09T16:00:00.000Z',
-  gender: 'male'
-}
-      */
-      const user: UserDAO = {
-        Id: data.Id,
-        AccessToken: data.AccessToken,
-        FullName: data.FullName,
-        Email: data.Email,
-        PhoneNumber: data.PhoneNumber,
-        Gender: data.Gender,
-        Area: data.Area,
-        DateOfBirth: data.DateOfBirth,
-        ProfilePic: data.ProfilePic,
-        RoleId: data.RoleId,
-        IsEmailVerified: data.IsEmailVerified,
-        Language: data.Language,
-        JoinedDate: data.JoinedDate,
-        LastLogin: data.LastLogin,
-        ModifiedDate: data.ModifiedDate,
-      };
-      return NextResponse.json(user, { status: 200 });
+      data = doc.data();
     }
   });
 
-  return NextResponse.json({}, { status: 200 });
+  if (querySnapshot.empty) {
+    return NextResponse.json({}, { status: 200 });
+  }
+
+  return NextResponse.json(data, { status: 200 });
 }
 
 export async function POST(request: Request) {

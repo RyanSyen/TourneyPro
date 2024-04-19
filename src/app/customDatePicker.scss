@@ -1,0 +1,72 @@
+.rdp-caption_dropdowns {
+  display: flex;
+
+  .rdp-vhidden {
+    display: none;
+  }
+
+  .rdp-dropdown_month div,
+  .rdp-dropdown_year div {
+    display: none;
+  }
+}
+
+.rdp-dropdown_month,
+.rdp-dropdown_year {
+  position: relative;
+}
+
+.rdp-dropdown {
+  appearance: none;
+  background-color: #2d3038;
+  // background-image: linear-gradient(#c70062, #c70062),
+  //   linear-gradient(-135deg, transparent 50%, #ffaad4 50%),
+  //   linear-gradient(-225deg, transparent 50%, #ffaad4 50%),
+  //   linear-gradient(#ffaad4 42%, #c70062 42%);
+  // background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  // background-size: 1px 100%, 20px 22px, 20px 22px, 20px 100%;
+  // background-position: right 20px center, right bottom, right bottom,
+  //   right bottom;
+  width: fit-content;
+  text-align: center;
+  cursor: pointer;
+  padding: 3px 5px;
+
+  &:focus-visible {
+    outline: none;
+    border: none;
+  }
+
+  // &::before,
+  // &::after {
+  //   --size: 0.3rem;
+  //   position: absolute;
+  //   content: "";
+  //   right: 1rem;
+  //   pointer-events: none;
+  // }
+
+  // &::before {
+  //   border-left: var(--size) solid transparent;
+  //   border-right: var(--size) solid transparent;
+  //   border-bottom: var(--size) solid black;
+  //   top: 40%;
+  // }
+
+  // &::after {
+  //   // border-left: var(--size) solid transparent;
+  //   // border-right: var(--size) solid transparent;
+  //   // border-top: var(--size) solid black;
+  //   // top: 55%;
+  //   content: "\25BC";
+  // }
+
+  // option {
+  //   background-color: inherit;
+  //   padding: 3px 5px;
+  // }
+}
+
+select option {
+  padding: 3px 5px;
+}

@@ -1,3 +1,5 @@
+"use client";
+
 import "react-phone-input-2/lib/style.css";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,7 +32,10 @@ import {
   PrimaryPopoverContent,
 } from "@/components/ui/popover";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useToast } from "@/components/ui/use-toast";
+import { IUserData } from "@/context/UserProvider";
 import { cn } from "@/lib/utils";
+import { ResponseData } from "@/types/common";
 
 import MalaysiaPostcodes from "../../../../public/data/MalaysiaPostcodes.json";
 import formSchema from "./formSchema";
@@ -43,10 +48,15 @@ interface SearchResult {
 
 interface props {
   isDialog: boolean;
+  user: IUserData | null;
 }
 
+//! old impl, ignore and dont use this component, the new component is under signup route
 const SignUpForm = (props: props) => {
   const route = useRouter();
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+
   //#region react-hook-form
   // define form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -74,7 +84,7 @@ const SignUpForm = (props: props) => {
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
-    console.log("search term: ", searchTerm);
+    // console.log("search term: ", searchTerm);
     setSearchTerm(searchTerm);
 
     let cities: SearchResult[] = [];
@@ -92,7 +102,7 @@ const SignUpForm = (props: props) => {
       }
     }
 
-    console.log("result: ", cities);
+    // console.log("result: ", cities);
 
     // if city not found by name, try search by postcode
     if (cities.length == 0) {
@@ -109,7 +119,7 @@ const SignUpForm = (props: props) => {
       }
     }
 
-    console.log("search by postcode: ", cities);
+    // console.log("search by postcode: ", cities);
 
     setSearchResult(cities);
     setShowDropdown(cities.length > 0 && searchTerm.length > 0 ? true : false);
@@ -128,31 +138,16 @@ const SignUpForm = (props: props) => {
   }, [searchTerm]);
 
   const onSubmit = async (data: z.output<typeof formSchema>) => {
-    registerUser(data);
-    // // create form object
-    // console.log("data: ", data);
-    // var formData = new FormData();
-    // // formData.append("fullName", data.fullName);
-    // // formData.append("email", data.email);
-    // // formData.append("phoneNumber", data.phoneNumber);
-    // // formData.append("area", data.area);
-    // // formData.append("dob", data.dob.toString());
-    // // formData.append("gender", data.gender);
-    // // console.log("form data: ", formData);
-    // // // const res = await onSubmitAction(formData);
-    // // console.log(await onSubmitAction(formData));
-    // // // console.log(res);
-    // formData.append("fullName", data.fullName || ""); // handle undefined values
-    // formData.append("email", data.email || "");
-    // formData.append("phoneNumber", data.phoneNumber || "");
-    // formData.append("area", data.area || "");
-    // formData.append("dob", data.dob?.toString() || ""); // handle undefined or null
-    // formData.append("gender", data.gender || "");
+    setLoading(true);
+    const profileUrl = props.user?.photoURL || "";
+    // const res: ResponseData = await registerUser(data, profileUrl);
+    // console.log("after onSubmit: ", res);
 
-    // console.log("form data: ", formData);
-
-    // const res = await onSubmitAction(formData);
-    // console.log(res.message);
+    // toast({
+    //   variant: res.success ? "success" : "destructive",
+    //   title: res.success ? "Success" : "Error",
+    //   description: res.message,
+    // });
   };
 
   return (

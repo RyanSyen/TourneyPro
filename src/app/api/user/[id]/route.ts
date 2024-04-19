@@ -6,6 +6,7 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
+import Error from "next/error";
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
@@ -70,32 +71,25 @@ export async function GET(
 }
 
 export async function POST(request: Request) {
-  const data = await request.json();
-  const userId = uuidv4();
-  const userRef = doc(db, table, userId);
-  const res = await setDoc(userRef, data);
-  console.log("res: ", res);
+  try {
+    const data = await request.json();
+    const userId = uuidv4();
+    const userRef = doc(db, table, userId);
+    await setDoc(userRef, data);
 
-  return NextResponse.json({ message: "User registered" }, { status: 200 });
-  // try {
-  //   console.log("req: ", request.json());
-  //   const data = await request.json();
-  //   const parsed = formSchema.safeParse(data);
+    console.log("[POST_API_USER] User Registered");
 
-  //   if (parsed.success) {
-  //     const userId = uuidv4();
-  //     const userRef = doc(db, table, userId);
-  //     const res = await setDoc(userRef, data);
-  //     console.log("res: ", res);
-
-  //     return NextResponse.json({ message: "User registered" }, { status: 200 });
-  //   }
-
-  //   return NextResponse.json({ message: "Invalid form data" }, { status: 500 });
-  // } catch (error) {
-  //   console.error(error);
-  //   return NextResponse.json({ message: "Server error!" }, { status: 500 });
-  // }
+    return NextResponse.json(
+      { success: true, message: "User registered" },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("[POST_API_USER] Error registering user: ", error);
+    return NextResponse.json(
+      { success: false, message: "Internal server error" },
+      { status: 500 }
+    );
+  }
 }
 
 export async function PUT(request: Request) {

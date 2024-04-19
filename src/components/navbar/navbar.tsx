@@ -4,6 +4,7 @@ import { DropdownMenuArrow } from "@radix-ui/react-dropdown-menu";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 // import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -154,6 +155,10 @@ const ProfileDropdown = (props: { fullName: string; photoURL: string }) => {
 
 const UserStatus = () => {
   const userData = useUserContext();
+  const router = useRouter();
+
+  console.log("userData: ", userData);
+  console.log("pass: ", userData && !userData.isFirstTimeUser);
 
   if (userData) {
     const name = userData.fullName ?? "";
@@ -161,10 +166,12 @@ const UserStatus = () => {
     return <ProfileDropdown fullName={name} photoURL={pic} />;
   } else {
     return (
-      <>
-        <SignInDialog />
-        <SignUpDialog />
-      </>
+      <Button
+        className="py-2 px-6 rounded-3xl !h-full !text-base !text-[#fcfcfc] bg-gradient-to-r from-[#E50B0D] to-[#CF0868] hover:from-[#c3090c] hover:to-[#b10659] transition-colors"
+        onClick={() => router.push("/signin")}
+      >
+        Sign In
+      </Button>
     );
   }
 };
@@ -172,6 +179,10 @@ const UserStatus = () => {
 
 const Navbar = () => {
   const { isTransparent } = useNavbar();
+  const path = usePathname();
+  let hideUserStatus = false;
+
+  if (path.includes("signup" || "signin")) hideUserStatus = true;
 
   return (
     <>
@@ -184,7 +195,11 @@ const Navbar = () => {
           <NavDrawer />
           <AppLogo />
         </div>
-        <div className="flex justify-center items-center">
+        <div
+          className={`flex justify-center items-center ${
+            hideUserStatus ? "hidden" : ""
+          }`}
+        >
           <UserStatus />
         </div>
       </nav>

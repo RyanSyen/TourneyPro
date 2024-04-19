@@ -5,10 +5,12 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import { useRouter } from "next/navigation";
 
 import { auth } from "@/lib/firebase";
 
 const useAuth = () => {
+  const router = useRouter();
   const providers = [
     { id: 0, name: "google" },
     { id: 1, name: "facebook" },
@@ -20,8 +22,11 @@ const useAuth = () => {
 
     switch (id) {
       case 0:
+        const authUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/signin?provider=${providers[id].name}`;
+        router.push(authUrl);
         userCred = await signInWithPopup(auth, new GoogleAuthProvider());
         console.log("Google user cred: ", userCred);
+
         break;
       case 1:
         userCred = await signInWithPopup(auth, new FacebookAuthProvider());
@@ -37,7 +42,9 @@ const useAuth = () => {
   };
 
   const logOut = () => {
+    console.log("logging out");
     signOut(auth);
+    router.push("/");
   };
 
   return {

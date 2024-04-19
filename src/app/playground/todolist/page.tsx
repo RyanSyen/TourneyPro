@@ -95,7 +95,7 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
     setIsEdit(false);
 
     // update todo
-    console.log("todo id: ", todo);
+    // console.log("todo id: ", todo);
     const task = inputRef.current!.value;
     const res = await updateTodo(todo.id, task);
   });

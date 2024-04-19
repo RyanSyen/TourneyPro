@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 import AppLogo from "@/components/common/appLogo";
 import {
@@ -20,7 +20,11 @@ const SignInDialog = () => {
   const router = useRouter();
   const isSignIn = params.get("signin") === "true";
 
-  if (!isSignIn) router.push("/");
+  // useEffect(() => {
+  //   // we need to redirect inside useEffect to handle side effects like redirecting when rendering in the body
+  //   // else it will get this error: "Cannot update a component (Router) while rendering a different component (SignInDialog)"
+  //   // if (!isSignIn) router.push("/");
+  // }, [isSignIn, router]);
 
   return (
     <Dialog open={isSignIn}>

@@ -90,6 +90,21 @@ const Playground = () => {
       desc: "radix toast component",
       url: "/playground/toast",
     },
+    {
+      name: "card hover",
+      desc: "card hover component",
+      url: "/playground/card-hover",
+    },
+    {
+      name: "react date picker",
+      desc: "react date picker by wojtekmaj",
+      url: "/playground/react-date-picker",
+    },
+    {
+      name: "confetti animation",
+      desc: "confetti animation by https://medium.com/@codewithmarish/creating-confetti-animation-in-next-js-a-step-by-step-guide-20da5bc73190",
+      url: "/playground/confetti",
+    },
   ];
 
   return (

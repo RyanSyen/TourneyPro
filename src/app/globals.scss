@@ -140,6 +140,10 @@ select {
   .abc {
     @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
   }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
 }
 
 @layer utilities {
@@ -181,6 +185,11 @@ select {
   .react-tel-input {
     background-color: transparent;
     margin-bottom: 0.25rem;
+    border-bottom: 1px solid #444548;
+
+    .special-label {
+      display: none;
+    }
 
     &::before {
       border-bottom: 1px solid #444548;
@@ -199,6 +208,10 @@ select {
       background-color: inherit; // follow component standard
       color: #fcfcfc !important; // follow component standard
       width: 100%; // follow component standard
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+
       &:focus,
       &:focus-visible {
         border-bottom: 1px solid #e50b0d !important;
@@ -206,6 +219,7 @@ select {
         border-left: none;
         border-right: none;
         border-radius: 0;
+        outline: none;
       }
     }
 

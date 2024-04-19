@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className="!overflow-auto">
-      <body className={`${inter.className} !overflow-auto !mr-0`}>
+      <body className={`${inter.className} !mr-0`}>
         <ReactQueryProvider>
           <ThemeProvider
             attribute="class"
