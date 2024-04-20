@@ -18,6 +18,7 @@ import { getUserByEmail } from "@/app/service/user/userService";
 import CustomLoader from "@/components/common/customLoader";
 import { auth } from "@/lib/firebase/index";
 import { ProviderLookup } from "@/lookups/auth/providerLookup";
+import { ProtectedRoutes } from "@/lookups/protected/routes";
 import { UserData } from "@/types/UserData";
 
 interface IUserData {
@@ -44,31 +45,29 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
   const [user, loading, error] = useAuthState(auth);
   const [userData, setUserData] = useState<IUserData | null>(null); // State to hold user data
 
-  console.log("user: ", user);
+  // console.log("user: ", user);
+  console.log("path: ", path);
+
+  if (!user) {
+    if (ProtectedRoutes.includes(path)) router.push(`/404`);
+  }
 
   useEffect(() => {
-    if (!user) setUserData(null);
+    if (!user) {
+      setUserData(null);
+    }
 
     if (user && user.email) {
       const getUser = async () => {
         console.log("calling getUser");
         try {
           let res = await getUserByEmail(user.email!);
-          console.log(res);
-          if (!res?.email) {
-            console.log("user not found");
-            // const isSignIn = search.get("signin");
-            console.log(search);
-            console.log(search.get("provider"));
 
+          if (!res?.email) {
             const isValidProvider = ProviderLookup.some(
               (provider) => provider.name === search.get("provider")
             );
             const isSignIn = location.pathname.includes("signin");
-
-            console.log(
-              `isSignIn: ${isSignIn} and isValidProvider: ${isValidProvider}`
-            );
 
             setUserData({
               id: user.uid,
@@ -111,7 +110,9 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
     let provider = user.providerData[0].providerId;
     provider = provider.endsWith(".com") ? provider.slice(0, -4) : provider;
     console.log(
-      `[UserProvider] User logged in via ${provider} at ${new Date().toLocaleString()}`
+      `[UserProvider] ${
+        user.displayName
+      } logged in via ${provider} at ${new Date().toLocaleString()}`
     );
   }
 
