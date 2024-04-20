@@ -5,7 +5,8 @@ import SignUpForm from "@/components/auth/sign-up/signUpForm";
 const CreateAccountForm = () => {
   return (
     <>
-      <SignUpForm isDialog={false} />
+      <div>Create Account Form</div>
+      {/* <SignUpForm isDialog={false} /> */}
     </>
   );
 };
