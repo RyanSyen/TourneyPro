@@ -17,30 +17,23 @@ import CustomLoader from "@/components/common/customLoader";
 import { auth } from "@/lib/firebase/index";
 import { ProviderLookup } from "@/lookups/auth/providerLookup";
 import { ProtectedRoutes } from "@/lookups/protected/routes";
+import { UserData } from "@/types/UserData";
 
-interface IUserData {
-  id: string;
-  fullName: string | null;
-  email: string | null;
-  isEmailVerified: boolean;
-  photoURL: string | null;
-  mobileNumber: string | null;
-  isFirstTimeUser: boolean;
-}
+import useAuth from "../hooks/useAuth";
 
-const UserContext = createContext<IUserData | null>(null);
+const UserContext = createContext<UserData | null>(null);
 const useUserContext = () => useContext(UserContext);
 
 const UserContextProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const path = usePathname();
   const search = useSearchParams();
-  const isFirstTimeUserRef = useRef(true);
+  const authHook = useAuth();
 
   // retrieve and monitor auth state
   // triggered when user signs in or out
   const [user, loading, error] = useAuthState(auth);
-  const [userData, setUserData] = useState<IUserData | null>(null); // State to hold user data
+  // const [userData, setUserData] = useState<UserData | null>(null); // State to hold user data
 
   // console.log("user: ", user);
   console.log("path: ", path);
@@ -51,7 +44,7 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (!user) {
-      setUserData(null);
+      authHook.changeUserData(null);
     }
 
     if (user && user.email) {
@@ -66,14 +59,13 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
             );
             const isSignIn = location.pathname.includes("signin");
 
-            setUserData({
-              id: user.uid,
-              fullName: user.displayName,
-              email: user.email,
+            authHook.changeUserData({
+              fullName: user.displayName || "",
+              email: user.email || "",
               isEmailVerified: user.emailVerified,
-              photoURL: user.photoURL,
-              mobileNumber: user.phoneNumber,
-              isFirstTimeUser: true,
+              photoURL: user.photoURL || "",
+              phoneNumber: user.phoneNumber || "",
+              roleId: 0,
             });
 
             if (isSignIn && isValidProvider)
@@ -81,14 +73,13 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
               router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/signup`);
           } else {
             console.log("welcome back ", res.fullName);
-            setUserData({
-              id: user.uid,
-              fullName: user.displayName,
-              email: user.email,
+            authHook.changeUserData({
+              fullName: user.displayName || "",
+              email: user.email || "",
               isEmailVerified: user.emailVerified,
-              photoURL: user.photoURL,
-              mobileNumber: user.phoneNumber,
-              isFirstTimeUser: false,
+              photoURL: user.photoURL || "",
+              phoneNumber: user.phoneNumber || "",
+              roleId: 0,
             });
             router.push("/");
           }
@@ -113,10 +104,10 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
     );
   }
 
-  const value = React.useMemo(() => ({ userData }), [user, userData]);
+  // const value = React.useMemo(() => ({ authHook.userData }), [user, authHook.userData]);
 
   return (
-    <UserContext.Provider value={value.userData}>
+    <UserContext.Provider value={authHook.userData}>
       {loading && <CustomLoader />}
       <div>{!loading && children}</div>
     </UserContext.Provider>

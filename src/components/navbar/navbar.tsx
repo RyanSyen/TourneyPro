@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useUserContext } from "@/context/UserProvider";
 import useAuth from "@/hooks/useAuth";
+import { RoleLookup } from "@/lookups/role/roleLookup";
 
 import AppLogo from "../common/appLogo";
 import useNavbar from "./useNavbar";
@@ -62,8 +63,13 @@ const NavDrawer = () => {
   );
 };
 
-const ProfileDropdown = (props: { fullName: string; photoURL: string }) => {
+const ProfileDropdown = (props: {
+  fullName: string;
+  photoURL: string;
+  roleId: number;
+}) => {
   const firstLetter = props.fullName?.split("")[0];
+  const role = RoleLookup.find((r) => r.id === props.roleId)?.title;
   const { logOut } = useAuth();
 
   const items = [
@@ -131,7 +137,7 @@ const ProfileDropdown = (props: { fullName: string; photoURL: string }) => {
             <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
               {props.fullName}
             </h4>
-            <p className="text-sm font-normal text-[#8c94a1]">Administrator</p>
+            <p className="text-sm font-normal text-[#8c94a1]">{role}</p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
@@ -154,13 +160,19 @@ const UserStatus = () => {
   const userData = useUserContext();
   const router = useRouter();
 
-  console.log("userData: ", userData);
-  console.log("pass: ", userData && !userData.isFirstTimeUser);
+  // console.log("userData: ", userData);
+  // console.log("pass: ", userData && !userData.isFirstTimeUser);
 
   if (userData) {
     const name = userData.fullName ?? "";
     const pic = userData.photoURL ?? "";
-    return <ProfileDropdown fullName={name} photoURL={pic} />;
+    return (
+      <ProfileDropdown
+        fullName={name}
+        photoURL={pic}
+        roleId={userData.roleId}
+      />
+    );
   } else {
     return (
       <Button

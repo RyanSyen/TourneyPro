@@ -6,8 +6,10 @@ import {
   signOut,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
 
 import { auth } from "@/lib/firebase";
+import { UserData } from "@/types/UserData";
 
 const useAuth = () => {
   const router = useRouter();
@@ -16,6 +18,14 @@ const useAuth = () => {
     { id: 1, name: "facebook" },
     { id: 2, name: "github" },
   ];
+  const [userData, setUserData] = useState<UserData | null>(null); // State to hold user data
+
+  const changeUserData = useCallback(
+    (data: UserData | null) => {
+      setUserData(data);
+    },
+    [userData]
+  );
 
   const signInWithProviders = async (id: number) => {
     var userCred;
@@ -51,6 +61,8 @@ const useAuth = () => {
     providers,
     signInWithProviders,
     logOut,
+    userData,
+    changeUserData,
   };
 };
 

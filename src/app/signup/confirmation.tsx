@@ -6,6 +6,7 @@ import CustomLoader from "@/components/common/customLoader";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
+import useAuth from "@/hooks/useAuth";
 import { RoleLookup } from "@/lookups/role/roleLookup";
 import { ResponseData } from "@/types/common";
 
@@ -26,6 +27,7 @@ interface IConfirmationList {
 
 const Confirmation = ({ prev, next, formData }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
+  const { changeUserData } = useAuth();
   const ConfirmationList: IConfirmationList[] =
     formData && Object.keys(formData).length > 0
       ? [
@@ -69,6 +71,17 @@ const Confirmation = ({ prev, next, formData }: Props) => {
 
   const onSubmit = async () => {
     setIsLoading(true);
+
+    // update userdata
+    changeUserData({
+      fullName: formData.fullName,
+      email: formData.email,
+      isEmailVerified: false,
+      phoneNumber: formData.phoneNumber,
+      photoURL: formData.photoUrl,
+      roleId: formData.roleId,
+    });
+
     const res: ResponseData | undefined = await registerUser(formData);
     console.log("after onSubmit: ", res);
     setIsLoading(false);

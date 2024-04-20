@@ -1,5 +1,5 @@
 export interface UserData {
-  id: string;
+  // id: string;
   fullName: string;
   email: string;
   isEmailVerified: boolean;

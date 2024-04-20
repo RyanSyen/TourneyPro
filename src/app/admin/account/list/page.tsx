@@ -11,7 +11,6 @@ const AccountList = async () => {
   const allUsers = await getAllUsers();
 
   const accList: Account[] = allUsers.message.map((user: UserData) => ({
-    userId: user.id,
     fullName: user.fullName,
     emailAddress: user.email,
     mobileNumber: user.phoneNumber,
