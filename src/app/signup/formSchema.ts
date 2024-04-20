@@ -16,8 +16,8 @@ const formSchema = z.object({
   dob: z.date({
     required_error: "A date of birth is required.",
   }),
-  gender: z.enum(["male", "female"], {
-    required_error: "You need to select a gender.",
+  gender: z.string().min(1, {
+    message: "You need to select a gender.",
   }),
 });
 

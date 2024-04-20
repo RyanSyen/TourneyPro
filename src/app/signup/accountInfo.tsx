@@ -1,20 +1,13 @@
-// import "../customDatePicker.scss";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CalendarIcon } from "@radix-ui/react-icons";
-import { format, formatDate } from "date-fns";
-import dayjs from "dayjs";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-// import Calendar from "react-calendar";
+import { format } from "date-fns";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
-import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
 
-// import formSchema from "@/components/auth/sign-up/formSchema";
 import CustomDatePicker from "@/components/common/customDatePicker";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import {
   ErrorFormMessage,
   Form,
@@ -30,11 +23,11 @@ import {
   PrimaryPopoverContent,
 } from "@/components/ui/popover";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { IUserData, useUserContext } from "@/context/UserProvider";
+import { useUserContext } from "@/context/UserProvider";
 
 import MalaysiaPostcodes from "../../../public/data/MalaysiaPostcodes.json";
-import ReactDatePicker from "../playground/react-date-picker/page";
 import { getUserByEmail } from "../service/user/userService";
+import formSchema from "./formSchema";
 import { IFormData } from "./useForm";
 
 interface SearchResult {
@@ -49,44 +42,18 @@ interface Props {
   onSubmitStep: (data: IFormData) => void;
 }
 
-export const schema = z.object({
-  fullName: z.string().min(1, {
-    message: "Full Name is required.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  phoneNumber: z.string().min(10, {
-    message: "Please enter a valid phone number.",
-  }),
-  area: z.string().min(1, {
-    message: "Please enter your city or postcode.",
-  }),
-  dob: z.date({
-    required_error: "A date of birth is required.",
-  }),
-  // gender: z.enum(["male", "female", ""], {
-  //   required_error: "You need to select a gender.",
-  // }),
-  gender: z.string().min(1, {
-    message: "You need to select a gender.",
-  }),
-});
-
 const AccountInfo = ({ prev, next, formData, onSubmitStep }: Props) => {
   const user = useUserContext();
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
-  const form = useForm<z.infer<typeof schema>>({
-    resolver: zodResolver(schema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     shouldFocusError: false,
     defaultValues: {
       // since formField is using controlled component, you need to provide default value for the field
       fullName: formData.fullName || user?.fullName || "",
       email: formData.email || user?.email || "",
       phoneNumber: formData.phoneNumber || "",
-      // area: formData.area || "",
-      // dob: dayjs().startOf("day").toDate(),
       dob: formData.dob || "",
       gender: formData.gender || undefined,
     },
@@ -100,7 +67,6 @@ const AccountInfo = ({ prev, next, formData, onSubmitStep }: Props) => {
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
-    // console.log("search term: ", searchTerm);
     setSearchTerm(searchTerm);
 
     let cities: SearchResult[] = [];
@@ -151,9 +117,9 @@ const AccountInfo = ({ prev, next, formData, onSubmitStep }: Props) => {
   useEffect(() => {
     form.setValue("area", searchTerm);
     // form.setValue("dob", dob);
-  }, [searchTerm]);
+  }, [searchTerm, form]);
 
-  const onSubmit = async (data: z.output<typeof schema>) => {
+  const onSubmit = async (data: z.output<typeof formSchema>) => {
     const profileUrl = user?.photoURL || "";
     // console.log("profileUrl: ", profileUrl);
     // console.log("data: ", data);
@@ -398,23 +364,6 @@ const AccountInfo = ({ prev, next, formData, onSubmitStep }: Props) => {
               />
             </section>
           </main>
-
-          {/* {props.isDialog ? (
-          <section className="flex justify-center items-center pt-8">
-            <Button type="submit" variant={"main"}>
-              Submit
-            </Button>
-          </section>
-        ) : (
-          <section className="flex justify-end items-center gap-2 pt-8">
-            <Button variant={"secondary"} onClick={() => route.back()}>
-              Cancel
-            </Button>
-            <Button type="submit" variant={"main"}>
-              Create
-            </Button>
-          </section>
-        )} */}
           <section className="flex justify-end items-center gap-2 pt-8">
             <Button
               type="submit"

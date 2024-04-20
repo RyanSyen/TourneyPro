@@ -4,5 +4,6 @@ export interface UserData {
   email: string;
   isEmailVerified: boolean;
   photoURL: string;
-  mobileNumber: string;
+  phoneNumber: string;
+  roleId: number;
 }

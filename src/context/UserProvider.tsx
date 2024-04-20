@@ -1,11 +1,9 @@
 "use client";
 
-import { UserInfo } from "firebase/auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   createContext,
   ReactNode,
-  useCallback,
   useContext,
   useEffect,
   useRef,
@@ -19,7 +17,6 @@ import CustomLoader from "@/components/common/customLoader";
 import { auth } from "@/lib/firebase/index";
 import { ProviderLookup } from "@/lookups/auth/providerLookup";
 import { ProtectedRoutes } from "@/lookups/protected/routes";
-import { UserData } from "@/types/UserData";
 
 interface IUserData {
   id: string;
@@ -126,4 +123,4 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export { type IUserData, UserContextProvider, useUserContext };
+export { UserContextProvider, useUserContext };

@@ -1,4 +1,4 @@
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
@@ -8,8 +8,21 @@ import { ResponseData } from "@/types/common";
 const table = "users";
 let responseData: ResponseData;
 
-export async function GET(request: NextRequest) {
-  return NextResponse.json({ message: "Test" }, { status: 200 });
+export async function GET() {
+  try {
+    const snapshot = await getDocs(collection(db, table));
+    const docs = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    return NextResponse.json({ message: docs }, { status: 200 });
+  } catch (error) {
+    console.error("[POST_API_USER] Error fetching all users: ", error);
+
+    responseData = { success: false, message: "Internal server error" };
+
+    return NextResponse.json(responseData, { status: 500 });
+  }
 }
 
 export async function POST(request: Request) {
@@ -31,12 +44,4 @@ export async function POST(request: Request) {
 
     return NextResponse.json(responseData, { status: 500 });
   }
-}
-
-export async function PUT(request: Request) {
-  return NextResponse.json({ message: "Test" }, { status: 200 });
-}
-
-export async function DELETE(request: Request) {
-  return NextResponse.json({ message: "Test" }, { status: 200 });
 }

@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-// import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -31,8 +30,6 @@ import {
 import { useUserContext } from "@/context/UserProvider";
 import useAuth from "@/hooks/useAuth";
 
-import SignInDialog from "../auth/sign-in/signInDialog";
-import SignUpDialog from "../auth/sign-up/signUpDialog";
 import AppLogo from "../common/appLogo";
 import useNavbar from "./useNavbar";
 

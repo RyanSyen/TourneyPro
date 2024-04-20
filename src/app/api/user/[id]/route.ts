@@ -10,12 +10,7 @@ import Error from "next/error";
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
-import formSchema from "@/components/auth/sign-up/formSchema";
 import { db } from "@/lib/firebase";
-
-interface UserRequest {
-  id: string;
-}
 
 interface UserDAO {
   Id: string;

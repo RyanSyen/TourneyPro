@@ -1,22 +1,28 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
 
+import formSchema from "@/app/signup/formSchema";
 import { IFormData } from "@/app/signup/useForm";
-import formSchema from "@/components/auth/sign-up/formSchema";
 import { ResponseData } from "@/types/common";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/user`;
 
-// interface UserRequest extends z.output<typeof formSchema> {
-//   roleId: number;
-//   photoUrl: string;
-//   isEmailVerified: boolean;
-// }
 interface UserRequest extends IFormData {
   roleId: number;
   photoUrl: string;
   isEmailVerified: boolean;
 }
+
+export const getAllUsers = async () => {
+  try {
+    const res = await fetch(`${BASE_URL}`, {
+      method: "GET",
+    });
+
+    return await res.json();
+  } catch (error) {
+    console.error("Error: ", error);
+  }
+};
 
 export const getUserByEmail = async (email: string) => {
   try {
