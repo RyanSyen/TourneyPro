@@ -1,4 +1,6 @@
-export const AdminTabLookup = [
+import { TabLookup } from "@/types/common";
+
+export const AdminTabLookup: TabLookup[] = [
   {
     name: "Account",
     url: "/admin/account/list",

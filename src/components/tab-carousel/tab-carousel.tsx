@@ -2,7 +2,6 @@
 
 import * as React from "react";
 
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   type CarouselApi,
@@ -11,12 +10,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { IAdminTabLookup } from "@/lookups/admin/IAdminLookup";
+import { TabLookup } from "@/types/common";
 
 import Tab from "../common/tab";
 import useTabCarousel from "./useTabCarousel";
 
-export function TabCarousel({ list }: { list: IAdminTabLookup[] }) {
+export function TabCarousel({ list }: { list: TabLookup[] }) {
   const { setApi, slideTo, current, count } = useTabCarousel();
 
   console.log("current: ", current);

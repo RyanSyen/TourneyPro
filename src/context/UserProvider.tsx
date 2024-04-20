@@ -36,7 +36,6 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
   // const [userData, setUserData] = useState<UserData | null>(null); // State to hold user data
 
   // console.log("user: ", user);
-  console.log("path: ", path);
 
   if (!user) {
     if (ProtectedRoutes.includes(path)) router.push(`/404`);
@@ -52,13 +51,12 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
         console.log("calling getUser");
         try {
           let res = await getUserByEmail(user.email!);
+          const isValidProvider = ProviderLookup.some(
+            (provider) => provider.name === search.get("provider")
+          );
+          const isSignIn = location.pathname.includes("signin");
 
           if (!res?.email) {
-            const isValidProvider = ProviderLookup.some(
-              (provider) => provider.name === search.get("provider")
-            );
-            const isSignIn = location.pathname.includes("signin");
-
             authHook.changeUserData({
               fullName: user.displayName || "",
               email: user.email || "",
@@ -69,7 +67,6 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
             });
 
             if (isSignIn && isValidProvider)
-              // router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/?signup=true`);
               router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/signup`);
           } else {
             console.log("welcome back ", res.fullName);
@@ -81,7 +78,8 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
               phoneNumber: user.phoneNumber || "",
               roleId: 0,
             });
-            router.push("/");
+
+            if (isSignIn && isValidProvider) router.push("/");
           }
         } catch (error) {
           console.error(error);

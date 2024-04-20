@@ -86,12 +86,12 @@ const ProfileDropdown = (props: {
     {
       id: 2,
       name: "Profile",
-      url: "/",
+      url: "/profile/personal",
     },
     {
       id: 3,
-      name: "Setting",
-      url: "/",
+      name: "Settings",
+      url: "/profile/settings",
     },
   ];
 
