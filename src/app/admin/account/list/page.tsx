@@ -1,3 +1,5 @@
+"use client";
+
 import { getAllUsers } from "@/app/service/user/userService";
 import CustomContainer from "@/components/common/customContainer";
 import { RoleLookup } from "@/lookups/role/roleLookup";
