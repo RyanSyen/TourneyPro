@@ -10,11 +10,13 @@ import { DataTable } from "./datatable/dataTable";
 const AccountList = async () => {
   const allUsers = await getAllUsers();
 
-  const accList: Account[] = allUsers.message.map((user: UserData) => ({
+  // console.log(typeof allUsers.message);
+
+  const accList: Account[] = allUsers!.map((user: UserData) => ({
     fullName: user.fullName,
     emailAddress: user.email,
     mobileNumber: user.phoneNumber,
-    role: RoleLookup.find((r) => r.id === user.roleId)?.title,
+    role: RoleLookup.find((r) => r.id === user.roleId)!.title,
     status: "active", //TODO: add status in db
   }));
 

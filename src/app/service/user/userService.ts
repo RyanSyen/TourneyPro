@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 
+import { UsersResponse } from "@/app/api/user/route";
 import formSchema from "@/app/signup/formSchema";
 import { IFormData } from "@/app/signup/useForm";
 import { ResponseData } from "@/types/common";
+import { UserData } from "@/types/UserData";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/user`;
 
@@ -18,7 +20,10 @@ export const getAllUsers = async () => {
       method: "GET",
     });
 
-    return await res.json();
+    const resPayload: UsersResponse = await res.json();
+    const userList: UserData[] = resPayload.message;
+
+    return userList;
   } catch (error) {
     console.error("Error: ", error);
   }

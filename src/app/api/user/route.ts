@@ -8,6 +8,11 @@ import { ResponseData } from "@/types/common";
 const table = "users";
 let responseData: ResponseData;
 
+export interface UsersResponse {
+  message: any[];
+  success: boolean;
+}
+
 export async function GET() {
   try {
     const snapshot = await getDocs(collection(db, table));
@@ -15,7 +20,10 @@ export async function GET() {
       id: doc.id,
       ...doc.data(),
     }));
-    return NextResponse.json({ message: docs }, { status: 200 });
+
+    const resData: UsersResponse = { message: docs, success: true };
+
+    return NextResponse.json(resData, { status: 200 });
   } catch (error) {
     console.error("[POST_API_USER] Error fetching all users: ", error);
 

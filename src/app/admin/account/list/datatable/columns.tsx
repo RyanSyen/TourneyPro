@@ -5,11 +5,10 @@ import { Column, ColumnDef } from "@tanstack/react-table";
 import SortingAction from "./sortingAction";
 
 export type Account = {
-  userId: string;
   fullName: string;
   emailAddress: string;
   mobileNumber: string;
-  role: "admin" | "organizer" | "player";
+  role: string;
   status: "active" | "inactive";
 };
 
