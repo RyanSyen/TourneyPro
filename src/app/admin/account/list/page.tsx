@@ -28,17 +28,6 @@ const AccountListing = async () => {
     <>
       <AdminNavbar title="Administration" showTabs />
       <AccountList data={accList} />
-      {/* <section className="pt-8">
-        <CustomContainer>
-          <div>
-            <div className="flex items-center gap-4 pb-8">
-              <p className="text-lg font-medium">Manage Account</p>
-            </div>
-
-            <DataTable columns={columns} data={accList} />
-          </div>
-        </CustomContainer>
-      </section> */}
     </>
   );
 };

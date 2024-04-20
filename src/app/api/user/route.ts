@@ -1,5 +1,5 @@
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
 import { db } from "@/lib/firebase";

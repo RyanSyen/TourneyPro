@@ -1,10 +1,5 @@
-import { NextResponse } from "next/server";
-
-import { UsersResponse } from "@/app/api/user/route";
 import formSchema from "@/app/signup/formSchema";
 import { IFormData } from "@/app/signup/useForm";
-import { ResponseData } from "@/types/common";
-import { UserData } from "@/types/UserData";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/user`;
 
@@ -20,10 +15,6 @@ export const getAllUsers = async () => {
       method: "GET",
     });
 
-    // const resPayload: UsersResponse = await res.json();
-    // const userList: UserData[] = resPayload.message;
-
-    // return userList;
     const data = await res.json();
     return data;
   } catch (error) {
@@ -33,7 +24,6 @@ export const getAllUsers = async () => {
 
 export const getUserByEmail = async (email: string) => {
   try {
-    // console.log("email: ", email);
     const res = await fetch(`${BASE_URL}/email/${email}`, {
       method: "GET",
     });
@@ -45,13 +35,8 @@ export const getUserByEmail = async (email: string) => {
   }
 };
 
-export const registerUser = async (
-  // data: z.output<typeof formSchema>,
-  // profileUrl: string
-  data: IFormData
-) => {
+export const registerUser = async (data: IFormData) => {
   try {
-    // console.log("Data param: ", data);
     const parsed = formSchema.safeParse(data);
 
     if (!parsed.success) throw new Error("Invalid form data");
@@ -81,8 +66,6 @@ export const registerUser = async (
     if (!res.ok) throw new Error(`Failed to register: ${res.statusText}`);
 
     return await res.json();
-    // const res: ResponseData = { success: true, message: "test" };
-    // return res;
   } catch (error) {
     console.error("Error: ", error);
   }

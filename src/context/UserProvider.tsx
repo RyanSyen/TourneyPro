@@ -1,14 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { createContext, ReactNode, useContext, useEffect } from "react";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -33,9 +26,6 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
   // retrieve and monitor auth state
   // triggered when user signs in or out
   const [user, loading, error] = useAuthState(auth);
-  // const [userData, setUserData] = useState<UserData | null>(null); // State to hold user data
-
-  // console.log("user: ", user);
 
   if (!user) {
     if (ProtectedRoutes.includes(path)) router.push(`/404`);
