@@ -9,16 +9,17 @@ import { DataTable } from "./datatable/dataTable";
 
 const AccountList = async () => {
   const allUsers = await getAllUsers();
+  let accList: Account[] | [] = [];
 
-  // console.log(typeof allUsers.message);
-
-  const accList: Account[] = allUsers!.map((user: UserData) => ({
-    fullName: user.fullName,
-    emailAddress: user.email,
-    mobileNumber: user.phoneNumber,
-    role: RoleLookup.find((r) => r.id === user.roleId)!.title,
-    status: "active", //TODO: add status in db
-  }));
+  if (allUsers && allUsers.length > 0) {
+    accList = allUsers!.map((user: UserData) => ({
+      fullName: user.fullName,
+      emailAddress: user.email,
+      mobileNumber: user.phoneNumber,
+      role: RoleLookup.find((r) => r.id === user.roleId)!.title,
+      status: "active", //TODO: add status in db
+    }));
+  }
 
   return (
     <>
