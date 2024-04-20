@@ -1,6 +1,8 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import Confetti from "@/components/common/confetti";
+
 const delay = 5000;
 
 const CompleteSignUp = () => {
@@ -32,6 +34,7 @@ const CompleteSignUp = () => {
 
   return (
     <div className="flex flex-col justify-center items-center gap-3">
+      <Confetti />
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
         Sign Up Completed!
       </h1>

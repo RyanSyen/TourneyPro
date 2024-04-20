@@ -1,80 +1,48 @@
 "use client";
 
-import "../../confetti.scss";
+import ReactConfetti from "react-confetti";
+import { useWindowSize } from "react-use";
 
-import React, { useEffect, useRef, useState } from "react";
-
-import { Button } from "@/components/ui/button";
-
-const SHAPES = ["square", "triangle"];
-const COLOR_DIGIT = "ABCDEF1234567890";
-
-//! not implementing this, we are using the React Confetti Explosion package
 const Confetti = () => {
-  const [isActive, setIsActive] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (isActive) {
-      generateConfetti();
-    }
-  }, [isActive]);
-
-  const generateRandomColor = () =>
-    `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-
-  const generateConfetti = () => {
-    const container = containerRef.current as HTMLElement;
-
-    if (!container) return;
-
-    const createConfetti = () => {
-      const confetti = document.createElement("div");
-      const positionX = Math.random() * window.innerWidth;
-      const positionY = Math.random() * window.innerHeight;
-      const rotation = Math.random() * 360;
-      const size = Math.floor(Math.random() * (20 - 5 + 1)) + 5;
-
-      confetti.style.cssText = `
-              position: absolute;
-              left: ${positionX}px;
-              top: ${positionY}px;
-              transform: rotate(${rotation}deg);
-              width: ${size}px;
-              height: ${size}px;
-              background-color: ${generateRandomColor()};
-            `;
-
-      confetti.classList.add("confetti", SHAPES[Math.floor(Math.random() * 3)]);
-
-      container.appendChild(confetti);
-
-      setTimeout(() => container.removeChild(confetti), 4000);
-    };
-
-    Array.from({ length: 50 }, createConfetti);
-  };
-
-  const triggerConfetti = () => {
-    setIsActive(true);
-
-    // reset confetti after short delay (3 secs)
-    setTimeout(() => {
-      setIsActive(false);
-    }, 1000);
-  };
-
+  const { width, height } = useWindowSize();
   return (
-    <div>
-      <Button className="font-bold text-xl" onClick={triggerConfetti}>
-        Trigger Confetti
-      </Button>
-      <div
-        className="fixed top-0 left-0 w-full h-full pointer-events-none"
-        ref={containerRef}
-        id="confetti-container"
-      ></div>
-    </div>
+    <ReactConfetti
+      width={width}
+      height={height}
+      numberOfPieces={200}
+      // confettiSource={{ x: 0, y: 0, w: 0, h: 0 }}
+      friction={0.99}
+      wind={0}
+      gravity={0.1}
+      initialVelocityX={4}
+      initialVelocityY={10}
+      colors={[
+        "#f44336",
+        "#e91e63",
+        "#9c27b0",
+        "#673ab7",
+        "#3f51b5",
+        "#2196f3",
+        "#03a9f4",
+        "#00bcd4",
+        "#009688",
+        "#4CAF50",
+        "#8BC34A",
+        "#CDDC39",
+        "#FFEB3B",
+        "#FFC107",
+        "#FF9800",
+        "#FF5722",
+        "#795548",
+      ]}
+      opacity={1}
+      recycle={false} // keep spawning after numberofpieces have been shown
+      run={true} // run animation loop
+      tweenDuration={5000} // how fast confetti is added
+      // tweenFunction={}
+      // drawShape={}
+      onConfettiComplete={(value) => console.log("Completed: ", value)}
+    />
   );
 };
 
