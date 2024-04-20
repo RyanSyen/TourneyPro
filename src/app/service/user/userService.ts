@@ -20,10 +20,12 @@ export const getAllUsers = async () => {
       method: "GET",
     });
 
-    const resPayload: UsersResponse = await res.json();
-    const userList: UserData[] = resPayload.message;
+    // const resPayload: UsersResponse = await res.json();
+    // const userList: UserData[] = resPayload.message;
 
-    return userList;
+    // return userList;
+    const data = await res.json();
+    return data;
   } catch (error) {
     console.error("Error: ", error);
   }

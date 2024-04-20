@@ -1,20 +1,21 @@
-"use client";
-
 import { getAllUsers } from "@/app/service/user/userService";
 import CustomContainer from "@/components/common/customContainer";
 import { RoleLookup } from "@/lookups/role/roleLookup";
 import { UserData } from "@/types/UserData";
 
 import AdminNavbar from "../../navbar";
+import AccountList from "./accountList";
 import { Account, columns } from "./datatable/columns";
 import { DataTable } from "./datatable/dataTable";
 
-const AccountList = async () => {
-  const allUsers = await getAllUsers();
+const AccountListing = async () => {
+  const { message, success } = await getAllUsers();
   let accList: Account[] | [] = [];
 
-  if (allUsers && allUsers.length > 0) {
-    accList = allUsers!.map((user: UserData) => ({
+  // console.log("all users: ", allUsers);
+
+  if (success && message && message.length > 0) {
+    accList = message.map((user: UserData) => ({
       fullName: user.fullName,
       emailAddress: user.email,
       mobileNumber: user.phoneNumber,
@@ -26,7 +27,8 @@ const AccountList = async () => {
   return (
     <>
       <AdminNavbar title="Administration" showTabs />
-      <section className="pt-8">
+      <AccountList data={accList} />
+      {/* <section className="pt-8">
         <CustomContainer>
           <div>
             <div className="flex items-center gap-4 pb-8">
@@ -36,9 +38,9 @@ const AccountList = async () => {
             <DataTable columns={columns} data={accList} />
           </div>
         </CustomContainer>
-      </section>
+      </section> */}
     </>
   );
 };
 
-export default AccountList;
+export default AccountListing;
