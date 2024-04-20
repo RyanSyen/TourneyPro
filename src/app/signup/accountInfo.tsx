@@ -11,7 +11,7 @@ import PhoneInput from "react-phone-input-2";
 import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
 
-import formSchema from "@/components/auth/sign-up/formSchema";
+// import formSchema from "@/components/auth/sign-up/formSchema";
 import CustomDatePicker from "@/components/common/customDatePicker";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -34,6 +34,7 @@ import { IUserData, useUserContext } from "@/context/UserProvider";
 
 import MalaysiaPostcodes from "../../../public/data/MalaysiaPostcodes.json";
 import ReactDatePicker from "../playground/react-date-picker/page";
+import { getUserByEmail } from "../service/user/userService";
 import { IFormData } from "./useForm";
 
 interface SearchResult {
@@ -64,8 +65,11 @@ export const schema = z.object({
   dob: z.date({
     required_error: "A date of birth is required.",
   }),
-  gender: z.enum(["male", "female"], {
-    required_error: "You need to select a gender.",
+  // gender: z.enum(["male", "female", ""], {
+  //   required_error: "You need to select a gender.",
+  // }),
+  gender: z.string().min(1, {
+    message: "You need to select a gender.",
   }),
 });
 
@@ -75,19 +79,22 @@ const AccountInfo = ({ prev, next, formData, onSubmitStep }: Props) => {
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
+    shouldFocusError: false,
     defaultValues: {
       // since formField is using controlled component, you need to provide default value for the field
-      fullName: user?.fullName || "",
-      email: user?.email || "",
-      phoneNumber: "",
-      area: "",
+      fullName: formData.fullName || user?.fullName || "",
+      email: formData.email || user?.email || "",
+      phoneNumber: formData.phoneNumber || "",
+      // area: formData.area || "",
       // dob: dayjs().startOf("day").toDate(),
+      dob: formData.dob || "",
+      gender: formData.gender || undefined,
     },
   });
 
   //#region search area
   // search bar states
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(formData.area || "");
   const [searchResult, setSearchResult] = useState<SearchResult[] | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -146,22 +153,39 @@ const AccountInfo = ({ prev, next, formData, onSubmitStep }: Props) => {
     // form.setValue("dob", dob);
   }, [searchTerm]);
 
-  const onSubmit = async (data: z.output<typeof formSchema>) => {
+  const onSubmit = async (data: z.output<typeof schema>) => {
     const profileUrl = user?.photoURL || "";
     // console.log("profileUrl: ", profileUrl);
     // console.log("data: ", data);
 
-    onSubmitStep({
-      ...formData,
-      area: data.area,
-      dob: data.dob,
-      email: data.email,
-      fullName: data.fullName,
-      gender: data.gender,
-      phoneNumber: data.phoneNumber,
-      photoUrl: profileUrl,
-    });
-    next();
+    try {
+      let res = await getUserByEmail(data.email);
+
+      if (res.email) {
+        console.log("email has been taken");
+        // form.setFocus("email");
+        form.setError("email", {
+          type: "custom",
+          message: "Email already in use. Please enter a new and valid email.",
+        });
+      } else {
+        form.clearErrors("email");
+        // form.resetField("email");
+        onSubmitStep({
+          ...formData,
+          area: data.area,
+          dob: data.dob,
+          email: data.email,
+          fullName: data.fullName,
+          gender: data.gender,
+          phoneNumber: data.phoneNumber,
+          photoUrl: profileUrl,
+        });
+        next();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -356,6 +380,14 @@ const AccountInfo = ({ prev, next, formData, onSubmitStep }: Props) => {
                           </FormControl>
                           <FormLabel className="font-normal cursor-pointer pl-2">
                             Female
+                          </FormLabel>
+                        </FormItem>
+                        <FormItem className="hidden">
+                          <FormControl>
+                            <RadioGroupItem value="" />
+                          </FormControl>
+                          <FormLabel className="font-normal cursor-pointer pl-2">
+                            Hidden
                           </FormLabel>
                         </FormItem>
                       </RadioGroup>
