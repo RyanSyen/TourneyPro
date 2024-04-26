@@ -6,4 +6,7 @@ export interface UserData {
   photoURL: string;
   phoneNumber: string;
   roleId: number;
+  area: string;
+  dob: string;
+  gender: string;
 }

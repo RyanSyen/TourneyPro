@@ -2,10 +2,11 @@ import dayjs from "dayjs";
 import Image from "next/image";
 import { useState } from "react";
 
-import CustomLoader from "@/components/common/customLoader";
+import CustomBounceLoader from "@/components/spinner/customBounceLoader";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
+import { useUserContext } from "@/context/UserProvider";
 import useAuth from "@/hooks/useAuth";
 import { RoleLookup } from "@/lookups/role/roleLookup";
 import { ResponseData } from "@/types/common";
@@ -26,6 +27,7 @@ interface IConfirmationList {
 }
 
 const Confirmation = ({ prev, next, formData }: Props) => {
+  const user = useUserContext();
   const [isLoading, setIsLoading] = useState(false);
   const { changeUserData } = useAuth();
   const ConfirmationList: IConfirmationList[] =
@@ -73,14 +75,12 @@ const Confirmation = ({ prev, next, formData }: Props) => {
     setIsLoading(true);
 
     // update userdata
-    changeUserData({
-      fullName: formData.fullName,
-      email: formData.email,
-      isEmailVerified: false,
-      phoneNumber: formData.phoneNumber,
-      photoURL: formData.photoUrl,
-      roleId: formData.roleId,
-    });
+    if (user) {
+      changeUserData({
+        ...user,
+        isEmailVerified: false,
+      });
+    }
 
     const res: ResponseData | undefined = await registerUser(formData);
     console.log("after onSubmit: ", res);
@@ -97,7 +97,7 @@ const Confirmation = ({ prev, next, formData }: Props) => {
 
   return (
     <div>
-      {isLoading && <CustomLoader />}
+      {isLoading && <CustomBounceLoader />}
       <p className="text-2xl font-medium tracking-normal py-4">Confirmation</p>
       <div className="items-center grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-12">
         {ConfirmationList.map((list) => {

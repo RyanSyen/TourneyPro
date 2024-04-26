@@ -105,6 +105,16 @@ const Playground = () => {
       desc: "confetti animation by https://medium.com/@codewithmarish/creating-confetti-animation-in-next-js-a-step-by-step-guide-20da5bc73190",
       url: "/playground/confetti",
     },
+    {
+      name: "Avatar Editor",
+      desc: "Using react-avatar-editor lib",
+      url: "/playground/avatar-editor",
+    },
+    {
+      name: "Image gallery with firebase storage",
+      desc: "Image gallery with firebase storage",
+      url: "/playground/firebase-storage",
+    },
   ];
 
   return (

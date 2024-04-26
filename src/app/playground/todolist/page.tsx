@@ -5,7 +5,6 @@ import {
   DocumentData,
   QueryDocumentSnapshot,
 } from "firebase/firestore";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React, {
   ChangeEvent,
@@ -17,7 +16,7 @@ import React, {
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useClickAway } from "react-use";
 
-import CustomLoader from "@/components/common/customLoader";
+import CustomBounceLoader from "@/components/spinner/customBounceLoader";
 import { db } from "@/lib/firebase";
 
 import { addTodo, updateTodo } from "./todoService";
@@ -131,7 +130,7 @@ const Todo = () => {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
 
-  if (loading) return <CustomLoader />;
+  if (loading) return <CustomBounceLoader />;
 
   return (
     <main className="flex flex-col gap-8">

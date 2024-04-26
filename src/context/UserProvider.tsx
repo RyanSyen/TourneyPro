@@ -6,7 +6,8 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { getUserByEmail } from "@/app/service/user/userService";
-import CustomLoader from "@/components/common/customLoader";
+import CustomBounceLoader from "@/components/spinner/customBounceLoader";
+import { cacheable } from "@/helper/cacheable";
 import { auth } from "@/lib/firebase/index";
 import { ProviderLookup } from "@/lookups/auth/providerLookup";
 import { ProtectedRoutes } from "@/lookups/protected/routes";
@@ -40,7 +41,11 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
       const getUser = async () => {
         console.log("calling getUser");
         try {
-          let res = await getUserByEmail(user.email!);
+          // let res = await getUserByEmail(user.email!);
+          let res = await cacheable("user", {}, () =>
+            getUserByEmail(user.email!)
+          );
+          console.log(res);
           const isValidProvider = ProviderLookup.some(
             (provider) => provider.name === search.get("provider")
           );
@@ -54,6 +59,9 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
               photoURL: user.photoURL || "",
               phoneNumber: user.phoneNumber || "",
               roleId: 0,
+              area: "",
+              dob: "",
+              gender: "",
             });
 
             if (isSignIn && isValidProvider)
@@ -61,12 +69,15 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
           } else {
             console.log("welcome back ", res.fullName);
             authHook.changeUserData({
-              fullName: user.displayName || "",
-              email: user.email || "",
-              isEmailVerified: user.emailVerified,
-              photoURL: user.photoURL || "",
-              phoneNumber: user.phoneNumber || "",
-              roleId: 0,
+              fullName: res.fullName || user.displayName || "",
+              email: res.email || user.email || "",
+              isEmailVerified: res.isEmailVerified || user.emailVerified,
+              photoURL: res.photoUrl || user.photoURL || "",
+              phoneNumber: res.phoneNumber || user.phoneNumber || "",
+              roleId: res.roleId,
+              area: res.area,
+              dob: res.dob,
+              gender: res.gender,
             });
 
             if (isSignIn && isValidProvider) router.push("/");
@@ -96,7 +107,7 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <UserContext.Provider value={authHook.userData}>
-      {loading && <CustomLoader />}
+      {loading && <CustomBounceLoader />}
       <div>{!loading && children}</div>
     </UserContext.Provider>
   );

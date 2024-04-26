@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { BounceLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 
 const defaultConfig = {
   color: "#fcfcfc",
@@ -13,10 +13,16 @@ const override: CSSProperties = {
   margin: "0 auto",
 };
 
-const CustomLoader = () => {
+const CustomClipLoader = ({ isRoot = true }: { isRoot?: boolean }) => {
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[rgba(110,110,110,.3)] w-full h-full flex justify-center items-center z-100">
-      <BounceLoader
+    <div
+      className={`${
+        isRoot
+          ? "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[rgba(110,110,110,.3)] w-full h-full flex justify-center items-center z-100"
+          : ""
+      }`}
+    >
+      <ClipLoader
         color={defaultConfig.color}
         loading={defaultConfig.loading}
         cssOverride={defaultConfig.cssOveride}
@@ -27,4 +33,4 @@ const CustomLoader = () => {
   );
 };
 
-export default CustomLoader;
+export default CustomClipLoader;

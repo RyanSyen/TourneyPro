@@ -5,8 +5,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
 
-import CustomLoader from "@/components/common/customLoader";
 import Navbar from "@/components/navbar/navbar";
+import CustomBounceLoader from "@/components/spinner/customBounceLoader";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import ReactQueryProvider from "@/context/ReactQueryProvider";
@@ -30,7 +30,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
             enableSystem
             disableTransitionOnChange
           >
-            <Suspense fallback={<CustomLoader />}>
+            <Suspense fallback={<CustomBounceLoader />}>
               <UserContextProvider>
                 <Navbar />
                 <Toaster />
