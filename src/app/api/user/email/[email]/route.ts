@@ -48,7 +48,7 @@ export async function GET(
 
   querySnapshot.forEach((doc) => {
     if (doc.exists()) {
-      data = doc.data();
+      data = { id: doc.id, ...doc.data() };
     }
   });
 

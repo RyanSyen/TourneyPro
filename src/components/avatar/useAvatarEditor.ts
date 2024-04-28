@@ -1,6 +1,10 @@
 import { ChangeEvent, RefObject, useRef, useState } from "react";
 import AvatarEditor, { type Position } from "react-avatar-editor";
 
+import { updateUser, UserRequest } from "@/app/service/user/userService";
+import useAuth from "@/hooks/useAuth";
+import { UserData } from "@/types/UserData";
+
 // https://github.com/mosch/react-avatar-editor/blob/main/packages/demo/src/App.tsx
 
 type State = {
@@ -32,10 +36,12 @@ type State = {
 };
 
 //editor: RefObject<AvatarEditor>
-const useAvatarEditor = () => {
+const useAvatarEditor = (
+  user: UserData | null,
+  refreshProvider: () => void
+) => {
   const [state, setState] = useState<State>({
-    image:
-      "https://lh3.googleusercontent.com/a/ACg8ocLnLtKI655WD32ifjqd4auruydnF9ykggH8qq4sv_WpQVo=s96-c",
+    image: "",
     allowZoomOut: false,
     position: { x: 0.5, y: 0.5 },
     scale: 1.2,
@@ -51,17 +57,29 @@ const useAvatarEditor = () => {
   });
   const [isConfirm, setIsConfirm] = useState(false);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const [updatePreview, setUpdatePreview] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [isDuplicateImg, setIsDuplicateImg] = useState(false);
   const editor: RefObject<AvatarEditor> = useRef(null);
 
   const handleCloseDialog = () => {
-    setIsOpenDialog(false);
+    // console.log("user photo: ", user!.photoUrl.toString());
+    // setState({ ...state, image: "" });
+    setRefreshKey(Math.random());
     setState({
       ...state,
+      image: "",
       preview: undefined,
     });
+    setIsDuplicateImg(false);
+    setIsOpenDialog(false);
   };
 
-  const handleSave = () => {
+  const handleUpdatePreview = () => {
+    setUpdatePreview(true);
+    setTimeout(() => {
+      setUpdatePreview(false);
+    }, 1500);
     const img = editor.current?.getImageScaledToCanvas().toDataURL();
     const rect = editor.current?.getCroppingRect();
 
@@ -82,6 +100,30 @@ const useAvatarEditor = () => {
     setIsConfirm(true);
   };
 
+  const handleSave = async () => {
+    console.log("latest img: ", state.image);
+
+    try {
+      if (user) {
+        const reqData: UserRequest = {
+          ...user,
+          photoUrl: state.image.toString(),
+          roleId: user.roleId,
+          dob: new Date(user.dob),
+        };
+
+        const res = await updateUser(reqData, user.id!);
+        console.log("result: ", res);
+        const img = editor.current?.getImageScaledToCanvas().toDataURL();
+        setState({ ...state, image: img!.toString() });
+        refreshProvider();
+        handleCloseDialog();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleScale = (e: ChangeEvent<HTMLInputElement>) => {
     const scale = parseFloat(e.target.value);
     setState({ ...state, scale });
@@ -98,11 +140,19 @@ const useAvatarEditor = () => {
       console.log(file);
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
-        console.log(e.target?.result);
+        // console.log("current image: ", state.image || user?.photoUrl);
+        // console.log(e.target?.result);
+        // console.log(
+        //   "same image? : ",
+        //   (state.image || user?.photoUrl) === e.target?.result
+        // );
 
         if (e.target && e.target.result) {
-          console.log("open dialog");
-          setState({ ...state, image: e.target.result.toString() });
+          const currentImg = state.image || user?.photoUrl;
+          const targetImg = e.target?.result?.toString();
+
+          setIsDuplicateImg(currentImg === targetImg);
+          setState({ ...state, image: targetImg });
           setIsOpenDialog(true);
         }
       };
@@ -123,6 +173,10 @@ const useAvatarEditor = () => {
     validateFileSize,
     handleCloseDialog,
     isOpenDialog,
+    handleUpdatePreview,
+    updatePreview,
+    refreshKey,
+    isDuplicateImg,
   };
 };
 

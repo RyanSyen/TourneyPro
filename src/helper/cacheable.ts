@@ -1,7 +1,10 @@
 // source: https://hilla.dev/docs/react/guides/client-caching
 
+import dayjs from "dayjs";
+
 // the name of the cache for offline usage
 const CACHE_NAME = "offline-cache";
+const UPDATED_TIME_CACHE_NAME = "last-updated";
 
 export async function cacheable<T>(
   key: string,
@@ -18,31 +21,21 @@ export async function cacheable<T>(
     // save the data to localStorage.
     const cache = getCache();
     if (cache[key] === undefined || cache[key] === null) {
-      // if (fn !== null && fn !== undefined) {
-      //   // retrieve the data from backend.
-      //   result = await fn();
-      // } else if (data != null) {
-      //   result = data;
-      // }
-
       result = fn ? await fn() : data ?? defaultValue;
-
       cache[key] = result;
       // TODO: encrypt data before setItem (future enhancement)
       localStorage.setItem(CACHE_NAME, JSON.stringify(cache));
+      localStorage.setItem(UPDATED_TIME_CACHE_NAME, dayjs().unix().toString());
     } else {
       if (isUpdate) {
-        // if (fn !== null && fn !== undefined) {
-        //   // retrieve the data from backend.
-        //   result = await fn();
-        // } else if (data != null) {
-        //   result = data;
-        // }
-
         result = fn ? await fn() : data ?? defaultValue;
         cache[key] = result;
         // TODO: encrypt data before setItem (future enhancement)
         localStorage.setItem(CACHE_NAME, JSON.stringify(cache));
+        localStorage.setItem(
+          UPDATED_TIME_CACHE_NAME,
+          dayjs().unix().toString()
+        );
       } else {
         console.log("retreiving cached value where key = " + key);
         result = cache[key];
@@ -66,4 +59,14 @@ function getCache(): any {
 
 export function clearCache() {
   localStorage.removeItem(CACHE_NAME);
+}
+
+export function updateCache(data: any) {
+  try {
+    const cache = getCache();
+    cache["user"] = data;
+    // TODO: encrypt data before setItem (future enhancement)
+    localStorage.setItem(CACHE_NAME, JSON.stringify(cache));
+    localStorage.setItem(UPDATED_TIME_CACHE_NAME, dayjs().unix().toString());
+  } catch (error) {}
 }

@@ -3,7 +3,7 @@ import CustomContainer from "@/components/common/customContainer";
 import { RoleLookup } from "@/lookups/role/roleLookup";
 import { UserData } from "@/types/UserData";
 
-import AdminNavbar from "../../navbar";
+import AdminNavbar from "../../adminNavbar";
 import AccountList from "./accountList";
 import { Account, columns } from "./datatable/columns";
 import { DataTable } from "./datatable/dataTable";

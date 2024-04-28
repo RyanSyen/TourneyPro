@@ -164,13 +164,14 @@ const UserStatus = () => {
   // console.log("pass: ", userData && !userData.isFirstTimeUser);
 
   if (userData) {
-    const name = userData.fullName ?? "";
-    const pic = userData.photoURL ?? "";
+    console.log("roleid: ", userData.user?.roleId);
+    const name = userData.user?.fullName ?? "";
+    const pic = userData.user?.photoUrl ?? "";
     return (
       <ProfileDropdown
         fullName={name}
         photoURL={pic}
-        roleId={userData.roleId}
+        roleId={userData.user?.roleId ?? 0}
       />
     );
   } else {

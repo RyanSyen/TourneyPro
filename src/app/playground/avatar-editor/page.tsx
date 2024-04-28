@@ -21,6 +21,9 @@ const UI = () => {
     validateFileSize,
     isOpenDialog,
     handleCloseDialog,
+    handleUpdatePreview,
+    updatePreview,
+    refreshKey,
   } = useAvatarEditor();
   //   const [isOpen, setIsOpen] = useState(false);
 
@@ -42,6 +45,7 @@ const UI = () => {
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 hover:opacity-100">
           <div>Click to change</div>
           <UploadAvatar
+            refreshKey={refreshKey}
             className={"absolute inset-0 z-0 cursor-pointer h-full"}
             validateFileSize={(e: ChangeEvent<HTMLInputElement>) =>
               validateFileSize(e)
@@ -61,6 +65,8 @@ const UI = () => {
         preview={state.preview}
         handleSave={handleSave}
         image={state.image}
+        handleUpdatePreview={handleUpdatePreview}
+        updatePreview={updatePreview}
       />
     </div>
   );

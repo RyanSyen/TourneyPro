@@ -1,4 +1,5 @@
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { AlertTriangle } from "lucide-react";
 import Image from "next/image";
 import { RefObject, useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
@@ -30,6 +31,9 @@ const EditorDialog = ({
   preview,
   handleSave,
   image,
+  handleUpdatePreview,
+  updatePreview,
+  isDuplicateImg,
 }: {
   isOpen?: boolean;
   handleClose: () => void;
@@ -53,15 +57,10 @@ const EditorDialog = ({
   };
   handleSave: () => void;
   image: string | File;
+  handleUpdatePreview: () => void;
+  updatePreview: boolean;
+  isDuplicateImg: boolean;
 }) => {
-  const [updatePreview, setUpdatePreview] = useState(false);
-
-  const onUpdatePreview = () => {
-    setUpdatePreview(true);
-    setTimeout(() => {
-      setUpdatePreview(false);
-    }, 1500);
-  };
   return (
     <Dialog open={isOpen}>
       <DialogContent className="sm:max-w-[425px]">
@@ -83,8 +82,7 @@ const EditorDialog = ({
               <Button
                 className="!h-auto !bg-transparent p-0"
                 onClick={() => {
-                  onUpdatePreview();
-                  handleSave();
+                  handleUpdatePreview();
                 }}
               >
                 <ReloadIcon
@@ -101,6 +99,21 @@ const EditorDialog = ({
               <AvatarPreview preview={preview} />
             </div>
           </div>
+          <div>
+            {isDuplicateImg ? (
+              <p className={"text-sm font-medium text-[#e87c03]"}>
+                <span className="flex items-center gap-3">
+                  <AlertTriangle width={24} height={24} />
+                  <span>
+                    Duplicate image detected, please close the dialog and select
+                    again
+                  </span>
+                </span>
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
         <DialogFooter>
           <DialogClose asChild>
@@ -111,7 +124,8 @@ const EditorDialog = ({
           <Button
             type="submit"
             variant="main"
-            onClick={() => console.log("close")}
+            onClick={() => handleSave()}
+            disabled={isDuplicateImg}
           >
             Save changes
           </Button>

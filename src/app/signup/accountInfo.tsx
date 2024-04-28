@@ -43,7 +43,7 @@ interface Props {
 }
 
 const AccountInfo = ({ prev, next, formData, onSubmitStep }: Props) => {
-  const user = useUserContext();
+  const userData = useUserContext();
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -51,8 +51,8 @@ const AccountInfo = ({ prev, next, formData, onSubmitStep }: Props) => {
     shouldFocusError: false,
     defaultValues: {
       // since formField is using controlled component, you need to provide default value for the field
-      fullName: formData.fullName || user?.fullName || "",
-      email: formData.email || user?.email || "",
+      fullName: formData.fullName || userData?.user?.fullName || "",
+      email: formData.email || userData?.user?.email || "",
       phoneNumber: formData.phoneNumber || "",
       dob: formData.dob || "",
       gender: formData.gender || undefined,
@@ -120,7 +120,7 @@ const AccountInfo = ({ prev, next, formData, onSubmitStep }: Props) => {
   }, [searchTerm, form]);
 
   const onSubmit = async (data: z.output<typeof formSchema>) => {
-    const profileUrl = user?.photoURL || "";
+    const profileUrl = userData!.user?.photoUrl || "";
     // console.log("profileUrl: ", profileUrl);
     // console.log("data: ", data);
 

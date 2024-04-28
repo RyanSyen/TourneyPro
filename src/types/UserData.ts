@@ -1,9 +1,9 @@
 export interface UserData {
-  // id: string;
+  id?: string;
   fullName: string;
   email: string;
   isEmailVerified: boolean;
-  photoURL: string;
+  photoUrl: string;
   phoneNumber: string;
   roleId: number;
   area: string;

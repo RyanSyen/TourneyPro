@@ -88,7 +88,25 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
-  return NextResponse.json({ message: "Test" }, { status: 200 });
+  try {
+    const data = await request.json();
+    // console.log("data: ", data);
+    const userRef = doc(db, table, data.id);
+    await setDoc(userRef, data);
+
+    console.log("[PUT_API_USER] User Updated");
+
+    return NextResponse.json(
+      { success: true, message: "User updated" },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("[PUT_API_USER] Error registering user: ", error);
+    return NextResponse.json(
+      { success: false, message: "Internal server error" },
+      { status: 500 }
+    );
+  }
 }
 
 export async function DELETE(request: Request) {

@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import {
   FacebookAuthProvider,
   GithubAuthProvider,
@@ -13,6 +14,7 @@ import { auth } from "@/lib/firebase";
 import { UserData } from "@/types/UserData";
 
 const useAuth = () => {
+  const [refreshHash, setRefreshHash] = useState(false);
   const router = useRouter();
   const providers = [
     { id: 0, name: "google" },
@@ -27,6 +29,12 @@ const useAuth = () => {
     },
     [userData]
   );
+
+  const refreshProvider = () => {
+    // we want to refresh our provider to get the latest user data
+    console.log("trigger refresh provider");
+    setRefreshHash((prev) => !prev);
+  };
 
   const signInWithProviders = async (id: number) => {
     var userCred;
@@ -65,6 +73,8 @@ const useAuth = () => {
     logOut,
     userData,
     changeUserData,
+    refreshHash,
+    refreshProvider,
   };
 };
 

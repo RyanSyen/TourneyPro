@@ -1,6 +1,6 @@
 import CustomContainer from "@/components/common/customContainer";
 
-import AdminNavbar from "./navbar";
+import AdminNavbar from "./adminNavbar";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (

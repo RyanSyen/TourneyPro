@@ -1,9 +1,10 @@
 import formSchema from "@/app/signup/formSchema";
 import { IFormData } from "@/app/signup/useForm";
+import { updateCache } from "@/helper/cacheable";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/user`;
 
-interface UserRequest extends IFormData {
+export interface UserRequest extends IFormData {
   roleId: number;
   photoUrl: string;
   isEmailVerified: boolean;
@@ -65,6 +66,26 @@ export const registerUser = async (data: IFormData) => {
 
     if (!res.ok) throw new Error(`Failed to register: ${res.statusText}`);
 
+    return await res.json();
+  } catch (error) {
+    console.error("Error: ", error);
+  }
+};
+
+export const updateUser = async (data: UserRequest, id: string) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) throw new Error(`Failed to update user: ${res.statusText}`);
+
+    //update cache
+    updateCache(data);
     return await res.json();
   } catch (error) {
     console.error("Error: ", error);

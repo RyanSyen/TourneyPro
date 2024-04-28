@@ -1,6 +1,8 @@
 import dayjs from "dayjs";
 import { ChangeEvent, useEffect, useState } from "react";
+import { z } from "zod";
 
+import { updateUser, UserRequest } from "@/app/service/user/userService";
 import { DATE_FORMAT_MAIN } from "@/lookups/commonLookup";
 import { RoleLookup } from "@/lookups/role/roleLookup";
 import { UserData } from "@/types/UserData";
@@ -69,14 +71,6 @@ const useProfile = (user: UserData | null) => {
     }
   }, [user]);
 
-  // if (user) setIsLoading(false);
-
-  const onSubmit = () => {
-    // call api to update record in db
-    // update cache
-    // update state
-  };
-
   const toggleEditing = (index: number) => {
     setProfileData((prevData) => {
       const newData = prevData.map((data, i) => {
@@ -113,20 +107,67 @@ const useProfile = (user: UserData | null) => {
     }
   };
 
-  const onHandleConfirm = (isConfirm: boolean, index: number) => {
+  const onHandleConfirm = async (isConfirm: boolean, index: number) => {
+    if (isConfirm && user) {
+      const name = profileData.find((x, i) => i == index)?.id;
+      const data = profileData.find((x, i) => i == index)?.data;
+      let updatedData = "";
+      console.log("email: ", data);
+      try {
+        if (name === "email") {
+          updatedData = z
+            .string()
+            .email({
+              message: "Please enter a valid email address.",
+            })
+            .parse(data);
+          console.log(updatedData);
+        } else if (name === "phoneNumber") {
+          updatedData = z
+            .string()
+            .min(10, {
+              message: "Please enter a valid phone number.",
+            })
+            .parse(data);
+        } else if (name === "area") {
+          updatedData = z
+            .string()
+            .min(1, {
+              message: "Please enter your city or postcode.",
+            })
+            .parse(data);
+        }
+
+        const reqData: UserRequest = {
+          ...user,
+          email: name === "email" ? updatedData : user.email,
+          phoneNumber: name === "phoneNumber" ? updatedData : user.phoneNumber,
+          area: name === "area" ? updatedData : user.area,
+          roleId: user.roleId,
+          photoUrl: user.photoUrl,
+          isEmailVerified: user.isEmailVerified,
+          dob: new Date(user.dob),
+        };
+        const res = await updateUser(reqData, user.id!);
+        console.log("result: ", res);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
     setProfileData((prevData) => {
       const newData = prevData.map((data, i) => {
         if (i === index && data.editable) {
           // const name = Object.keys(user!);
           // const oriData = user![name.find(x => x === data.id)?.toString()]
           const name = Object.keys(user!).find((x) => x == data.id);
-          console.log("value: ", user![name! as keyof UserData].toString());
+          // console.log("value: ", user![name! as keyof UserData]!.toString());
           return {
             ...data,
             isEditing: false,
             data: isConfirm
               ? data.data
-              : user![name! as keyof UserData].toString(),
+              : user![name! as keyof UserData]!.toString(),
           };
         } else {
           return { ...data };
