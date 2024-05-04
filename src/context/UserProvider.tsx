@@ -45,7 +45,7 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
   // triggered when user signs in or out
   const [user, loading, error] = useAuthState(auth);
 
-  if (!user) {
+  if (user) {
     if (ProtectedRoutes.includes(path)) router.push(`/404`);
   }
 
@@ -68,7 +68,7 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
           const isValidProvider = ProviderLookup.some(
             (provider) => provider.name === search.get("provider")
           );
-          const isSignIn = location.pathname.includes("signin");
+          const isSignIn = path.includes("signin");
 
           if (!res?.email) {
             authHook.changeUserData({

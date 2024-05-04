@@ -22,6 +22,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 );
 Input.displayName = "Input";
 
+//TODO: refactor using variant instead of creating new component
 const PrimaryInput = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     return (
@@ -39,4 +40,21 @@ const PrimaryInput = React.forwardRef<HTMLInputElement, InputProps>(
 );
 PrimaryInput.displayName = "Primary Input";
 
-export { Input, PrimaryInput };
+const SecondaryInput = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          `flex h-10 w-full border border-[#8C94A1] rounded-lg bg-[#2d3038] py-2 text-sm text-[#fcfcfc] shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 px-4`,
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+SecondaryInput.displayName = "Secondary Input";
+
+export { Input, PrimaryInput, SecondaryInput };

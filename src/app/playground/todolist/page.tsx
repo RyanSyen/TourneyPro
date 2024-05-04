@@ -17,8 +17,14 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { useClickAway } from "react-use";
 
 import CustomBounceLoader from "@/components/spinner/customBounceLoader";
+import { Button } from "@/components/ui/button";
 import { db } from "@/lib/firebase";
 
+import { Task } from "./data/schema";
+import { columns } from "./datatable/columns";
+import { DataTable } from "./datatable/datatable";
+import TaskDialog from "./taskDialog";
+import { TaskProvider } from "./taskProvider";
 import { addTodo, updateTodo } from "./todoService";
 import useTodoInput from "./useTodoInput";
 
@@ -43,8 +49,8 @@ const TodoForm = () => {
   const pathName = usePathname();
 
   const handleSubmit = async () => {
-    const newTodo = await addTodo(text);
-    console.log(newTodo);
+    // const newTodo = await addTodo(text);
+    // console.log(newTodo);
 
     setText("");
     router.replace(pathName);
@@ -132,12 +138,37 @@ const Todo = () => {
 
   if (loading) return <CustomBounceLoader />;
 
-  return (
-    <main className="flex flex-col gap-8">
-      <TodoForm />
-      <TodoList list={value?.docs} />
-    </main>
-  );
+  if (value) {
+    console.log(value?.docs);
+    const tasks: Task[] = value.docs.map((doc) => {
+      return {
+        id: `TASK-${doc.data().id}`,
+        title: doc.data().title,
+        label: doc.data().label,
+        priority: doc.data().priority,
+        status: doc.data().status,
+      };
+    });
+
+    return (
+      <TaskProvider>
+        <main className="flex flex-col gap-8">
+          {/* <TodoForm />
+        <TodoList list={value?.docs} /> */}
+          <div className="h-full flex flex-1 flex-col space-y-8 p-8 ">
+            <div className="flex items-center gap-4">
+              <h2 className="text-2xl font-bold tracking-tight">
+                Development Tasks
+              </h2>
+              <TaskDialog />
+            </div>
+
+            <DataTable data={tasks} columns={columns} />
+          </div>
+        </main>
+      </TaskProvider>
+    );
+  }
 };
 
 export default Todo;
