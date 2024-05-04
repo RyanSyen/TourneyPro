@@ -27,7 +27,7 @@ interface IConfirmationList {
 }
 
 const Confirmation = ({ prev, next, formData }: Props) => {
-  const user = useUserContext();
+  const userContext = useUserContext();
   const [isLoading, setIsLoading] = useState(false);
   const { changeUserData } = useAuth();
   const ConfirmationList: IConfirmationList[] =
@@ -75,9 +75,9 @@ const Confirmation = ({ prev, next, formData }: Props) => {
     setIsLoading(true);
 
     // update userdata
-    if (user) {
+    if (userContext?.user) {
       changeUserData({
-        ...user,
+        ...userContext.user,
         isEmailVerified: false,
       });
     }

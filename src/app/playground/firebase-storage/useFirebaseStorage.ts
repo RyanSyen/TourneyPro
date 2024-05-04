@@ -8,7 +8,7 @@ import { storage } from "@/lib/firebase";
 
 const useFirebaseStorageExample = () => {
   const [previewImg, setPreviewImg] = useState("");
-  const user = useUserContext();
+  const context = useUserContext();
 
   const onFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files?.length > 0) {
@@ -27,7 +27,7 @@ const useFirebaseStorageExample = () => {
         if (e.target && e.target.result) {
           const imagesRef = ref(
             storage,
-            `${process.env.NEXT_PUBLIC_IMG_FOLDER_NAME}/${user?.email}`
+            `${process.env.NEXT_PUBLIC_IMG_FOLDER_NAME}/${context?.user?.email}`
           );
 
           const metadata: UploadMetadata = {
