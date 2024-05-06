@@ -52,7 +52,7 @@ export async function cacheable<T>(
   return result;
 }
 
-function getCache(): any {
+export function getCache(): any {
   const cache = localStorage.getItem(CACHE_NAME) || "{}";
   return JSON.parse(cache);
 }

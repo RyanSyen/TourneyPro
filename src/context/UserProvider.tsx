@@ -17,7 +17,10 @@ import { cacheable } from "@/helper/cacheable";
 import { capitalizeFirstLetter } from "@/helper/common";
 import { auth } from "@/lib/firebase/index";
 import { ProviderLookup } from "@/lookups/auth/providerLookup";
-import { ProtectedRoutes } from "@/lookups/protected/routes";
+import {
+  ProtectedRoutes,
+  SignedInProtectedRoutes,
+} from "@/lookups/protected/routes";
 import { UserData } from "@/types/UserData";
 
 import useAuth from "../hooks/useAuth";
@@ -46,10 +49,14 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
   const [user, loading, error] = useAuthState(auth);
 
   if (user) {
+    if (SignedInProtectedRoutes.includes(path)) router.push(`/404`);
+  }
+
+  if (!user) {
     if (ProtectedRoutes.includes(path)) router.push(`/404`);
   }
 
-  console.log("updated hash: ", authHook.refreshHash);
+  // console.log("updated hash: ", authHook.refreshHash);
 
   useEffect(() => {
     if (!user) {

@@ -75,8 +75,8 @@ const ProfileDropdown = (props: {
   const items = [
     {
       id: 0,
-      name: "Builder",
-      url: "/playground",
+      name: "Tournament Builder",
+      url: "/tournament/list",
     },
     {
       id: 1,
@@ -163,8 +163,8 @@ const UserStatus = () => {
   // console.log("userData: ", userData);
   // console.log("pass: ", userData && !userData.isFirstTimeUser);
 
-  if (userData) {
-    console.log("roleid: ", userData.user?.roleId);
+  if (userData?.user) {
+    // console.log("user data: ", userData.user);
     const name = userData.user?.fullName ?? "";
     const pic = userData.user?.photoUrl ?? "";
     return (

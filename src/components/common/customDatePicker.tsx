@@ -7,9 +7,10 @@ import { Calendar } from "../ui/calendar";
 interface Props {
   selectedDate: Date | undefined;
   onChange: (...event: any[]) => void;
+  numOfMonths?: number;
 }
 
-const CustomDatePicker = ({ selectedDate, onChange }: Props) => {
+const CustomDatePicker = ({ selectedDate, onChange, numOfMonths }: Props) => {
   return (
     <Calendar
       mode="single"
@@ -22,6 +23,7 @@ const CustomDatePicker = ({ selectedDate, onChange }: Props) => {
       captionLayout="dropdown"
       fromYear={dayjs().get("year") - 100}
       toYear={dayjs().get("year")}
+      numberOfMonths={!numOfMonths ? 1 : numOfMonths}
       //   formatters={{
       //     /** Format the month in the caption when `captionLayout` is `buttons`. */
       //     formatCaption: undefined,

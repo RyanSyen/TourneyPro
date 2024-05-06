@@ -25,6 +25,7 @@ const buttonVariants = cva(
         main: "bg-[#e50b0d] rounded-3xl py-2 px-6 hover:bg-[#ff5657]",
         secondary: "bg-[#545969] rounded-3xl py-2 px-6 hover:bg-[#78749a]",
         dropdown: "bg-[#2d3038] !ring-0",
+        line: "border border-[#fcfcfc] bg-transparent rounded-3xl py-2 px-6 hover:bg-[#fcfcfc] hover:text-[#e50b0d]",
       },
       size: {
         default: "h-9 px-4 py-2",
