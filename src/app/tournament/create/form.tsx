@@ -14,6 +14,15 @@ import { z } from "zod";
 import CustomDatePicker from "@/components/common/customDatePicker";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   ErrorFormMessage,
   Form,
@@ -24,11 +33,19 @@ import {
 } from "@/components/ui/form";
 import { Input, PrimaryInput } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import MultipleSelector, { Option } from "@/components/ui/multiple-selector";
 import {
   Popover,
   PopoverTrigger,
   PrimaryPopoverContent,
 } from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import {
   Tooltip,
@@ -37,6 +54,14 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useUserContext } from "@/context/UserProvider";
+import {
+  AgeGroupLookup,
+  IAgeGroupLookup,
+} from "@/lookups/tournament/ageGroupLookup";
+import { TournamentCategoryLookup } from "@/lookups/tournament/categoryLookup";
+import { EventTypeLookup } from "@/lookups/tournament/eliminationLookup";
+import { LevelLookup } from "@/lookups/tournament/levelLookup";
+import { TournamentTypeLookup } from "@/lookups/tournament/tournamentTypeLookup";
 
 const formSchema = z.object({
   title: z.string().min(1, {
@@ -48,6 +73,9 @@ const formSchema = z.object({
   }),
   isPublic: z.boolean({
     required_error: "Tournament visibility is required.",
+  }),
+  type: z.array(z.string()).refine((value) => value.some((item) => item), {
+    message: "You have to select at least one tournament type.",
   }),
   shuttlecock: z.string().min(1, {
     message: "Tournament shuttlecock is required.",
@@ -69,7 +97,53 @@ const formSchema = z.object({
       openedCategory: z.boolean(),
     })
     .array(),
+  registrationDate: z.string({
+    required_error: "Tournament date is required.",
+  }),
+  registrationDateline: z.string({
+    required_error: "Tournament date is required.",
+  }),
+  withdrawalDateline: z.string().optional(),
 });
+
+const eventFormSchema = z.object({
+  category: z.string().min(1, {
+    message: "Category is required.",
+  }),
+  type: z.string().min(1, {
+    message: "Event type is required.",
+  }),
+  level: z.string().min(1, {
+    message: "Category level is required",
+  }),
+  prize: z.string().optional(),
+  registrationFee: z.number().optional(),
+});
+
+interface Event {
+  category: string;
+  ageGroup: string;
+  type: string;
+  level: string;
+  prize: string;
+  registrationFee: number;
+}
+
+const multiSelectAgeGrouplookup: Option[] = AgeGroupLookup.map((group) => ({
+  label: group.age,
+  value: group.age,
+}));
+
+const ageSearch = async (value: string): Promise<Option[]> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const res = multiSelectAgeGrouplookup.filter((group) =>
+        group.value.includes(value)
+      );
+      resolve(res);
+    }, 500);
+  });
+};
 
 const CreateTournamentForm = () => {
   const userData = useUserContext();
@@ -79,6 +153,17 @@ const CreateTournamentForm = () => {
   });
   const [isPublicChecked, setIsPublicChecked] = useState(true);
   const [previewImg, setPreviewImg] = useState("");
+  const [eventList, setEventList] = useState<Event[]>([]);
+  const [eventDraft, setEventDraft] = useState<Event>({
+    category: "",
+    ageGroup: "",
+    type: "",
+    level: "",
+    prize: "",
+    registrationFee: 0,
+  });
+  const [ageGroupDraft, setAgeGroupDraft] = useState<number[]>([]);
+  const [isAddEvent, setIsAddEvent] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -89,6 +174,7 @@ const CreateTournamentForm = () => {
       description: "",
       thumbnail: "",
       isPublic: true,
+      type: [],
       shuttlecock: "",
       // date: "",
       pointsSystem: "",
@@ -96,6 +182,55 @@ const CreateTournamentForm = () => {
       event: [],
     },
   });
+
+  const eventForm = useForm<z.infer<typeof eventFormSchema>>({
+    resolver: zodResolver(eventFormSchema),
+    shouldFocusError: false,
+    defaultValues: {
+      // since formField is using controlled component, you need to provide default value for the field
+      category: "",
+      type: "",
+      level: "",
+      prize: "",
+      registrationFee: 0,
+    },
+  });
+
+  // const debounce = (func: () => void, delay: number) => {
+  //   let debounceTimer: number;
+  //   return function () {
+  //     const context = this;
+  //     const args = arguments;
+  //     clearTimeout(debounceTimer);
+  //     debounceTimer = setTimeout(() => func.apply(context, args), delay);
+  //   };
+  // };
+  const debounce = <T extends Function>(func: T, delay: number) => {
+    let debounceTimer: NodeJS.Timeout;
+    return function (this: any, ...args: any[]) {
+      const context = this;
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func.apply(context, args), delay);
+    };
+  };
+  const onHandlePrizeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.persist();
+    setEventDraft((prev) => ({ ...prev, prize: e.target.value }));
+  };
+
+  const onHandleRegistrationFeeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.persist();
+    setEventDraft((prev) => ({
+      ...prev,
+      registrationFee: parseInt(e.target.value),
+    }));
+  };
+
+  const onOptimisedHandlePrizeChange = debounce(onHandlePrizeChange, 500);
+  const onOptimisedHandleRegistrationFeeChange = debounce(
+    onHandleRegistrationFeeChange,
+    500
+  );
 
   const validateFileSize = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files?.length > 0) {
@@ -135,6 +270,10 @@ const CreateTournamentForm = () => {
     console.log("form data: ", data);
   };
 
+  const onSelectCategory = (value: string) => {
+    console.log("selected category: ", value);
+  };
+
   useEffect(() => {
     if (date) {
       form.setValue("date", date.toString());
@@ -145,14 +284,17 @@ const CreateTournamentForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-[1000px]">
-        <main
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-6 max-w-[1000px]"
+      >
+        <section
           className={`space-y-4 overflow-y-auto pr-4 bg-[#14141b] rounded-xl p-6`}
         >
           <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
             Tournament Details
           </h4>
-          <section className="flex-wrap grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-12">
+          <div className="flex-wrap grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-12">
             <div className="flex flex-col gap-4">
               <FormField
                 control={form.control}
@@ -293,6 +435,73 @@ const CreateTournamentForm = () => {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="type"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel className="flex items-center">
+                      Type{" "}
+                      <span className="text-[#e50b0d] text-xl pl-1">*</span>
+                    </FormLabel>
+                    {TournamentTypeLookup.map((type) => (
+                      <FormField
+                        key={type.id}
+                        control={form.control}
+                        name="type"
+                        render={({ field }) => {
+                          // console.log(field.value);
+                          // console.log(type);
+                          return (
+                            <FormItem
+                              key={type.id}
+                              className="flex flex-row items-start space-x-3 space-y-0"
+                            >
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value?.includes(type.id)}
+                                  onCheckedChange={(checked) => {
+                                    return checked
+                                      ? field.onChange([
+                                          ...field.value,
+                                          type.id,
+                                        ])
+                                      : field.onChange(
+                                          field.value?.filter(
+                                            (value) => value !== type.id
+                                          )
+                                        );
+                                  }}
+                                />
+                              </FormControl>
+                              <FormLabel className="text-sm font-normal">
+                                {type.title}
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger className="pl-2">
+                                      <InfoCircledIcon />
+                                    </TooltipTrigger>
+                                    <TooltipContent
+                                      align="end"
+                                      side="right"
+                                      className="!bg-[#333] "
+                                    >
+                                      <p className="text-[#fcfcfc]">
+                                        {type.tooltip}
+                                      </p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
+                              </FormLabel>
+                            </FormItem>
+                          );
+                        }}
+                      />
+                    ))}
+                    <ErrorFormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
             {/* Thumbnail section */}
             <div className="flex flex-col items-start gap-4">
@@ -354,8 +563,180 @@ const CreateTournamentForm = () => {
                 )}
               </div>
             </div>
-          </section>
-        </main>
+          </div>
+        </section>
+        <section
+          className={`space-y-4 overflow-y-auto pr-4 bg-[#14141b] rounded-xl p-6`}
+        >
+          <div className="flex gap-4">
+            <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
+              Event Category
+            </h4>
+            <Button
+              type="button"
+              variant={"main"}
+              onClick={() => setIsAddEvent(true)}
+            >
+              Add
+            </Button>
+          </div>
+          <div className={`add-category-form ${isAddEvent ? "" : "hidden"}`}>
+            <div className="flex flex-col gap-4">
+              <div className="flex-wrap grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-12">
+                <div className="flex flex-col gap-2">
+                  <FormLabel>
+                    Category <span className="text-[#e50b0d] text-xl">*</span>
+                  </FormLabel>
+                  <Select
+                    onValueChange={(value) =>
+                      setEventDraft((prev) => ({ ...prev, category: value }))
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {TournamentCategoryLookup.map((cat) => (
+                        <SelectItem key={cat.id} value={cat.title}>
+                          {cat.title}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <FormLabel>
+                    Event Type <span className="text-[#e50b0d] text-xl">*</span>
+                  </FormLabel>
+                  <Select
+                    onValueChange={(value) =>
+                      setEventDraft((prev) => ({ ...prev, type: value }))
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select an event type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {EventTypeLookup.map((type) => (
+                        <SelectItem key={type.id} value={type.title}>
+                          {type.title}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <FormLabel>
+                    Age Group <span className="text-[#e50b0d] text-xl">*</span>
+                  </FormLabel>
+                  <MultipleSelector
+                    onSearch={async (value) => {
+                      const res = await ageSearch(value);
+                      return res;
+                    }}
+                    defaultOptions={multiSelectAgeGrouplookup}
+                    creatable
+                    placeholder="Select or insert age group"
+                    loadingIndicator={
+                      <p className="py-2 text-center text-lg leading-10 text-muted-foreground">
+                        loading...
+                      </p>
+                    }
+                    emptyIndicator={
+                      <p className="w-full text-center text-lg leading-10 text-muted-foreground">
+                        no results found.
+                      </p>
+                    }
+                    // inputProps={{ maxLength: 2 }}
+                    // hidePlaceholderWhenSelected
+                    onChange={(options) =>
+                      setEventDraft((prev) => {
+                        const ageGroupString = options
+                          .map((obj) => obj.value)
+                          .join(", ");
+                        return { ...prev, ageGroup: ageGroupString };
+                      })
+                    }
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <FormLabel>
+                    Level <span className="text-[#e50b0d] text-xl">*</span>
+                  </FormLabel>
+                  <Select
+                    onValueChange={(value) =>
+                      setEventDraft((prev) => ({ ...prev, level: value }))
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select an event type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {LevelLookup.map((level) => (
+                        <SelectItem
+                          key={level.id}
+                          value={level.title}
+                          className="flex items-center"
+                        >
+                          {level.title} - {level.tooltip}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <FormLabel>
+                    Prize <span className="text-[#e50b0d] text-xl">*</span>
+                  </FormLabel>
+                  <PrimaryInput
+                    placeholder="RM100 Cash"
+                    onChange={onOptimisedHandlePrizeChange}
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <FormLabel>
+                    Registration Fee (RM){" "}
+                    <span className="text-[#e50b0d] text-xl">*</span>
+                  </FormLabel>
+                  <PrimaryInput
+                    type="number"
+                    placeholder="50"
+                    onChange={onOptimisedHandleRegistrationFeeChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <section className="flex justify-end items-center gap-2 pt-8">
+              <Button
+                type="button"
+                variant={"secondary"}
+                onClick={() => {
+                  setEventDraft({
+                    category: "",
+                    ageGroup: "",
+                    type: "",
+                    level: "",
+                    prize: "",
+                    registrationFee: 0,
+                  });
+                  setIsAddEvent(false);
+                }}
+                className="w-24"
+              >
+                Back
+              </Button>
+              <Button
+                type="button"
+                variant={"main"}
+                onClick={() => console.log("event: ", eventDraft)}
+                className="w-24"
+              >
+                Proceed
+              </Button>
+            </section>
+          </div>
+          <div className={`${isAddEvent ? "hidden" : ""}`}>Preview</div>
+        </section>
         <section className="flex justify-end items-center gap-2 pt-8">
           <Button type="submit" variant={"main"} className="w-24">
             Draft
