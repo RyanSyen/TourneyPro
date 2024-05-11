@@ -61,10 +61,10 @@ export function clearCache() {
   localStorage.removeItem(CACHE_NAME);
 }
 
-export function updateCache(data: any) {
+export function updateCache(data: any, cacheName: string) {
   try {
     const cache = getCache();
-    cache["user"] = data;
+    cache[cacheName] = data;
     // TODO: encrypt data before setItem (future enhancement)
     localStorage.setItem(CACHE_NAME, JSON.stringify(cache));
     localStorage.setItem(UPDATED_TIME_CACHE_NAME, dayjs().unix().toString());
