@@ -10,6 +10,7 @@ import {
 } from "react";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useBeforeUnload } from "react-use";
 
 import { getUserByEmail } from "@/app/service/user/userService";
 import CustomBounceLoader from "@/components/spinner/customBounceLoader";
@@ -43,6 +44,11 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
   const handleRefreshProvider = () => {
     setRefreshProvider((prev) => !prev);
   };
+
+  useBeforeUnload(() => {
+    localStorage.clear();
+    return true;
+  });
 
   // retrieve and monitor auth state
   // triggered when user signs in or out
