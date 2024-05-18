@@ -3,6 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import useBeforeUnload from "react-use/lib/useBeforeUnload";
+import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
 
 import {
@@ -38,6 +40,7 @@ import { EventTypeLookup } from "@/lookups/tournament/eliminationLookup";
 import { LevelLookup } from "@/lookups/tournament/levelLookup";
 
 const formSchema = z.object({
+  id: z.string(),
   category: z.string().min(1, {
     message: "Category is required.",
   }),
@@ -55,6 +58,7 @@ const formSchema = z.object({
 });
 
 interface Event {
+  id: string;
   category: string;
   ageGroup: string;
   type: string;
@@ -81,29 +85,41 @@ const ageSearch = async (value: string): Promise<Option[]> => {
 
 const CategoryForm = () => {
   const [isAddEvent, setIsAddEvent] = useState(false);
+  const [isEditEvent, setIsEditEvent] = useState(false);
   const [cachedCategories, setCachedCategories] = useState<Event[]>([]);
   const [ageGroupStr, setAgeGroupStr] = useState("");
+  const [ageGroup, setAgeGroup] = useState<Option[]>([]);
   const [previewList, setPreviewList] = useState<Event[]>([]);
   const [isCacheUpdated, setIsCacheUpdated] = useState(false);
+  const [editCategory, setEditCategory] = useState<Event>({
+    id: uuidv4(),
+    category: "",
+    ageGroup: "",
+    type: "",
+    level: "",
+    prize: "",
+    registrationFee: 0,
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     shouldFocusError: false,
     defaultValues: {
-      category: "",
-      ageGroup: "",
-      type: "",
-      level: "",
-      prize: "",
-      registrationFee: 0,
+      id: uuidv4(),
+      category: editCategory.category || "",
+      ageGroup: editCategory.ageGroup || "",
+      type: editCategory.type || "",
+      level: editCategory.level || "",
+      prize: editCategory.prize || "",
+      registrationFee: editCategory.registrationFee || 0,
     },
   });
 
   useEffect(() => {
     const getDateFromLocalStorage = () => {
       const data = getCache()["tournament_category"];
-      console.log(data);
-      if (data.length > 0) {
+      console.log("get updated tournament category cache list: ", data);
+      if (data && data.length > 0) {
         setCachedCategories(data);
         setIsCacheUpdated(false);
       }
@@ -113,10 +129,51 @@ const CategoryForm = () => {
   }, [isCacheUpdated]);
 
   useEffect(() => {
+    console.log("ageGroupStr: ", ageGroupStr);
     if (ageGroupStr.length > 0) {
       form.setValue("ageGroup", ageGroupStr);
     }
   }, [ageGroupStr]);
+
+  useBeforeUnload(() => {
+    localStorage.clear();
+    return true;
+  });
+
+  // onEditCategory is called, it will reset the form with category values
+  // and it will trigger rerender to update form default values
+  useEffect(() => {
+    if (editCategory && editCategory.category != "") {
+      console.log("editCategory: ", editCategory);
+      const ageGroupList = editCategory.ageGroup.split(",");
+      const optionList = ageGroupList.map((opt) => ({
+        label: opt,
+        value: opt,
+      }));
+      setAgeGroup(optionList);
+      form.reset(editCategory);
+    }
+  }, [editCategory, form.reset]);
+
+  const onEditCategory = (cat: Event) => {
+    setIsEditEvent(true);
+    setEditCategory(cat);
+  };
+
+  const resetEditCategory = () => {
+    console.log("resetting edit category ...");
+    setEditCategory({
+      id: "",
+      category: "",
+      ageGroup: "",
+      type: "",
+      level: "",
+      prize: "",
+      registrationFee: 0,
+    });
+    setAgeGroup([]);
+    setAgeGroupStr("");
+  };
 
   const onSubmit = (data: z.output<typeof formSchema>) => {
     console.log("form data: ", data);
@@ -124,15 +181,44 @@ const CategoryForm = () => {
     const parsedData = formSchema.parse(data);
 
     if (parsedData) {
-      const cache = getCache()["tournament_category"];
+      const cache: Event[] = getCache()["tournament_category"];
       console.log("cache: ", cache);
-      if (cache.length > 0) {
-        updateCache([...cache, parsedData], "tournament_category");
+      if (cache && cache.length > 0) {
+        // validate to prevent creating same event
+        const isDuplicate = cache.find(
+          (e) =>
+            e.category == parsedData.category &&
+            e.type == parsedData.type &&
+            e.level == parsedData.level
+        );
+
+        if (isDuplicate) {
+          if (isEditEvent) {
+            //! still got issue here
+            const cacheCopy = [...cache].filter((e) => e.id != parsedData.id);
+            console.log("cache copy: ", cacheCopy);
+            updateCache([...cacheCopy, parsedData], "tournament_category");
+          } else {
+            //TODO: add error toast
+            console.error(
+              "Duplicate event detected. Category is discarded please create a new category."
+            );
+
+            return;
+          }
+        } else {
+          const updatedData = { ...parsedData, id: uuidv4() };
+          updateCache([...cache, updatedData], "tournament_category");
+        }
       } else {
         updateCache([parsedData], "tournament_category");
       }
 
       setIsCacheUpdated(true);
+      form.reset();
+      resetEditCategory();
+      setIsAddEvent(false);
+      setIsEditEvent(false);
     }
   };
 
@@ -149,10 +235,10 @@ const CategoryForm = () => {
           variant={"main"}
           onClick={() => setIsAddEvent(true)}
         >
-          Add
+          {isEditEvent ? "Edit" : "Add"}
         </Button>
       </div>
-      <section className={`${!isAddEvent ? "hidden" : ""} `}>
+      <section className={`${isAddEvent || isEditEvent ? "" : "hidden"} `}>
         <Form {...form}>
           <form
             id="detailsForm"
@@ -162,71 +248,101 @@ const CategoryForm = () => {
             <section className={`flex-wrap grid grid-cols-2 gap-x-12 gap-y-8`}>
               <FormField
                 control={form.control}
+                name="id"
+                render={({ field }) => {
+                  // console.log("id: ", field.value);
+                  return (
+                    <FormItem className="hidden">
+                      <FormLabel>ID</FormLabel>
+                      <PrimaryInput
+                        type="string"
+                        value={field.value}
+                        disabled
+                        hidden
+                      />
+                      <ErrorFormMessage className="py-2" />
+                    </FormItem>
+                  );
+                }}
+              />
+              <FormField
+                control={form.control}
                 name="category"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      Category <span className="text-[#e50b0d] text-xl">*</span>
-                    </FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a category" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {TournamentCategoryLookup.map((cat) => (
-                          <SelectItem key={cat.id} value={cat.title}>
-                            {cat.title}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <ErrorFormMessage className="py-2" />
-                  </FormItem>
-                )}
+                render={({ field }) => {
+                  // console.log("category value: ", field.value);
+                  return (
+                    <FormItem>
+                      <FormLabel>
+                        Category{" "}
+                        <span className="text-[#e50b0d] text-xl">*</span>
+                      </FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                        value={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a category" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {TournamentCategoryLookup.map((cat) => (
+                            <SelectItem key={cat.id} value={cat.title}>
+                              {cat.title}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <ErrorFormMessage className="py-2" />
+                    </FormItem>
+                  );
+                }}
               />
               <FormField
                 control={form.control}
                 name="ageGroup"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      Age Group{" "}
-                      <span className="text-[#e50b0d] text-xl">*</span>
-                    </FormLabel>
-                    <MultipleSelector
-                      onSearch={async (value) => {
-                        const res = await ageSearch(value);
-                        return res;
-                      }}
-                      defaultOptions={multiSelectAgeGrouplookup}
-                      creatable
-                      placeholder="Select or insert age group"
-                      loadingIndicator={
-                        <p className="py-2 text-center text-lg leading-10 text-muted-foreground">
-                          loading...
-                        </p>
-                      }
-                      emptyIndicator={
-                        <p className="w-full text-center text-lg leading-10 text-muted-foreground">
-                          no results found.
-                        </p>
-                      }
-                      // inputProps={{ maxLength: 2 }}
-                      hidePlaceholderWhenSelected
-                      onChange={(options) =>
-                        setAgeGroupStr(
-                          options.map((obj) => obj.value).join(", ")
-                        )
-                      }
-                    />
-                    <ErrorFormMessage className="py-2 !my-[-3px]" />
-                  </FormItem>
-                )}
+                render={({ field }) => {
+                  // console.log("ageGroup: ", ageGroup);
+                  return (
+                    <FormItem>
+                      <FormLabel>
+                        Age Group{" "}
+                        <span className="text-[#e50b0d] text-xl">*</span>
+                      </FormLabel>
+                      <MultipleSelector
+                        value={ageGroup}
+                        onSearch={async (value) => {
+                          const res = await ageSearch(value);
+                          return res;
+                        }}
+                        defaultOptions={multiSelectAgeGrouplookup}
+                        creatable
+                        placeholder="Select or insert age group"
+                        loadingIndicator={
+                          <p className="py-2 text-center text-lg leading-10 text-muted-foreground">
+                            loading...
+                          </p>
+                        }
+                        emptyIndicator={
+                          <p className="w-full text-center text-lg leading-10 text-muted-foreground">
+                            no results found.
+                          </p>
+                        }
+                        // inputProps={{ maxLength: 2 }}
+                        hidePlaceholderWhenSelected
+                        onChange={(options) => {
+                          console.log("on change options: ", options);
+                          setAgeGroup(options);
+                          setAgeGroupStr(
+                            options.map((obj) => obj.value).join(", ")
+                          );
+                        }}
+                      />
+                      <ErrorFormMessage className="py-2 !my-[-3px]" />
+                    </FormItem>
+                  );
+                }}
               />
               <FormField
                 control={form.control}
@@ -240,6 +356,7 @@ const CategoryForm = () => {
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
+                      value={field.value}
                     >
                       <FormControl>
                         <SelectTrigger>
@@ -269,6 +386,7 @@ const CategoryForm = () => {
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
+                      value={field.value}
                     >
                       <FormControl>
                         <SelectTrigger>
@@ -316,7 +434,9 @@ const CategoryForm = () => {
                       type="number"
                       placeholder="50"
                       value={field.value}
-                      onChange={field.onChange}
+                      onChange={
+                        (e) => field.onChange(parseFloat(e.target.value)) //! idk why got this bug where I type number but react hook form throws 'Expected number, received string'
+                      }
                     />
                     <ErrorFormMessage className="py-2" />
                   </FormItem>
@@ -330,18 +450,15 @@ const CategoryForm = () => {
                 onClick={() => {
                   setAgeGroupStr("");
                   form.reset();
+                  resetEditCategory();
                   setIsAddEvent(false);
+                  setIsEditEvent(false);
                 }}
                 className="w-24"
               >
                 Back
               </Button>
-              <Button
-                type="submit"
-                variant={"main"}
-                // onClick={onSubmitEventCategory}
-                className="w-24"
-              >
+              <Button type="submit" variant={"main"} className="w-24">
                 Proceed
               </Button>
             </section>
@@ -350,9 +467,7 @@ const CategoryForm = () => {
         </Form>
       </section>
 
-      <div
-      //   className={`${isAddEvent ? "hidden" : ""}`}
-      >
+      <div>
         <div className="pb-2">Preview</div>
         <div>
           <Accordion
@@ -361,15 +476,15 @@ const CategoryForm = () => {
             className="flex flex-col gap-4 w-full py-4"
           >
             {cachedCategories.map((cat) => {
-              console.log(cat);
+              // console.log(cat);
               return (
                 <AccordionItem
-                  key={cat.category}
-                  value={cat.category}
+                  key={uuidv4()}
+                  value={`${cat.category}${cat.type}${cat.level}`}
                   className="border rounded-lg border-slate-700"
                 >
                   <AccordionTrigger className="bg-slate-700 rounded-md px-2 !no-underline">
-                    {cat.category}
+                    {`${cat.category} | ${cat.type} | ${cat.level}`}
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="p-4 flex-wrap grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-12">
@@ -410,7 +525,7 @@ const CategoryForm = () => {
                         <PrimaryInput
                           className="cursor-default hover:border-[#444548] focus:border-[#444548]"
                           readOnly
-                          value={cat.prize}
+                          value={cat.prize == "" ? "No Prize" : cat.prize}
                         />
                       </div>
                       <div>
@@ -418,12 +533,22 @@ const CategoryForm = () => {
                         <PrimaryInput
                           className="cursor-default hover:border-[#444548] focus:border-[#444548]"
                           readOnly
+                          // value={
+                          //   cat.registrationFee == 0
+                          //     ? "Free"
+                          //     : cat.registrationFee
+                          // }
                           value={cat.registrationFee}
                         />
                       </div>
                     </div>
                     <div className="flex justify-end gap-2 px-4 py-2">
-                      <Button variant={"secondary"}>Edit</Button>
+                      <Button
+                        variant={"secondary"}
+                        onClick={() => onEditCategory(cat)}
+                      >
+                        Edit
+                      </Button>
                       <Button variant={"main"}>Delete</Button>
                     </div>
                   </AccordionContent>
