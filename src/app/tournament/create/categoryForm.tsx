@@ -222,6 +222,13 @@ const CategoryForm = () => {
     }
   };
 
+  const onDelete = (id: string) => {
+    console.log("deleting category");
+    const cache: Event[] = getCache()["tournament_category"];
+    const cacheCopy = [...cache].filter((e) => e.id != id);
+    updateCache([...cacheCopy], "tournament_category");
+  };
+
   return (
     <section
       className={`space-y-4 overflow-y-auto pr-4 bg-[#14141b] rounded-xl p-6`}
@@ -549,7 +556,9 @@ const CategoryForm = () => {
                       >
                         Edit
                       </Button>
-                      <Button variant={"main"}>Delete</Button>
+                      <Button variant={"main"} onClick={() => onDelete(cat.id)}>
+                        Delete
+                      </Button>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
