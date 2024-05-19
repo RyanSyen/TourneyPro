@@ -48,24 +48,12 @@ interface RegistrationTimelineProp {
 }
 
 const RegistrationTimelineForm = () => {
-  const [regTimeline, setRegTimeline] = useState({
+  const [regTimeline, setRegTimeline] = useState<RegistrationTimelineProp>({
     startDate: dayjs().subtract(14, "days").toDate(),
     endDate: dayjs().subtract(8, "days").toDate(),
     withdrawalStartDate: dayjs().subtract(10, "days").toDate(),
     withdrawalEndDate: dayjs().subtract(7, "days").toDate(),
   });
-  //   const [registrationPeriod, setRegistrationPeriod] = useState<
-  //     DateRange | undefined
-  //   >({
-  //     from: dayjs().subtract(14, "days").toDate(),
-  //     to: dayjs().subtract(8, "days").toDate(),
-  //   });
-  //   const [withdrawalPeriod, setWithdrawalPeriod] = useState<
-  //     DateRange | undefined
-  //   >({
-  //     from: dayjs().subtract(10, "days").toDate(),
-  //     to: dayjs().subtract(7, "days").toDate(),
-  //   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

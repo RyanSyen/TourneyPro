@@ -131,8 +131,6 @@ const TournamentDetailsForm = () => {
     console.log("form data: ", data);
   };
 
-  console.log();
-
   return (
     <Form {...form}>
       <form id="detailsForm" onSubmit={form.handleSubmit(onSubmit)}>
