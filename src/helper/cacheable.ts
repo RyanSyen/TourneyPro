@@ -6,6 +6,8 @@ import dayjs from "dayjs";
 const CACHE_NAME = "offline-cache";
 const UPDATED_TIME_CACHE_NAME = "last-updated";
 
+//! dont want to implement caching first, unnecessary complexity. Later only add in as enhancement
+
 export async function cacheable<T>(
   key: string,
   defaultValue: T,
@@ -57,7 +59,10 @@ export function getCache(): any {
   return JSON.parse(cache);
 }
 
-export function clearCache() {
+export function clearCache(key?: string) {
+  if (key) {
+    //TODO: clear user cache by removing item when user is null
+  }
   localStorage.removeItem(CACHE_NAME);
 }
 

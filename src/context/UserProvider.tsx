@@ -13,7 +13,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 import { getUserByEmail } from "@/app/service/user/userService";
 import CustomBounceLoader from "@/components/spinner/customBounceLoader";
-import { cacheable } from "@/helper/cacheable";
+// import { cacheable } from "@/helper/cacheable";
 import { capitalizeFirstLetter } from "@/helper/common";
 import { auth } from "@/lib/firebase/index";
 import { ProviderLookup } from "@/lookups/auth/providerLookup";
@@ -45,103 +45,103 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // retrieve and monitor auth state
-  // triggered when user signs in or out
   const [user, loading, error] = useAuthState(auth);
 
-  if (user) {
-    if (SignedInProtectedRoutes.includes(path)) router.push(`/404`);
-  }
-
-  if (!user) {
-    if (ProtectedRoutes.includes(path)) router.push(`/404`);
-  }
-
-  // console.log("updated hash: ", authHook.refreshHash);
+  useEffect(() => {
+    if (user) {
+      // console.error("user authenticated");
+      if (SignedInProtectedRoutes.includes(path)) router.push(`/404`);
+    } else {
+      // console.error("user not authenticated");
+      if (ProtectedRoutes.includes(path)) router.push(`/404`);
+    }
+  }, [user, path, router]);
 
   useEffect(() => {
     if (!user) {
       authHook.changeUserData(null);
+      return;
     }
 
-    if (user && user.email) {
-      const getUser = async () => {
-        console.log("calling getUser");
-        try {
-          // let res = await getUserByEmail(user.email!);
-          let res = await cacheable("user", {}, () =>
-            getUserByEmail(user.email!)
-          );
-          // console.log(res);
-          const isValidProvider = ProviderLookup.some(
-            (provider) => provider.name === search.get("provider")
-          );
-          const isSignIn = path.includes("signin");
+    const fetchUser = async () => {
+      try {
+        const res = await getUserByEmail(user.email!);
+        const isValidProvider = ProviderLookup.some(
+          (provider) => provider.name === search.get("provider")
+        );
+        const isSignIn = path.includes("signin");
 
-          if (!res?.email) {
-            authHook.changeUserData({
-              fullName: user.displayName || "",
-              email: user.email || "",
-              isEmailVerified: user.emailVerified,
-              photoUrl: user.photoURL || "",
-              phoneNumber: user.phoneNumber || "",
-              roleId: 0,
-              area: "",
-              dob: "",
-              gender: "",
-            });
+        if (!res?.email) {
+          authHook.changeUserData({
+            fullName: user.displayName || "",
+            email: user.email || "",
+            isEmailVerified: user.emailVerified,
+            photoUrl: user.photoURL || "",
+            phoneNumber: user.phoneNumber || "",
+            roleId: 0,
+            area: "",
+            dob: "",
+            gender: "",
+          });
 
-            if (isSignIn && isValidProvider)
-              router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/signup`);
-          } else {
-            console.log(
-              "🏆 Welcome Back " + capitalizeFirstLetter(res.fullName) + " 🏆"
-            );
-
-            authHook.changeUserData({
-              id: res.id,
-              fullName: res.fullName || user.displayName || "",
-              email: res.email || user.email || "",
-              isEmailVerified: res.isEmailVerified || user.emailVerified,
-              photoUrl: res.photoUrl || user.photoURL || "",
-              phoneNumber: res.phoneNumber || user.phoneNumber || "",
-              roleId: res.roleId,
-              area: res.area,
-              dob: res.dob,
-              gender: res.gender,
-            });
-
-            if (isSignIn && isValidProvider) router.push("/");
+          if (isSignIn && isValidProvider) {
+            router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/signup`);
           }
-        } catch (error) {
-          console.error(error);
-        }
-      };
+        } else {
+          console.log(
+            `🏆 Welcome Back ${capitalizeFirstLetter(res.fullName)} 🏆`
+          );
 
-      getUser();
-    }
+          authHook.changeUserData({
+            id: res.id,
+            fullName: res.fullName || user.displayName || "",
+            email: res.email || user.email || "",
+            isEmailVerified: res.isEmailVerified || user.emailVerified,
+            photoUrl: res.photoUrl || user.photoURL || "",
+            phoneNumber: res.phoneNumber || user.phoneNumber || "",
+            roleId: res.roleId,
+            area: res.area,
+            dob: res.dob,
+            gender: res.gender,
+          });
+
+          if (isSignIn && isValidProvider) {
+            router.push("/");
+          }
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUser();
   }, [user, authHook.refreshHash, refreshProvider]);
 
-  if (error) console.log(`[UserProvider] auth error: ${error}`);
-  if (loading) console.log("[UserProvider] loading auth state");
-  if (user) {
-    let provider = user.providerData[0].providerId;
-    provider = provider.endsWith(".com") ? provider.slice(0, -4) : provider;
-    console.log(
-      `[UserProvider] ${
-        user.displayName
-      } logged in via ${provider} at ${new Date().toLocaleString()}`
-    );
-  }
+  useEffect(() => {
+    if (error) console.log(`[UserProvider] auth error: ${error}`);
+    if (loading) console.log("[UserProvider] loading auth state");
+    if (user) {
+      let provider = user.providerData[0].providerId;
+      provider = provider.endsWith(".com") ? provider.slice(0, -4) : provider;
+      console.log(
+        `[UserProvider] ${
+          user.displayName
+        } logged in via ${provider} at ${new Date().toLocaleString()}`
+      );
+    }
+  }, [error, loading, user]);
 
-  // const value = React.useMemo(() => ({ authHook.userData }), [user, authHook.userData]);
+  // memoize context value
+  const contextValue = React.useMemo(
+    () => ({
+      user: authHook.userData,
+      refreshProvider: handleRefreshProvider,
+    }),
+    [authHook.userData, handleRefreshProvider]
+  );
 
   return (
-    <UserContext.Provider
-      value={{
-        user: authHook.userData,
-        refreshProvider: handleRefreshProvider,
-      }}
-    >
+    <UserContext.Provider value={contextValue}>
       {loading && <CustomBounceLoader />}
       <div>{!loading && children}</div>
     </UserContext.Provider>

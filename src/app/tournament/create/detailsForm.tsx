@@ -10,6 +10,7 @@ import { DateRange } from "react-day-picker";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import { createTournament } from "@/app/service/tournament/tournamentService";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -34,6 +35,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useToast } from "@/components/ui/use-toast";
 import { TournamentTypeLookup } from "@/lookups/tournament/tournamentTypeLookup";
 
 const formSchema = z.object({
@@ -47,9 +49,11 @@ const formSchema = z.object({
   isPublic: z.boolean({
     required_error: "Tournament visibility is required.",
   }),
-  type: z.array(z.string()).refine((value) => value.some((item) => item), {
-    message: "You have to select at least one tournament type.",
-  }),
+  type: z
+    .array(z.enum(["circuit", "standalone"]))
+    .refine((value) => value.some((item) => item), {
+      message: "You have to select at least one tournament type.",
+    }),
   date: z.string({
     required_error: "Tournament date is required.",
   }),
@@ -58,6 +62,26 @@ const formSchema = z.object({
   }),
 });
 
+type TournamentType = "circuit" | "standalone";
+
+export interface ITournamentDetails {
+  title: string;
+  description: string;
+  thumbnail: string;
+  isPublic: boolean;
+  type: TournamentType[];
+  // date: string;
+  startDate: string;
+  endDate: string;
+  location: string;
+}
+
+// interface Props {
+//   formData: TournamentDetails | null;
+//   onUpdateFormData: (data: TournamentDetails) => void;
+// }
+// { formData, onUpdateFormData }: Props
+
 const TournamentDetailsForm = () => {
   const [date, setDate] = useState<DateRange | undefined>({
     from: dayjs().subtract(7, "days").toDate(),
@@ -65,6 +89,7 @@ const TournamentDetailsForm = () => {
   });
   const [isPublicChecked, setIsPublicChecked] = useState(true);
   const [previewImg, setPreviewImg] = useState("");
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -127,8 +152,41 @@ const TournamentDetailsForm = () => {
     }
   };
 
-  const onSubmit = (data: z.output<typeof formSchema>) => {
+  const onSubmit = async (data: z.output<typeof formSchema>) => {
     console.log("form data: ", data);
+
+    //TODO: save to db
+    try {
+      console.log("start date: ", date?.from?.toDateString());
+      console.log("end date: ", date?.to?.toUTCString());
+      console.log("end date: ", dayjs(date?.to?.toUTCString()).toDate());
+      const parsed = formSchema.safeParse(data);
+
+      if (!parsed.success) throw new Error("Invalid form data");
+
+      const reqData: ITournamentDetails = {
+        title: parsed.data.title,
+        description: parsed.data.description || "",
+        thumbnail: parsed.data.thumbnail,
+        isPublic: parsed.data.isPublic,
+        type: parsed.data.type,
+        startDate: date?.from?.toUTCString() || "",
+        endDate: date?.to?.toUTCString() || "",
+        location: parsed.data.location,
+      };
+
+      console.log("requestData: ", reqData);
+
+      const res = await createTournament(reqData);
+
+      toast({
+        variant: res!.success ? "success" : "destructive",
+        title: res!.success ? "Success" : "Error",
+        description: res!.message,
+      });
+    } catch (error) {
+      console.error("Error: ", error);
+    }
   };
 
   return (
@@ -305,7 +363,9 @@ const TournamentDetailsForm = () => {
                             >
                               <FormControl>
                                 <Checkbox
-                                  checked={field.value?.includes(type.id)}
+                                  checked={field.value?.includes(
+                                    type.id as TournamentType
+                                  )}
                                   onCheckedChange={(checked) => {
                                     return checked
                                       ? field.onChange([
@@ -411,6 +471,11 @@ const TournamentDetailsForm = () => {
               </div>
             </div>
           </div>
+        </section>
+        <section className="flex justify-end items-center gap-2 py-8">
+          <Button variant={"main"} type="submit">
+            Create
+          </Button>
         </section>
       </form>
     </Form>

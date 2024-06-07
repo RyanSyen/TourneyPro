@@ -1,6 +1,6 @@
 import formSchema from "@/app/signup/formSchema";
 import { IFormData } from "@/app/signup/useForm";
-import { updateCache } from "@/helper/cacheable";
+// import { updateCache } from "@/helper/cacheable";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/user`;
 
@@ -85,7 +85,7 @@ export const updateUser = async (data: UserRequest, id: string) => {
     if (!res.ok) throw new Error(`Failed to update user: ${res.statusText}`);
 
     //update cache
-    updateCache(data, "user");
+    // updateCache(data, "user");
     return await res.json();
   } catch (error) {
     console.error("Error: ", error);

@@ -1,6 +1,6 @@
 import "./globals.scss";
 
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
@@ -23,24 +23,24 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className="!overflow-auto">
       <body className={`${inter.className} !mr-0`}>
-        <ReactQueryProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Suspense fallback={<CustomBounceLoader />}>
-              <UserContextProvider>
-                <Navbar />
-                <Toaster />
-                {/* <Suspense fallback={<Loading />}>{props.children}</Suspense> */}
-                {props.children}
-                <ReactQueryDevtools initialIsOpen={false} />
-              </UserContextProvider>
-            </Suspense>
-          </ThemeProvider>
-        </ReactQueryProvider>
+        {/* <ReactQueryProvider> */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Suspense fallback={<CustomBounceLoader />}>
+            <UserContextProvider>
+              <Navbar />
+              <Toaster />
+              {/* <Suspense fallback={<Loading />}>{props.children}</Suspense> */}
+              {props.children}
+              {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+            </UserContextProvider>
+          </Suspense>
+        </ThemeProvider>
+        {/* </ReactQueryProvider> */}
       </body>
     </html>
   );

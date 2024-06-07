@@ -9,7 +9,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 
-import { clearCache } from "@/helper/cacheable";
+// import { clearCache } from "@/helper/cacheable";
 import { auth } from "@/lib/firebase";
 import { UserData } from "@/types/UserData";
 
@@ -62,7 +62,7 @@ const useAuth = () => {
 
   const logOut = () => {
     console.log("logging out");
-    clearCache();
+    // clearCache();
     signOut(auth);
     router.push("/");
   };
