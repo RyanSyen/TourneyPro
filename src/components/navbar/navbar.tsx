@@ -27,6 +27,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useAuthContext } from "@/context/AuthContext";
 import { useUserContext } from "@/context/UserProvider";
 import useAuth from "@/hooks/useAuth";
 import { RoleLookup } from "@/lookups/role/roleLookup";
@@ -157,10 +158,11 @@ const ProfileDropdown = (props: {
 };
 
 const UserStatus = () => {
-  const userData = useUserContext();
+  // const userData = useUserContext();
+  const userData = useAuthContext();
   const router = useRouter();
 
-  // console.log("userData: ", userData);
+  console.log("userData: ", userData);
   // console.log("pass: ", userData && !userData.isFirstTimeUser);
 
   if (userData?.user) {

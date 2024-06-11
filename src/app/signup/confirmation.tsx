@@ -6,6 +6,7 @@ import CustomBounceLoader from "@/components/spinner/customBounceLoader";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
+import { useAuthContext } from "@/context/AuthContext";
 import { useUserContext } from "@/context/UserProvider";
 import useAuth from "@/hooks/useAuth";
 import { RoleLookup } from "@/lookups/role/roleLookup";
@@ -27,7 +28,8 @@ interface IConfirmationList {
 }
 
 const Confirmation = ({ prev, next, formData }: Props) => {
-  const userContext = useUserContext();
+  // const userContext = useUserContext();
+  const userContext = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
   const { changeUserData } = useAuth();
   const ConfirmationList: IConfirmationList[] =
@@ -75,12 +77,13 @@ const Confirmation = ({ prev, next, formData }: Props) => {
     setIsLoading(true);
 
     // update userdata
-    if (userContext?.user) {
-      changeUserData({
-        ...userContext.user,
-        isEmailVerified: false,
-      });
-    }
+    //TODO: restest this after comment
+    // if (userContext?.user) {
+    //   changeUserData({
+    //     ...userContext.user,
+    //     isEmailVerified: false,
+    //   });
+    // }
 
     const res: ResponseData | undefined = await registerUser(formData);
     console.log("after onSubmit: ", res);

@@ -19,13 +19,15 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useAuthContext } from "@/context/AuthContext";
 import { useUserContext } from "@/context/UserProvider";
 import { capitalizeFirstLetter } from "@/helper/common";
 
 import useProfile from "./useProfile";
 
 const ProfileFields = () => {
-  const userData = useUserContext();
+  // const userData = useUserContext();
+  const userData = useAuthContext();
   const {
     state,
     handleSave,
@@ -39,7 +41,7 @@ const ProfileFields = () => {
     updatePreview,
     refreshKey,
     isDuplicateImg,
-  } = useAvatarEditor(userData!.user, userData!.refreshProvider);
+  } = useAvatarEditor(userData!.user);
   const profile = useProfile(userData!.user);
   // console.log("profile data: ", profile.profileData);
   //! will be rerender each time user type when edit, component not heavy still ok to rerender

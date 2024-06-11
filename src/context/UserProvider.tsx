@@ -65,6 +65,7 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
 
     const fetchUser = async () => {
       try {
+        console.log("fetching user email");
         const res = await getUserByEmail(user.email!);
         const isValidProvider = ProviderLookup.some(
           (provider) => provider.name === search.get("provider")
@@ -132,16 +133,21 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
   }, [error, loading, user]);
 
   // memoize context value
-  const contextValue = React.useMemo(
-    () => ({
-      user: authHook.userData,
-      refreshProvider: handleRefreshProvider,
-    }),
-    [authHook.userData, handleRefreshProvider]
-  );
+  // const contextValue = React.useMemo(
+  //   () => ({
+  //     user: authHook.userData,
+  //     refreshProvider: handleRefreshProvider,
+  //   }),
+  //   [authHook.userData, handleRefreshProvider]
+  // );
 
   return (
-    <UserContext.Provider value={contextValue}>
+    <UserContext.Provider
+      value={{
+        user: authHook.userData,
+        refreshProvider: handleRefreshProvider,
+      }}
+    >
       {loading && <CustomBounceLoader />}
       <div>{!loading && children}</div>
     </UserContext.Provider>

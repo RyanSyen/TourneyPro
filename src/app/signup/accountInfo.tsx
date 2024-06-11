@@ -23,6 +23,7 @@ import {
   PrimaryPopoverContent,
 } from "@/components/ui/popover";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useAuthContext } from "@/context/AuthContext";
 import { useUserContext } from "@/context/UserProvider";
 
 import MalaysiaPostcodes from "../../../public/data/MalaysiaPostcodes.json";
@@ -43,7 +44,8 @@ interface Props {
 }
 
 const AccountInfo = ({ prev, next, formData, onSubmitStep }: Props) => {
-  const userData = useUserContext();
+  // const userData = useUserContext();
+  const userData = useAuthContext();
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({

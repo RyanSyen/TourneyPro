@@ -1,5 +1,6 @@
 import formSchema from "@/app/signup/formSchema";
 import { IFormData } from "@/app/signup/useForm";
+import { UserData } from "@/types/UserData";
 // import { updateCache } from "@/helper/cacheable";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/user`;
@@ -23,16 +24,46 @@ export const getAllUsers = async () => {
   }
 };
 
-export const getUserByEmail = async (email: string) => {
+export const getUserByEmail = async (email: string): Promise<UserData> => {
   try {
     const res = await fetch(`${BASE_URL}/email/${email}`, {
       method: "GET",
     });
 
-    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(`Error: ${res.statusText}`);
+    }
+
+    const data: UserData = await res.json();
     return data;
   } catch (error) {
     console.error("Error: ", error);
+    throw error;
+  }
+};
+
+export const getUserById = async (id: string) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: "GET",
+    });
+
+    if (!res.ok) {
+      console.error(`HTTP error! status: ${res.status}`);
+      throw new Error(`Error: ${res.statusText} (status: ${res.status})`);
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    if (error instanceof TypeError) {
+      console.error("Network error or invalid URL: ", error);
+    } else if (error instanceof Error) {
+      console.error("Error fetching user by ID: ", error.message);
+    } else {
+      console.error("Unknown error: ", error);
+    }
+    throw error;
   }
 };
 

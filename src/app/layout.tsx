@@ -9,6 +9,7 @@ import Navbar from "@/components/navbar/navbar";
 import CustomBounceLoader from "@/components/spinner/customBounceLoader";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { AuthContextProvider } from "@/context/AuthContext";
 import ReactQueryProvider from "@/context/ReactQueryProvider";
 import { UserContextProvider } from "@/context/UserProvider";
 
@@ -31,13 +32,15 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           disableTransitionOnChange
         >
           <Suspense fallback={<CustomBounceLoader />}>
-            <UserContextProvider>
+            {/* <UserContextProvider> */}
+            <AuthContextProvider>
               <Navbar />
               <Toaster />
               {/* <Suspense fallback={<Loading />}>{props.children}</Suspense> */}
               {props.children}
               {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-            </UserContextProvider>
+              {/* </UserContextProvider> */}
+            </AuthContextProvider>
           </Suspense>
         </ThemeProvider>
         {/* </ReactQueryProvider> */}

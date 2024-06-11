@@ -11,24 +11,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
 import { db } from "@/lib/firebase";
-
-interface UserDAO {
-  Id: string;
-  AccessToken: string;
-  FullName: string;
-  Email: string;
-  PhoneNumber: string;
-  Gender: string;
-  Area: string;
-  DateOfBirth: Date;
-  ProfilePic: string;
-  RoleId: string;
-  IsEmailVerified: boolean;
-  Language: string;
-  JoinedDate: Date;
-  LastLogin: Date;
-  ModifiedDate: Date;
-}
+import { UserData } from "@/types/UserData";
 
 const table = "users";
 
@@ -36,30 +19,26 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  console.log("user id: ", params.id);
   const userRef = doc(db, table, params.id);
   const docSnap = await getDoc(userRef);
 
   if (docSnap.exists()) {
     const data = docSnap.data();
-    console.log("data: ", data);
-    const user: UserDAO = {
-      Id: data.Id,
-      AccessToken: data.AccessToken,
-      FullName: data.FullName,
-      Email: data.Email,
-      PhoneNumber: data.PhoneNumber,
-      Gender: data.Gender,
-      Area: data.Area,
-      DateOfBirth: data.DateOfBirth,
-      ProfilePic: data.ProfilePic,
-      RoleId: data.RoleId,
-      IsEmailVerified: data.IsEmailVerified,
-      Language: data.Language,
-      JoinedDate: data.JoinedDate,
-      LastLogin: data.LastLogin,
-      ModifiedDate: data.ModifiedDate,
+    // console.log("data: ", data);
+    const user: UserData = {
+      id: data.id,
+      fullName: data.fullName,
+      email: data.email,
+      isEmailVerified: data.isEmailVerified,
+      photoUrl: data.photoUrl,
+      phoneNumber: data.phoneNumber,
+      roleId: data.roleId,
+      area: data.area,
+      dob: data.dob,
+      gender: data.gender,
     };
-    return NextResponse.json(user, { status: 200 });
+    return NextResponse.json({ message: user }, { status: 200 });
   } else {
     return NextResponse.json({}, { status: 200 });
   }
