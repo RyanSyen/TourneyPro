@@ -9,13 +9,13 @@ import { Account, columns } from "./datatable/columns";
 import { DataTable } from "./datatable/dataTable";
 
 const AccountListing = async () => {
-  const { message, success } = await getAllUsers();
+  const res = await getAllUsers();
   let accList: Account[] | [] = [];
 
-  // console.log("all users: ", allUsers);
+  console.log("res: ", res);
 
-  if (success && message && message.length > 0) {
-    accList = message.map((user: UserData) => ({
+  if (res.success && res.message && res.message.length > 0) {
+    accList = res.message.map((user: UserData) => ({
       fullName: user.fullName,
       emailAddress: user.email,
       mobileNumber: user.phoneNumber,
