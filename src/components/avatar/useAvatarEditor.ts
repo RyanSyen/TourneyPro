@@ -37,8 +37,8 @@ type State = {
 
 //editor: RefObject<AvatarEditor>
 const useAvatarEditor = (
-  user: UserData | null,
-  refreshProvider: () => void
+  user: UserData | null
+  // refreshProvider: () => void
 ) => {
   const [state, setState] = useState<State>({
     image: "",
@@ -116,7 +116,7 @@ const useAvatarEditor = (
         console.log("result: ", res);
         const img = editor.current?.getImageScaledToCanvas().toDataURL();
         setState({ ...state, image: img!.toString() });
-        refreshProvider();
+        // refreshProvider();
         handleCloseDialog();
       }
     } catch (error) {

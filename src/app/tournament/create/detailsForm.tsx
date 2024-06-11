@@ -5,6 +5,7 @@ import { CalendarIcon, InfoCircledIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns/format";
 import dayjs from "dayjs";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { DateRange } from "react-day-picker";
 import { useForm } from "react-hook-form";
@@ -36,6 +37,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useToast } from "@/components/ui/use-toast";
+import { useAuthContext } from "@/context/AuthContext";
+import { compressImg } from "@/helper/common";
 import { TournamentTypeLookup } from "@/lookups/tournament/tournamentTypeLookup";
 
 const formSchema = z.object({
@@ -74,13 +77,8 @@ export interface ITournamentDetails {
   startDate: string;
   endDate: string;
   location: string;
+  organizer: string;
 }
-
-// interface Props {
-//   formData: TournamentDetails | null;
-//   onUpdateFormData: (data: TournamentDetails) => void;
-// }
-// { formData, onUpdateFormData }: Props
 
 const TournamentDetailsForm = () => {
   const [date, setDate] = useState<DateRange | undefined>({
@@ -90,6 +88,10 @@ const TournamentDetailsForm = () => {
   const [isPublicChecked, setIsPublicChecked] = useState(true);
   const [previewImg, setPreviewImg] = useState("");
   const { toast } = useToast();
+  const context = useAuthContext();
+  const router = useRouter();
+
+  console.log("userData: ", context?.user);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -121,27 +123,27 @@ const TournamentDetailsForm = () => {
     if (e.target.files && e.target.files?.length > 0) {
       const file = e.target.files[0];
       const maxSize = process.env.NEXT_PUBLIC_IMG_UPLOAD_MAX_SIZE!;
-      if (file.size > parseInt(maxSize)) {
-        alert("File size exceeds 5MB. Please select a smaller file.");
-        e.target.value = ""; // Clear the selected file
-      }
-      console.log(file);
+      console.log("file size: ", file.size);
+
       const reader = new FileReader();
-      reader.onload = (e: ProgressEvent<FileReader>) => {
-        // console.log("current image: ", state.image || user?.photoUrl);
-        // console.log(e.target?.result);
-        // console.log(
-        //   "same image? : ",
-        //   (state.image || user?.photoUrl) === e.target?.result
-        // );
+      reader.onload = async (e: ProgressEvent<FileReader>) => {
         if (e.target && e.target.result) {
-          // const currentImg = state.image || user?.photoUrl;
           const targetImg = e.target?.result?.toString();
-          // setIsDuplicateImg(currentImg === targetImg);
-          // setState({ ...state, image: targetImg });
-          // setIsOpenDialog(true);
-          console.log("target img: ", targetImg);
-          setPreviewImg(targetImg);
+
+          if (file.size > parseInt(maxSize)) {
+            // alert("File size exceeds 5MB. Please select a smaller file.");
+            toast({
+              variant: "warn",
+              title: "File exceeded 1MB",
+              description:
+                "Image will be compressed automatically to reduce file size. Or you may upload another suitable image.",
+            });
+            const compressedImg = await compressImg(targetImg);
+
+            if (compressedImg) setPreviewImg(compressedImg);
+          } else {
+            setPreviewImg(targetImg);
+          }
         }
       };
       reader.readAsDataURL(file);
@@ -153,13 +155,7 @@ const TournamentDetailsForm = () => {
   };
 
   const onSubmit = async (data: z.output<typeof formSchema>) => {
-    console.log("form data: ", data);
-
-    //TODO: save to db
     try {
-      console.log("start date: ", date?.from?.toDateString());
-      console.log("end date: ", date?.to?.toUTCString());
-      console.log("end date: ", dayjs(date?.to?.toUTCString()).toDate());
       const parsed = formSchema.safeParse(data);
 
       if (!parsed.success) throw new Error("Invalid form data");
@@ -173,6 +169,7 @@ const TournamentDetailsForm = () => {
         startDate: date?.from?.toUTCString() || "",
         endDate: date?.to?.toUTCString() || "",
         location: parsed.data.location,
+        organizer: context?.user?.id!,
       };
 
       console.log("requestData: ", reqData);
@@ -187,6 +184,8 @@ const TournamentDetailsForm = () => {
     } catch (error) {
       console.error("Error: ", error);
     }
+
+    router.push("/tournament/list");
   };
 
   return (

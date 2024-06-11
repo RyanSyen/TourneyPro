@@ -8,7 +8,7 @@ import { ResponseData } from "@/types/common";
 const table = "tournament";
 let responseData: ResponseData;
 
-export interface UsersResponse {
+interface Response {
   message: any[];
   success: boolean;
 }
@@ -21,11 +21,13 @@ export async function GET() {
       ...doc.data(),
     }));
 
-    const resData: UsersResponse = { message: docs, success: true };
+    console.log("fetched tournament list size: ", docs.length);
+
+    const resData: Response = { message: docs, success: true };
 
     return NextResponse.json(resData, { status: 200 });
   } catch (error) {
-    console.error("[POST_API_USER] Error fetching all users: ", error);
+    console.error("[POST_API_USER] Error fetching tournaments: ", error);
 
     responseData = { success: false, message: "Internal server error" };
 
