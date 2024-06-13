@@ -24,6 +24,43 @@ export const getAllTournaments = async () => {
   }
 };
 
+export const getTournamentById = async (id: string) => {
+  try {
+    const res = await fetch(`${BASE_URL}?id=${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    });
+
+    if (!res.ok)
+      throw new Error(`Failed to get tournaments: ${res.statusText}`);
+
+    return await res.json();
+  } catch (error) {
+    console.error("Error: ", error);
+  }
+};
+
+export const getAllTournamentsByOrganizer = async (organizerId: string) => {
+  try {
+    const res = await fetch(`${BASE_URL}?orgId=${organizerId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok)
+      throw new Error(`Failed to get tournaments: ${res.statusText}`);
+
+    return await res.json();
+  } catch (error) {
+    console.error("Error: ", error);
+  }
+};
+
 export const createTournament = async (data: ITournamentDetails) => {
   try {
     const res = await fetch(`${BASE_URL}`, {

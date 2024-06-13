@@ -7,9 +7,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 import { getUserByEmail } from "@/app/service/user/userService";
+import CustomBounceLoader from "@/components/spinner/customBounceLoader";
 import { capitalizeFirstLetter } from "@/helper/common";
 import { auth } from "@/lib/firebase";
 import { UserData } from "@/types/UserData";
@@ -27,6 +29,7 @@ const useAuthContext = () => useContext(AuthContext);
 const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<UserData | null>(null);
   const [loading, setLoading] = useState<Boolean>(true);
+  const route = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -55,11 +58,15 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
           }
         } catch (error) {
           console.error(error);
+        } finally {
+          setLoading(false);
         }
+      } else {
+        // user is not logged in
+        setLoading(false);
+        route.push("/");
       }
     });
-
-    setLoading(false);
 
     return () => unsubscribe();
   }, []);
@@ -86,7 +93,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
         logOut,
       }}
     >
-      {loading ? null : children}
+      {loading ? <CustomBounceLoader /> : children}
     </AuthContext.Provider>
   );
 };

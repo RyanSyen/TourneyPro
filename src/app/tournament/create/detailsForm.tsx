@@ -68,16 +68,19 @@ const formSchema = z.object({
 type TournamentType = "circuit" | "standalone";
 
 export interface ITournamentDetails {
+  id?: string;
   title: string;
   description: string;
   thumbnail: string;
   isPublic: boolean;
   type: TournamentType[];
-  // date: string;
   startDate: string;
   endDate: string;
   location: string;
   organizer: string;
+  status: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 const TournamentDetailsForm = () => {
@@ -170,6 +173,9 @@ const TournamentDetailsForm = () => {
         endDate: date?.to?.toUTCString() || "",
         location: parsed.data.location,
         organizer: context?.user?.id!,
+        status: 0,
+        createdAt: dayjs().toString(),
+        updatedAt: dayjs().toString(),
       };
 
       console.log("requestData: ", reqData);

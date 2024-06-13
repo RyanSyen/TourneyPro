@@ -2,6 +2,7 @@
 
 import dayjs from "dayjs";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { getUserById } from "@/app/service/user/userService";
@@ -14,15 +15,13 @@ interface prop {
 }
 
 const TournamentCard = ({ tournament }: prop) => {
-  // const organizer = await getUserById(tournament.organizer);
   const [organizer, setOrganizer] = useState<{
     message: any;
     success: boolean;
   } | null>(null);
-  // const [status, setStatus] = useState("")
+  const router = useRouter();
 
   useEffect(() => {
-    // Define the async function inside the useEffect
     const fetchOrganizer = async () => {
       try {
         const organizerData = await getUserById(tournament.organizer);
@@ -33,20 +32,14 @@ const TournamentCard = ({ tournament }: prop) => {
     };
     fetchOrganizer();
   }, [tournament.organizer]);
-  // const organizer = await getUserById(tournament.organizer);
 
-  // useEffect(() => {
-  //   console.log("start date: ", tournament.startDate);
-  //   console.log("start date: ", dayjs(tournament.startDate).isAfter(dayjs()));
-
-  //   if(dayjs(tournament.startDate).isAfter(dayjs())){
-
-  //   }
-  // }, [tournament.startDate, tournament.endDate]);
-
-  console.log("organizer: ", organizer);
   return (
-    <div className="flex flex-col w-[300px] rounded-lg cursor-pointer relative bg-[#26282f]">
+    <div
+      className="flex flex-col w-[300px] rounded-lg cursor-pointer relative bg-[#26282f]"
+      onClick={() =>
+        router.push(`/tournament/${tournament.id}/dashboard/overview`)
+      }
+    >
       <section className="h-[150px] object-cover flex-center overflow-hidden">
         <Image
           src={tournament.thumbnail}

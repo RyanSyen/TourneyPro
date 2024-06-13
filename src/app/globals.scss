@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /*#region core styles*/
+body[data-scroll-locked] {
+  margin-right: 0 !important;
+}
+
 body {
   color: #fcfcfc;
   background-color: #26282f;
@@ -147,6 +151,10 @@ select {
 }
 
 @layer utilities {
+  body[data-scroll-locked] {
+    margin-right: 0 !important;
+  }
+
   .text-balance {
     text-wrap: balance;
   }

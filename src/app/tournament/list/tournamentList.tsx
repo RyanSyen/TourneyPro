@@ -15,7 +15,7 @@ interface prop {
 
 const TournamentCards = ({ tournaments }: prop) => {
   const uuid = uuidv4();
-  console.log("uuid: ", uuid);
+
   return (
     <div className="flex flex-wrap items-center gap-8 overflow-auto">
       {tournaments.map((t, index) => (

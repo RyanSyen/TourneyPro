@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import React from "react";
 
@@ -114,6 +112,11 @@ const Playground = () => {
       name: "Image gallery with firebase storage",
       desc: "Image gallery with firebase storage",
       url: "/playground/firebase-storage",
+    },
+    {
+      name: "Timeline component",
+      desc: "Experimenting timeline component",
+      url: "/playground/timeline",
     },
   ];
 

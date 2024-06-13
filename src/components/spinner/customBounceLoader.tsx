@@ -18,7 +18,7 @@ const CustomBounceLoader = ({ isRoot = true }: { isRoot?: boolean }) => {
     <div
       className={`${
         isRoot
-          ? "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[rgba(110,110,110,.3)] w-full h-full flex justify-center items-center z-100"
+          ? "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[rgba(110,110,110,1)] w-full h-full flex justify-center items-center z-100"
           : ""
       }`}
     >

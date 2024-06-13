@@ -58,6 +58,10 @@ const useAuth = () => {
       default:
         break;
     }
+
+    if (userCred) {
+      router.push("/");
+    }
   };
 
   const logOut = () => {

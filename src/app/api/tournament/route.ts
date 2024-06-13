@@ -1,31 +1,90 @@
-import { collection, doc, getDocs, setDoc } from "firebase/firestore";
-import { NextResponse } from "next/server";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
+import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
+import { ITournamentDetails } from "@/app/tournament/create/detailsForm";
 import { db } from "@/lib/firebase";
 import { ResponseData } from "@/types/common";
 
 const table = "tournament";
 let responseData: ResponseData;
 
-interface Response {
-  message: any[];
-  success: boolean;
-}
-
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const snapshot = await getDocs(collection(db, table));
-    const docs = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+    const tournamentRef = collection(db, table);
 
-    console.log("fetched tournament list size: ", docs.length);
+    const searchParams = request.nextUrl.searchParams;
+    const queryKey = searchParams.keys().next().value;
+    const queryValue = searchParams.values().next().value;
+    let q;
+    let snapshot;
+    let response;
 
-    const resData: Response = { message: docs, success: true };
+    // console.log("queryKey: ", queryKey);
+    // console.log("queryValue: ", queryValue);
 
-    return NextResponse.json(resData, { status: 200 });
+    if (queryKey == null) {
+      const q = tournamentRef;
+      snapshot = await getDocs(q);
+      response = snapshot.empty
+        ? { message: [] }
+        : {
+            message: snapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            })),
+          };
+    } else {
+      switch (queryKey) {
+        case "id":
+          q = doc(db, table, queryValue);
+          snapshot = await getDoc(q);
+          if (!snapshot.exists()) {
+            response = { message: null };
+          } else {
+            const data = snapshot.data();
+            const tournament: ITournamentDetails = {
+              id: snapshot.id,
+              title: data.title,
+              description: data.description,
+              thumbnail: data.thumbnail,
+              isPublic: data.isPublic,
+              type: data.type,
+              startDate: data.startDate,
+              endDate: data.endDate,
+              location: data.location,
+              organizer: data.organizer,
+              status: data.status,
+              createdAt: data.createdAt,
+              updatedAt: data.updatedAt,
+            };
+            response = { message: tournament };
+          }
+          break;
+        case "orgId":
+          q = query(tournamentRef, where("organizer", "==", queryValue));
+          snapshot = await getDocs(q);
+          response = {
+            message: snapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            })),
+          };
+          break;
+        default:
+          console.error(`Invalid query key: ${queryKey}`);
+      }
+    }
+
+    return NextResponse.json(response, { status: 200 });
   } catch (error) {
     console.error("[POST_API_USER] Error fetching tournaments: ", error);
 

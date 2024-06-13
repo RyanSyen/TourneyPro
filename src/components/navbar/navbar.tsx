@@ -71,7 +71,8 @@ const ProfileDropdown = (props: {
 }) => {
   const firstLetter = props.fullName?.split("")[0];
   const role = RoleLookup.find((r) => r.id === props.roleId)?.title;
-  const { logOut } = useAuth();
+  // const { logOut } = useAuth();
+  const context = useAuthContext();
 
   const items = [
     {
@@ -150,7 +151,9 @@ const ProfileDropdown = (props: {
               </DropdownMenuItem>
             </Link>
           ))}
-          <DropdownMenuItem onClick={() => logOut()}>Sign Out</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => context?.logOut()}>
+            Sign Out
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

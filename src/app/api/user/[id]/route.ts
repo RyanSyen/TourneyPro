@@ -19,29 +19,28 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  console.log("user id: ", params.id);
   const userRef = doc(db, table, params.id);
   const docSnap = await getDoc(userRef);
 
-  if (docSnap.exists()) {
-    const data = docSnap.data();
-    // console.log("data: ", data);
-    const user: UserData = {
-      id: data.id,
-      fullName: data.fullName,
-      email: data.email,
-      isEmailVerified: data.isEmailVerified,
-      photoUrl: data.photoUrl,
-      phoneNumber: data.phoneNumber,
-      roleId: data.roleId,
-      area: data.area,
-      dob: data.dob,
-      gender: data.gender,
-    };
-    return NextResponse.json({ message: user }, { status: 200 });
-  } else {
+  if (!docSnap.exists()) {
     return NextResponse.json({}, { status: 200 });
   }
+
+  const data = docSnap.data();
+  // console.log("data: ", data);
+  const user: UserData = {
+    id: data.id,
+    fullName: data.fullName,
+    email: data.email,
+    isEmailVerified: data.isEmailVerified,
+    photoUrl: data.photoUrl,
+    phoneNumber: data.phoneNumber,
+    roleId: data.roleId,
+    area: data.area,
+    dob: data.dob,
+    gender: data.gender,
+  };
+  return NextResponse.json({ message: user }, { status: 200 });
 }
 
 export async function POST(request: Request) {
