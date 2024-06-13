@@ -8,9 +8,8 @@ import {
   where,
 } from "firebase/firestore";
 import { NextRequest, NextResponse } from "next/server";
-import { v4 as uuidv4 } from "uuid";
 
-import { ITournamentDetails } from "@/app/tournament/create/detailsForm";
+import { ITournamentDetails } from "@/app/tournament/(builder)/create/detailsForm";
 import { db } from "@/lib/firebase";
 import { ResponseData } from "@/types/common";
 
@@ -97,8 +96,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const tournamentId = uuidv4();
-    const userRef = doc(db, table, tournamentId);
+    const userRef = doc(db, table, data.id);
     await setDoc(userRef, data);
 
     console.log("[POST_API_TOURNAMENT] Tournament Created");

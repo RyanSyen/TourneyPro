@@ -13,7 +13,7 @@ const TournamentDashboardLayout = ({
   params: { id: string };
 }) => {
   return (
-    <CustomContainer>
+    <CustomContainer className="max-w-[1000px]">
       <div className="flex gap-4">
         <TournamentDashboardSwitcher />
         <TournamentDashboardNavbar id={params.id} />

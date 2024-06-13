@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 export const capitalizeFirstLetter = (str: string) => {
   const words = str.split(" ");
   const capitalizedWords = words.map((word) => {
@@ -66,4 +68,28 @@ export const compressImg = async (
     console.error("Error compressing image:", error);
     throw error;
   }
+};
+
+export const validateFileSize = async (e: ChangeEvent<HTMLInputElement>) => {
+  console.debug("validating file ...");
+  if (!e.target.files || e.target.files.length == 0)
+    return { isValid: false, message: "No file selected ..." };
+
+  const file = e.target.files[0];
+  const maxSize = process.env.NEXT_PUBLIC_IMG_UPLOAD_MAX_SIZE!;
+  // console.log("file size: ", file.size);
+
+  if (file.size > parseInt(maxSize))
+    return { isValid: false, message: "File exceeded 1MB" };
+
+  return new Promise<{ isValid: boolean; message: string }>((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (event: ProgressEvent<FileReader>) => {
+      resolve({
+        isValid: true,
+        message: event.target?.result?.toString() || "",
+      });
+    };
+    reader.readAsDataURL(file);
+  });
 };

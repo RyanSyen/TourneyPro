@@ -1,53 +1,71 @@
+"use client";
+
 import { ChevronRightIcon } from "lucide-react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 import CustomLink from "../ui/link";
 
 interface Props {
-  name: string;
-  url: string;
+  breadcrumbList: IBreadcrumb[];
 }
 
-const Breadcrumb = ({ links }: { links: Props[] }) => {
+interface IBreadcrumb {
+  segment: string;
+  label: string;
+  url?: string;
+}
+
+// const TournamentBreadcrumbList: ITournamentBreadcrumb[] = [
+//   {
+//     segment: "tournament",
+//     label: "Tournament Builder",
+//     url: "/tournament/list",
+//   },
+//   {
+//     segment: "create",
+//     label: "Create Tournament",
+//   },
+//   {
+//     segment: "dashboard",
+//     label: "Dashboard",
+//   },
+// ];
+
+const BetaBreadcrumb = (list: Props) => {
+  const path = usePathname();
+
+  const pathWithoutQuery = path.split("?")[0];
+  const breadcrumbs = list.breadcrumbList
+    .filter((b) => {
+      return pathWithoutQuery.split("/").includes(b.segment);
+    })
+    .map((obj) => {
+      return { label: obj.label, url: obj?.url };
+    });
+  const breadcrumbLinks = [...breadcrumbs];
+
   return (
-    <div className="flex items-center">
-      {links.map((link, index) => (
-        <BreadcrumbItems
-          key={index}
-          index={index}
-          link={link}
-          isLastLink={index === links.length - 1}
-        />
-      ))}
-    </div>
+    <nav aria-label="breadcrumb" className="flex items-center pb-4">
+      {breadcrumbLinks.map((breadcrumb, index) => {
+        const isLastLink = index === breadcrumbLinks.length - 1;
+
+        return (
+          <div key={index} className="flex items-center">
+            <CustomLink
+              key={breadcrumb.label}
+              variant={!breadcrumb.url ? null : "breadcrumb"}
+              href={breadcrumb.url || ""}
+              name={breadcrumb.label}
+            />
+            {!isLastLink && (
+              <span className="px-1 text-[#8c94a1] pb-[2px]">{">"}</span>
+            )}
+          </div>
+        );
+      })}
+    </nav>
   );
 };
 
-const BreadcrumbItems = ({
-  link,
-  index,
-  isLastLink,
-}: {
-  link: Props;
-  index: number;
-  isLastLink: boolean;
-}) => {
-  if (isLastLink) {
-    return <span className="text-sm font-normal">{link.name}</span>;
-  } else {
-    return (
-      <>
-        <CustomLink
-          key={link.name}
-          variant={isLastLink ? null : "breadcrumb"}
-          href={link.url}
-          name={link.name}
-        />
-        <span className="px-1">
-          <ChevronRightIcon color="#8c94a1" />
-        </span>
-      </>
-    );
-  }
-};
-
-export default Breadcrumb;
+export { BetaBreadcrumb, type IBreadcrumb };

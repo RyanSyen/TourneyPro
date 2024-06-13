@@ -5,13 +5,13 @@ import { CalendarIcon, InfoCircledIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns/format";
 import dayjs from "dayjs";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { DateRange } from "react-day-picker";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { createTournament } from "@/app/service/tournament/tournamentService";
+import { setTournament } from "@/app/service/tournament/tournamentService";
+import { ITournamentDetails } from "@/app/tournament/(builder)/create/detailsForm";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -36,9 +36,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useToast } from "@/components/ui/use-toast";
-import { useAuthContext } from "@/context/AuthContext";
-import { compressImg } from "@/helper/common";
+import { toast } from "@/components/ui/use-toast";
+import { validateFileSize } from "@/helper/common";
 import { TournamentTypeLookup } from "@/lookups/tournament/tournamentTypeLookup";
 
 const formSchema = z.object({
@@ -67,46 +66,30 @@ const formSchema = z.object({
 
 type TournamentType = "circuit" | "standalone";
 
-export interface ITournamentDetails {
-  id?: string;
-  title: string;
-  description: string;
-  thumbnail: string;
-  isPublic: boolean;
-  type: TournamentType[];
-  startDate: string;
-  endDate: string;
-  location: string;
-  organizer: string;
-  status: number;
-  createdAt: string;
-  updatedAt: string;
-}
-
-const TournamentDetailsForm = () => {
+const Details = ({
+  tournamentData,
+}: {
+  tournamentData: { message: ITournamentDetails };
+}) => {
+  const t = tournamentData.message;
   const [date, setDate] = useState<DateRange | undefined>({
-    from: dayjs().subtract(7, "days").toDate(),
-    to: dayjs().toDate(),
+    from: dayjs(t.startDate).toDate(),
+    to: dayjs(t.endDate).toDate(),
   });
-  const [isPublicChecked, setIsPublicChecked] = useState(true);
-  const [previewImg, setPreviewImg] = useState("");
-  const { toast } = useToast();
-  const context = useAuthContext();
-  const router = useRouter();
-
-  console.log("userData: ", context?.user);
+  const [isPublicChecked, setIsPublicChecked] = useState(t.isPublic);
+  const [previewImg, setPreviewImg] = useState(t.thumbnail);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     shouldFocusError: false,
     defaultValues: {
       // since formField is using controlled component, you need to provide default value for the field
-      title: "",
-      description: "",
-      thumbnail: "",
-      isPublic: true,
-      type: [],
-      location: "",
+      title: t.title,
+      description: t.description,
+      thumbnail: t.thumbnail,
+      isPublic: t.isPublic,
+      type: t.type,
+      location: t.location,
     },
   });
 
@@ -122,41 +105,6 @@ const TournamentDetailsForm = () => {
     }
   }, [form, date, isPublicChecked, previewImg]);
 
-  const validateFileSize = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files?.length > 0) {
-      const file = e.target.files[0];
-      const maxSize = process.env.NEXT_PUBLIC_IMG_UPLOAD_MAX_SIZE!;
-      console.log("file size: ", file.size);
-
-      const reader = new FileReader();
-      reader.onload = async (e: ProgressEvent<FileReader>) => {
-        if (e.target && e.target.result) {
-          const targetImg = e.target?.result?.toString();
-
-          if (file.size > parseInt(maxSize)) {
-            // alert("File size exceeds 5MB. Please select a smaller file.");
-            toast({
-              variant: "warn",
-              title: "File exceeded 1MB",
-              description:
-                "Image will be compressed automatically to reduce file size. Or you may upload another suitable image.",
-            });
-            const compressedImg = await compressImg(targetImg);
-
-            if (compressedImg) setPreviewImg(compressedImg);
-          } else {
-            setPreviewImg(targetImg);
-          }
-        }
-      };
-      reader.readAsDataURL(file);
-      //   console.log(reader);
-      //   console.log(reader.result);
-    } else {
-      console.log("no file selected");
-    }
-  };
-
   const onSubmit = async (data: z.output<typeof formSchema>) => {
     try {
       const parsed = formSchema.safeParse(data);
@@ -164,6 +112,7 @@ const TournamentDetailsForm = () => {
       if (!parsed.success) throw new Error("Invalid form data");
 
       const reqData: ITournamentDetails = {
+        id: t.id,
         title: parsed.data.title,
         description: parsed.data.description || "",
         thumbnail: parsed.data.thumbnail,
@@ -172,15 +121,15 @@ const TournamentDetailsForm = () => {
         startDate: date?.from?.toUTCString() || "",
         endDate: date?.to?.toUTCString() || "",
         location: parsed.data.location,
-        organizer: context?.user?.id!,
-        status: 0,
-        createdAt: dayjs().toString(),
+        organizer: t.organizer,
+        status: t.status,
+        createdAt: t.createdAt,
         updatedAt: dayjs().toString(),
       };
 
       console.log("requestData: ", reqData);
 
-      const res = await createTournament(reqData);
+      const res = await setTournament(reqData);
 
       toast({
         variant: res!.success ? "success" : "destructive",
@@ -190,8 +139,29 @@ const TournamentDetailsForm = () => {
     } catch (error) {
       console.error("Error: ", error);
     }
+  };
 
-    router.push("/tournament/list");
+  const onValidateFile = async (e: ChangeEvent<HTMLInputElement>) => {
+    try {
+      const res = await validateFileSize(e);
+
+      if (!res?.isValid) {
+        toast({
+          variant: "warn",
+          title: res?.message || "An error occurred.",
+          description: "",
+        });
+      } else {
+        setPreviewImg(res?.message);
+      }
+    } catch (error) {
+      console.error("Error: ", error);
+      toast({
+        variant: "warn",
+        title: "An unexpected error occurred.",
+        description: "",
+      });
+    }
   };
 
   return (
@@ -200,9 +170,6 @@ const TournamentDetailsForm = () => {
         <section
           className={`space-y-4 overflow-y-auto pr-4 bg-[#14141b] rounded-xl p-6`}
         >
-          <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-            Tournament Details
-          </h4>
           <div className="flex-wrap grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-12">
             <div className="flex flex-col gap-5">
               <FormField
@@ -448,7 +415,7 @@ const TournamentDetailsForm = () => {
                         id="file"
                         type="file"
                         accept="image/*"
-                        onChange={validateFileSize}
+                        onChange={(e) => onValidateFile(e)}
                         className="hidden"
                       />
                     </FormControl>
@@ -463,7 +430,8 @@ const TournamentDetailsForm = () => {
                       src={previewImg}
                       fill
                       sizes="100%"
-                      style={{ objectFit: "contain" }}
+                      style={{ objectFit: "cover" }}
+                      className="rounded-md"
                       alt="tournament thumbnail image"
                       priority
                     />
@@ -479,7 +447,7 @@ const TournamentDetailsForm = () => {
         </section>
         <section className="flex justify-end items-center gap-2 py-8">
           <Button variant={"main"} type="submit">
-            Create
+            Update
           </Button>
         </section>
       </form>
@@ -487,4 +455,4 @@ const TournamentDetailsForm = () => {
   );
 };
 
-export default TournamentDetailsForm;
+export default Details;

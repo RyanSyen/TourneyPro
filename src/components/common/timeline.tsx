@@ -83,7 +83,7 @@ const Timeline = ({
   return (
     <div
       className={cn(
-        "after:absolute after:inset-y-0 after:w-px after:bg-gray-500/20 relative pl-6 after:left-0 grid gap-5 dark:after:bg-gray-400/20",
+        "after:absolute after:inset-y-0 after:w-px after:bg-gray-500/20 relative pl-[1.3rem] after:left-0 grid gap-5 dark:after:bg-gray-400/20",
         className
       )}
     >

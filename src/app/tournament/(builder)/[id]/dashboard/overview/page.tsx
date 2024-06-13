@@ -3,9 +3,7 @@ import { getTournamentById } from "@/app/service/tournament/tournamentService";
 import Overview from "./overview";
 
 const TDOverview = async ({ params }: { params: { id: string } }) => {
-  // console.log("tournament id: ", params.id);
   const tournament = await getTournamentById(params.id);
-  // console.log("tournament obj: ", tournament);
 
   return (
     <>

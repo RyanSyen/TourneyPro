@@ -1,11 +1,5 @@
-import { ChevronRightIcon } from "@radix-ui/react-icons";
-
-import Breadcrumb from "@/components/common/breadcrumb";
 import Tab from "@/components/common/tab";
-import CustomLink from "@/components/ui/link";
 import { AdminTabLookup as tabList } from "@/lookups/admin/adminLookup";
-
-import AdminBreadcrumb from "./breadcrumb";
 
 interface props {
   title: string;
@@ -15,7 +9,6 @@ interface props {
 const AdminNavbar = (props: props) => {
   return (
     <div className="flex flex-col gap-8">
-      {!props.showTabs && <AdminBreadcrumb />}
       <h3 className="scroll-m-20 text-2xl font-medium tracking-tight border-l-4 border-[#e50b0d] px-4">
         {props.title}
       </h3>

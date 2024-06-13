@@ -8,7 +8,6 @@ const TimelineIcon = ({
   className?: string;
 }) => {
   if (!children) {
-    console.log("no children");
     return (
       <div className="aspect-square w-3 bg-gray-900 rounded-full absolute left-0 translate-x-[-29.5px] z-10 top-1 dark:bg-gray-50" />
     );

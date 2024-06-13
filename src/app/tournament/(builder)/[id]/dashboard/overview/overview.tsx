@@ -4,7 +4,7 @@ import { PlusCircle, Upload } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
-import { ITournamentDetails } from "@/app/tournament/create/detailsForm";
+import { ITournamentDetails } from "@/app/tournament/(builder)/create/detailsForm";
 import {
   Timeline,
   TimelineDescription,
@@ -12,6 +12,8 @@ import {
   TimelineItem,
   TimelineTitle,
 } from "@/components/common/timeline";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -31,11 +33,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Table, TableRow } from "@/components/ui/table";
+import { capitalizeFirstLetter } from "@/helper/common";
 import { tournamentStatusLookup } from "@/lookups/tournament/statusLookup";
-
-interface prop {
-  tournament: ITournamentDetails;
-}
 
 const Overview = ({
   tournamentData,
@@ -52,22 +51,37 @@ const Overview = ({
   return (
     <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
       <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
-        <div className="relative w-100 h-[450px] rounded-xl">
-          <Image
-            src={tournament.thumbnail}
-            fill
-            alt="tournament thumbnail"
-            style={{ objectFit: "cover" }}
-          />
+        <div className="relative w-100 ">
+          <AspectRatio ratio={16 / 9}>
+            <Image
+              src={tournament.thumbnail}
+              fill
+              alt="tournament thumbnail"
+              style={{ objectFit: "cover" }}
+              className="rounded-xl"
+            />
+          </AspectRatio>
         </div>
 
-        <Card x-chunk="dashboard-07-chunk-0">
-          <CardHeader>
-            <CardTitle>{tournament.title}</CardTitle>
-            <CardDescription>{tournament.description}</CardDescription>
+        <Card>
+          <CardHeader className="space-y-0">
+            <CardTitle className="scroll-m-20  text-xl font-semibold tracking-tight first:mt-0">
+              {capitalizeFirstLetter(tournament.title)}
+            </CardTitle>
+            <CardDescription className="border-b pb-2 m-0">
+              {tournament.description}
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-6">
+            <div className="flex items-center gap-2">
+              <div className="scroll-m-20 text-lg font-medium tracking-tight">
+                Tournament Setup
+              </div>
+              <Badge variant="secondary" className="!text-slate-400">
+                Not Completed
+              </Badge>
+            </div>
+            {/* <div className="grid gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="name">Name</Label>
                 <Input
@@ -79,13 +93,8 @@ const Overview = ({
               </div>
               <div className="grid gap-3">
                 <Label htmlFor="description">Description</Label>
-                {/* <Textarea
-                          id="description"
-                          defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc."
-                          className="min-h-32"
-                        /> */}
               </div>
-            </div>
+            </div> */}
           </CardContent>
         </Card>
       </div>
@@ -135,7 +144,7 @@ const Overview = ({
             </div>
           </CardContent>
         </Card>
-        <Card className="overflow-hidden" x-chunk="dashboard-07-chunk-4">
+        <Card className="overflow-hidden">
           <CardHeader>
             <CardTitle>Timeline</CardTitle>
           </CardHeader>
@@ -182,7 +191,7 @@ const Overview = ({
             </div>
           </CardContent>
         </Card>
-        <Card x-chunk="dashboard-07-chunk-5">
+        {/* <Card x-chunk="dashboard-07-chunk-5">
           <CardHeader>
             <CardTitle>Archive Product</CardTitle>
             <CardDescription>
@@ -195,7 +204,7 @@ const Overview = ({
               Archive Product
             </Button>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );

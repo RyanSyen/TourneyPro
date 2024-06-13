@@ -12,8 +12,6 @@ const AccountListing = async () => {
   const res = await getAllUsers();
   let accList: Account[] | [] = [];
 
-  console.log("res: ", res);
-
   if (res.success && res.message && res.message.length > 0) {
     accList = res.message.map((user: UserData) => ({
       fullName: user.fullName,

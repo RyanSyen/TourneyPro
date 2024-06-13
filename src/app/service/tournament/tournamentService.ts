@@ -1,4 +1,4 @@
-import { ITournamentDetails } from "@/app/tournament/create/detailsForm";
+import { ITournamentDetails } from "@/app/tournament/(builder)/create/detailsForm";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/tournament`;
 
@@ -50,6 +50,7 @@ export const getAllTournamentsByOrganizer = async (organizerId: string) => {
       headers: {
         "Content-Type": "application/json",
       },
+      cache: "no-store",
     });
 
     if (!res.ok)
@@ -61,7 +62,7 @@ export const getAllTournamentsByOrganizer = async (organizerId: string) => {
   }
 };
 
-export const createTournament = async (data: ITournamentDetails) => {
+export const setTournament = async (data: ITournamentDetails) => {
   try {
     const res = await fetch(`${BASE_URL}`, {
       method: "POST",
@@ -71,7 +72,8 @@ export const createTournament = async (data: ITournamentDetails) => {
       body: JSON.stringify(data),
     });
 
-    if (!res.ok) throw new Error(`Failed to register: ${res.statusText}`);
+    if (!res.ok)
+      throw new Error(`Failed to create tournament: ${res.statusText}`);
 
     return await res.json();
   } catch (error) {
