@@ -70,7 +70,7 @@ const TournamentDashboardSwitcher = () => {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button variant={"main"} className="rounded-md w-[175px] ">
+        <Button variant={"main"} className="rounded-md w-[250px] ">
           <div className="whitespace-nowrap overflow-hidden text-ellipsis block mr-4">
             {selectedTourney ? selectedTourney.title : ""}
           </div>

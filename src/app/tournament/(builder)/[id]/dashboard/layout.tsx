@@ -14,7 +14,7 @@ const TournamentDashboardLayout = ({
 }) => {
   return (
     <CustomContainer className="max-w-[1000px]">
-      <div className="flex gap-4">
+      <div className="flex flex-col gap-4">
         <TournamentDashboardSwitcher />
         <TournamentDashboardNavbar id={params.id} />
       </div>

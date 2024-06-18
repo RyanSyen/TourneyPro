@@ -18,6 +18,14 @@ export const generateNavlist = (id: string) => {
       link: `/tournament/${id}/dashboard/details`,
     },
     {
+      title: "Match",
+      link: `/tournament/${id}/dashboard/match`,
+    },
+    {
+      title: "Category",
+      link: `/tournament/${id}/dashboard/category`,
+    },
+    {
       title: "Registration",
       link: `/tournament/${id}/dashboard/registration`,
     },
