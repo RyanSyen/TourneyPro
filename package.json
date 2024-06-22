@@ -50,6 +50,7 @@
     "next-themes": "^0.2.1",
     "oauth4webapi": "^2.8.1",
     "react": "^18",
+    "react-avatar-edit": "^1.2.0",
     "react-avatar-editor": "^13.0.2",
     "react-calendar": "^4.8.0",
     "react-confetti": "^6.1.0",

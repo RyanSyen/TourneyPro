@@ -1,29 +1,79 @@
-import { RefObject, useRef } from "react";
-import AvatarEditor from "react-avatar-editor";
+"use client";
 
-interface Props {
-  editor: RefObject<AvatarEditor>;
-  image: string | File;
-  width: number;
-  height: number;
-  borderRadius: number;
-  scale: number;
+import { ChangeEvent } from "react";
+import Avatar from "react-avatar-edit";
+
+import { validateFileSize } from "@/helper/common";
+
+import { toast } from "../ui/use-toast";
+
+export interface AvatarEditorStateProp {
+  preview: string | null;
+  src: string | null;
 }
 
-const CustomAvatarEditor = (props: Props) => {
+interface Props {
+  state: AvatarEditorStateProp;
+  setState: (state: AvatarEditorStateProp) => void;
+  setIsDialogOpen: (isOpen: boolean) => void;
+}
+
+const AvatarEditor = ({ state, setState, setIsDialogOpen }: Props) => {
+  const onClose = () => {
+    setState({
+      src: "",
+      preview: null,
+    });
+    setIsDialogOpen(false);
+  };
+
+  const onCrop = (preview: string) => {
+    setState({
+      src: state.src,
+      preview: preview,
+    });
+  };
+
+  const onBeforeFileUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+    try {
+      const res = await validateFileSize(e);
+
+      if (!res?.isValid) {
+        toast({
+          variant: "warn",
+          title: res?.message || "An error occurred.",
+          description: "",
+        });
+      }
+    } catch (error) {
+      console.error("Error validating file: ", error);
+      toast({
+        variant: "warn",
+        title: "An unexpected error occurred.",
+        description: "",
+      });
+    }
+  };
+
   return (
-    <AvatarEditor
-      ref={props.editor}
-      image={props.image}
-      width={props.width}
-      height={props.height}
-      border={50}
-      borderRadius={props.borderRadius}
-      scale={props.scale}
-      crossOrigin="anonymous"
-      className="rounded-lg"
+    <Avatar
+      width={128}
+      height={128}
+      borderStyle={{ border: 0, borderRadius: "50%" }}
+      onCrop={onCrop}
+      onClose={onClose}
+      onBeforeFileLoad={onBeforeFileUpload}
+      src={state.src || undefined}
+      backgroundColor="white"
+      closeIconColor="red"
+      shadingColor="grey"
+      shadingOpacity={0.8}
+      exportAsSquare={false}
+      exportSize={128}
+      exportMimeType="image/png"
+      exportQuality={1}
     />
   );
 };
 
-export default CustomAvatarEditor;
+export default AvatarEditor;
