@@ -55,7 +55,7 @@ import { TrashIcon } from "./Trash";
 import { UserCircleIcon } from "./UserCircle";
 import { UserIcon } from "./UserLine";
 import { VideosIcon } from "./Videos";
-import { TrophyIcon } from "./Trophy";
+// import { TrophyIcon } from "./Trophy";
 
 export {
   AlertIcon,
@@ -115,5 +115,5 @@ export {
   UserCircleIcon,
   UserIcon,
   VideosIcon,
-  TrophyIcon,
+  // TrophyIcon,
 };
