@@ -6,8 +6,8 @@ import Label from "../Label";
 import Input from "../input/InputField";
 import Select from "../Select";
 import TextArea from "../input/TextArea";
-import Button from "../../ui/button/Button";
-import { PaperPlaneIcon } from "../../../icons";
+import Button from "../../ui/button/CustomButton";
+// import { PaperPlaneIcon } from "../../../icons";
 
 export default function ExampleFormOne() {
   const [message, setMessage] = useState<string>("");
@@ -71,7 +71,7 @@ export default function ExampleFormOne() {
           <div className="col-span-2">
             <Button size="sm" className="w-full">
               Send Message
-              <PaperPlaneIcon />
+              {/* <PaperPlaneIcon /> */}
             </Button>
           </div>
         </div>

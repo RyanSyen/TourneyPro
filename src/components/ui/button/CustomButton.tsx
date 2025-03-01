@@ -11,7 +11,7 @@ interface ButtonProps {
   className?: string; // Disabled state
 }
 
-const Button: React.FC<ButtonProps> = ({
+const CustomButton: React.FC<ButtonProps> = ({
   children,
   size = "md",
   variant = "primary",
@@ -52,4 +52,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+export default CustomButton;

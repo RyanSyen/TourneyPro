@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgBolt = (props) => (
+export const BoltIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={24}
@@ -16,4 +16,3 @@ const SvgBolt = (props) => (
     />
   </svg>
 );
-export default SvgBolt;

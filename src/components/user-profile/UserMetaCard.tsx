@@ -2,7 +2,7 @@
 import React from "react";
 import { useModal } from "../../hooks/useModal";
 import { Modal } from "../ui/modal";
-import Button from "../ui/button/Button";
+import Button from "../ui/button/CustomButton";
 import Input from "../form/input/InputField";
 import Label from "../form/Label";
 import Image from "next/image";

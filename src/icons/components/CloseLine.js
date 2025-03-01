@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgCloseLine = (props) => (
+export const CloseLineIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={17}
@@ -15,4 +15,3 @@ const SvgCloseLine = (props) => (
     />
   </svg>
 );
-export default SvgCloseLine;

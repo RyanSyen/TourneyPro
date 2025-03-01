@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgLock = (props) => (
+export const LockIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={20}
@@ -19,4 +19,3 @@ const SvgLock = (props) => (
     />
   </svg>
 );
-export default SvgLock;

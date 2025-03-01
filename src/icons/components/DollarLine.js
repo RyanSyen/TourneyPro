@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgDollarLine = (props) => (
+export const DollarLineIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={25}
@@ -15,4 +15,3 @@ const SvgDollarLine = (props) => (
     />
   </svg>
 );
-export default SvgDollarLine;

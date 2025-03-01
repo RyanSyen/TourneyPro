@@ -1,5 +1,5 @@
 import * as React from "react";
-const AlertIcon = (props) => (
+export const AlertIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={24}
@@ -15,4 +15,3 @@ const AlertIcon = (props) => (
     />
   </svg>
 );
-export default AlertIcon;

@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgAngleUp = (props) => (
+export const AngleUpIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={8}
@@ -13,4 +13,3 @@ const SvgAngleUp = (props) => (
     />
   </svg>
 );
-export default SvgAngleUp;

@@ -3,15 +3,15 @@ import React, { useState } from "react";
 import ComponentCard from "../../common/ComponentCard";
 import Form from "../Form";
 import Input from "../input/InputField";
-import {
-  ArrowRightIcon,
-  EnvelopeIcon,
-  LockIcon,
-  UserIcon,
-} from "../../../icons";
+// import {
+//   ArrowRightIcon,
+//   EnvelopeIcon,
+//   LockIcon,
+//   UserIcon,
+// } from "../../../icons";
 import Checkbox from "../input/Checkbox";
 import Label from "../Label";
-import Button from "../../ui/button/Button";
+import Button from "../../ui/button/CustomButton";
 
 export default function ExampleFormWithIcon() {
   const handleSubmit = (e: React.FormEvent) => {
@@ -32,7 +32,7 @@ export default function ExampleFormWithIcon() {
               className="pl-11"
             />
             <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none left-4 top-1/2 dark:text-gray-400">
-              <UserIcon />
+              {/* <UserIcon /> */}
             </span>
           </div>{" "}
           <div className="relative">
@@ -43,7 +43,7 @@ export default function ExampleFormWithIcon() {
               className="pl-11"
             />
             <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none left-4 top-1/2 dark:text-gray-400">
-              <EnvelopeIcon />
+              {/* <EnvelopeIcon /> */}
             </span>
           </div>{" "}
           <div className="relative">
@@ -54,7 +54,7 @@ export default function ExampleFormWithIcon() {
               className="pl-11"
             />
             <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none left-4 top-1/2 dark:text-gray-400">
-              <LockIcon />
+              {/* <LockIcon /> */}
             </span>
           </div>{" "}
           <div className="relative">
@@ -65,7 +65,7 @@ export default function ExampleFormWithIcon() {
               className="pl-11"
             />
             <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none left-4 top-1/2 dark:text-gray-400">
-              <LockIcon />
+              {/* <LockIcon /> */}
             </span>
           </div>
           <div className="flex justify-between">
@@ -75,7 +75,7 @@ export default function ExampleFormWithIcon() {
             </div>
             <div>
               <Button size="sm">
-                Create Account <ArrowRightIcon />
+                Create Account
               </Button>
             </div>
           </div>

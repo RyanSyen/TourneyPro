@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgBell = (props) => (
+export const BellIcon = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} {...props}>
     <path
       fill="none"
@@ -7,4 +7,3 @@ const SvgBell = (props) => (
     />
   </svg>
 );
-export default SvgBell;

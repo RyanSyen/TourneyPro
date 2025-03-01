@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgCopy = (props) => (
+export const CopyIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={20}
@@ -15,4 +15,3 @@ const SvgCopy = (props) => (
     />
   </svg>
 );
-export default SvgCopy;

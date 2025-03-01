@@ -1,5 +1,5 @@
 import * as React from "react";
-const AngleDownIcon = (props) => (
+export const AngleDownIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={8}
@@ -13,4 +13,3 @@ const AngleDownIcon = (props) => (
     />
   </svg>
 );
-export default AngleDownIcon;

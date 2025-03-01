@@ -8,18 +8,18 @@ import { useSidebar } from "../context/SidebarContext";
 import SidebarWidget from "./SidebarWidget";
 import {
   BoxCubeIcon,
-  CalenderIcon,
+  // CalenderIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
-  ListIcon,
-  PageIcon,
+  // ListIcon,
+  // PageIcon,
   PieChartIcon,
   PlugInIcon,
-  TableIcon,
-  UserCircleIcon,
+  TrophyIcon,
+  // TableIcon,
+  // UserCircleIcon,
 } from "@/icons/components";
-import { Scale } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 
 type NavItem = {
@@ -34,7 +34,7 @@ const navItems: NavItem[] = [
     icon: <GridIcon />,
     name: "Dashboard",
     // subItems: [{ name: "Ecommerce", path: "/", pro: false }],
-    path: "/"
+    path: "/",
   },
   // {
   //   icon: <CalenderIcon />,
@@ -67,7 +67,7 @@ const navItems: NavItem[] = [
   // },
   {
     name: "Tournament",
-    icon: <Scale />,
+    icon: <TrophyIcon />,
     path: "/tournament/list",
   },
 ];
@@ -113,7 +113,7 @@ const AppSidebar: React.FC = () => {
     menuType: "main" | "others"
   ) => {
     const filteredNavItems =
-      isSignedIn && user
+      isLoaded && isSignedIn && user
         ? navItems
         : navItems.filter((nav) => nav.name !== "User Profile");
 

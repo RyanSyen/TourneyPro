@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgPaperPlane = (props) => (
+export const PaperPlaneIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={20}
@@ -15,4 +15,3 @@ const SvgPaperPlane = (props) => (
     />
   </svg>
 );
-export default SvgPaperPlane;

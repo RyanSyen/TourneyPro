@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgMailLine = (props) => (
+export const MailLineIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={24}
@@ -15,4 +15,3 @@ const SvgMailLine = (props) => (
     />
   </svg>
 );
-export default SvgMailLine;

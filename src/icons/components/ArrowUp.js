@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgArrowUp = (props) => (
+export const ArrowUpIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={13}
@@ -15,4 +15,3 @@ const SvgArrowUp = (props) => (
     />
   </svg>
 );
-export default SvgArrowUp;

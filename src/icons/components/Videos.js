@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgVideos = (props) => (
+export const VideosIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={25}
@@ -15,4 +15,3 @@ const SvgVideos = (props) => (
     />
   </svg>
 );
-export default SvgVideos;

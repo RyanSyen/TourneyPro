@@ -1,13 +1,10 @@
 "use client";
 import { ThemeToggleButton } from "@/components/common/ThemeToggleButton";
 import NotificationDropdown from "@/components/header/NotificationDropdown";
-import UserDropdown from "@/components/header/UserDropdown";
-import Button from "@/components/ui/button/Button";
 import { useSidebar } from "@/context/SidebarContext";
 import {
   SignedOut,
   SignInButton,
-  SignUpButton,
   SignedIn,
   UserButton,
 } from "@clerk/nextjs";

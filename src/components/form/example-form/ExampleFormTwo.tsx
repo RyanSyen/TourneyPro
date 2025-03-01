@@ -6,8 +6,8 @@ import Input from "../input/InputField";
 import Select from "../Select";
 import Radio from "../input/Radio";
 import Form from "../Form";
-import { CalenderIcon } from "../../../icons";
-import Button from "../../ui/button/Button";
+// import { CalenderIcon } from "../../../icons";
+import Button from "../../ui/button/CustomButton";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/light.css";
 
@@ -87,7 +87,7 @@ export default function ExampleFormTwo() {
                 className="w-full py-2 pl-3 pr-10 text-sm border border-gray-300 rounded-md h-11 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white"
               />
               <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400">
-                <CalenderIcon />
+                {/* <CalenderIcon /> */}
               </span>
             </div>
           </div>

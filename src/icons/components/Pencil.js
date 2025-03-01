@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgPencil = (props) => (
+export const PencilIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={21}
@@ -15,4 +15,3 @@ const SvgPencil = (props) => (
     />
   </svg>
 );
-export default SvgPencil;

@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgChevronLeft = (props) => (
+export const ChevronLeftIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={20}
@@ -16,4 +16,3 @@ const SvgChevronLeft = (props) => (
     />
   </svg>
 );
-export default SvgChevronLeft;

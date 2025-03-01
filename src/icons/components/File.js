@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgFile = (props) => (
+export const FileIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={25}
@@ -16,4 +16,3 @@ const SvgFile = (props) => (
     />
   </svg>
 );
-export default SvgFile;

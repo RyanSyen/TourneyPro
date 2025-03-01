@@ -128,7 +128,7 @@ export default function RecentOrders() {
           {/* Table Header */}
           <TableHeader className="border-gray-100 dark:border-gray-800 border-y">
             <TableRow>
-              <TableCell
+              {/* <TableCell
                 isHeader
                 className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
@@ -151,7 +151,7 @@ export default function RecentOrders() {
                 className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
                 Status
-              </TableCell>
+              </TableCell> */}
             </TableRow>
           </TableHeader>
 
