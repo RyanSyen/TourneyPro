@@ -1,5 +1,4 @@
-import * as React from "react";
-export const ArrowUpDownIcon = (props) => {
+export const MoreHorizontalIcon = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11,13 +10,12 @@ export const ArrowUpDownIcon = (props) => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="lucide lucide-arrow-up-down"
+      className="lucide lucide-more-horizontal"
       {...props}
     >
-      <path d="m21 16-4 4-4-4" />
-      <path d="M17 20V4" />
-      <path d="m3 8 4-4 4 4" />
-      <path d="M7 4v16" />
+      <circle cx="12" cy="12" r="1" />
+      <circle cx="19" cy="12" r="1" />
+      <circle cx="5" cy="12" r="1" />
     </svg>
   );
 };

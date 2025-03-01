@@ -16,6 +16,7 @@ import {
   // PageIcon,
   PieChartIcon,
   PlugInIcon,
+  TrophyIcon,
   // TrophyIcon,
   // TableIcon,
   // UserCircleIcon,
@@ -67,7 +68,7 @@ const navItems: NavItem[] = [
   // },
   {
     name: "Tournament",
-    icon: <PieChartIcon />,
+    icon: <TrophyIcon />,
     path: "/tournament/list",
   },
 ];

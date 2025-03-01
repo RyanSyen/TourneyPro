@@ -41,6 +41,7 @@ import { ListIcon } from "./List";
 import { LockIcon } from "./Lock";
 import { MailLineIcon } from "./MailLine";
 import { MoreDotIcon } from "./MoreDot";
+import { MoreHorizontalIcon } from "./MoreHorizontal";
 import { PageIcon } from "./Page";
 import { PaperPlaneIcon } from "./PaperPlane";
 import { PencilIcon } from "./Pencil";
@@ -55,7 +56,7 @@ import { TrashIcon } from "./Trash";
 import { UserCircleIcon } from "./UserCircle";
 import { UserIcon } from "./UserLine";
 import { VideosIcon } from "./Videos";
-// import { TrophyIcon } from "./Trophy";
+import { TrophyIcon } from "./Trophy";
 
 export {
   AlertIcon,
@@ -101,6 +102,7 @@ export {
   LockIcon,
   MailLineIcon,
   MoreDotIcon,
+  MoreHorizontalIcon,
   PageIcon,
   PaperPlaneIcon,
   PencilIcon,
@@ -115,5 +117,5 @@ export {
   UserCircleIcon,
   UserIcon,
   VideosIcon,
-  // TrophyIcon,
+  TrophyIcon,
 };
