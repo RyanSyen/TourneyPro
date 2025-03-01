@@ -76,8 +76,6 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({
     toggleSubmenu,
   };
 
-  console.log("SidebarContext Value:", value);
-
   return (
     <SidebarContext.Provider value={value}>{children}</SidebarContext.Provider>
   );

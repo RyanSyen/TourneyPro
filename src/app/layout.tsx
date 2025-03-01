@@ -11,6 +11,7 @@ import {
 } from "@clerk/nextjs";
 import { SidebarProvider } from "@/context/SidebarContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,16 +40,8 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-gray-900`}
         >
           <ThemeProvider>
-            <header className="flex justify-end items-center p-4 gap-4 h-16">
-              <SignedOut>
-                <SignInButton />
-                <SignUpButton />
-              </SignedOut>
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </header>
             <SidebarProvider>{children}</SidebarProvider>
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

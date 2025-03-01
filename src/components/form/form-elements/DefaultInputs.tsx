@@ -4,7 +4,7 @@ import ComponentCard from "../../common/ComponentCard";
 import Label from "../Label";
 import Input from "../input/InputField";
 import Select from "../Select";
-import { CalenderIcon, ChevronDownIcon, EyeCloseIcon, EyeIcon, TimeIcon } from "../../../icons";
+import { ChevronDownIcon, EyeIcon, EyeCloseIcon, CalenderIcon, TimeIcon } from "@/icons/components";
 
 export default function DefaultInputs() {
   const [showPassword, setShowPassword] = useState(false);

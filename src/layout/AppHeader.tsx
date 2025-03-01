@@ -2,10 +2,18 @@
 import { ThemeToggleButton } from "@/components/common/ThemeToggleButton";
 import NotificationDropdown from "@/components/header/NotificationDropdown";
 import UserDropdown from "@/components/header/UserDropdown";
+import Button from "@/components/ui/button/Button";
 import { useSidebar } from "@/context/SidebarContext";
+import {
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  UserButton,
+} from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState ,useEffect,useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const AppHeader: React.FC = () => {
   const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
@@ -41,7 +49,7 @@ const AppHeader: React.FC = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 flex w-full bg-white border-gray-200 z-99999 dark:border-gray-800 dark:bg-gray-900 lg:border-b">
+    <header className="sticky top-0 flex w-full bg-white border-gray-200 z-9999 dark:border-gray-800 dark:bg-gray-900 lg:border-b">
       <div className="flex flex-col items-center justify-between grow lg:flex-row lg:px-6">
         <div className="flex items-center justify-between w-full gap-2 px-3 py-3 border-b border-gray-200 dark:border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4">
           <button
@@ -165,12 +173,28 @@ const AppHeader: React.FC = () => {
             <ThemeToggleButton />
             {/* <!-- Dark Mode Toggler --> */}
 
-           <NotificationDropdown /> 
+            <NotificationDropdown />
             {/* <!-- Notification Menu Area --> */}
           </div>
           {/* <!-- User Area --> */}
-          <UserDropdown /> 
-    
+          {/* <UserDropdown /> */}
+          <SignedOut>
+            <div className="px-4 py-3 text-sm inline-flex items-center justify-center font-medium gap-2 rounded-lg transition text-nowrap bg-white text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03] dark:hover:text-gray-300">
+              <SignInButton />
+            </div>
+          </SignedOut>
+          <SignedIn>
+            <UserButton
+              appearance={{
+                elements: {
+                  avatarBox: {
+                    width: "2.5rem !important",
+                    height: "2.5rem !important",
+                  },
+                },
+              }}
+            />
+          </SignedIn>
         </div>
       </div>
     </header>
