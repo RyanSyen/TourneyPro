@@ -36,6 +36,7 @@ import { GridIcon } from "./Grid";
 import { GroupIcon } from "./Group";
 import { HorizontaLDots } from "./HorizontalDots";
 import { InfoIcon } from "./Info";
+import { InfoCircleIcon } from "./InfoCircle";
 import { InfoHexaIcon } from "./InfoHexa";
 import { ListIcon } from "./List";
 import { LockIcon } from "./Lock";
@@ -97,6 +98,7 @@ export {
   GroupIcon,
   HorizontaLDots,
   InfoIcon,
+  InfoCircleIcon,
   InfoHexaIcon,
   ListIcon,
   LockIcon,

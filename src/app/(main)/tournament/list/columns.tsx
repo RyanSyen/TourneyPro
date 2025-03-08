@@ -11,22 +11,29 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ArrowUpDownIcon, MoreHorizontalIcon } from "@/icons/components";
 import { ColumnDef } from "@tanstack/react-table";
+import { TournamentFormSchema } from "../tournamentSchema";
+import { z } from "zod";
+
+
 // import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
+// export type Payment = {
+//   id: string;
+//   amount: number;
+//   status: "pending" | "processing" | "success" | "failed";
+//   email: string;
+// };
 
-export const columns: ColumnDef<Payment>[] = [
+type Tournament = z.infer<typeof TournamentFormSchema>;
+
+export const columns: ColumnDef<Tournament>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
+      const tournament = row.original;
+      console.log('tournament row: ', tournament);
 
       return (
         <DropdownMenu>
@@ -39,47 +46,63 @@ export const columns: ColumnDef<Payment>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={() => navigator.clipboard.writeText("copied text")}
             >
-              Copy payment ID
+              Copy Tournament Url
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>View tournament</DropdownMenuItem>
+            <DropdownMenuItem>Edit tournament</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
     },
   },
   {
-    accessorKey: "status",
-    header: "Status",
-  },
-  {
-    accessorKey: "email",
+    accessorKey: "title",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email
+          Title
           <ArrowUpDownIcon className="ml-2 h-4 w-4" />
         </Button>
       );
     },
   },
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
+    accessorKey: "description",
+    header: "Description",
   },
+  {
+    accessorKey: "isPublic",
+    header: "IsPublic",
+  },
+  {
+    accessorKey: "type",
+    header: "Type",
+  },
+  {
+    accessorKey: "date",
+    header: "Date",
+  },
+  {
+    accessorKey: "location",
+    header: "Location",
+  },
+  // {
+  //   accessorKey: "amount",
+  //   header: () => <div className="text-right">Amount</div>,
+  //   cell: ({ row }) => {
+  //     const amount = parseFloat(row.getValue("amount"));
+  //     const formatted = new Intl.NumberFormat("en-US", {
+  //       style: "currency",
+  //       currency: "USD",
+  //     }).format(amount);
+
+  //     return <div className="text-right font-medium">{formatted}</div>;
+  //   },
+  // },
 ];

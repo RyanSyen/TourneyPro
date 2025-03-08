@@ -1,0 +1,6 @@
+export const DATE_FORMAT_MAIN = "DD/MM/YYYY";
+export const DATE_FORMAT_SECONDARY = "DD/MMM/YYYY";
+export const DATE_FORMAT_MAIN_FORMAL = "DD-MM-YYYY";
+export const DATE_FORMAT_SECONDARY_FORMAL = "DD-MMM-YYYY";
+export const DATETIME_FORMAT = "DD/MM/YYYY HH:mm:ss";
+export const DATETIME_FORMAT_FORMAL = "DD-MM-YYYY HH:mm:ss";

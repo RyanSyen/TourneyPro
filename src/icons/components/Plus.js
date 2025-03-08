@@ -2,16 +2,18 @@ import * as React from "react";
 export const PlusIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={12}
-    height={12}
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
     fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="lucide lucide-plus"
     {...props}
   >
-    <path
-      fill="currentColor"
-      fillRule="evenodd"
-      d="M5.25 3a.75.75 0 0 1 1.5 0v2.25H9a.75.75 0 0 1 0 1.5H6.75V9a.75.75 0 0 1-1.5 0V6.75H3a.75.75 0 0 1 0-1.5h2.25z"
-      clipRule="evenodd"
-    />
+    <path d="M5 12h14" />
+    <path d="M12 5v14" />
   </svg>
 );

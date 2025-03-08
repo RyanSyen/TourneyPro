@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Malaysia Open Badminton Championship",
+    "description": "An elite-level badminton tournament featuring top-ranked players from around the world.",
+    "thumbnail": "https://example.com/malaysia-open.jpg",
+    "isPublic": true,
+    "type": ["circuit"],
+    "date": "2025-06-15",
+    "location": "Axiata Arena, Kuala Lumpur"
+  },
+  {
+    "title": "Selangor Football League",
+    "description": "A regional football league for local clubs competing for the championship title.",
+    "thumbnail": "https://example.com/selangor-league.jpg",
+    "isPublic": true,
+    "type": ["standalone"],
+    "date": "2025-07-20",
+    "location": "Shah Alam Stadium, Selangor"
+  },
+  {
+    "title": "Malaysia Esports Cup",
+    "description": "A nationwide esports tournament featuring Dota 2, Valorant, and Mobile Legends.",
+    "thumbnail": "https://example.com/esports-cup.jpg",
+    "isPublic": true,
+    "type": ["circuit", "standalone"],
+    "date": "2025-09-10",
+    "location": "Sunway Pyramid Convention Centre, Selangor"
+  },
+  {
+    "title": "Penang Marathon 2025",
+    "description": "A competitive marathon event covering 42km across Penang's scenic routes.",
+    "thumbnail": "https://example.com/penang-marathon.jpg",
+    "isPublic": true,
+    "type": ["standalone"],
+    "date": "2025-11-05",
+    "location": "Queensbay Mall, Penang"
+  },
+  {
+    "title": "KL Basketball Invitational",
+    "description": "An invitational basketball tournament featuring top teams from Southeast Asia.",
+    "thumbnail": "https://example.com/kl-basketball.jpg",
+    "isPublic": false,
+    "type": ["circuit"],
+    "date": "2025-08-12",
+    "location": "Bukit Jalil National Stadium, Kuala Lumpur"
+  }
+]
