@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
 import { ResponseData } from "@/types/common";
+import { ITournamentDetails } from "@/types/tournament";
+import dayjs from "dayjs";
 
 const filePath = path.join(process.cwd(), "public/data", "tournaments.json");
 let responseData: ResponseData;
@@ -23,7 +25,12 @@ export async function POST(request: Request) {
   try {
     const data = await request.json();
     const tournaments = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    const newTournament = data;
+    const newTournament: ITournamentDetails = {
+      ...data,
+      status: 0,
+      createdAt: dayjs().toDate(),
+      updatedAt: dayjs().toDate()
+    };
     tournaments.push(newTournament);
     fs.writeFileSync(filePath, JSON.stringify(tournaments, null, 2));
 

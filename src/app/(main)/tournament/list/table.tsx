@@ -30,7 +30,7 @@ const TournamentListTable = () => {
   // const data1 = fetchTournaments();
   useEffect(() => {
     fetchTournaments();
-  }, []);
+  }, [fetchTournaments]);
 
   console.log("tournaments: ", tournaments);
 

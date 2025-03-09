@@ -6,11 +6,9 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Tournament, TournamentSchema } from "@/models/tournament";
@@ -19,15 +17,13 @@ import { toast } from "sonner";
 import { validateFileSize } from "@/helper/common";
 import dayjs from "dayjs";
 import Image from "next/image";
-import { DateRange } from "react-day-picker";
 import { ErrorMessage } from "@hookform/error-message";
 import {
   Popover,
-  PopoverContent,
   PopoverTrigger,
   PrimaryPopoverContent,
 } from "@/components/ui/popover";
-import { InfoCircleIcon, InfoIcon } from "@/icons/components";
+import { InfoCircleIcon } from "@/icons/components";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import {
@@ -118,7 +114,7 @@ const CreateTournamentForm = ({
   const onSubmit = (data: Tournament) => {
     console.log("form submitted: ", data);
     console.log("previewImg: ", previewImg);
-    const tournament = { ...data, thumbnail: previewImg };
+    const tournament = { ...data, thumbnail: previewImg, isPublicChecked: isPublicChecked };
     if (isEdit) {
       updateTournament(tournament.id!, tournament);
       window.location.reload();
@@ -265,7 +261,7 @@ const CreateTournamentForm = ({
               <FormField
                 control={form.control}
                 name="isPublic"
-                render={({ field }) => (
+                render={() => (
                   <FormItem className="flex flex-col">
                     <FormLabel className="flex items-center">
                       Open to public{" "}
@@ -285,10 +281,6 @@ const CreateTournamentForm = ({
                       </TooltipProvider>
                     </FormLabel>
                     <FormControl>
-                      {/* <Switch
-                        checked={isPublicChecked}
-                        onCheckedChange={setIsPublicChecked}
-                      /> */}
                       <Switch
                         label=""
                         defaultChecked={isPublicChecked}
@@ -302,7 +294,7 @@ const CreateTournamentForm = ({
               <FormField
                 control={form.control}
                 name="type"
-                render={({ field }) => (
+                render={() => (
                   <FormItem className="flex flex-col">
                     <FormLabel className="flex items-center">
                       Type{" "}
@@ -404,7 +396,7 @@ const CreateTournamentForm = ({
               <FormField
                 control={form.control}
                 name="thumbnail"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel
                       htmlFor="file"

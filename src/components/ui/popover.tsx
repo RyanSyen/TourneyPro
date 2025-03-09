@@ -5,23 +5,23 @@ import * as PopoverPrimitive from "@radix-ui/react-popover"
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils"
 
-const popoverVariants = cva(
-  "z-50 w-72 rounded-md border shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-  {
-    variants: {
-      variant: {
-        default:
-          "border-slate-200 bg-white p-4 text-slate-950 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
-        primary: "bg-[#2d3038] border-[#545969]",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-);
+// const popoverVariants = cva(
+//   "z-50 w-72 rounded-md border shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+//   {
+//     variants: {
+//       variant: {
+//         default:
+//           "border-slate-200 bg-white p-4 text-slate-950 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+//         primary: "bg-[#2d3038] border-[#545969]",
+//       },
+//     },
+//     defaultVariants: {
+//       variant: "default",
+//     },
+//   }
+// );
 
-type PopoverVariantProps = VariantProps<typeof popoverVariants> & { className?: string };
+// type PopoverVariantProps = VariantProps<typeof popoverVariants> & { className?: string };
 
 function Popover({
   ...props
@@ -89,5 +89,7 @@ const PrimaryPopoverContent = React.forwardRef<
     </PopoverPrimitive.Portal>
   )
 );
+
+PrimaryPopoverContent.displayName = "PrimaryPopoverContent";
 
 export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor, PrimaryPopoverContent }
