@@ -27,10 +27,9 @@ import {
   PopoverTrigger,
   PrimaryPopoverContent,
 } from "@/components/ui/popover";
-import { CalenderIcon, InfoCircleIcon, InfoIcon } from "@/icons/components";
+import { InfoCircleIcon, InfoIcon } from "@/icons/components";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
-import CustomButton from "@/components/ui/button/CustomButton";
 import {
   Tooltip,
   TooltipContent,
@@ -42,10 +41,13 @@ import Switch from "@/components/form/switch/Switch";
 import { TournamentTypeLookup } from "@/lookups/tournament/tournamentTypeLookup";
 import { Checkbox } from "@/components/ui/checkbox";
 import { TournamentType } from "@/types/tournament";
+import useTournamentStore from "../useTournamentStore";
+import { redirect } from "next/navigation";
 
 const CreateTournamentForm = () => {
   const [isPublicChecked, setIsPublicChecked] = useState(true);
   const [previewImg, setPreviewImg] = useState("");
+  const { addTournament} = useTournamentStore();
 
   const form = useForm<Tournament>({
     resolver: zodResolver(TournamentSchema),
@@ -81,6 +83,8 @@ const CreateTournamentForm = () => {
 
   const onSubmit = (data: Tournament) => {
     console.log("form submitted: ", data);
+    addTournament(data);
+    redirect("/tournament/list");
   };
 
   return (

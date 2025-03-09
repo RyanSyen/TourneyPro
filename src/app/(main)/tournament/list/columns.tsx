@@ -11,8 +11,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ArrowUpDownIcon, MoreHorizontalIcon } from "@/icons/components";
 import { ColumnDef } from "@tanstack/react-table";
-import { TournamentFormSchema } from "../tournamentSchema";
 import { z } from "zod";
+import { TournamentSchema } from "@/models/tournament";
+import dayjs from "dayjs";
 
 
 // import { ArrowUpDown, MoreHorizontal } from "lucide-react";
@@ -26,7 +27,7 @@ import { z } from "zod";
 //   email: string;
 // };
 
-type Tournament = z.infer<typeof TournamentFormSchema>;
+type Tournament = z.infer<typeof TournamentSchema>;
 
 export const columns: ColumnDef<Tournament>[] = [
   {
@@ -85,8 +86,22 @@ export const columns: ColumnDef<Tournament>[] = [
     header: "Type",
   },
   {
-    accessorKey: "date",
-    header: "Date",
+    accessorKey: "date.from",
+    header: "Start Date",
+    cell: ({ row }) => {
+      const tournament = row.original;
+      const date = dayjs(tournament.date?.from).format("DD/MM/YYYY");
+      return <div>{date}</div>;
+    }
+  },
+  {
+    accessorKey: "date.to",
+    header: "End Date",
+    cell: ({ row }) => {
+      const tournament = row.original;
+      const date = dayjs(tournament.date?.to).format("DD/MM/YYYY");
+      return <div>{date}</div>;
+    }
   },
   {
     accessorKey: "location",

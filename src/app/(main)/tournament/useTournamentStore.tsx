@@ -1,9 +1,9 @@
 import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
-import { TournamentFormSchema } from "./tournamentSchema";
 import { z } from "zod";
+import { TournamentSchema } from "@/models/tournament";
 
-type Tournament = z.infer<typeof TournamentFormSchema>;
+type Tournament = z.infer<typeof TournamentSchema>;
 
 interface TournamentStore {
   tournaments: Tournament[];

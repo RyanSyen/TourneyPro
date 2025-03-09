@@ -23,7 +23,7 @@ export async function POST(request: Request) {
   try {
     const data = await request.json();
     const tournaments = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    const newTournament = JSON.parse(data);
+    const newTournament = data;
     tournaments.push(newTournament);
     fs.writeFileSync(filePath, JSON.stringify(tournaments, null, 2));
 

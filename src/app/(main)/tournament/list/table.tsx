@@ -24,8 +24,7 @@ import { DataTable } from "./data-table";
 // }
 
 const TournamentListTable = () => {
-  const { tournaments, fetchTournaments, addTournament, deleteTournament } =
-    useTournamentStore();
+  const { tournaments, fetchTournaments} = useTournamentStore();
 
   // const data = await getData();
   // const data1 = fetchTournaments();
