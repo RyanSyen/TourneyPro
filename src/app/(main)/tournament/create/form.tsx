@@ -83,7 +83,9 @@ const CreateTournamentForm = () => {
 
   const onSubmit = (data: Tournament) => {
     console.log("form submitted: ", data);
-    addTournament(data);
+    console.log("previewImg: ", previewImg);
+    const tournament = {...data, thumbnail: previewImg};
+    addTournament(tournament);
     redirect("/tournament/list");
   };
 
@@ -361,7 +363,7 @@ const CreateTournamentForm = () => {
                   <FormItem>
                     <FormLabel
                       htmlFor="file"
-                      className="border border-[#fcfcfc] bg-transparent rounded-3xl py-2 px-6 hover:bg-[#fcfcfc] hover:text-[#e50b0d] cursor-pointer"
+                      className="border border-[#fcfcfc] bg-transparent rounded-3xl py-2 px-6 hover:bg-[#fcfcfc] hover:text-blue-700 cursor-pointer"
                     >
                       Upload
                     </FormLabel>

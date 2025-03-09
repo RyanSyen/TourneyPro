@@ -7,6 +7,7 @@ type Tournament = z.infer<typeof TournamentSchema>;
 
 interface TournamentStore {
   tournaments: Tournament[];
+  fetchTournament: (id: string) => Promise<Tournament | undefined>;
   fetchTournaments: () => Promise<void>;
   addTournament: (tournament: Omit<Tournament, "id">) => Promise<void>;
   updateTournament: (
@@ -18,6 +19,13 @@ interface TournamentStore {
 
 const useTournamentStore = create<TournamentStore>((set, get) => ({
   tournaments: [],
+
+  fetchTournament: async (id: string) => {
+    await get().fetchTournaments();
+    const tournaments = get().tournaments;
+    console.log("tournaments: ", tournaments);
+    return tournaments.find((t) => t.id === id);
+  },
 
   fetchTournaments: async () => {
     const res = await fetch("/api/tournaments");

@@ -35,6 +35,11 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: #fcfcfc !important;
 }
 
+input::selection {
+  background-color: blue;
+  color: #fcfcfc !important;
+}
+
 /* Light Theme Scrollbar */
 html.light ::-webkit-scrollbar {
   width: 8px;

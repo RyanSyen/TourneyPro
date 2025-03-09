@@ -14,7 +14,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { z } from "zod";
 import { TournamentSchema } from "@/models/tournament";
 import dayjs from "dayjs";
-
+import { redirect } from "next/navigation";
 
 // import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
@@ -34,7 +34,7 @@ export const columns: ColumnDef<Tournament>[] = [
     id: "actions",
     cell: ({ row }) => {
       const tournament = row.original;
-      console.log('tournament row: ', tournament);
+      console.log("tournament row: ", tournament);
 
       return (
         <DropdownMenu>
@@ -47,12 +47,18 @@ export const columns: ColumnDef<Tournament>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText("copied text")}
+              onClick={() =>
+                navigator.clipboard.writeText(`/tournament/public/${tournament.id}`)
+              }
             >
               Copy Tournament Url
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View tournament</DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => redirect(`/tournament/public/${tournament.id}`)}
+            >
+              View tournament
+            </DropdownMenuItem>
             <DropdownMenuItem>Edit tournament</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -92,7 +98,7 @@ export const columns: ColumnDef<Tournament>[] = [
       const tournament = row.original;
       const date = dayjs(tournament.date?.from).format("DD/MM/YYYY");
       return <div>{date}</div>;
-    }
+    },
   },
   {
     accessorKey: "date.to",
@@ -101,7 +107,7 @@ export const columns: ColumnDef<Tournament>[] = [
       const tournament = row.original;
       const date = dayjs(tournament.date?.to).format("DD/MM/YYYY");
       return <div>{date}</div>;
-    }
+    },
   },
   {
     accessorKey: "location",
