@@ -6,6 +6,9 @@ import { useParams } from "next/navigation";
 import { Tournament } from "@/models/tournament";
 import ViewTournamentHeader from "./header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { PencilIcon } from "@/icons/components";
+import CreateTournamentForm from "../../create/form";
 
 const MainPage = () => {
   const { fetchTournament } = useTournamentStore();
@@ -39,19 +42,22 @@ const MainPage = () => {
 
   return (
     <div>
-      {tournament.thumbnail && (
-        <ViewTournamentHeader
-          title={tournament.title}
-          imgUrl={tournament.thumbnail}
-        />
-      )}
-      <div className="pt-4">
+      <div className="py-4 flex justify-between items-center">
         <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
           {tournament.title}
         </h2>
+        <Badge
+          variant="info"
+          background={"light"}
+          iconPosition={"left"}
+          icon={<PencilIcon />}
+          className="select-none"
+        >
+          Editor Mode
+        </Badge>
       </div>
       <div>
-        <Tabs defaultValue="overview" className="w-[400px]">
+        <Tabs defaultValue="overview">
           <TabsList>
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="matches">Matches</TabsTrigger>
@@ -61,7 +67,11 @@ const MainPage = () => {
             <TabsTrigger value="seededEntries">Seeded Entries</TabsTrigger>
             <TabsTrigger value="winners">Winners</TabsTrigger>
           </TabsList>
-          <TabsContent value="overview">Overview</TabsContent>
+          <TabsContent value="overview">
+            <div className="pt-4">
+              <CreateTournamentForm isEdit={true} tournament={tournament} />
+            </div>
+          </TabsContent>
           <TabsContent value="matches">Matches</TabsContent>
           <TabsContent value="players">Players</TabsContent>
           <TabsContent value="draws">Draws</TabsContent>

@@ -44,27 +44,61 @@ import { TournamentType } from "@/types/tournament";
 import useTournamentStore from "../useTournamentStore";
 import { redirect } from "next/navigation";
 
-const CreateTournamentForm = () => {
+const CreateTournamentForm = ({
+  isEdit = false,
+  tournament,
+}: {
+  isEdit?: boolean;
+  tournament?: Tournament;
+}) => {
   const [isPublicChecked, setIsPublicChecked] = useState(true);
-  const [previewImg, setPreviewImg] = useState("");
-  const { addTournament} = useTournamentStore();
+  const [previewImg, setPreviewImg] = useState(
+    isEdit ? tournament!.thumbnail : ""
+  );
+  const { addTournament, updateTournament } = useTournamentStore();
+
+  const defaultValues = isEdit
+    ? {
+        ...tournament,
+        date: {
+          from: dayjs(tournament?.date!.from).toDate(),
+          to: dayjs(tournament?.date!.to).toDate(),
+        },
+      }
+    : {
+        title: "",
+        description: "",
+        thumbnail: "",
+        isPublic: true,
+        type: [],
+        location: "",
+        date: {
+          from: dayjs().subtract(7, "days").toDate(),
+          to: dayjs().toDate(),
+        },
+      };
+
+  console.log("defaultValues: ", defaultValues);
 
   const form = useForm<Tournament>({
     resolver: zodResolver(TournamentSchema),
-    defaultValues: {
-      // since formField is using controlled component, you need to provide default value for the field
-      title: "",
-      description: "",
-      thumbnail: "",
-      isPublic: true,
-      type: [],
-      location: "",
-      date: {
-        from: dayjs().subtract(7, "days").toDate(),
-        to: dayjs().toDate(),
-      },
-    },
+    // defaultValues: {
+    //   // since formField is using controlled component, you need to provide default value for the field
+    //   title: "",
+    //   description: "",
+    //   thumbnail: "",
+    //   isPublic: true,
+    //   type: [],
+    //   location: "",
+    //   date: {
+    //     from: dayjs().subtract(7, "days").toDate(),
+    //     to: dayjs().toDate(),
+    //   },
+    // },
+    defaultValues,
   });
+
+  console.log("Form errors:", form.formState.errors);
 
   const onValidateFile = async (e: ChangeEvent<HTMLInputElement>) => {
     try {
@@ -84,9 +118,14 @@ const CreateTournamentForm = () => {
   const onSubmit = (data: Tournament) => {
     console.log("form submitted: ", data);
     console.log("previewImg: ", previewImg);
-    const tournament = {...data, thumbnail: previewImg};
-    addTournament(tournament);
-    redirect("/tournament/list");
+    const tournament = { ...data, thumbnail: previewImg };
+    if (isEdit) {
+      updateTournament(tournament.id!, tournament);
+      window.location.reload();
+    } else {
+      addTournament(tournament);
+      redirect("/tournament/list");
+    }
   };
 
   return (
@@ -200,7 +239,8 @@ const CreateTournamentForm = () => {
                           />
                         </PrimaryPopoverContent>
                       </Popover>
-                      <ErrorMessage name="date" />
+                      <ErrorMessage name="date.from" />
+                      <ErrorMessage name="date.to" />
                     </FormItem>
                   );
                 }}
@@ -300,13 +340,18 @@ const CreateTournamentForm = () => {
                                   // }}
                                   onCheckedChange={(checked) => {
                                     if (checked) {
-                                        field.onChange([...(field.value || []), type.id]);
+                                      field.onChange([
+                                        ...(field.value || []),
+                                        type.id,
+                                      ]);
                                     } else {
-                                        field.onChange(
-                                            (field.value || []).filter((value) => value !== type.id)
-                                        );
+                                      field.onChange(
+                                        (field.value || []).filter(
+                                          (value) => value !== type.id
+                                        )
+                                      );
                                     }
-                                }}
+                                  }}
                                 />
                               </FormControl>
                               <FormLabel className="text-sm font-normal">
@@ -403,7 +448,7 @@ const CreateTournamentForm = () => {
           </div>
         </section>
         <section className="flex justify-end items-center gap-2 py-8">
-          <Button type="submit">Create</Button>
+          <Button type="submit">{isEdit ? "Update" : "Create"}</Button>
         </section>
       </form>
     </Form>

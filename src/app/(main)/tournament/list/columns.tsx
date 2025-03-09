@@ -48,7 +48,9 @@ export const columns: ColumnDef<Tournament>[] = [
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() =>
-                navigator.clipboard.writeText(`/tournament/public/${tournament.id}`)
+                navigator.clipboard.writeText(
+                  `/tournament/public/${tournament.id}`
+                )
               }
             >
               Copy Tournament Url
@@ -59,7 +61,11 @@ export const columns: ColumnDef<Tournament>[] = [
             >
               View tournament
             </DropdownMenuItem>
-            <DropdownMenuItem>Edit tournament</DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => redirect(`/tournament/edit/${tournament.id}`)}
+            >
+              Edit tournament
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
