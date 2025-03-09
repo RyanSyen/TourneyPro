@@ -46,7 +46,7 @@ const useTournamentStore = create<TournamentStore>((set, get) => ({
   updateTournament: async (id, updatedTournament) => {
     await fetch(`/api/tournaments/${id}`, {
       method: "PUT",
-      body: JSON.stringify(updatedTournament),
+      body: JSON.stringify({id, updatedTournament}),
       headers: { "Content-Type": "application/json" },
     });
     set((state) => ({

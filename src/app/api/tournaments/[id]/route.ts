@@ -8,14 +8,12 @@ const filePath = path.join(process.cwd(), "public/data", "tournaments.json");
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
 ) {
-  const id = params.id;
   const tournaments = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
-  const res = await request.json();
+  const { id, tournament } = await request.json();
   const updatedTournament: ITournamentDetails = {
-    ...res,
+    ...tournament,
     updatedAt: dayjs().toDate()
   }
   const index = tournaments.findIndex((t: ITournamentDetails) => t.id === id);
@@ -32,9 +30,8 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
 ) {
-  const id = params.id;
+  const id = await request.json();
   const tournaments = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
   const updatedTournaments = tournaments.filter((t: ITournamentDetails) => t.id !== id);

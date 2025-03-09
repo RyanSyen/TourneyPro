@@ -74,8 +74,6 @@ const CreateTournamentForm = ({
         },
       };
 
-  console.log("defaultValues: ", defaultValues);
-
   const form = useForm<Tournament>({
     resolver: zodResolver(TournamentSchema),
     // defaultValues: {
