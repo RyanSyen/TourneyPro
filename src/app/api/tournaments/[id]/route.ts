@@ -14,7 +14,7 @@ export async function PUT(
   const tournaments = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
   const res = await request.json();
-  let updatedTournament: ITournamentDetails = {
+  const updatedTournament: ITournamentDetails = {
     ...res,
     updatedAt: dayjs().toDate()
   }
