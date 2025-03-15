@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useTournamentStore from "../../useTournamentStore";
-import { useParams } from "next/navigation";
+// import useTournamentStore from "../../../useTournamentStore";
+import { redirect, useParams } from "next/navigation";
 import { Tournament } from "@/models/tournament";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { PencilIcon } from "@/icons/components";
+import Matches from "./matches";
+import TournamentMainNavbar from "../../shared/components/navbar";
+import useTournamentStore from "../../useTournamentStore";
 import CreateTournamentForm from "../../create/form";
 
 const MainPage = () => {
@@ -34,6 +37,10 @@ const MainPage = () => {
 
     loadTournament();
   }, [fetchTournament, params.id]);
+
+  if (!params.id) {
+    redirect("/not-found");
+  }
 
   if (loading) return <div>Loading...</div>;
 
@@ -71,13 +78,21 @@ const MainPage = () => {
               <CreateTournamentForm isEdit={true} tournament={tournament} />
             </div>
           </TabsContent>
-          <TabsContent value="matches">Matches</TabsContent>
+          <TabsContent value="matches">
+            <div className="pt-4">
+              <Matches tournamentId={params.id.toString()} />
+            </div>
+          </TabsContent>
           <TabsContent value="players">Players</TabsContent>
           <TabsContent value="draws">Draws</TabsContent>
           <TabsContent value="events">Events</TabsContent>
           <TabsContent value="seededEntries">Seeded Entries</TabsContent>
           <TabsContent value="winners">Winners</TabsContent>
         </Tabs>
+        {/* <TournamentMainNavbar
+          tournamentId={params.id!.toString()}
+          mode="edit"
+        /> */}
       </div>
     </div>
   );

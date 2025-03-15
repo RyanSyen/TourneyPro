@@ -9,7 +9,7 @@ interface TournamentStore {
   tournaments: Tournament[];
   fetchTournament: (id: string) => Promise<Tournament | undefined>;
   fetchTournaments: () => Promise<void>;
-  addTournament: (tournament: Omit<Tournament, "id">) => Promise<void>;
+  addTournament: (tournament: Omit<Tournament, "id">) => Promise<string>;
   updateTournament: (
     id: string,
     updatedTournament: Partial<Tournament>
@@ -41,6 +41,7 @@ const useTournamentStore = create<TournamentStore>((set, get) => ({
       headers: { "Content-Type": "application/json" },
     });
     set((state) => ({ tournaments: [...state.tournaments, newTournament] }));
+    return newTournament.id;
   },
 
   updateTournament: async (id, updatedTournament) => {

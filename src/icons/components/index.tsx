@@ -58,6 +58,7 @@ import { UserCircleIcon } from "./UserCircle";
 import { UserIcon } from "./UserLine";
 import { VideosIcon } from "./Videos";
 import { TrophyIcon } from "./Trophy";
+import { SettingsIcon } from "./Settings";
 
 export {
   AlertIcon,
@@ -120,4 +121,5 @@ export {
   UserIcon,
   VideosIcon,
   TrophyIcon,
+  SettingsIcon,
 };

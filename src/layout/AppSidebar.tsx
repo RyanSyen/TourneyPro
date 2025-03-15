@@ -340,6 +340,7 @@ const AppSidebar: React.FC = () => {
                 alt="Logo"
                 width={60}
                 height={60}
+                priority
               />
               <h2 className="text-gray-800 dark:text-white scroll-m-20 text-2xl font-semibold tracking-tight first:mt-0">
                 TourneyPro
@@ -351,6 +352,7 @@ const AppSidebar: React.FC = () => {
               alt="Logo"
               width={60}
               height={60}
+              priority
             />
           )}
         </Link>

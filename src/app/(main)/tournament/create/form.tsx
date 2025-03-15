@@ -39,6 +39,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { TournamentType } from "@/types/tournament";
 import useTournamentStore from "../useTournamentStore";
 import { redirect } from "next/navigation";
+import useMatchSettingsStore from "../useMatchSettingsStore";
 
 const CreateTournamentForm = ({
   isEdit = false,
@@ -47,11 +48,12 @@ const CreateTournamentForm = ({
   isEdit?: boolean;
   tournament?: Tournament;
 }) => {
-  const [isPublicChecked, setIsPublicChecked] = useState(true);
+  const [isPublicChecked, setIsPublicChecked] = useState(isEdit ? tournament!.isPublic : true);
   const [previewImg, setPreviewImg] = useState(
     isEdit ? tournament!.thumbnail : ""
   );
   const { addTournament, updateTournament } = useTournamentStore();
+  const{addMatchSettings} = useMatchSettingsStore();
 
   const defaultValues = isEdit
     ? {
@@ -76,19 +78,6 @@ const CreateTournamentForm = ({
 
   const form = useForm<Tournament>({
     resolver: zodResolver(TournamentSchema),
-    // defaultValues: {
-    //   // since formField is using controlled component, you need to provide default value for the field
-    //   title: "",
-    //   description: "",
-    //   thumbnail: "",
-    //   isPublic: true,
-    //   type: [],
-    //   location: "",
-    //   date: {
-    //     from: dayjs().subtract(7, "days").toDate(),
-    //     to: dayjs().toDate(),
-    //   },
-    // },
     defaultValues,
   });
 
@@ -109,15 +98,17 @@ const CreateTournamentForm = ({
     }
   };
 
-  const onSubmit = (data: Tournament) => {
+  const onSubmit = async (data: Tournament) => {
     console.log("form submitted: ", data);
     console.log("previewImg: ", previewImg);
-    const tournament = { ...data, thumbnail: previewImg, isPublicChecked: isPublicChecked };
+    console.log("isPublicChecked: ", isPublicChecked);
+    const tournament = { ...data, thumbnail: previewImg, isPublic: isPublicChecked };
     if (isEdit) {
       updateTournament(tournament.id!, tournament);
       window.location.reload();
     } else {
-      addTournament(tournament);
+      const tournamentId = await addTournament(tournament); 
+      addMatchSettings(tournamentId); // should be handled at the services layer later
       redirect("/tournament/list");
     }
   };
@@ -282,7 +273,7 @@ const CreateTournamentForm = ({
                       <Switch
                         label=""
                         defaultChecked={isPublicChecked}
-                        onChange={setIsPublicChecked}
+                        onChange={() => setIsPublicChecked(!isPublicChecked)}
                       />
                     </FormControl>
                     <ErrorMessage name="isPublic" />

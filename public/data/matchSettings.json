@@ -1,0 +1,12 @@
+[
+  {
+    "tournamentId": "c11ecd8e-baa3-4451-b7b9-e4434dd90d7f",
+    "points": "21",
+    "changeOfEnds": "1",
+    "gracePeriod": "3",
+    "allowSpinServe": false,
+    "allowDeuce": true,
+    "createdAt": "2025-03-15T02:37:01.670Z",
+    "updatedAt": "2025-03-15T02:37:01.670Z"
+  }
+]

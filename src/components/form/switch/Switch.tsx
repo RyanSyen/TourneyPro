@@ -1,4 +1,6 @@
 "use client";
+import { cn } from "@/lib/utils";
+import { cva } from "class-variance-authority";
 import React, { useState } from "react";
 
 interface SwitchProps {
@@ -7,7 +9,20 @@ interface SwitchProps {
   disabled?: boolean;
   onChange?: (checked: boolean) => void;
   color?: "blue" | "gray"; // Added prop to toggle color theme
+  className?: string;
 }
+
+const buttonClasses = cva(
+  "flex cursor-pointer select-none items-center gap-3 text-sm font-medium",
+  {
+    variants: {
+      disabled: {
+        true: "text-gray-400",
+        false: "text-gray-700 dark:text-gray-400",
+      },
+    },
+  }
+);
 
 const Switch: React.FC<SwitchProps> = ({
   label,
@@ -15,6 +30,7 @@ const Switch: React.FC<SwitchProps> = ({
   disabled = false,
   onChange,
   color = "blue", // Default to blue color
+  className,
 }) => {
   const [isChecked, setIsChecked] = useState(defaultChecked);
 
@@ -48,9 +64,7 @@ const Switch: React.FC<SwitchProps> = ({
 
   return (
     <label
-      className={`flex cursor-pointer select-none items-center gap-3 text-sm font-medium ${
-        disabled ? "text-gray-400" : "text-gray-700 dark:text-gray-400"
-      }`}
+      className={cn(buttonClasses({ disabled }), className)}
       onClick={handleToggle} // Toggle when the label itself is clicked
     >
       <div className="relative">

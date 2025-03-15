@@ -11,9 +11,9 @@ export async function PUT(
 ) {
   const tournaments = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
-  const { id, tournament } = await request.json();
-  const updatedTournament: ITournamentDetails = {
-    ...tournament,
+  const { id, updatedTournament } = await request.json();
+  const data: ITournamentDetails = {
+    ...updatedTournament,
     updatedAt: dayjs().toDate()
   }
   const index = tournaments.findIndex((t: ITournamentDetails) => t.id === id);
@@ -22,7 +22,7 @@ export async function PUT(
     return NextResponse.json({ error: "Tournament not found" }, { status: 404 });
   }
 
-  tournaments[index] = { ...tournaments[index], ...updatedTournament };
+  tournaments[index] = { ...tournaments[index], ...data };
   fs.writeFileSync(filePath, JSON.stringify(tournaments, null, 2));
   
   return NextResponse.json(tournaments[index]);
