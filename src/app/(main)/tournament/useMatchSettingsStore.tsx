@@ -44,13 +44,13 @@ const useMatchSettingsStore = create<TournamentStore>((set, get) => ({
     set({ matchSettings: data });
   },
 
-  updateMatchSettings: async (id, updatedTournament) => {
-    await fetch(`/api/matchSettings/${id}`, {
+  updateMatchSettings: async (tournamentId, updatedMatchSettings) => {
+    await fetch(`/api/matchSettings/${tournamentId}`, {
       method: "PUT",
-      body: JSON.stringify({ id, updatedTournament }),
+      body: JSON.stringify({ tournamentId, updatedMatchSettings }),
       headers: { "Content-Type": "application/json" },
     });
-    set({ matchSettings: updatedTournament });
+    set({ matchSettings: updatedMatchSettings });
   },
 }));
 

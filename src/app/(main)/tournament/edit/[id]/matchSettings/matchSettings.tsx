@@ -51,9 +51,9 @@ export default function MatchSettings({
     matchSettings.allowSpinServe ?? false
   );
   const [allowDeuce, setAllowDeuce] = useState<boolean>(
-      matchSettings.allowDeuce ?? true
-    );
-    const {updateMatchSettings} = useMatchSettingsStore();
+    matchSettings.allowDeuce ?? true
+  );
+  const { updateMatchSettings } = useMatchSettingsStore();
 
   const form = useForm<z.infer<typeof MatchSettingsSchema>>({
     resolver: zodResolver(MatchSettingsSchema),
@@ -78,35 +78,12 @@ export default function MatchSettings({
   }, [form, allowSpinServe]);
 
   const onSubmit = async (data: z.output<typeof MatchSettingsSchema>) => {
-    console.log("form data: ", data);
-
-    // try {
-    //   const parsedData = formSchema.parse(data);
-
-    //   if (!parsedData) return;
-
-    //   const payload: IMatch = {
-    //     ...parsedData,
-    //     tournamentId: tournamentId,
-    //   };
-
-    //   const result = await setMatchSettings(payload);
-
-    //   if (result.success) setIsEdit(false);
-
-    //   toast({
-    //     variant: result!.success ? "success" : "destructive",
-    //     title: result!.success ? "Success" : "Error",
-    //     description: result!.message,
-    //   });
-    // } catch (error) {
-    //   console.error("Error: ", error);
-    // }
     const updatedMatchSettings: MatchSettings = {
       ...data,
-      tournamentId: tournamentId
-    }
-    updateMatchSettings(tournamentId, updatedMatchSettings)
+      tournamentId: tournamentId,
+    };
+    updateMatchSettings(tournamentId, updatedMatchSettings);
+    setOpenDialog(false);
   };
 
   return (
@@ -115,20 +92,6 @@ export default function MatchSettings({
         <section
           className={`space-y-4 overflow-y-auto pr-4 rounded-2xl border border-gray-200 px-6 py-3 dark:border-gray-800 dark:bg-white/[0.03]`}
         >
-          <div className="flex items-center justify-between">
-            {/* <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-              Match Settings
-            </h4> */}
-            {/* <Button
-              type="button"
-              className={`flex gap-2 ${isEdit ? "hidden" : ""}`}
-              variant={"secondary"}
-              onClick={() => setIsEdit(true)}
-            >
-              <PencilIcon />
-              Edit
-            </Button> */}
-          </div>
           <div className="flex-wrap grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-12">
             <FormField
               control={form.control}
@@ -276,14 +239,16 @@ export default function MatchSettings({
                     <span className="text-[#e50b0d] text-xl pl-1">*</span>
                   </FormLabel>
                   <FormControl>
-                    <Switch
-                      label=""
-                      defaultChecked={allowSpinServe}
-                      onChange={(checked: boolean) =>
-                        setAllowSpinServe(checked)
-                      }
-                    />
-                    <input value={field.value.toString()} hidden />
+                    <div>
+                      <Switch
+                        label=""
+                        defaultChecked={allowSpinServe}
+                        onChange={(checked: boolean) =>
+                          setAllowSpinServe(checked)
+                        }
+                      />
+                      <input value={field.value.toString()} readOnly hidden />
+                    </div>
                   </FormControl>
                   <ErrorMessage name="allowSpinServe" />
                 </FormItem>
@@ -317,15 +282,15 @@ export default function MatchSettings({
                     <span className="text-[#e50b0d] text-xl pl-1">*</span>
                   </FormLabel>
                   <FormControl>
-                    <Switch
-                      label=""
-                      className="disabled:opacity-[0.8] disabled:cursor-default"
-                      defaultChecked={allowDeuce}
-                      onChange={(checked: boolean) =>
-                        setAllowDeuce(checked)
-                      }
-                    />
-                    <input value={field.value.toString()} hidden />
+                    <div>
+                      <Switch
+                        label=""
+                        className="disabled:opacity-[0.8] disabled:cursor-default"
+                        defaultChecked={allowDeuce}
+                        onChange={(checked: boolean) => setAllowDeuce(checked)}
+                      />
+                      <input value={field.value.toString()} readOnly hidden />
+                    </div>
                   </FormControl>
                   <ErrorMessage name="allowDeuce" />
                 </FormItem>

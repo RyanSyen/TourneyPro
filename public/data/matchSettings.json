@@ -8,5 +8,15 @@
     "allowDeuce": true,
     "createdAt": "2025-03-15T02:37:01.670Z",
     "updatedAt": "2025-03-15T02:37:01.670Z"
+  },
+  {
+    "tournamentId": "1cbc139f-9c9e-469d-b604-4323c7beba7c",
+    "points": "11",
+    "changeOfEnds": "5",
+    "gracePeriod": "3",
+    "allowSpinServe": false,
+    "allowDeuce": true,
+    "createdAt": "2025-03-19T08:38:18.260Z",
+    "updatedAt": "2025-03-19T12:02:39.981Z"
   }
 ]

@@ -43,6 +43,7 @@ export async function PUT(request: NextRequest) {
   const matchSettings = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
   const { tournamentId, updatedMatchSettings } = await request.json();
+
   const data: IMatchSettings = {
     ...updatedMatchSettings,
     updatedAt: dayjs().toDate(),
@@ -61,5 +62,5 @@ export async function PUT(request: NextRequest) {
   matchSettings[index] = { ...matchSettings[index], ...data };
   fs.writeFileSync(filePath, JSON.stringify(matchSettings, null, 2));
 
-  return NextResponse.json(matchSettings[index]);
+  return NextResponse.json(matchSettings[0]);
 }
