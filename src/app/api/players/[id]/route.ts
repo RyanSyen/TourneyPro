@@ -63,3 +63,17 @@ export async function PUT(request: NextRequest) {
 
   return NextResponse.json(players[index]);
 }
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ playerId: string }> }
+) {
+  // const id = await request.json();
+  const { playerId } = await params;
+  const players = JSON.parse(fs.readFileSync(filePath, "utf8"));
+
+  const updatedPlayers = players.filter((t: IPlayer) => t.id !== playerId);
+  fs.writeFileSync(filePath, JSON.stringify(updatedPlayers, null, 2));
+  
+  return new NextResponse(null, { status: 204 });
+}

@@ -14,5 +14,13 @@
     "organization": "we",
     "createdAt": "2025-03-18T14:08:40.357Z",
     "updatedAt": "2025-03-18T14:08:40.357Z"
+  },
+  {
+    "tournamentId": "1cbc139f-9c9e-469d-b604-4323c7beba7c",
+    "id": "1f750d92-a745-480b-8ba8-04e579dbc66e",
+    "name": "new",
+    "organization": "new",
+    "createdAt": "2025-03-19T12:04:21.184Z",
+    "updatedAt": "2025-03-19T12:04:21.184Z"
   }
 ]

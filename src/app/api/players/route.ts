@@ -11,7 +11,7 @@ let responseData: ResponseData;
 export async function GET() {
   try {
     const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    console.log("[GET_API_PLAYERS] players: ", data);
+    // console.log("[GET_API_PLAYERS] players: ", data);
     return NextResponse.json(data, { status: 200 });
   } catch (error) {
     console.error("[GET_API_PLAYERS] Error fetching players: ", error);
@@ -25,7 +25,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    console.log("data:", data);
+    // console.log("data:", data);
     const matchSettings = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const newMatchSettings: IPlayer = {
       tournamentId: data,

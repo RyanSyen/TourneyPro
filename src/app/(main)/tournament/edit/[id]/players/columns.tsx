@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ArrowUpDownIcon, MoreHorizontalIcon } from "@/icons/components";
+import usePlayerStore from "../../../usePlayersStore";
 
 
 export const playerColumns: ColumnDef<Player>[] = [
@@ -17,6 +18,7 @@ export const playerColumns: ColumnDef<Player>[] = [
         id: "actions",
         cell: ({ row }) => {
           const player = row.original;
+          const {deletePlayer} = usePlayerStore();
     
           return (
             <DropdownMenu>
@@ -35,13 +37,13 @@ export const playerColumns: ColumnDef<Player>[] = [
                 >
                   Copy Player Url
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                {/* <DropdownMenuItem
-                  onClick={() => redirect(`/tournament/public/${tournament.id}`)}
-                >
-                  View tournament
-                </DropdownMenuItem>
+                {/* <DropdownMenuSeparator /> */}
                 <DropdownMenuItem
+                  onClick={() => deletePlayer(player.id!)}
+                >
+                  Delete Player
+                </DropdownMenuItem>
+                {/* <DropdownMenuItem
                   onClick={() => redirect(`/tournament/edit/${tournament.id}`)}
                 >
                   Edit tournament
