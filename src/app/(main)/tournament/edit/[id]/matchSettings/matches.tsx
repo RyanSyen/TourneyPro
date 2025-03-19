@@ -4,18 +4,16 @@ import { Button } from "@/components/ui/button";
 import { SettingsIcon } from "@/icons/components";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { default as MatchSettingsComponent } from "./matchSettings";
-import useMatchSettingsStore from "../../useMatchSettingsStore";
+import useMatchSettingsStore from "../../../useMatchSettingsStore";
 import { useEffect, useState } from "react";
-import { MatchSettings } from "@/models/matchSettings";
+import { MatchSettings } from "@/models/matchSetting";
 
 export default function Matches({tournamentId}: {tournamentId: string}) {
   const { fetchMatchSettings } = useMatchSettingsStore();

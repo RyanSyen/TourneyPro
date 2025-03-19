@@ -1,0 +1,18 @@
+[
+  {
+    "tournamentId": "c11ecd8e-baa3-4451-b7b9-e4434dd90d7f",
+    "id": "694499f4-b1ab-45ea-9ce4-00059af06321",
+    "name": "test",
+    "organization": "test",
+    "createdAt": "2025-03-18T14:02:07.527Z",
+    "updatedAt": "2025-03-18T14:02:07.527Z"
+  },
+  {
+    "tournamentId": "c11ecd8e-baa3-4451-b7b9-e4434dd90d7f",
+    "id": "9a081513-6ee0-403f-99b7-990447643fcd",
+    "name": "ew",
+    "organization": "we",
+    "createdAt": "2025-03-18T14:08:40.357Z",
+    "updatedAt": "2025-03-18T14:08:40.357Z"
+  }
+]

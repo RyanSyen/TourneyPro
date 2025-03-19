@@ -59,6 +59,7 @@ import { UserIcon } from "./UserLine";
 import { VideosIcon } from "./Videos";
 import { TrophyIcon } from "./Trophy";
 import { SettingsIcon } from "./Settings";
+import { UploadIcon } from "./Upload";
 
 export {
   AlertIcon,
@@ -122,4 +123,5 @@ export {
   VideosIcon,
   TrophyIcon,
   SettingsIcon,
+  UploadIcon,
 };

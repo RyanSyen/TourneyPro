@@ -7,10 +7,10 @@ import { Tournament } from "@/models/tournament";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { PencilIcon } from "@/icons/components";
-import Matches from "./matches";
-import TournamentMainNavbar from "../../shared/components/navbar";
+import Matches from "./matchSettings/matches";
 import useTournamentStore from "../../useTournamentStore";
 import CreateTournamentForm from "../../create/form";
+import Players from "./players/players";
 
 const MainPage = () => {
   const { fetchTournament } = useTournamentStore();
@@ -83,7 +83,11 @@ const MainPage = () => {
               <Matches tournamentId={params.id.toString()} />
             </div>
           </TabsContent>
-          <TabsContent value="players">Players</TabsContent>
+          <TabsContent value="players">
+            <div className="pt-4">
+              <Players tournamentId={params.id.toString()} />
+            </div>
+          </TabsContent>
           <TabsContent value="draws">Draws</TabsContent>
           <TabsContent value="events">Events</TabsContent>
           <TabsContent value="seededEntries">Seeded Entries</TabsContent>

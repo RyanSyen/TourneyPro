@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import { IMatchSettings } from "@/types/matchSettings";
+import { IMatchSettings } from "@/types/matchSetting";
 import dayjs from "dayjs";
 import { ResponseData } from "@/types/common";
 

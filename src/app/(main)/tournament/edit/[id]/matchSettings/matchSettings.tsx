@@ -1,7 +1,7 @@
 "use client";
 
-import { MatchSettingsSchema } from "@/models/matchSettings";
-import { IMatchSettings } from "@/types/matchSettings";
+import { type MatchSettings, MatchSettingsSchema } from "@/models/matchSetting";
+import { IMatchSettings } from "@/types/matchSetting";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -30,11 +30,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { InfoCircleIcon, PencilIcon } from "@/icons/components";
+import { InfoCircleIcon } from "@/icons/components";
 import { PointsLookup } from "@/lookups/tournament/pointsLookup";
 import { SetsLookup } from "@/lookups/tournament/setsLookup";
 import { GracePeriodLookup } from "@/lookups/tournament/gracePeriodLookup";
-import useMatchSettingsStore from "../../useMatchSettingsStore";
+import useMatchSettingsStore from "../../../useMatchSettingsStore";
 
 interface props {
   tournamentId: string;
@@ -53,7 +53,7 @@ export default function MatchSettings({
   const [allowDeuce, setAllowDeuce] = useState<boolean>(
       matchSettings.allowDeuce ?? true
     );
-    const {addMatchSettings} = useMatchSettingsStore();
+    const {updateMatchSettings} = useMatchSettingsStore();
 
   const form = useForm<z.infer<typeof MatchSettingsSchema>>({
     resolver: zodResolver(MatchSettingsSchema),
@@ -102,6 +102,11 @@ export default function MatchSettings({
     // } catch (error) {
     //   console.error("Error: ", error);
     // }
+    const updatedMatchSettings: MatchSettings = {
+      ...data,
+      tournamentId: tournamentId
+    }
+    updateMatchSettings(tournamentId, updatedMatchSettings)
   };
 
   return (
@@ -278,6 +283,7 @@ export default function MatchSettings({
                         setAllowSpinServe(checked)
                       }
                     />
+                    <input value={field.value.toString()} hidden />
                   </FormControl>
                   <ErrorMessage name="allowSpinServe" />
                 </FormItem>
@@ -319,6 +325,7 @@ export default function MatchSettings({
                         setAllowDeuce(checked)
                       }
                     />
+                    <input value={field.value.toString()} hidden />
                   </FormControl>
                   <ErrorMessage name="allowDeuce" />
                 </FormItem>

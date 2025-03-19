@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import useTournamentStore from "../useTournamentStore";
 import { columns } from "./columns";
-import { DataTable } from "./data-table";
+import { DataTable } from "./datatable";
 
 // async function getData(): Promise<Payment[]> {
 //   // Fetch data from your API here.
