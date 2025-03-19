@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ArrowUpDownIcon, MoreHorizontalIcon } from "@/icons/components";
-import usePlayerStore from "../../../usePlayersStore";
+import usePlayerStore from "../../../shared/data-store/usePlayersStore";
 
 
 export const playerColumns: ColumnDef<Player>[] = [

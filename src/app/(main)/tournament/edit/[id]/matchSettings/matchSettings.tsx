@@ -34,7 +34,7 @@ import { InfoCircleIcon } from "@/icons/components";
 import { PointsLookup } from "@/lookups/tournament/pointsLookup";
 import { SetsLookup } from "@/lookups/tournament/setsLookup";
 import { GracePeriodLookup } from "@/lookups/tournament/gracePeriodLookup";
-import useMatchSettingsStore from "../../../useMatchSettingsStore";
+import useMatchSettingsStore from "../../../shared/data-store/useMatchSettingsStore";
 
 interface props {
   tournamentId: string;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useTournamentStore from "../../useTournamentStore";
+import useTournamentStore from "../../shared/data-store/useTournamentStore";
 import { useParams } from "next/navigation";
 import { Tournament } from "@/models/tournament";
 import ViewTournamentHeader from "./header";

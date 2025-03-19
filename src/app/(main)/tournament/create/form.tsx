@@ -37,9 +37,9 @@ import Switch from "@/components/form/switch/Switch";
 import { TournamentTypeLookup } from "@/lookups/tournament/tournamentTypeLookup";
 import { Checkbox } from "@/components/ui/checkbox";
 import { TournamentType } from "@/types/tournament";
-import useTournamentStore from "../useTournamentStore";
+import useTournamentStore from "../shared/data-store/useTournamentStore";
 import { redirect } from "next/navigation";
-import useMatchSettingsStore from "../useMatchSettingsStore";
+import useMatchSettingsStore from "../shared/data-store/useMatchSettingsStore";
 
 const CreateTournamentForm = ({
   isEdit = false,

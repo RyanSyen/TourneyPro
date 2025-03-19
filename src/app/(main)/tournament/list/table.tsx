@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import useTournamentStore from "../useTournamentStore";
+import useTournamentStore from "../shared/data-store/useTournamentStore";
 import { columns } from "./columns";
 import { DataTable } from "./datatable";
 

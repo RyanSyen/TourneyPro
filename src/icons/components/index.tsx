@@ -60,6 +60,7 @@ import { VideosIcon } from "./Videos";
 import { TrophyIcon } from "./Trophy";
 import { SettingsIcon } from "./Settings";
 import { UploadIcon } from "./Upload";
+import { SearchIcon } from "./Search";
 
 export {
   AlertIcon,
@@ -122,6 +123,7 @@ export {
   UserIcon,
   VideosIcon,
   TrophyIcon,
+  SearchIcon,
   SettingsIcon,
   UploadIcon,
 };

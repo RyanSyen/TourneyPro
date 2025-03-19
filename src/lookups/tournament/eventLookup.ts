@@ -1,9 +1,9 @@
-export interface ITournamentCategoryLookup {
+export interface ITournamentEventLookup {
   id: number;
   title: string;
 }
 
-export const TournamentCategoryLookup: ITournamentCategoryLookup[] = [
+export const TournamentEventLookup: ITournamentEventLookup[] = [
   {
     id: 0,
     title: "Men's Singles",

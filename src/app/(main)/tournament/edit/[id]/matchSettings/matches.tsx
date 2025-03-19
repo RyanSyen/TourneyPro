@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { default as MatchSettingsComponent } from "./matchSettings";
-import useMatchSettingsStore from "../../../useMatchSettingsStore";
+import useMatchSettingsStore from "../../../shared/data-store/useMatchSettingsStore";
 import { useEffect, useState } from "react";
 import { MatchSettings } from "@/models/matchSetting";
 

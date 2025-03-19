@@ -4,7 +4,7 @@ import { UploadIcon } from "@/icons/components";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import PlayerTable from "./table";
-import usePlayerStore from "../../../usePlayersStore";
+import usePlayerStore from "../../../shared/data-store/usePlayersStore";
 import { Player } from "@/models/player";
 
 export default function Players({tournamentId}: {tournamentId: string}) {

@@ -8,9 +8,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { PencilIcon } from "@/icons/components";
 import Matches from "./matchSettings/matches";
-import useTournamentStore from "../../useTournamentStore";
+import useTournamentStore from "../../shared/data-store/useTournamentStore";
 import CreateTournamentForm from "../../create/form";
 import Players from "./players/players";
+import TournamentEvent from "./events/events";
 
 const MainPage = () => {
   const { fetchTournament } = useTournamentStore();
@@ -66,16 +67,23 @@ const MainPage = () => {
         <Tabs defaultValue="overview">
           <TabsList>
             <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="rules">Rules</TabsTrigger>
+            <TabsTrigger value="events">Events</TabsTrigger>
             <TabsTrigger value="matches">Matches</TabsTrigger>
             <TabsTrigger value="players">Players</TabsTrigger>
             <TabsTrigger value="draws">Draws</TabsTrigger>
-            <TabsTrigger value="events">Events</TabsTrigger>
             <TabsTrigger value="seededEntries">Seeded Entries</TabsTrigger>
             <TabsTrigger value="winners">Winners</TabsTrigger>
           </TabsList>
           <TabsContent value="overview">
             <div className="pt-4">
               <CreateTournamentForm isEdit={true} tournament={tournament} />
+            </div>
+          </TabsContent>
+          <TabsContent value="rules">Rules</TabsContent>
+          <TabsContent value="events">
+          <div className="pt-4">
+            <TournamentEvent tournamentId={params.id.toString()} />
             </div>
           </TabsContent>
           <TabsContent value="matches">
@@ -89,7 +97,6 @@ const MainPage = () => {
             </div>
           </TabsContent>
           <TabsContent value="draws">Draws</TabsContent>
-          <TabsContent value="events">Events</TabsContent>
           <TabsContent value="seededEntries">Seeded Entries</TabsContent>
           <TabsContent value="winners">Winners</TabsContent>
         </Tabs>
