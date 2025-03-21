@@ -1,5 +1,4 @@
 import { TournamentEvent } from "@/models/event";
-import { MatchSettings } from "@/models/matchSetting";
 import { create } from "zustand";
 
 interface TournamentEventStore {
@@ -14,6 +13,7 @@ interface TournamentEventStore {
   ) => Promise<void>;
 }
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const useTournamentEventStore = create<TournamentEventStore>((set, get) => ({
   tournamentEvent: [],
 

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
-import { ITournamentEvent } from "@/types/event";
 import {
   Accordion,
   AccordionContent,
@@ -60,6 +59,7 @@ export default function TournamentEvent({
 }: {
   tournamentId: string;
 }) {
+  console.log('tournamentId: ', tournamentId);
   const [tournamentEvent, setTournamentEvent] = useState<
     TournamentEvent[] | undefined
   >(undefined);
@@ -68,6 +68,7 @@ export default function TournamentEvent({
   const [isEditEvent, setIsEditEvent] = useState(false);
   const [ageGroupStr, setAgeGroupStr] = useState("");
   const [ageGroup, setAgeGroup] = useState<Option[]>([]);
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   const [previewList, setPreviewList] = useState<TournamentEvent[]>(
     tournamentEvent || []
   );
@@ -121,7 +122,7 @@ export default function TournamentEvent({
     if (ageGroupStr.length > 0) {
       form.setValue("ageGroup", ageGroupStr);
     }
-  }, [ageGroupStr]);
+  }, [ageGroupStr, form]);
 
   // onEditEvent is called, it will reset the form with Event values
   // and it will trigger rerender to update form default values
@@ -136,7 +137,7 @@ export default function TournamentEvent({
       setAgeGroup(optionList);
       form.reset(editEvent);
     }
-  }, [editEvent, form.reset]);
+  }, [editEvent, form]);
 
   const onEditEvent = (event: TournamentEvent) => {
     console.log("edit Event: ", event);
@@ -169,6 +170,7 @@ export default function TournamentEvent({
 
       if (!parsedData) console.error("Error parsing data");
 
+      /* eslint-disable @typescript-eslint/no-unused-vars */
       const payload: TournamentEvent = {
         ...parsedData,
         prize: parsedData.prize || "no prize",
@@ -202,6 +204,7 @@ export default function TournamentEvent({
     }
   };
 
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   const onDelete = async (id: string) => {
     try {
       // const result = await deleteEventById(id);
@@ -299,7 +302,7 @@ export default function TournamentEvent({
                 control={form.control}
                 name="ageGroup"
                 render={({ field }) => {
-                  // console.log("ageGroup: ", ageGroup);
+                  console.log("ageGroup: ", field.value);
                   return (
                     <FormItem>
                       <FormLabel>
