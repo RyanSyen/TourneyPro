@@ -32,6 +32,7 @@ import { EyeIcon } from "./Eye";
 import { EyeCloseIcon } from "./EyeClose";
 import { FileIcon } from "./File";
 import { FolderIcon } from "./Folder";
+import { GoalIcon } from "./Goal";
 import { GridIcon } from "./Grid";
 import { GroupIcon } from "./Group";
 import { HorizontaLDots } from "./HorizontalDots";
@@ -97,6 +98,7 @@ export {
   EyeCloseIcon,
   FileIcon,
   FolderIcon,
+  GoalIcon,
   GridIcon,
   GroupIcon,
   HorizontaLDots,
