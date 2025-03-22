@@ -1,12 +1,12 @@
 "use client";
-import { InitialTask } from "@/models/initialTask";
 import useTaskStore from "../shared/data-store/useTaskStore";
 import { KanbanBoard } from "./components/kanban-board";
 import { useEffect, useState } from "react";
+import { IInitialTask } from "@/types/initialTask";
 
 export default function KanbanBoardPage() {
   const { fetchTasks, updateTask } = useTaskStore();
-  const [tasks, setTasks] = useState<InitialTask[] | undefined>(undefined);
+  const [tasks, setTasks] = useState<IInitialTask[] | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {

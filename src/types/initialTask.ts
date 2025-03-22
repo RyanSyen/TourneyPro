@@ -8,6 +8,6 @@ export interface IInitialTask {
     dueDate: Date;
     labels: string[];
     attachments?: string[];
-    createdAt?: string;
-    updatedAt?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
   }

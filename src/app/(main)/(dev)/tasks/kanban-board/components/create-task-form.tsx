@@ -36,7 +36,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { CalenderIcon, CloseLineIcon, PaperClipIcon } from "@/icons/components";
+import { CalendarIcon, CloseLineIcon, PaperClipIcon } from "@/icons/components";
 import useTaskStore from "../../shared/data-store/useTaskStore";
 
 interface props {
@@ -282,7 +282,7 @@ export default function CreateIssueForm({ setOpenDialog }: props) {
                           ) : (
                             <span>Pick a date</span>
                           )}
-                          <CalenderIcon
+                          <CalendarIcon
                             width="16"
                             height="16"
                             className="ml-auto h-4 w-4 opacity-50"

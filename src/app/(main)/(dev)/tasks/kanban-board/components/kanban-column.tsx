@@ -15,7 +15,7 @@ interface KanbanColumnProps {
 
 export function KanbanColumn({ id, title, color, tasks }: KanbanColumnProps) {
   return (
-    <div className="flex h-full min-w-[280px] flex-col rounded-lg bg-muted/50">
+    <div className="flex h-full min-w-[280px] flex-col rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <div className="flex items-center justify-between p-3">
         <div className="flex items-center gap-2">
           <div className={`h-3 w-3 rounded-full ${color}`} />

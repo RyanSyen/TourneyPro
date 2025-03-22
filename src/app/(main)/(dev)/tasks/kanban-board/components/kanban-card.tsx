@@ -10,6 +10,7 @@ import {
   PaperClipIcon,
 } from "@/icons/components";
 import { format } from "date-fns";
+import { redirect } from "next/navigation";
 
 interface KanbanCardProps {
   task: IInitialTask;
@@ -61,7 +62,8 @@ export function KanbanCard({ task, index }: KanbanCardProps) {
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
-          className="mb-2 rounded-md border bg-card p-3 shadow-sm"
+          className="mb-2 bg-card p-3 border-gray-200 task rounded-xl shadow-theme-sm dark:border-gray-800 dark:bg-white/5"
+          onClick={() => redirect(`/tasks/${task.id}`)}
         >
           <div className="mb-2 flex items-center justify-between">
             <div className="flex items-center gap-1.5">

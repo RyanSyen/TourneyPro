@@ -1,13 +1,14 @@
 import { InitialTask } from "@/models/initialTask";
 import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
+import { IInitialTask } from "@/types/initialTask";
 
 interface TaskStore {
-  tasks: InitialTask[];
-  fetchTasks: () => Promise<InitialTask[] | undefined>;
-  fetchTask: (taskId: string) => Promise<InitialTask | undefined>;
+  tasks: IInitialTask[];
+  fetchTasks: () => Promise<IInitialTask[] | undefined>;
+  fetchTask: (taskId: string) => Promise<IInitialTask | undefined>;
   addTask: (task: Omit<InitialTask, "id">) => Promise<void>;
-  updateTask: (taskId: string, task: InitialTask) => Promise<void>;
+  updateTask: (taskId: string, task: IInitialTask) => Promise<void>;
   deleteTask: (taskId: string) => Promise<void>;
 }
 
@@ -38,7 +39,7 @@ const useTaskStore = create<TaskStore>((set, get) => ({
     });
     const data = await res.json();
     set((state) => ({
-      tasks: [...state.tasks, task],
+      tasks: [...state.tasks, data],
     }));
   },
 

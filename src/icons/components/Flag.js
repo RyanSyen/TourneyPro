@@ -1,5 +1,4 @@
-import * as React from "react";
-export const CalendarIcon = (props) => (
+export const FlagIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -10,12 +9,10 @@ export const CalendarIcon = (props) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="lucide lucide-calendar"
+    className="lucide lucide-flag"
     {...props}
   >
-    <path d="M8 2v4" />
-    <path d="M16 2v4" />
-    <rect width="18" height="18" x="3" y="4" rx="2" />
-    <path d="M3 10h18" />
+    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+    <line x1="4" x2="4" y1="22" y2="15" />
   </svg>
 );

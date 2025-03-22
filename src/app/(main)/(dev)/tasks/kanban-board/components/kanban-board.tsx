@@ -3,16 +3,15 @@ import { DragDropContext, type DropResult } from "@hello-pangea/dnd";
 import { Input } from "@/components/ui/input";
 import { SearchIcon } from "@/icons/components";
 import { KanbanColumn } from "./kanban-column";
-import CreateIssueModal from "./create-issue";
+import CreateTaskModal from "./create-task";
 import { issueStatusColumn } from "@/lookups/kanban-board/kanbanBoardLookup";
-import FilterIssueModal from "./filter";
-import { InitialTask } from "@/models/initialTask";
 import { IInitialTask } from "@/types/initialTask";
+import FilterTaskModal from "./filter-task";
 
 interface props {
-  tasks: InitialTask[];
-  setTasks: (tasks: InitialTask[]) => void;
-  updateTask: (taskId: string, task: InitialTask) => void;
+  tasks: IInitialTask[];
+  setTasks: (tasks: IInitialTask[]) => void;
+  updateTask: (taskId: string, task: IInitialTask) => void;
 }
 
 export function KanbanBoard({ tasks, setTasks, updateTask }: props) {
@@ -55,7 +54,7 @@ export function KanbanBoard({ tasks, setTasks, updateTask }: props) {
       throw new Error("Invalid status");
     }
 
-    const updatedTask: InitialTask = {
+    const updatedTask: IInitialTask = {
       ...task,
       status: destination.droppableId as (typeof validStatuses)[number],
     };
@@ -85,8 +84,8 @@ export function KanbanBoard({ tasks, setTasks, updateTask }: props) {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <FilterIssueModal />
-          <CreateIssueModal />
+          <FilterTaskModal />
+          <CreateTaskModal />
         </div>
       </div>
 
