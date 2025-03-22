@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import { KanbanBoard } from "./components/kanban-board";
 
-export default function KanbanBoard() {
+export default function page() {
   return (
-    <div>KanbanBoard</div>
-  )
+    <div>
+      <KanbanBoard />
+    </div>
+  );
 }

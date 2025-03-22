@@ -1,0 +1,194 @@
+[
+    {
+      "id": "task-1",
+      "key": "FE-123",
+      "title": "Implement authentication flow",
+      "description": "Create login, signup, and password reset screens",
+      "status": "todo",
+      "priority": "high",
+      "type": "task",
+      "assignee": {
+        "name": "Alex Johnson",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Mar 25",
+      "attachments": 2,
+      "comments": 3
+    },
+    {
+      "id": "task-2",
+      "key": "FE-124",
+      "title": "Design system components",
+      "description": "Create reusable UI components for the design system",
+      "status": "inprogress",
+      "priority": "medium",
+      "type": "task",
+      "assignee": {
+        "name": "Sarah Miller",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Mar 28",
+      "attachments": 1,
+      "comments": 5
+    },
+    {
+      "id": "task-3",
+      "key": "FE-125",
+      "title": "Fix navigation bug on mobile",
+      "description": "Menu doesn't close after selection on mobile devices",
+      "status": "review",
+      "priority": "high",
+      "type": "bug",
+      "assignee": {
+        "name": "John Doe",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Mar 23",
+      "attachments": 0,
+      "comments": 2
+    },
+    {
+      "id": "task-4",
+      "key": "FE-126",
+      "title": "Implement dark mode",
+      "description": "Add dark mode toggle and styles across the application",
+      "status": "done",
+      "priority": "medium",
+      "type": "story",
+      "assignee": {
+        "name": "Emily Chen",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Mar 20",
+      "attachments": 3,
+      "comments": 7
+    },
+    {
+      "id": "task-5",
+      "key": "FE-127",
+      "title": "Performance optimization",
+      "description": "Improve loading times and reduce bundle size",
+      "status": "todo",
+      "priority": "medium",
+      "type": "task",
+      "assignee": {
+        "name": "Michael Brown",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Mar 30",
+      "attachments": 1,
+      "comments": 0
+    },
+    {
+      "id": "task-6",
+      "key": "FE-128",
+      "title": "Add analytics tracking",
+      "description": "Implement event tracking for user interactions",
+      "status": "inprogress",
+      "priority": "low",
+      "type": "task",
+      "assignee": {
+        "name": "Alex Johnson",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Apr 2",
+      "attachments": 0,
+      "comments": 1
+    },
+    {
+      "id": "task-7",
+      "key": "FE-129",
+      "title": "Refactor API service layer",
+      "description": "Improve error handling and response parsing",
+      "status": "review",
+      "priority": "medium",
+      "type": "task",
+      "assignee": {
+        "name": "Sarah Miller",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Mar 27",
+      "attachments": 0,
+      "comments": 4
+    },
+    {
+      "id": "task-8",
+      "key": "FE-130",
+      "title": "User profile page",
+      "description": "Create user profile page with edit capabilities",
+      "status": "todo",
+      "priority": "medium",
+      "type": "story",
+      "assignee": {
+        "name": "John Doe",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Apr 5",
+      "attachments": 2,
+      "comments": 0
+    },
+    {
+      "id": "task-9",
+      "key": "FE-131",
+      "title": "Implement file upload",
+      "description": "Add drag and drop file upload with progress indicator",
+      "status": "inprogress",
+      "priority": "high",
+      "type": "task",
+      "assignee": {
+        "name": "Emily Chen",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Mar 29",
+      "attachments": 1,
+      "comments": 3
+    },
+    {
+      "id": "task-10",
+      "key": "FE-132",
+      "title": "Fix accessibility issues",
+      "description": "Address WCAG compliance issues across the app",
+      "status": "todo",
+      "priority": "high",
+      "type": "bug",
+      "assignee": {
+        "name": "Michael Brown",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Apr 1",
+      "attachments": 4,
+      "comments": 6
+    },
+    {
+      "id": "task-11",
+      "key": "FE-133",
+      "title": "Implement notification system",
+      "description": "Create in-app notification center with real-time updates",
+      "status": "todo",
+      "priority": "medium",
+      "type": "epic",
+      "assignee": {
+        "name": "Alex Johnson",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Apr 10",
+      "attachments": 2,
+      "comments": 8
+    },
+    {
+      "id": "task-12",
+      "key": "FE-134",
+      "title": "Update documentation",
+      "description": "Update component library documentation with new examples",
+      "status": "done",
+      "priority": "low",
+      "type": "task",
+      "assignee": {
+        "name": "Sarah Miller",
+        "avatar": "/placeholder.svg?height=32&width=32"
+      },
+      "dueDate": "Mar 22",
+      "attachments": 0,
+      "comments": 1
+    }
+  ]

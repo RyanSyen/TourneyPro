@@ -5,6 +5,7 @@ import { ArrowDownIcon } from "./ArrowDown";
 import { ArrowRightIcon } from "./ArrowRight";
 import { ArrowUpIcon } from "./ArrowUp";
 import { ArrowUpDownIcon } from "./ArrowUpDown";
+import { ArrowUpRightIcon } from "./ArrowUpRight";
 import { AudioIcon } from "./Audio";
 import { BellIcon } from "./Bell";
 import { BoltIcon } from "./Bolt";
@@ -20,6 +21,8 @@ import { ChevronDownIcon } from "./ChevronDown";
 import { ChevronLeftIcon } from "./ChevronLeft";
 import { ChevronUpIcon } from "./ChevronUp";
 import { ChevronRightIcon } from "./ChevronRight";
+import { ChevronUpDownIcon } from "./ChevronsUpDown";
+import { ClockIcon } from "./Clock";
 import { CloseIcon } from "./Close";
 import { CircleIcon } from "./Circle";
 import { CloseLineIcon } from "./CloseLine";
@@ -31,6 +34,7 @@ import { EnvelopeIcon } from "./Envelope";
 import { EyeIcon } from "./Eye";
 import { EyeCloseIcon } from "./EyeClose";
 import { FileIcon } from "./File";
+import { FilterIcon } from "./Filter";
 import { FolderIcon } from "./Folder";
 import { GoalIcon } from "./Goal";
 import { GridIcon } from "./Grid";
@@ -42,9 +46,11 @@ import { InfoHexaIcon } from "./InfoHexa";
 import { ListIcon } from "./List";
 import { LockIcon } from "./Lock";
 import { MailLineIcon } from "./MailLine";
+import { MessageSquareIcon } from "./MessageSquare";
 import { MoreDotIcon } from "./MoreDot";
 import { MoreHorizontalIcon } from "./MoreHorizontal";
 import { PageIcon } from "./Page";
+import { PaperClipIcon } from "./PaperClip";
 import { PaperPlaneIcon } from "./PaperPlane";
 import { PencilIcon } from "./Pencil";
 import { PieChartIcon } from "./PieChart";
@@ -71,6 +77,7 @@ export {
   ArrowRightIcon,
   ArrowUpIcon,
   ArrowUpDownIcon,
+  ArrowUpRightIcon,
   AudioIcon,
   BellIcon,
   BoltIcon,
@@ -86,6 +93,8 @@ export {
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronUpIcon,
+  ChevronUpDownIcon,
+  ClockIcon,
   CloseIcon,
   CircleIcon,
   CloseLineIcon,
@@ -97,6 +106,7 @@ export {
   EyeIcon,
   EyeCloseIcon,
   FileIcon,
+  FilterIcon,
   FolderIcon,
   GoalIcon,
   GridIcon,
@@ -108,9 +118,11 @@ export {
   ListIcon,
   LockIcon,
   MailLineIcon,
+  MessageSquareIcon,
   MoreDotIcon,
   MoreHorizontalIcon,
   PageIcon,
+  PaperClipIcon,
   PaperPlaneIcon,
   PencilIcon,
   PieChartIcon,
