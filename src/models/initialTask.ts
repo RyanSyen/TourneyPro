@@ -7,7 +7,7 @@ export const InitialTaskSchema = z.object({
     .min(1, "Summary is required")
     .max(255, "Summary is too long"),
   description: z.string().min(1, "Description is required"),
-  status: z.enum(["todo", "in-progress", "done"], {
+  status: z.enum(["todo", "inprogress", "done"], {
     errorMap: () => ({
       message: "Invalid status. Choose from 'To Do', 'In-Progress', or 'Done'.",
     }),
@@ -28,12 +28,13 @@ export const InitialTaskSchema = z.object({
     invalid_type_error: "Due date must be a Date object",
   }),
   attachments: z
-    .array(
-      z.instanceof(File, {
-        message: "Each attachment must be a valid File object",
-      })
-    )
-    .optional(),
+  .array(
+    z.object({
+      name: z.string(),
+      base64: z.string(), // Base64 encoded image
+    })
+  )
+  .optional(),
 });
 
 export type InitialTask = z.infer<typeof InitialTaskSchema>;

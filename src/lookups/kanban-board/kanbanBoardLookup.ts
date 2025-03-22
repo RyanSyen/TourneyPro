@@ -13,8 +13,8 @@ export const priorities = [
 
 export const issueStatus = [
   {value: 'todo', label: "To Do"},
-  {value: 'in-progress', label: "To Do"},
-  {value: 'done', label: "To Do"},
+  {value: 'inprogress', label: "In Progress"},
+  {value: 'done', label: "Done"},
 ]
 
 export const issueStatusColumn = [

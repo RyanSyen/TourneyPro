@@ -1,152 +1,22 @@
-"use client";
-
 import { useState } from "react";
 import { DragDropContext, type DropResult } from "@hello-pangea/dnd";
 import { Input } from "@/components/ui/input";
-import { InitialTask } from "@/types/initialTask";
 import { SearchIcon } from "@/icons/components";
 import { KanbanColumn } from "./kanban-column";
 import CreateIssueModal from "./create-issue";
 import { issueStatusColumn } from "@/lookups/kanban-board/kanbanBoardLookup";
 import FilterIssueModal from "./filter";
+import { InitialTask } from "@/models/initialTask";
+import { IInitialTask } from "@/types/initialTask";
 
-const initialTasks: InitialTask[] = [
-  {
-    id: "task-1",
-    summary: "Implement authentication flow",
-    description: "Create login, signup, and password reset screens",
-    status: "todo",
-    priority: "high",
-    issueType: "task",
-    labels: ["documentation"],
-    dueDate: "Mar 25",
-    attachments: [1, 1],
-  },
-  {
-    id: "task-2",
-    summary: "Design system components",
-    description: "Create reusable UI components for the design system",
-    status: "inprogress",
-    priority: "medium",
-    issueType: "task",
-    labels: ["documentation"],
-    dueDate: "Mar 28",
-    attachments: [1, 1],
-  },
-  {
-    id: "task-3",
-    summary: "Fix navigation bug on mobile",
-    description: "Menu doesn't close after selection on mobile devices",
-    status: "done",
-    priority: "high",
-    issueType: "bug",
-    labels: ["documentation"],
-    dueDate: "Mar 23",
-    attachments: [1, 1],
-  },
-  {
-    id: "task-4",
-    summary: "Implement dark mode",
-    description: "Add dark mode toggle and styles across the application",
-    status: "done",
-    priority: "medium",
-    issueType: "development",
-    labels: ["documentation"],
-    dueDate: "Mar 20",
-    attachments: [1, 1],
-  },
-  {
-    id: "task-5",
-    summary: "Performance optimization",
-    description: "Improve loading times and reduce bundle size",
-    status: "todo",
-    priority: "medium",
-    issueType: "task",
-    labels: ["documentation"],
-    dueDate: "Mar 30",
-    attachments: [1, 1],
-  },
-  {
-    id: "task-6",
-    summary: "Add analytics tracking",
-    description: "Implement event tracking for user interactions",
-    status: "inprogress",
-    priority: "low",
-    issueType: "enhancement",
-    labels: ["documentation"],
-    dueDate: "Apr 2",
-    attachments: [1, 1],
-  },
-  {
-    id: "task-7",
-    summary: "Refactor API service layer",
-    description: "Improve error handling and response parsing",
-    status: "done",
-    priority: "medium",
-    issueType: "enhancement",
-    labels: ["documentation"],
-    dueDate: "Mar 27",
-    attachments: [1, 1],
-  },
-  {
-    id: "task-8",
-    summary: "User profile page",
-    description: "Create user profile page with edit capabilities",
-    status: "todo",
-    priority: "medium",
-    issueType: "development",
-    labels: ["documentation"],
-    dueDate: "Apr 5",
-    attachments: [1, 1],
-  },
-  {
-    id: "task-9",
-    summary: "Implement file upload",
-    description: "Add drag and drop file upload with progress indicator",
-    status: "inprogress",
-    priority: "high",
-    issueType: "task",
-    labels: ["documentation"],
-    dueDate: "Mar 29",
-    attachments: [1, 1],
-  },
-  {
-    id: "task-10",
-    summary: "Fix accessibility issues",
-    description: "Address WCAG compliance issues across the app",
-    status: "todo",
-    priority: "high",
-    issueType: "bug",
-    labels: ["documentation"],
-    dueDate: "Apr 1",
-    attachments: [1, 1],
-  },
-  {
-    id: "task-11",
-    summary: "Implement notification system",
-    description: "Create in-app notification center with real-time updates",
-    status: "todo",
-    priority: "medium",
-    issueType: "development",
-    labels: ["documentation"],
-    dueDate: "Apr 10",
-    attachments: [1, 1],
-  },
-  {
-    id: "task-12",
-    summary: "Update documentation",
-    description: "Update component library documentation with new examples",
-    status: "done",
-    priority: "low",
-    issueType: "task",
-    labels: ["documentation"],
-    dueDate: "Mar 22",
-    attachments: [1, 1],
-  },
-];
+interface props {
+  tasks: InitialTask[];
+  setTasks: (tasks: InitialTask[]) => void;
+  updateTask: (taskId: string, task: InitialTask) => void;
+}
 
-export function KanbanBoard() {
-  const [tasks, setTasks] = useState<InitialTask[]>(initialTasks);
+export function KanbanBoard({ tasks, setTasks, updateTask }: props) {
+  // const [tasks, setTasks] = useState<IInitialTask[]>(initialTasks);
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredTasks = tasks.filter(
@@ -175,7 +45,21 @@ export function KanbanBoard() {
     const newTasks = tasks.filter((task) => task.id !== draggableId);
 
     // Create a new task with the updated status
-    const updatedTask = { ...task, status: destination.droppableId };
+    const validStatuses = ["todo", "inprogress", "done"] as const;
+
+    if (
+      !validStatuses.includes(
+        destination.droppableId as (typeof validStatuses)[number]
+      )
+    ) {
+      throw new Error("Invalid status");
+    }
+
+    const updatedTask: InitialTask = {
+      ...task,
+      status: destination.droppableId as (typeof validStatuses)[number],
+    };
+    updateTask(task.id!, updatedTask);
 
     // Insert the updated task at the new position
     newTasks.splice(destination.index, 0, updatedTask);
@@ -208,15 +92,19 @@ export function KanbanBoard() {
 
       <div className="flex flex-1 gap-4 overflow-x-auto pb-4">
         <DragDropContext onDragEnd={handleDragEnd}>
-          {issueStatusColumn.map((column) => (
-            <KanbanColumn
-              key={column.id}
-              id={column.id}
-              title={column.label}
-              color={column.color}
-              tasks={filteredTasks.filter((task) => task.status === column.id)}
-            />
-          ))}
+          {issueStatusColumn.map(
+            (column: { id: string; label: string; color: string }) => (
+              <KanbanColumn
+                key={column.id}
+                id={column.id}
+                title={column.label}
+                color={column.color}
+                tasks={filteredTasks
+                  .filter((task) => task.status === column.id)
+                  .filter((task) => task.id !== undefined) as IInitialTask[]}
+              />
+            )
+          )}
         </DragDropContext>
       </div>
     </div>

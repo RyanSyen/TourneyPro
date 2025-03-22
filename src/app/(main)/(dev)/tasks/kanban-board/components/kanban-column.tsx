@@ -1,10 +1,8 @@
 "use client"
 
 import { Droppable } from "@hello-pangea/dnd"
-// import { MoreHorizontal, Plus } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
-import { InitialTask } from "@/types/initialTask"
+import { IInitialTask } from "@/types/initialTask"
 import { MoreHorizontalIcon, PlusIcon } from "@/icons/components"
 import { KanbanCard } from "./kanban-card"
 
@@ -12,7 +10,7 @@ interface KanbanColumnProps {
   id: string
   title: string
   color: string
-  tasks: InitialTask[]
+  tasks: IInitialTask[]
 }
 
 export function KanbanColumn({ id, title, color, tasks }: KanbanColumnProps) {

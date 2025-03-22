@@ -28,6 +28,7 @@ import { useForm } from "react-hook-form";
 import { InitialTask, InitialTaskSchema } from "@/models/initialTask";
 import dayjs from "dayjs";
 import {
+  issueStatus,
   issueTypes,
   priorities,
   suggestedLabels,
@@ -35,11 +36,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  CalenderIcon,
-  CloseLineIcon,
-  PaperClipIcon,
-} from "@/icons/components";
+import { CalenderIcon, CloseLineIcon, PaperClipIcon } from "@/icons/components";
+import useTaskStore from "../../shared/data-store/useTaskStore";
 
 interface props {
   setOpenDialog: (open: boolean) => void;
@@ -47,7 +45,8 @@ interface props {
 
 export default function CreateIssueForm({ setOpenDialog }: props) {
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [uploadedFiles, setUploadedFiles] = useState<{ name: string; base64: string }[]>([]);
+  const { addTask } = useTaskStore();
 
   const form = useForm<InitialTask>({
     resolver: zodResolver(InitialTaskSchema),
@@ -62,14 +61,37 @@ export default function CreateIssueForm({ setOpenDialog }: props) {
       attachments: [],
     },
   });
-  
+
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files) {
+  //     const newFiles = Array.from(e.target.files);
+  //     setUploadedFiles((prev) => [...prev, ...newFiles]);
+  //     form.setValue("attachments", [...uploadedFiles, ...newFiles]);
+  //   }
+  // };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const newFiles = Array.from(e.target.files);
-      setUploadedFiles((prev) => [...prev, ...newFiles]);
-      form.setValue("attachments", [...uploadedFiles, ...newFiles]);
+  
+      // Convert files to Base64
+      const convertToBase64 = (file: File): Promise<{ name: string; base64: string }> => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve({ name: file.name, base64: reader.result as string });
+          reader.onerror = reject;
+        });
+      };
+  
+      Promise.all(newFiles.map((file) => convertToBase64(file))).then((base64Files) => {
+        setUploadedFiles((prev) => [...prev, ...base64Files]);
+        form.setValue("attachments", [...uploadedFiles, ...base64Files]);
+      });
     }
   };
+  
+  
 
   const removeFile = (index: number) => {
     const newFiles = [...uploadedFiles];
@@ -94,6 +116,9 @@ export default function CreateIssueForm({ setOpenDialog }: props) {
 
   const onSubmit = async (data: InitialTask) => {
     console.log("data: ", data);
+    addTask(data);
+    setOpenDialog(false);
+    window.location.reload();
   };
 
   return (
@@ -102,64 +127,70 @@ export default function CreateIssueForm({ setOpenDialog }: props) {
         <section
           className={`space-y-10 overflow-y-auto max-h-[400px] pr-4 rounded-2xl border border-gray-200 px-6 py-3 dark:border-gray-800 dark:bg-white/[0.03]`}
         >
-          <div className="grid grid-cols-2 gap-4">
-            {/* <FormField
-              control={form.control}
-              name="projectKey"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Project</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select project" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {projects.map((project) => (
-                        <SelectItem key={project.value} value={project.value}>
-                          {project.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
-            <FormField
-              control={form.control}
-              name="issueType"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Issue Type</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select issue type" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {issueTypes.map((type) => (
-                        <SelectItem key={type.value} value={type.value}>
-                          <div className="flex items-center">
-                            <span className="mr-2">{type.icon}</span>
-                            {type.label}
-                          </div>
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <div className="flex flex-col gap-8">
+            <div className="w-1/2">
+              <FormField
+                control={form.control}
+                name="issueType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Issue Type</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select issue type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {issueTypes.map((type) => (
+                          <SelectItem key={type.value} value={type.value}>
+                            <div className="flex items-center">
+                              <span className="mr-2">{type.icon}</span>
+                              {type.label}
+                            </div>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="w-1/2">
+              <FormField
+                control={form.control}
+                name="status"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Status</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select issue type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {issueStatus.map((type) => (
+                          <SelectItem key={type.value} value={type.value}>
+                            <div className="flex items-center">
+                              {type.label}
+                            </div>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
           </div>
 
           <FormField
@@ -242,7 +273,7 @@ export default function CreateIssueForm({ setOpenDialog }: props) {
                         <Button
                           variant={"outline"}
                           className={cn(
-                            "w-full pl-3 text-left font-normal",
+                            "w-full pl-3 text-left font-normal justify-between",
                             !field.value && "text-muted-foreground"
                           )}
                         >
@@ -251,7 +282,11 @@ export default function CreateIssueForm({ setOpenDialog }: props) {
                           ) : (
                             <span>Pick a date</span>
                           )}
-                          <CalenderIcon className="ml-auto h-4 w-4 opacity-50" />
+                          <CalenderIcon
+                            width="16"
+                            height="16"
+                            className="ml-auto h-4 w-4 opacity-50"
+                          />
                         </Button>
                       </FormControl>
                     </PopoverTrigger>
