@@ -23,10 +23,12 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const data = await request.json();
+    const {tournamentId, event} = await request.json();
+    console.log('new event: ', event)
     const tournamentEvents = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const newTournamentEvent: ITournamentEvent = {
-      ...data,
+      ...event,
+      tournamentId: tournamentId,
       status: 0,
       createdAt: dayjs().toDate(),
       updatedAt: dayjs().toDate()

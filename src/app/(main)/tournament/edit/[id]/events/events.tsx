@@ -33,10 +33,12 @@ import { TournamentEventLookup } from "@/lookups/tournament/eventLookup";
 import { EventTypeLookup } from "@/lookups/tournament/eliminationLookup";
 import { LevelLookup } from "@/lookups/tournament/levelLookup";
 import { type TournamentEvent, TournamentEventSchema } from "@/models/event";
-import { toast } from "sonner";
+// import { toast } from "sonner";
 import { ErrorMessage } from "@hookform/error-message";
 import useTournamentEventStore from "../../../shared/data-store/useEventStore";
 import { useParams } from "next/navigation";
+import CustomButton from "@/components/ui/button/CustomButton";
+import { PlusIcon } from "@/icons/components";
 
 const multiSelectAgeGrouplookup: Option[] = AgeGroupLookup.map((group) => ({
   label: group.age,
@@ -59,7 +61,7 @@ export default function TournamentEvent({
 }: {
   tournamentId: string;
 }) {
-  console.log('tournamentId: ', tournamentId);
+  console.log("tournamentId: ", tournamentId);
   const [tournamentEvent, setTournamentEvent] = useState<
     TournamentEvent[] | undefined
   >(undefined);
@@ -68,7 +70,6 @@ export default function TournamentEvent({
   const [isEditEvent, setIsEditEvent] = useState(false);
   const [ageGroupStr, setAgeGroupStr] = useState("");
   const [ageGroup, setAgeGroup] = useState<Option[]>([]);
-  /* eslint-disable @typescript-eslint/no-unused-vars */
   const [previewList, setPreviewList] = useState<TournamentEvent[]>(
     tournamentEvent || []
   );
@@ -82,13 +83,18 @@ export default function TournamentEvent({
     registrationFee: 0,
   });
   const [loading, setLoading] = useState<boolean>(true);
-  const { fetchTournamentEvent } = useTournamentEventStore();
+  const {
+    fetchTournamentEvents,
+    addTournamentEvent,
+    updateTournamentEvent,
+    deleteTournamentEvent,
+  } = useTournamentEventStore();
 
   const form = useForm<TournamentEvent>({
     resolver: zodResolver(TournamentEventSchema),
     shouldFocusError: false,
     defaultValues: {
-      id: editEvent.id || uuidv4(),
+      id: editEvent.id || "",
       event: editEvent.event || "",
       ageGroup: editEvent.ageGroup || "",
       type: editEvent.type || "",
@@ -102,11 +108,12 @@ export default function TournamentEvent({
     const loadTournament = async () => {
       try {
         setLoading(true);
-        const tournamentData = await fetchTournamentEvent(
+        const tournamentData = await fetchTournamentEvents(
           params.id!.toString()
         );
         console.log("tournament: ", tournamentData);
         setTournamentEvent(tournamentData);
+        setPreviewList(tournamentData || []);
       } catch (error) {
         console.error("Error fetching tournament:", error);
         // Handle error state if needed
@@ -116,7 +123,7 @@ export default function TournamentEvent({
     };
 
     loadTournament();
-  }, [fetchTournamentEvent, params.id]);
+  }, [fetchTournamentEvents, params.id]);
 
   useEffect(() => {
     if (ageGroupStr.length > 0) {
@@ -177,24 +184,29 @@ export default function TournamentEvent({
         registrationFee: parsedData.registrationFee || 0,
       };
 
-      // if (isEditEvent) {
-      //   const catObj = events.find((cat) => cat.id === parsedData.id);
-      //   result = await updateEvent(payload, catObj?.createdAt || "");
-      //   const prevPreviewList = [...previewList].filter((cat) => {
-      //     return cat.id !== parsedData.id;
-      //   });
-      //   if (result.success) setPreviewList([...prevPreviewList, payload]);
-      // } else {
-      //   result = await setEvent(payload);
+      if (isEditEvent) {
+        const event = tournamentEvent!.find((cat) => cat.id === parsedData.id);
 
-      //   if (result.success) setPreviewList([...previewList, payload]);
-      // }
-
-      if (result!.success) {
-        toast.success("Success", result!.message);
+        if (event) {
+          result = await updateTournamentEvent(event.id!, payload);
+          const prevPreviewList = [...previewList].filter((cat) => {
+            return cat.id !== parsedData.id;
+          });
+          setPreviewList([...prevPreviewList, payload]);
+        }
+        // if (result.success) setPreviewList([...prevPreviewList, payload]);
       } else {
-        toast.error("Error", result!.message);
+        result = await addTournamentEvent(params.id!.toString(), payload);
+        setPreviewList([...previewList, payload]);
+
+        // if (result.success) setPreviewList([...previewList, payload]);
       }
+
+      // if (result!.success) {
+      //   toast.success("Success", result!.message);
+      // } else {
+      //   toast.error("Error", result!.message);
+      // }
 
       setIsAddEvent(false);
       setIsEditEvent(false);
@@ -204,10 +216,11 @@ export default function TournamentEvent({
     }
   };
 
-  /* eslint-disable @typescript-eslint/no-unused-vars */
   const onDelete = async (id: string) => {
     try {
-      // const result = await deleteEventById(id);
+      await deleteTournamentEvent(params.id!.toString(), id);
+      const updatedEvents = tournamentEvent?.filter((cat) => cat.id !== id);
+      setPreviewList(updatedEvents || []);
       // if(result!.success) {
       //     toast.success("Success", result!.message);
       // } else {
@@ -220,23 +233,30 @@ export default function TournamentEvent({
 
   if (loading) return <div>Loading...</div>;
 
-  if (!tournamentEvent || tournamentEvent.length == 0) return <div>No events found</div>;
+  // if (!tournamentEvent || tournamentEvent.length == 0) return <div>No events found</div>;
 
   return (
     <section
       className={`space-y-4 overflow-y-auto pr-4 bg-[#14141b] rounded-xl p-6`}
     >
-      <div className="flex gap-4">
+      <div className="flex items-center gap-4">
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-          Event Event
+          Events
         </h4>
-        <Button
+        {/* <Button
           type="button"
           variant={"tailAdminPrimary"}
           onClick={() => setIsAddEvent(true)}
         >
           {isEditEvent ? "Edit" : "Add"}
-        </Button>
+        </Button> */}
+        <CustomButton
+          startIcon={<PlusIcon />}
+          size="sm"
+          onClick={() => setIsAddEvent(true)}
+        >
+          {isEditEvent ? "Edit" : "Create"} Event
+        </CustomButton>
       </div>
       <section className={`${isAddEvent || isEditEvent ? "" : "hidden"} `}>
         <Form {...form}>
@@ -554,7 +574,7 @@ export default function TournamentEvent({
                       </Button>
                       <Button
                         variant={"tailAdminSecondary"}
-                        onClick={() => onDelete(evt.id)}
+                        onClick={() => onDelete(evt.id!)}
                       >
                         Delete
                       </Button>

@@ -1,52 +1,63 @@
 import { TournamentEvent } from "@/models/event";
 import { create } from "zustand";
+import { v4 as uuidv4 } from "uuid";
 
 interface TournamentEventStore {
   tournamentEvent: TournamentEvent[];
-  fetchTournamentEvent: (
+  fetchTournamentEvents: (
     tournamentId: string
   ) => Promise<TournamentEvent[] | undefined>;
-  addTournamentEvent: (tournamentId: string) => Promise<void>;
+  addTournamentEvent: (
+    tournamentId: string,
+    event: TournamentEvent
+  ) => Promise<string>;
   updateTournamentEvent: (
     tournamentId: string,
     updatedTournamentEvent: TournamentEvent
   ) => Promise<void>;
+  deleteTournamentEvent: (tournamentId: string, id: string) => Promise<void>;
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const useTournamentEventStore = create<TournamentEventStore>((set, get) => ({
   tournamentEvent: [],
 
-  fetchTournamentEvent: async (tournamentId: string) => {
-    console.log("tournamentId: ", tournamentId);
+  fetchTournamentEvents: async (tournamentId: string) => {
     const res = await fetch(`/api/tournament-event/${tournamentId}`);
     const data = await res.json();
     set({ tournamentEvent: data });
     return data;
   },
 
-  addTournamentEvent: async (tournamentId: string) => {
-    // await get().fetchMatchSettings(tournamentId);
-    // const matchsettings = get().matchSettings;
-    // console.log("tournaments: ", matchsettings);
+  addTournamentEvent: async (tournamentId, event) => {
+    event.id = uuidv4();
     const res = await fetch("/api/tournament-event", {
       method: "POST",
-      body: JSON.stringify(tournamentId),
+      body: JSON.stringify({ tournamentId, event }),
       headers: { "Content-Type": "application/json" },
     });
     const data = await res.json();
     set({ tournamentEvent: data });
+    return event.id;
   },
 
-  updateTournamentEvent: async (tournamentId, updatedMatchSettings) => {
-    await fetch(`/api/matchSettings/${tournamentId}`, {
+  updateTournamentEvent: async (tournamentId, updatedEvent) => {
+    await fetch(`/api/tournament-event/${tournamentId}`, {
       method: "PUT",
-      body: JSON.stringify({ tournamentId, updatedMatchSettings }),
+      body: JSON.stringify(updatedEvent),
       headers: { "Content-Type": "application/json" },
     });
     set((state) => ({
-      tournamentEvent: [...state.tournamentEvent, updatedMatchSettings],
+      tournamentEvent: [...state.tournamentEvent, updatedEvent],
     }));
+  },
+
+  deleteTournamentEvent: async (tournamentId, id) => {
+    await fetch(`/api/tournament-event/${tournamentId}`, {
+      method: "DELETE",
+      body: JSON.stringify(id),
+      headers: { "Content-Type": "application/json" },
+    });
   },
 }));
 

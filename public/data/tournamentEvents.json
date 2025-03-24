@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "id": "",
+    "event": "Men's Singles",
+    "ageGroup": "8",
+    "type": "Elimination",
+    "level": "Professional",
+    "prize": "1000",
+    "registrationFee": 100,
+    "status": 0,
+    "createdAt": "2025-03-24T14:11:47.509Z",
+    "updatedAt": "2025-03-24T14:11:47.509Z"
+  },
+  {
+    "id": "",
+    "event": "Men's Doubles",
+    "ageGroup": "8",
+    "type": "Elimination",
+    "level": "Professional",
+    "prize": "no prize",
+    "registrationFee": 0,
+    "status": 0,
+    "createdAt": "2025-03-24T14:18:28.237Z",
+    "updatedAt": "2025-03-24T14:18:28.237Z"
+  },
+  {
+    "id": "",
+    "event": "Men's Doubles",
+    "ageGroup": "8, 9, open",
+    "type": "Elimination",
+    "level": "Professional",
+    "prize": "no prize",
+    "registrationFee": 0,
+    "status": 0,
+    "createdAt": "2025-03-24T14:20:47.630Z",
+    "updatedAt": "2025-03-24T14:20:47.630Z"
+  },
+  {
+    "id": "",
+    "event": "Men's Singles",
+    "ageGroup": "open",
+    "type": "Elimination",
+    "level": "Professional",
+    "prize": "no prize",
+    "registrationFee": 0,
+    "status": 0,
+    "createdAt": "2025-03-24T14:50:42.204Z",
+    "updatedAt": "2025-03-24T14:50:42.205Z"
+  },
+  {
+    "id": "a2923367-08f5-4135-b8a4-e88c9cb31bd2",
+    "event": "Men's Singles",
+    "ageGroup": "open",
+    "type": "Elimination",
+    "level": "Professional",
+    "prize": "no prize",
+    "registrationFee": 0,
+    "status": 0,
+    "createdAt": "2025-03-24T14:52:07.153Z",
+    "updatedAt": "2025-03-24T14:52:07.153Z"
+  }
+]
