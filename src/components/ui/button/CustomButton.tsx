@@ -9,6 +9,7 @@ interface ButtonProps {
   onClick?: () => void; // Click handler
   disabled?: boolean; // Disabled state
   className?: string; // Disabled state
+  hidden?: boolean; // Hidden state
 }
 
 const CustomButton: React.FC<ButtonProps> = ({
@@ -20,6 +21,7 @@ const CustomButton: React.FC<ButtonProps> = ({
   onClick,
   className = "",
   disabled = false,
+  hidden = false,
 }) => {
   // Size Classes
   const sizeClasses = {
@@ -45,6 +47,7 @@ const CustomButton: React.FC<ButtonProps> = ({
       }`}
       onClick={onClick}
       disabled={disabled}
+      hidden={hidden}
     >
       {startIcon && <span className="flex items-center">{startIcon}</span>}
       {children}

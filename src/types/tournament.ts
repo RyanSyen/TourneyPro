@@ -5,8 +5,9 @@ export interface ITournamentDetails {
     thumbnail: string;
     isPublic: boolean;
     type: TournamentType[];
-    startDate: string;
-    endDate: string;
+    // startDate: string;
+    // endDate: string;
+    date: DateRange;
     location: string;
     organizer: string;
     status: number;
@@ -15,3 +16,8 @@ export interface ITournamentDetails {
   }
 
 export type TournamentType = "circuit" | "standalone";
+
+export interface DateRange {
+  from: Date;
+  to?: Date;
+}

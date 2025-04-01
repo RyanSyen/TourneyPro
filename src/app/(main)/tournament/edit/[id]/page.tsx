@@ -12,11 +12,13 @@ import useTournamentStore from "../../shared/data-store/useTournamentStore";
 import CreateTournamentForm from "../../create/form";
 import Players from "./players/players";
 import TournamentEvent from "./events/events";
+import Overview from "./overview/overview";
+import { ITournamentDetails } from "@/types/tournament";
 
 const MainPage = () => {
   const { fetchTournament } = useTournamentStore();
   const params = useParams();
-  const [tournament, setTournament] = useState<Tournament | undefined>(
+  const [tournament, setTournament] = useState<ITournamentDetails | undefined>(
     undefined
   );
   const [loading, setLoading] = useState<boolean>(true);
@@ -67,28 +69,42 @@ const MainPage = () => {
         <Tabs defaultValue="overview">
           <TabsList>
             <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="details">Details</TabsTrigger>
             <TabsTrigger value="rules">Rules</TabsTrigger>
             <TabsTrigger value="events">Events</TabsTrigger>
-            <TabsTrigger value="matches">Matches</TabsTrigger>
-            <TabsTrigger value="players">Players</TabsTrigger>
-            <TabsTrigger value="draws">Draws</TabsTrigger>
-            <TabsTrigger value="seededEntries">Seeded Entries</TabsTrigger>
-            <TabsTrigger value="winners">Winners</TabsTrigger>
+            <TabsTrigger value="players" disabled={tournament.status != 1}>
+              Players
+            </TabsTrigger>
+            <TabsTrigger
+              value="seededEntries"
+              disabled={tournament.status != 1}
+            >
+              Seeded Entries
+            </TabsTrigger>
+            <TabsTrigger value="draws" disabled={tournament.status != 1}>
+              Draws
+            </TabsTrigger>
+            <TabsTrigger value="matches" disabled={tournament.status != 1}>
+              Matches
+            </TabsTrigger>
+            <TabsTrigger value="winners" disabled={tournament.status != 4}>
+              Winners
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="overview">
+            <div className="pt-4">
+              <Overview tournament={tournament} />
+            </div>
+          </TabsContent>
+          <TabsContent value="details">
             <div className="pt-4">
               <CreateTournamentForm isEdit={true} tournament={tournament} />
             </div>
           </TabsContent>
           <TabsContent value="rules">Rules</TabsContent>
           <TabsContent value="events">
-          <div className="pt-4">
-            <TournamentEvent tournamentId={params.id.toString()} />
-            </div>
-          </TabsContent>
-          <TabsContent value="matches">
             <div className="pt-4">
-              <Matches tournamentId={params.id.toString()} />
+              <TournamentEvent tournamentId={params.id.toString()} />
             </div>
           </TabsContent>
           <TabsContent value="players">
@@ -96,8 +112,13 @@ const MainPage = () => {
               <Players tournamentId={params.id.toString()} />
             </div>
           </TabsContent>
-          <TabsContent value="draws">Draws</TabsContent>
           <TabsContent value="seededEntries">Seeded Entries</TabsContent>
+          <TabsContent value="draws">Draws</TabsContent>
+          <TabsContent value="matches">
+            <div className="pt-4">
+              <Matches tournamentId={params.id.toString()} />
+            </div>
+          </TabsContent>
           <TabsContent value="winners">Winners</TabsContent>
         </Tabs>
         {/* <TournamentMainNavbar

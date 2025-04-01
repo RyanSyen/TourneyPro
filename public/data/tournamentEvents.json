@@ -58,5 +58,18 @@
     "status": 0,
     "createdAt": "2025-03-24T14:52:07.153Z",
     "updatedAt": "2025-03-24T14:52:07.153Z"
+  },
+  {
+    "id": "7ea9a2a8-2608-472a-b861-a8b1dc608eda",
+    "event": "Men's Singles",
+    "ageGroup": "open",
+    "type": "Elimination",
+    "level": "Professional",
+    "prize": "no prize",
+    "registrationFee": 0,
+    "tournamentId": "1cbc139f-9c9e-469d-b604-4323c7beba7c",
+    "status": 0,
+    "createdAt": "2025-03-29T05:23:09.064Z",
+    "updatedAt": "2025-03-29T05:23:09.064Z"
   }
 ]
