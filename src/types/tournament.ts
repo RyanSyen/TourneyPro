@@ -5,8 +5,7 @@ export interface ITournamentDetails {
     thumbnail: string;
     isPublic: boolean;
     type: TournamentType[];
-    // startDate: string;
-    // endDate: string;
+    registrationDate: DateRange;
     date: DateRange;
     location: string;
     organizer: string;

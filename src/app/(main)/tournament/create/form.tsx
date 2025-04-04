@@ -48,19 +48,25 @@ const CreateTournamentForm = ({
   isEdit?: boolean;
   tournament?: Tournament;
 }) => {
-  const [isPublicChecked, setIsPublicChecked] = useState(isEdit ? tournament!.isPublic : true);
+  const [isPublicChecked, setIsPublicChecked] = useState(
+    isEdit ? tournament!.isPublic : true
+  );
   const [previewImg, setPreviewImg] = useState(
     isEdit ? tournament!.thumbnail : ""
   );
   const { addTournament, updateTournament } = useTournamentStore();
-  const{addMatchSettings} = useMatchSettingsStore();
+  const { addMatchSettings } = useMatchSettingsStore();
 
   const defaultValues = isEdit
     ? {
         ...tournament,
+        registrationDate: {
+          from: dayjs(tournament?.registrationDate!.from).toISOString(),
+          to: dayjs(tournament?.registrationDate!.to).toISOString(),
+        },
         date: {
-          from: dayjs(tournament?.date!.from).toDate(),
-          to: dayjs(tournament?.date!.to).toDate(),
+          from: dayjs(tournament?.date!.from).toISOString(),
+          to: dayjs(tournament?.date!.to).toISOString(),
         },
       }
     : {
@@ -70,9 +76,13 @@ const CreateTournamentForm = ({
         isPublic: true,
         type: [],
         location: "",
+        registrationDate: {
+          from: dayjs().toISOString(),
+          to: dayjs().add(3, "days").toISOString(),
+        },
         date: {
-          from: dayjs().subtract(7, "days").toDate(),
-          to: dayjs().toDate(),
+          from: dayjs().add(3, "days").toISOString(),
+          to: dayjs().add(10, "days").toISOString(),
         },
       };
 
@@ -102,12 +112,29 @@ const CreateTournamentForm = ({
     console.log("form submitted: ", data);
     console.log("previewImg: ", previewImg);
     console.log("isPublicChecked: ", isPublicChecked);
-    const tournament = { ...data, thumbnail: previewImg, isPublic: isPublicChecked };
+
+    if (data.registrationDate?.from && data.registrationDate?.to) {
+      data.registrationDate = {
+        from: dayjs(data.registrationDate.from).startOf("day").toISOString(),
+        to: dayjs(data.registrationDate.to).endOf("day").toISOString(),
+      };
+    } else if (data.registrationDate?.from) {
+      data.registrationDate.from = dayjs(data.registrationDate.from)
+        .startOf("day")
+        .toISOString();
+    }
+    
+    const tournament = {
+      ...data,
+      thumbnail: previewImg,
+      isPublic: isPublicChecked,
+    };
+
     if (isEdit) {
       updateTournament(tournament.id!, tournament);
       window.location.reload();
     } else {
-      const tournamentId = await addTournament(tournament); 
+      const tournamentId = await addTournament(tournament);
       addMatchSettings(tournamentId); // should be handled at the services layer later
       redirect("/tournament/list");
     }
@@ -160,12 +187,13 @@ const CreateTournamentForm = ({
               />
               <FormField
                 control={form.control}
-                name="date"
+                name="registrationDate"
                 render={({ field }) => {
                   return (
                     <FormItem className="flex flex-col">
                       <FormLabel>
-                        Dates <span className="text-[#e50b0d] text-xl">*</span>
+                        Registration Period{" "}
+                        <span className="text-[#e50b0d] text-xl">*</span>
                       </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
@@ -174,18 +202,6 @@ const CreateTournamentForm = ({
                               variant={"outline"}
                               className="h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90 dark:focus:border-brand-800"
                             >
-                              {/* {date?.from ? (
-                                date.to ? (
-                                  <>
-                                    {format(date.from, "LLL dd, y")} -{" "}
-                                    {format(date.to, "LLL dd, y")}
-                                  </>
-                                ) : (
-                                  format(date.from, "LLL dd, y")
-                                )
-                              ) : (
-                                <span>Pick a date</span>
-                              )} */}
                               {field.value?.from ? (
                                 field.value.to ? (
                                   <>
@@ -209,17 +225,100 @@ const CreateTournamentForm = ({
                             initialFocus
                             mode="range"
                             numberOfMonths={2}
-                            // defaultMonth={date?.from}
-                            // selected={date}
-                            // onSelect={setDate}
-                            // disabled={(date) =>
-                            //   date > new Date() || date < new Date("1900-01-01")
-                            // }
-                            defaultMonth={field.value?.from}
-                            selected={field.value}
-                            onSelect={(newDate) => field.onChange(newDate)}
+                            defaultMonth={dayjs(field.value?.from).toDate()}
+                            selected={{
+                              from: dayjs(field.value?.from).toDate(),
+                              to: dayjs(field.value?.to).toDate(),
+                            }}
+                            onSelect={(range) => {
+                              if (range?.from && range?.to) {
+                                field.onChange({
+                                  from: range.from.toISOString(),
+                                  to: range.to.toISOString(),
+                                });
+                              } else if (range?.from) {
+                                field.onChange({
+                                  from: range.from.toISOString(),
+                                  to: undefined,
+                                });
+                              } else {
+                                field.onChange(undefined);
+                              }
+                            }}
+                            disabled={{ before: new Date() }}
+                          />
+                        </PrimaryPopoverContent>
+                      </Popover>
+                      <ErrorMessage name="date.from" />
+                      <ErrorMessage name="date.to" />
+                    </FormItem>
+                  );
+                }}
+              />
+              <FormField
+                control={form.control}
+                name="date"
+                render={({ field }) => {
+                  return (
+                    <FormItem className="flex flex-col">
+                      <FormLabel>
+                        Dates <span className="text-[#e50b0d] text-xl">*</span>
+                      </FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant={"outline"}
+                              className="h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90 dark:focus:border-brand-800"
+                            >
+                              {field.value?.from ? (
+                                field.value.to ? (
+                                  <>
+                                    {format(field.value.from, "LLL dd, y")} -{" "}
+                                    {format(field.value.to, "LLL dd, y")}
+                                  </>
+                                ) : (
+                                  format(field.value.from, "LLL dd, y")
+                                )
+                              ) : (
+                                <span>Pick a date</span>
+                              )}
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PrimaryPopoverContent
+                          className="w-auto p-0"
+                          align="start"
+                        >
+                          <Calendar
+                            initialFocus
+                            mode="range"
+                            numberOfMonths={2}
+                            defaultMonth={dayjs(field.value?.from).toDate()}
+                            selected={{
+                              from: dayjs(field.value?.from).toDate(),
+                              to: dayjs(field.value?.to).toDate(),
+                            }}
+                            onSelect={(range) => {
+                              if (range?.from && range?.to) {
+                                field.onChange({
+                                  from: range.from.toISOString(),
+                                  to: range.to.toISOString(),
+                                });
+                              } else if (range?.from) {
+                                field.onChange({
+                                  from: range.from.toISOString(),
+                                  to: undefined,
+                                });
+                              } else {
+                                field.onChange(undefined);
+                              }
+                            }}
                             disabled={(date) =>
-                              date > new Date() || date < new Date("1900-01-01")
+                              date >
+                                dayjs(
+                                  form.getValues("registrationDate.to")
+                                ).toDate() || date < new Date()
                             }
                           />
                         </PrimaryPopoverContent>

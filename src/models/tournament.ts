@@ -20,9 +20,16 @@ export const TournamentSchema = z.object({
     .refine((value) => value.some((item) => item), {
       message: "You have to select at least one tournament type.",
     }),
-  date: z.object({
-      from: z.date(),
-      to: z.date().optional(),
+  registrationDate: z
+    .object({
+      from: z.string().datetime(),
+      to: z.string().datetime(),
+    })
+    .optional(),
+  date: z
+    .object({
+      from: z.string().datetime(),
+      to: z.string().datetime(),
     })
     .optional(),
   location: z.string({

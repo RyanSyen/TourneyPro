@@ -18,5 +18,35 @@
     "allowDeuce": true,
     "createdAt": "2025-03-19T08:38:18.260Z",
     "updatedAt": "2025-03-19T12:02:39.981Z"
+  },
+  {
+    "tournamentId": "2ae526e8-a8eb-46aa-8d32-e0c25e6ace69",
+    "points": "21",
+    "changeOfEnds": "1",
+    "gracePeriod": "3",
+    "allowSpinServe": false,
+    "allowDeuce": true,
+    "createdAt": "2025-04-04T07:30:39.239Z",
+    "updatedAt": "2025-04-04T07:30:39.239Z"
+  },
+  {
+    "tournamentId": "e658c712-1fd4-40a3-bc68-07a22b298cb2",
+    "points": "21",
+    "changeOfEnds": "1",
+    "gracePeriod": "3",
+    "allowSpinServe": false,
+    "allowDeuce": true,
+    "createdAt": "2025-04-04T07:42:02.529Z",
+    "updatedAt": "2025-04-04T07:42:02.529Z"
+  },
+  {
+    "tournamentId": "4dc47bd9-88e7-4377-9e80-1f597a042420",
+    "points": "21",
+    "changeOfEnds": "1",
+    "gracePeriod": "3",
+    "allowSpinServe": false,
+    "allowDeuce": true,
+    "createdAt": "2025-04-04T07:45:19.320Z",
+    "updatedAt": "2025-04-04T07:45:19.320Z"
   }
 ]
