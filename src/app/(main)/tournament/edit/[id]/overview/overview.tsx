@@ -7,11 +7,22 @@ import dayjs from "dayjs";
 import Image from "next/image";
 import React from "react";
 import useTournamentStore from "../../../shared/data-store/useTournamentStore";
+import { APP_CONFIG } from "@/app/appconfig";
+import useTournamentEventStore from "../../../shared/data-store/useEventStore";
+import { toast } from "sonner";
 
 function overview({ tournament }: { tournament: ITournamentDetails }) {
   const { publishTournament } = useTournamentStore();
+  const {fetchTournamentEvents}  = useTournamentEventStore();
 
   const updateStatus = async () => {
+    var res = await fetchTournamentEvents(tournament.id!);
+
+    if(res && res.length == 0) {
+      toast.warning("Please create an event before publishing the tournament.");
+      return;
+    }
+    
     await publishTournament(tournament.id!);
     window.location.reload();
   }
@@ -44,10 +55,28 @@ function overview({ tournament }: { tournament: ITournamentDetails }) {
             <div className="flex gap-4">
               <div>
                 <label className="scroll-m-20 text-xl font-semibold tracking-tight">
+                  Registration Start Date
+                </label>
+                <p className="leading-7">
+                  {dayjs(tournament.registrationDate?.from).format(APP_CONFIG.DATETIMEFORMAT1)}
+                </p>
+              </div>
+              <div>
+                <label className="scroll-m-20 text-xl font-semibold tracking-tight">
+                  Registration End Date
+                </label>
+                <p className="leading-7">
+                  {dayjs(tournament.registrationDate?.to!).format(APP_CONFIG.DATETIMEFORMAT1)}
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div>
+                <label className="scroll-m-20 text-xl font-semibold tracking-tight">
                   Start Date
                 </label>
                 <p className="leading-7">
-                  {dayjs(tournament.date?.from).format("DD-MM-YYYY")}
+                  {dayjs(tournament.date?.from).format(APP_CONFIG.DATEFORMAT1)}
                 </p>
               </div>
               <div>
@@ -55,7 +84,7 @@ function overview({ tournament }: { tournament: ITournamentDetails }) {
                   End Date
                 </label>
                 <p className="leading-7">
-                  {dayjs(tournament.date?.to!).format("DD-MM-YYYY")}
+                  {dayjs(tournament.date?.to!).format(APP_CONFIG.DATEFORMAT1)}
                 </p>
               </div>
             </div>
