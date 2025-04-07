@@ -1,4 +1,4 @@
-import { InitialTask } from "@/models/initialTask";
+import { InitialTask } from "@/form_schema/initialTask";
 import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
 import { IInitialTask } from "@/types/initialTask";

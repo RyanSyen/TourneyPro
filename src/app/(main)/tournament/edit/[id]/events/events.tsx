@@ -32,7 +32,7 @@ import { AgeGroupLookup } from "@/lookups/tournament/ageGroupLookup";
 import { TournamentEventLookup } from "@/lookups/tournament/eventLookup";
 import { EventTypeLookup } from "@/lookups/tournament/eliminationLookup";
 import { LevelLookup } from "@/lookups/tournament/levelLookup";
-import { type TournamentEvent, TournamentEventSchema } from "@/models/event";
+import { type TournamentEvent, TournamentEventSchema } from "@/form_schema/event";
 // import { toast } from "sonner";
 import { ErrorMessage } from "@hookform/error-message";
 import useTournamentEventStore from "../../../shared/data-store/useEventStore";

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import useTournamentStore from "../../shared/data-store/useTournamentStore";
 import { useParams } from "next/navigation";
-import { Tournament } from "@/models/tournament";
+import { Tournament } from "@/form_schema/tournament";
 import ViewTournamentHeader from "./header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 

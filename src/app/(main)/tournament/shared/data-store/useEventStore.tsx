@@ -1,4 +1,4 @@
-import { TournamentEvent } from "@/models/event";
+import { TournamentEvent } from "@/form_schema/event";
 import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
 

@@ -13,7 +13,7 @@ import {
 import { default as MatchSettingsComponent } from "./matchSettings";
 import useMatchSettingsStore from "../../../shared/data-store/useMatchSettingsStore";
 import { useEffect, useState } from "react";
-import { MatchSettings } from "@/models/matchSetting";
+import { MatchSettings } from "@/form_schema/matchSetting";
 
 export default function Matches({tournamentId}: {tournamentId: string}) {
   const { fetchMatchSettings } = useMatchSettingsStore();

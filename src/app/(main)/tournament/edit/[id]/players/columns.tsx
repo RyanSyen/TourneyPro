@@ -1,5 +1,5 @@
 import React from "react";
-import { Player } from "@/models/player";
+import { Player } from "@/form_schema/player";
 import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import {

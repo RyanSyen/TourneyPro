@@ -25,7 +25,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { useForm } from "react-hook-form";
-import { InitialTask, InitialTaskSchema } from "@/models/initialTask";
+import { InitialTask, InitialTaskSchema } from "@/form_schema/initialTask";
 import dayjs from "dayjs";
 import {
   issueStatus,

@@ -1,6 +1,6 @@
 import { PlayersDataTable } from "./datatable";
 import { playerColumns } from "./columns";
-import { Player } from "@/models/player";
+import { Player } from "@/form_schema/player";
 
 export default function PlayerTable({players}: {players: Player[]}) {
 

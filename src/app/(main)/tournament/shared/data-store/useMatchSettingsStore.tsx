@@ -1,4 +1,4 @@
-import { MatchSettings } from "@/models/matchSetting";
+import { MatchSettings } from "@/form_schema/matchSetting";
 import { create } from "zustand";
 
 interface TournamentStore {

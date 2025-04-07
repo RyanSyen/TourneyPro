@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
-import { TournamentSchema } from "@/models/tournament";
+import { TournamentSchema } from "@/form_schema/tournament";
 import { ITournamentDetails } from "@/types/tournament";
 
 type Tournament = z.infer<typeof TournamentSchema>;

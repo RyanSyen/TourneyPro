@@ -11,7 +11,7 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Tournament, TournamentSchema } from "@/models/tournament";
+import { Tournament, TournamentSchema } from "@/form_schema/tournament";
 import { ChangeEvent, useState } from "react";
 import { toast } from "sonner";
 import { validateFileSize } from "@/helper/common";
@@ -36,7 +36,7 @@ import {
 import Switch from "@/components/form/switch/Switch";
 import { TournamentTypeLookup } from "@/lookups/tournament/tournamentTypeLookup";
 import { Checkbox } from "@/components/ui/checkbox";
-import { TournamentType } from "@/types/tournament";
+import { ITournamentDetails, TournamentType } from "@/types/tournament";
 import useTournamentStore from "../shared/data-store/useTournamentStore";
 import { redirect } from "next/navigation";
 import useMatchSettingsStore from "../shared/data-store/useMatchSettingsStore";
@@ -46,7 +46,7 @@ const CreateTournamentForm = ({
   tournament,
 }: {
   isEdit?: boolean;
-  tournament?: Tournament;
+  tournament?: ITournamentDetails;
 }) => {
   const [isPublicChecked, setIsPublicChecked] = useState(
     isEdit ? tournament!.isPublic : true

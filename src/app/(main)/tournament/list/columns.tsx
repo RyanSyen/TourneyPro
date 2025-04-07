@@ -12,7 +12,7 @@ import {
 import { ArrowUpDownIcon, MoreHorizontalIcon } from "@/icons/components";
 import { ColumnDef } from "@tanstack/react-table";
 import { z } from "zod";
-import { TournamentSchema } from "@/models/tournament";
+import { TournamentSchema } from "@/form_schema/tournament";
 import dayjs from "dayjs";
 import { redirect } from "next/navigation";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { type MatchSettings, MatchSettingsSchema } from "@/models/matchSetting";
+import { type MatchSettings, MatchSettingsSchema } from "@/form_schema/matchSetting";
 import { IMatchSettings } from "@/types/matchSetting";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";

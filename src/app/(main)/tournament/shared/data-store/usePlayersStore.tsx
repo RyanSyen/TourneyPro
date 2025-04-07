@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Player } from "@/models/player";
+import { Player } from "@/form_schema/player";
 import { v4 as uuidv4 } from "uuid";
 
 interface PlayerStore {
