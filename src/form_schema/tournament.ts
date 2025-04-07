@@ -24,14 +24,12 @@ export const TournamentSchema = z.object({
     .object({
       from: z.string().datetime(),
       to: z.string().datetime(),
-    })
-    .optional(),
+    }),
   date: z
     .object({
       from: z.string().datetime(),
       to: z.string().datetime(),
-    })
-    .optional(),
+    }),
   location: z.string({
     required_error: "Tournament location is required.",
   }),

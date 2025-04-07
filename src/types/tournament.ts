@@ -20,5 +20,5 @@ export type TournamentType = "circuit" | "standalone";
 
 export interface DateRange {
   from: Date;
-  to?: Date;
+  to: Date;
 }

@@ -203,6 +203,8 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { TrashIcon } from "@/icons/components";
+import useTournamentStore from "../shared/data-store/useTournamentStore";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -220,6 +222,7 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+  const { deleteTournament } = useTournamentStore();
 
   const table = useReactTable({
     data,
@@ -238,6 +241,11 @@ export function DataTable<TData, TValue>({
     },
   });
 
+  const deleteAllTournaments = async () => {
+    const selectedRows = table.getRowModel().rows.map((row) => (row.original as { id: string }).id);
+    selectedRows.forEach(async (id) => await deleteTournament(id));
+  };
+
   return (
     <div className="w-full">
       <div className="flex items-center justify-between py-4">
@@ -251,38 +259,47 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white"
         />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              className="ml-auto dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 dark:hover:bg-gray-700"
+        <div className="flex items-center space-x-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="ml-auto dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 dark:hover:bg-gray-700"
+              >
+                Columns
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="end"
+              className="dark:bg-gray-800 dark:border-gray-700"
             >
-              Columns
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="end"
-            className="dark:bg-gray-800 dark:border-gray-700"
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize dark:text-gray-100 dark:focus:bg-gray-700"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  );
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button
+            variant="outline"
+            className="ml-auto dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 dark:hover:bg-gray-700"
+            onClick={deleteAllTournaments}
           >
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize dark:text-gray-100 dark:focus:bg-gray-700"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+            <TrashIcon /> Delete All
+          </Button>
+        </div>
       </div>
       <div className="rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden">
         <Table>

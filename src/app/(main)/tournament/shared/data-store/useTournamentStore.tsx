@@ -13,7 +13,7 @@ interface TournamentStore {
   addTournament: (tournament: Omit<Tournament, "id">) => Promise<string>;
   updateTournament: (
     id: string,
-    updatedTournament: Partial<Tournament>
+    updatedTournament: Tournament
   ) => Promise<void>;
   deleteTournament: (id: string) => Promise<void>;
   publishTournament: (id: string) => Promise<void>;
@@ -54,13 +54,29 @@ const useTournamentStore = create<TournamentStore>((set, get) => ({
     });
     set((state) => ({
       tournaments: state.tournaments.map((t) =>
-        t.id === id ? { ...t, ...updatedTournament } : t
+        t.id === id ? {
+          ...t,
+          ...updatedTournament,
+          registrationDate: {
+            from: new Date(updatedTournament.registrationDate.from),
+            to: new Date(updatedTournament.registrationDate.to),
+          },
+          date: {
+            from: new Date(updatedTournament.date.from),
+            to: new Date(updatedTournament.date.to),
+          },
+        }
+       : t
       ),
     }));
   },
 
   deleteTournament: async (id) => {
-    await fetch(`/api/tournaments/${id}`, { method: "DELETE" });
+    await fetch(`/api/tournaments/${id}`, {
+      method: "DELETE",
+      body: JSON.stringify(id),
+      headers: { "Content-Type": "application/json" },
+    });
     set((state) => ({
       tournaments: state.tournaments.filter((t) => t.id !== id),
     }));

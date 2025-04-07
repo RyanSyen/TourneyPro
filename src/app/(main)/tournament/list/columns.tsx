@@ -15,6 +15,7 @@ import { z } from "zod";
 import { TournamentSchema } from "@/form_schema/tournament";
 import dayjs from "dayjs";
 import { redirect } from "next/navigation";
+import { ITournamentDetails } from "@/types/tournament";
 
 // import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
@@ -29,7 +30,7 @@ import { redirect } from "next/navigation";
 
 type Tournament = z.infer<typeof TournamentSchema>;
 
-export const columns: ColumnDef<Tournament>[] = [
+export const columns: ColumnDef<ITournamentDetails>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
