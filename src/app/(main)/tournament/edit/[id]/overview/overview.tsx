@@ -1,106 +1,50 @@
 import CustomButton from "@/components/ui/button/CustomButton";
 import { UploadIcon } from "@/icons/components";
 import { tournamentStatusLookup } from "@/lookups/tournament/statusLookup";
-import { Tournament } from "@/models/tournament";
+import { Tournament } from "@/form_schema/tournament";
 import { ITournamentDetails } from "@/types/tournament";
 import dayjs from "dayjs";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import useTournamentStore from "../../../shared/data-store/useTournamentStore";
 import { APP_CONFIG } from "@/app/appconfig";
 import useTournamentEventStore from "../../../shared/data-store/useEventStore";
 import { toast } from "sonner";
+import CreateTournamentForm from "../../../create/form";
 
-function overview({ tournament }: { tournament: ITournamentDetails }) {
+function overview({ tournament, username }: { tournament: ITournamentDetails, username: string }) {
   const { publishTournament } = useTournamentStore();
-  const {fetchTournamentEvents}  = useTournamentEventStore();
+  const { fetchTournamentEvents } = useTournamentEventStore();
 
   const updateStatus = async () => {
     var res = await fetchTournamentEvents(tournament.id!);
 
-    if(res && res.length == 0) {
+    if (res && res.length == 0) {
       toast.warning("Please create an event before publishing the tournament.");
       return;
     }
-    
+
     await publishTournament(tournament.id!);
     window.location.reload();
-  }
+  };
+
+//   useEffect(async () => {
+//     var res = await fetch(process.env.NEXT_PUBLIC_CLERK_BE_API + "/users/" + tournament.createdBy, {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
+//       },
+//     })
+// }, []);
 
   return (
-    <div className="flex flex-col gap-4">
-      <section
-        className={`space-y-4 overflow-y-auto pr-4 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] p-6`}
-      >
-        <div className="flex justify-between gap-2">
-          <div className="flex flex-col gap-4 w-full">
-            <div>
-              <label className="scroll-m-20 text-xl font-semibold tracking-tight">
-                Tournament Title
-              </label>
-              <p className="leading-7">{tournament.title}</p>
-            </div>
-            <div>
-              <label className="scroll-m-20 text-xl font-semibold tracking-tight">
-                Description
-              </label>
-              <p className="leading-7">{tournament.description}</p>
-            </div>
-            <div>
-              <label className="scroll-m-20 text-xl font-semibold tracking-tight">
-                Venue
-              </label>
-              <p className="leading-7">{tournament.location}</p>
-            </div>
-            <div className="flex gap-4">
-              <div>
-                <label className="scroll-m-20 text-xl font-semibold tracking-tight">
-                  Registration Start Date
-                </label>
-                <p className="leading-7">
-                  {dayjs(tournament.registrationDate?.from).format(APP_CONFIG.DATETIMEFORMAT1)}
-                </p>
-              </div>
-              <div>
-                <label className="scroll-m-20 text-xl font-semibold tracking-tight">
-                  Registration End Date
-                </label>
-                <p className="leading-7">
-                  {dayjs(tournament.registrationDate?.to!).format(APP_CONFIG.DATETIMEFORMAT1)}
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div>
-                <label className="scroll-m-20 text-xl font-semibold tracking-tight">
-                  Start Date
-                </label>
-                <p className="leading-7">
-                  {dayjs(tournament.date?.from).format(APP_CONFIG.DATEFORMAT1)}
-                </p>
-              </div>
-              <div>
-                <label className="scroll-m-20 text-xl font-semibold tracking-tight">
-                  End Date
-                </label>
-                <p className="leading-7">
-                  {dayjs(tournament.date?.to!).format(APP_CONFIG.DATEFORMAT1)}
-                </p>
-              </div>
-            </div>
-            <div>
-              <label className="scroll-m-20 text-xl font-semibold tracking-tight">
-                Status
-              </label>
-              <p className="leading-7">
-                {
-                  tournamentStatusLookup.find((x) => x.id == tournament.status)
-                    ?.title
-                }
-              </p>
-            </div>
-          </div>
-          <div className="relative w-[650px] h-[250px]">
+    <div className="flex flex-col gap-4 w-lvw-full">
+      <div className="flex gap-4">
+        <section
+          className={`space-y-4 overflow-y-auto h-fit pr-4 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] p-6`}
+        >
+          <div className="relative w-[300px] h-[150px]">
             <Image
               src={tournament.thumbnail}
               alt={tournament.title}
@@ -109,8 +53,13 @@ function overview({ tournament }: { tournament: ITournamentDetails }) {
               className="object-cover object-center rounded-md"
             />
           </div>
-        </div>
-      </section>
+          <div>
+            <p className="leading-7">{tournament.title}</p>
+            <p className="leading-7">{username}</p>
+          </div>
+        </section>
+        <CreateTournamentForm isEdit={true} tournament={tournament} />
+      </div>
       <CustomButton
         startIcon={<UploadIcon />}
         size="sm"
