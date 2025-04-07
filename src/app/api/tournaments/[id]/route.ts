@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { ITournamentDetails } from '@/types/tournament';
 import dayjs from 'dayjs';
+import { auth } from '@clerk/nextjs/server';
 
 const filePath = path.join(process.cwd(), "public/data", "tournaments.json");
 
@@ -10,11 +11,14 @@ export async function PUT(
   request: NextRequest,
 ) {
   const tournaments = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  
+  const { userId } = await auth()
 
   const { id, updatedTournament } = await request.json();
   const data: ITournamentDetails = {
     ...updatedTournament,
-    updatedAt: dayjs().toDate()
+    updatedAt: dayjs().toDate(),
+    updatedBy: userId,
   }
   const index = tournaments.findIndex((t: ITournamentDetails) => t.id === id);
   

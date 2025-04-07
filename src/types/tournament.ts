@@ -12,6 +12,8 @@ export interface ITournamentDetails {
     status: number;
     createdAt: string;
     updatedAt: string;
+    createdBy: string;
+    updatedBy: string;
   }
 
 export type TournamentType = "circuit" | "standalone";
