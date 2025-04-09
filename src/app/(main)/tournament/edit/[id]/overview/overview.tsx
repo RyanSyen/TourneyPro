@@ -1,23 +1,19 @@
 import CustomButton from "@/components/ui/button/CustomButton";
 import { UploadIcon } from "@/icons/components";
-import { tournamentStatusLookup } from "@/lookups/tournament/statusLookup";
-import { Tournament } from "@/form_schema/tournament";
 import { ITournamentDetails } from "@/types/tournament";
-import dayjs from "dayjs";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
 import useTournamentStore from "../../../shared/data-store/useTournamentStore";
-import { APP_CONFIG } from "@/app/appconfig";
 import useTournamentEventStore from "../../../shared/data-store/useEventStore";
 import { toast } from "sonner";
 import CreateTournamentForm from "../../../create/form";
 
-function overview({ tournament, username }: { tournament: ITournamentDetails, username: string }) {
+export default function Overview({ tournament, username }: { tournament: ITournamentDetails, username: string }) {
   const { publishTournament } = useTournamentStore();
   const { fetchTournamentEvents } = useTournamentEventStore();
 
   const updateStatus = async () => {
-    var res = await fetchTournamentEvents(tournament.id!);
+    const res = await fetchTournamentEvents(tournament.id!);
 
     if (res && res.length == 0) {
       toast.warning("Please create an event before publishing the tournament.");
@@ -72,5 +68,3 @@ function overview({ tournament, username }: { tournament: ITournamentDetails, us
     </div>
   );
 }
-
-export default overview;

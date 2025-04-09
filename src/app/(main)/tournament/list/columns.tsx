@@ -11,8 +11,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ArrowUpDownIcon, MoreHorizontalIcon } from "@/icons/components";
 import { ColumnDef } from "@tanstack/react-table";
-import { z } from "zod";
-import { TournamentSchema } from "@/form_schema/tournament";
 import dayjs from "dayjs";
 import { redirect } from "next/navigation";
 import { ITournamentDetails } from "@/types/tournament";
@@ -27,8 +25,6 @@ import { ITournamentDetails } from "@/types/tournament";
 //   status: "pending" | "processing" | "success" | "failed";
 //   email: string;
 // };
-
-type Tournament = z.infer<typeof TournamentSchema>;
 
 export const columns: ColumnDef<ITournamentDetails>[] = [
   {

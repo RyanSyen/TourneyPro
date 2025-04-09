@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react";
 import useTournamentStore from "../../shared/data-store/useTournamentStore";
 import { useParams } from "next/navigation";
-import { Tournament } from "@/form_schema/tournament";
 import ViewTournamentHeader from "./header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ITournamentDetails } from "@/types/tournament";
 
 const MainPage = () => {
   const { fetchTournament } = useTournamentStore();
   const params = useParams();
-  const [tournament, setTournament] = useState<Tournament | undefined>(
+  const [tournament, setTournament] = useState<ITournamentDetails | undefined>(
     undefined
   );
   const [loading, setLoading] = useState<boolean>(true);
