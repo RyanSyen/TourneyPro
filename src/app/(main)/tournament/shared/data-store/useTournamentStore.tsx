@@ -57,14 +57,14 @@ const useTournamentStore = create<TournamentStore>((set, get) => ({
         t.id === id ? {
           ...t,
           ...updatedTournament,
-          registrationDate: {
-            from: new Date(updatedTournament.registrationDate.from),
-            to: new Date(updatedTournament.registrationDate.to),
-          },
-          date: {
-            from: new Date(updatedTournament.date.from),
-            to: new Date(updatedTournament.date.to),
-          },
+          // registrationDate: {
+          //   from: new Date(updatedTournament.registrationDate.from),
+          //   to: new Date(updatedTournament.registrationDate.to),
+          // },
+          // date: {
+          //   from: new Date(updatedTournament.date.from),
+          //   to: new Date(updatedTournament.date.to),
+          // },
         }
        : t
       ),

@@ -20,6 +20,6 @@ export interface ITournamentDetails {
 export type TournamentType = "circuit" | "standalone";
 
 export interface DateRange {
-  from: Date;
-  to: Date;
+  from: string;
+  to: string;
 }

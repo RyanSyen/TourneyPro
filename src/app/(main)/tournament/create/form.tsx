@@ -56,18 +56,19 @@ const CreateTournamentForm = ({
   );
   const { addTournament, updateTournament } = useTournamentStore();
   const { addMatchSettings } = useMatchSettingsStore();
+  // const router = useRouter();
 
   const defaultValues = isEdit
     ? {
         ...tournament,
-        registrationDate: {
-          from: dayjs(tournament?.registrationDate!.from).toISOString(),
-          to: dayjs(tournament?.registrationDate!.to).toISOString(),
-        },
-        date: {
-          from: dayjs(tournament?.date!.from).toISOString(),
-          to: dayjs(tournament?.date!.to).toISOString(),
-        },
+        // registrationDate: {
+        //   from: dayjs(tournament?.registrationDate!.from).toISOString(),
+        //   to: dayjs(tournament?.registrationDate!.to).toISOString(),
+        // },
+        // date: {
+        //   from: dayjs(tournament?.date!.from).toISOString(),
+        //   to: dayjs(tournament?.date!.to).toISOString(),
+        // },
       }
     : {
         title: "",
@@ -124,14 +125,22 @@ const CreateTournamentForm = ({
         .toISOString();
     }
 
+    data.date = {
+      from: dayjs(data.date.from).startOf("day").toISOString(),
+      to: dayjs(data.date.to).endOf("day").toISOString(),
+    };
+
     const tournament = {
       ...data,
       thumbnail: previewImg,
       isPublic: isPublicChecked,
     };
 
+    console.log("tournament: ", tournament);
+
     if (isEdit) {
       updateTournament(tournament.id!, tournament);
+      // router.refresh();
       window.location.reload();
     } else {
       const tournamentId = await addTournament(tournament);

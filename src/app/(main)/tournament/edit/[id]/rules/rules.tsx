@@ -22,6 +22,7 @@ import useTournamentStore from "../../../shared/data-store/useTournamentStore";
 import { ITournamentDetails } from "@/types/tournament";
 import dayjs from "dayjs";
 import { Tournament } from "@/form_schema/tournament";
+// import { useRouter } from "next/navigation";
 
 const RulesFormSchema = z.object({
   rules: z
@@ -29,8 +30,8 @@ const RulesFormSchema = z.object({
     .min(10, {
       message: "Tournament rules must be at least 10 characters.",
     })
-    .max(300, {
-      message: "Tournament rules must not be longer than 300 characters.",
+    .max(1000, {
+      message: "Tournament rules must not be longer than 1000 characters.",
     })
     .optional(),
 });
@@ -41,10 +42,12 @@ function Rules({ tournament }: { tournament: ITournamentDetails }) {
     z.infer<typeof MatchSettingsSchema> | undefined
   >(undefined);
   const [loading, setLoading] = useState<boolean>(true);
-  const [matchRules, setMatchRules] = useState("");
+  // const [matchRules, setMatchRules] = useState(tournament.rules ?? "");
   const { updateTournament } = useTournamentStore();
+  // const router = useRouter();
 
   useEffect(() => {
+    console.log('calling useEffect')
     const loadMatchSettings = async () => {
       try {
         setLoading(true);
@@ -56,10 +59,11 @@ function Rules({ tournament }: { tournament: ITournamentDetails }) {
 2. Matches are played in ${matchSettings?.changeOfEnds ?? 1} set(s).
 3. Grace period allowed is ${matchSettings?.gracePeriod ?? 3} minutes after the empire has reached the court.
 4. Players are ${matchSettings?.allowSpinServe ? "allowed" : "not allowed"} to serve spin serves.
-5. Players are ${matchSettings?.allowDeuce ? "allowed" : "not allowed"} to play deuce.
-        `;
+5. Players are ${matchSettings?.allowDeuce ? "allowed" : "not allowed"} to play deuce.`;
+        const userDefinedRules = tournament.rules?.split('\n').slice(6).join('\n') ?? '';
 
-      reset({ rules: generatedRules });
+
+      reset({ rules: generatedRules + '\n' + userDefinedRules });
       } catch (error) {
         console.error("Error fetching matchSettings:", error);
         // Handle error state if needed
@@ -74,13 +78,13 @@ function Rules({ tournament }: { tournament: ITournamentDetails }) {
   const form = useForm<z.infer<typeof RulesFormSchema>>({
     resolver: zodResolver(RulesFormSchema),
     defaultValues: {
-      rules: matchRules,
+      rules: tournament.rules ?? "",
     },
   });
 
   const { reset } = form;
 
-  function onSubmit(data: z.infer<typeof RulesFormSchema>) {
+  async function onSubmit(data: z.infer<typeof RulesFormSchema>) {
     console.log("Form Data: ", data);
     var updatedTournament: Tournament = {
         ...tournament,
@@ -94,7 +98,9 @@ function Rules({ tournament }: { tournament: ITournamentDetails }) {
         },
         rules: data.rules,
     };
-    updateTournament(tournament.id!, updatedTournament);
+    await updateTournament(tournament.id!, updatedTournament);
+    // router.refresh();
+    // router.push(`/tournament/edit/${tournament.id!}?t=rules`);
     window.location.reload();
   }
 

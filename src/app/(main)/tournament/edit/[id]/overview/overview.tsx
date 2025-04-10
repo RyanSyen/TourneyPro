@@ -10,6 +10,7 @@ import CreateTournamentForm from "../../../create/form";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { tournamentStatusLookup } from "@/lookups/tournament/statusLookup";
+// import { useRouter } from "next/navigation";
 
 export default function Overview({
   tournament,
@@ -20,6 +21,7 @@ export default function Overview({
 }) {
   const { publishTournament } = useTournamentStore();
   const { fetchTournamentEvents } = useTournamentEventStore();
+  // const router = useRouter();
 
   const updateStatus = async () => {
     const res = await fetchTournamentEvents(tournament.id!);
@@ -30,6 +32,7 @@ export default function Overview({
     }
 
     await publishTournament(tournament.id!);
+    // router.refresh();
     window.location.reload();
   };
 

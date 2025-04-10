@@ -38,6 +38,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon, CloseLineIcon, PaperClipIcon } from "@/icons/components";
 import useTaskStore from "../../shared/data-store/useTaskStore";
+// import { useRouter } from "next/navigation";
 
 interface props {
   setOpenDialog: (open: boolean) => void;
@@ -47,6 +48,7 @@ export default function CreateIssueForm({ setOpenDialog }: props) {
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   const [uploadedFiles, setUploadedFiles] = useState<{ name: string; base64: string }[]>([]);
   const { addTask } = useTaskStore();
+  // const router = useRouter();
 
   const form = useForm<InitialTask>({
     resolver: zodResolver(InitialTaskSchema),
@@ -118,6 +120,7 @@ export default function CreateIssueForm({ setOpenDialog }: props) {
     console.log("data: ", data);
     addTask(data);
     setOpenDialog(false);
+    // router.refresh();
     window.location.reload();
   };
 

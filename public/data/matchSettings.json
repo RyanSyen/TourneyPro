@@ -64,9 +64,19 @@
     "points": "21",
     "changeOfEnds": "3",
     "gracePeriod": "3",
-    "allowSpinServe": false,
+    "allowSpinServe": true,
     "allowDeuce": true,
     "createdAt": "2025-04-07T10:20:48.390Z",
-    "updatedAt": "2025-04-10T02:39:38.224Z"
+    "updatedAt": "2025-04-10T03:09:49.695Z"
+  },
+  {
+    "tournamentId": "ae8b7c07-bb96-4292-b6fe-804ffa506fa0",
+    "points": "21",
+    "changeOfEnds": "5",
+    "gracePeriod": "3",
+    "allowSpinServe": true,
+    "allowDeuce": true,
+    "createdAt": "2025-04-10T04:04:22.173Z",
+    "updatedAt": "2025-04-10T04:29:02.192Z"
   }
 ]

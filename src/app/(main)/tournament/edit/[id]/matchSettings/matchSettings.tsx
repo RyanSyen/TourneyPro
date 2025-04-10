@@ -35,6 +35,7 @@ import { PointsLookup } from "@/lookups/tournament/pointsLookup";
 import { SetsLookup } from "@/lookups/tournament/setsLookup";
 import { GracePeriodLookup } from "@/lookups/tournament/gracePeriodLookup";
 import useMatchSettingsStore from "../../../shared/data-store/useMatchSettingsStore";
+// import { useRouter } from "next/navigation";
 
 interface props {
   tournamentId: string;
@@ -54,6 +55,7 @@ export default function MatchSettings({
     matchSettings.allowDeuce ?? true
   );
   const { updateMatchSettings } = useMatchSettingsStore();
+  // const router = useRouter();
 
   const form = useForm<z.infer<typeof MatchSettingsSchema>>({
     resolver: zodResolver(MatchSettingsSchema),
@@ -83,8 +85,9 @@ export default function MatchSettings({
       tournamentId: tournamentId,
     };
     updateMatchSettings(tournamentId, updatedMatchSettings);
-    // setOpenDialog(false);
     window.location.reload();
+    // router.refresh(); // update server components but since we are using client component, we need to hard refresh the page to see the changes using router.push()
+    // router.push(`/tournament/edit/${tournamentId}?t=rules`);
   };
 
   return (

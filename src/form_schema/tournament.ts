@@ -14,8 +14,8 @@ export const TournamentSchema = z.object({
     .min(10, {
       message: "Tournament rules must be at least 10 characters.",
     })
-    .max(300, {
-      message: "Tournament rules must not be longer than 300 characters.",
+    .max(1000, {
+      message: "Tournament rules must not be longer than 1000 characters.",
     })
     .optional(),
   thumbnail: z.string({
