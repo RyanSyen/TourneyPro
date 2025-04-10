@@ -47,6 +47,7 @@ import { InfoCircleIcon } from "./InfoCircle";
 import { InfoHexaIcon } from "./InfoHexa";
 import { Link2Icon } from "./Link2";
 import { ListIcon } from "./List";
+import { LoaderCircleIcon } from "./LoaderCircle";
 import { LockIcon } from "./Lock";
 import { MailLineIcon } from "./MailLine";
 import { MessageSquareIcon } from "./MessageSquare";
@@ -124,6 +125,7 @@ export {
   InfoHexaIcon,
   Link2Icon,
   ListIcon,
+  LoaderCircleIcon,
   LockIcon,
   MailLineIcon,
   MessageSquareIcon,

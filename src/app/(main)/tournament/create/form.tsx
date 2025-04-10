@@ -123,7 +123,7 @@ const CreateTournamentForm = ({
         .startOf("day")
         .toISOString();
     }
-    
+
     const tournament = {
       ...data,
       thumbnail: previewImg,
@@ -149,7 +149,7 @@ const CreateTournamentForm = ({
           <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
             Tournament Details
           </h4>
-          <div className="flex-wrap grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-12">
+          <div className="flex-wrap grid grid-cols-1 gap-4 sm:gap-12">
             <div className="flex flex-col gap-5">
               <FormField
                 control={form.control}
@@ -462,67 +462,67 @@ const CreateTournamentForm = ({
                   </FormItem>
                 )}
               />
-            </div>
-            {/* Thumbnail section */}
-            <div className="flex flex-col items-start gap-4">
-              <div className="flex items-center gap-2">
-                <FormLabel>Thumbnail</FormLabel>
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <InfoCircleIcon />
-                    </TooltipTrigger>
-                    <TooltipContent className="!bg-[#333]">
-                      <p className="text-[#fcfcfc]">
-                        Thumbnail is a still image that acts as the preview
-                        image for your content.
-                      </p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </div>
-              <FormField
-                control={form.control}
-                name="thumbnail"
-                render={() => (
-                  <FormItem>
-                    <FormLabel
-                      htmlFor="file"
-                      className="border border-[#fcfcfc] bg-transparent rounded-3xl py-2 px-6 hover:bg-[#fcfcfc] hover:text-blue-700 cursor-pointer"
-                    >
-                      Upload
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        id="file"
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => onValidateFile(e)}
-                        className="hidden"
+              {/* Thumbnail section */}
+              <div className="flex flex-col items-start gap-4">
+                <div className="flex items-center gap-2">
+                  <FormLabel>Thumbnail</FormLabel>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <InfoCircleIcon />
+                      </TooltipTrigger>
+                      <TooltipContent className="!bg-[#333]">
+                        <p className="text-[#fcfcfc]">
+                          Thumbnail is a still image that acts as the preview
+                          image for your content.
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+                <FormField
+                  control={form.control}
+                  name="thumbnail"
+                  render={() => (
+                    <FormItem>
+                      <FormLabel
+                        htmlFor="file"
+                        className="border border-[#fcfcfc] bg-transparent rounded-3xl py-2 px-6 hover:bg-[#fcfcfc] hover:text-blue-700 cursor-pointer"
+                      >
+                        Upload
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          id="file"
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => onValidateFile(e)}
+                          className="hidden"
+                        />
+                      </FormControl>
+                      <ErrorMessage name="thumbnail" />
+                    </FormItem>
+                  )}
+                />
+                <div className="mt-4">
+                  {previewImg ? (
+                    <div className="relative w-[300px] h-[200px] bg-center border border-slate-400 rounded-md">
+                      <Image
+                        src={previewImg}
+                        fill
+                        sizes="100%"
+                        style={{ objectFit: "cover" }}
+                        className="rounded-md"
+                        alt="tournament thumbnail image"
+                        priority
                       />
-                    </FormControl>
-                    <ErrorMessage name="thumbnail" />
-                  </FormItem>
-                )}
-              />
-              <div className="mt-4">
-                {previewImg ? (
-                  <div className="relative w-[300px] h-[200px] bg-center border border-slate-400 rounded-md">
-                    <Image
-                      src={previewImg}
-                      fill
-                      sizes="100%"
-                      style={{ objectFit: "cover" }}
-                      className="rounded-md"
-                      alt="tournament thumbnail image"
-                      priority
-                    />
-                  </div>
-                ) : (
-                  <div className="flex justify-center items-center bg-slate-700 rounded-md w-[300px] h-[200px] px-4 text-center font-light text-sm text-slate-400 ">
-                    Preview will be displayed here.
-                  </div>
-                )}
+                    </div>
+                  ) : (
+                    <div className="flex justify-center items-center bg-slate-700 rounded-md w-[300px] h-[200px] px-4 text-center font-light text-sm text-slate-400 ">
+                      Preview will be displayed here.
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

@@ -8,7 +8,13 @@ import useTournamentEventStore from "../../../shared/data-store/useEventStore";
 import { toast } from "sonner";
 import CreateTournamentForm from "../../../create/form";
 
-export default function Overview({ tournament, username }: { tournament: ITournamentDetails, username: string }) {
+export default function Overview({
+  tournament,
+  username,
+}: {
+  tournament: ITournamentDetails;
+  username: string;
+}) {
   const { publishTournament } = useTournamentStore();
   const { fetchTournamentEvents } = useTournamentEventStore();
 
@@ -24,23 +30,23 @@ export default function Overview({ tournament, username }: { tournament: ITourna
     window.location.reload();
   };
 
-//   useEffect(async () => {
-//     var res = await fetch(process.env.NEXT_PUBLIC_CLERK_BE_API + "/users/" + tournament.createdBy, {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
-//       },
-//     })
-// }, []);
+  //   useEffect(async () => {
+  //     var res = await fetch(process.env.NEXT_PUBLIC_CLERK_BE_API + "/users/" + tournament.createdBy, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
+  //       },
+  //     })
+  // }, []);
 
   return (
     <div className="flex flex-col gap-4 w-lvw-full">
       <div className="flex gap-4">
         <section
-          className={`space-y-4 overflow-y-auto h-fit pr-4 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] p-6`}
+          className={`flex-1 space-y-4 overflow-y-auto h-fit pr-4 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] p-6`}
         >
-          <div className="relative w-[300px] h-[150px]">
+          <div className="relative w-[auto] h-[150px]">
             <Image
               src={tournament.thumbnail}
               alt={tournament.title}
@@ -54,7 +60,9 @@ export default function Overview({ tournament, username }: { tournament: ITourna
             <p className="leading-7">{username}</p>
           </div>
         </section>
-        <CreateTournamentForm isEdit={true} tournament={tournament} />
+        <div className="flex-2">
+          <CreateTournamentForm isEdit={true} tournament={tournament} />
+        </div>
       </div>
       <CustomButton
         startIcon={<UploadIcon />}
