@@ -7,6 +7,9 @@ import useTournamentStore from "../../../shared/data-store/useTournamentStore";
 import useTournamentEventStore from "../../../shared/data-store/useEventStore";
 import { toast } from "sonner";
 import CreateTournamentForm from "../../../create/form";
+import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
+import { tournamentStatusLookup } from "@/lookups/tournament/statusLookup";
 
 export default function Overview({
   tournament,
@@ -56,23 +59,43 @@ export default function Overview({
             />
           </div>
           <div>
-            <p className="leading-7">{tournament.title}</p>
+            <p className="leading-7 text-md font-medium">{tournament.title}</p>
             <p className="leading-7">{username}</p>
+          </div>
+          <Separator />
+          <div>
+            <p className="leading-7">Public Link:</p>
+            <Link
+              className="hover:text-blue-500 hover:underline leading-7 text-sm line-clamp-1"
+              href={`${process.env.NEXT_PUBLIC_BASE_URL}/tournament/edit/${tournament.id}`}
+            >
+              {`${process.env.NEXT_PUBLIC_BASE_URL}/tournament/edit/${tournament.id}`}
+            </Link>
+          </div>
+          <Separator />
+          <div>
+            <p className="leading-7">Status:</p>
+            <p className="leading-7 flex justify-between items-center">
+              {
+                tournamentStatusLookup.find((x) => x.id == tournament.status)
+                  ?.title
+              }
+              <CustomButton
+                startIcon={<UploadIcon />}
+                size="sm"
+                onClick={() => updateStatus()}
+                hidden={tournament.status != 0}
+                className="w-fit"
+              >
+                Publish
+              </CustomButton>
+            </p>
           </div>
         </section>
         <div className="flex-2">
           <CreateTournamentForm isEdit={true} tournament={tournament} />
         </div>
       </div>
-      <CustomButton
-        startIcon={<UploadIcon />}
-        size="sm"
-        onClick={() => updateStatus()}
-        hidden={tournament.status != 0}
-        className="w-fit"
-      >
-        Publish Tournament
-      </CustomButton>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import useTaskStore from "../shared/data-store/useTaskStore";
 import { KanbanBoard } from "./components/kanban-board";
 import { useEffect, useState } from "react";
 import { IInitialTask } from "@/types/initialTask";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function KanbanBoardPage() {
   const { fetchTasks, updateTask } = useTaskStore();
@@ -26,7 +27,12 @@ export default function KanbanBoardPage() {
     loadMatchSettings();
   }, [fetchTasks, setTasks]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center gap-3">
+        <Spinner size="large" />
+      </div>
+    );
 
   if (!tasks) return <div>No tasks available</div>;
 

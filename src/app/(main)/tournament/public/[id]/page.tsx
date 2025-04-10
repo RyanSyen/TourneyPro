@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import ViewTournamentHeader from "./header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ITournamentDetails } from "@/types/tournament";
+import { Spinner } from "@/components/ui/spinner";
 
 const MainPage = () => {
   const { fetchTournament } = useTournamentStore();
@@ -33,7 +34,12 @@ const MainPage = () => {
     loadTournament();
   }, [fetchTournament, params.id]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center gap-3">
+        <Spinner size="large" />
+      </div>
+    );
 
   if (!tournament) return <div>Tournament not found</div>;
 

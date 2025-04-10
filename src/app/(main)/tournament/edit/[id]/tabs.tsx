@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { redirect, useParams } from "next/navigation";
+import {
+  redirect,
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Matches from "./matchSettings/matches";
 import useTournamentStore from "../../shared/data-store/useTournamentStore";
@@ -12,14 +18,21 @@ import Overview from "./overview/overview";
 import { ITournamentDetails } from "@/types/tournament";
 import { Badge } from "@/components/ui/badge";
 import { PencilIcon } from "@/icons/components";
+import Rules from "./rules/rules";
+import { Spinner } from "@/components/ui/spinner";
 
-export default function EditTournamentTabs({username}: { username: string }) {
+export default function EditTournamentTabs({ username }: { username: string }) {
   const { fetchTournament } = useTournamentStore();
   const params = useParams();
   const [tournament, setTournament] = useState<ITournamentDetails | undefined>(
     undefined
   );
   const [loading, setLoading] = useState<boolean>(true);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const tabParam = searchParams.get("t") ?? "overview";
+  const [tabValue, setTabValue] = useState<string>(tabParam);
 
   useEffect(() => {
     const loadTournament = async () => {
@@ -39,11 +52,28 @@ export default function EditTournamentTabs({username}: { username: string }) {
     loadTournament();
   }, [fetchTournament, params.id]);
 
+  // keep state in sync with query string if user lands on a link with ?t=
+  useEffect(() => {
+    setTabValue(tabParam);
+  }, [tabParam]);
+
+  const handleTabChange = async (nextTab: string) => {
+    const newUrl = `${pathname}?t=${nextTab}`;
+    router.push(newUrl);
+
+    setTabValue(nextTab);
+  };
+
   if (!params.id) {
     redirect("/not-found");
   }
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center gap-3">
+        <Spinner size="large" />
+      </div>
+    );
 
   if (!tournament) return <div>Tournament not found</div>;
 
@@ -64,10 +94,9 @@ export default function EditTournamentTabs({username}: { username: string }) {
         </Badge>
       </div>
       <div>
-        <Tabs defaultValue="overview">
+        <Tabs value={tabValue} onValueChange={handleTabChange}>
           <TabsList>
             <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="details">Details</TabsTrigger>
             <TabsTrigger value="rules">Rules</TabsTrigger>
             <TabsTrigger value="events">Events</TabsTrigger>
             <TabsTrigger value="players" disabled={tournament.status != 1}>
@@ -94,12 +123,11 @@ export default function EditTournamentTabs({username}: { username: string }) {
               <Overview tournament={tournament} username={username} />
             </div>
           </TabsContent>
-          <TabsContent value="details">
+          <TabsContent value="rules">
             <div className="pt-4">
-              <CreateTournamentForm isEdit={true} tournament={tournament} />
+              <Rules tournament={tournament} />
             </div>
           </TabsContent>
-          <TabsContent value="rules">Rules</TabsContent>
           <TabsContent value="events">
             <div className="pt-4">
               <TournamentEvent tournamentId={params.id.toString()} />

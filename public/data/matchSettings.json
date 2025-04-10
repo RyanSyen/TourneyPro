@@ -62,11 +62,11 @@
   {
     "tournamentId": "4d89e5ca-8c38-4236-89fd-7b4a4d754fdc",
     "points": "21",
-    "changeOfEnds": "1",
+    "changeOfEnds": "3",
     "gracePeriod": "3",
     "allowSpinServe": false,
     "allowDeuce": true,
     "createdAt": "2025-04-07T10:20:48.390Z",
-    "updatedAt": "2025-04-07T10:20:48.390Z"
+    "updatedAt": "2025-04-10T02:39:38.224Z"
   }
 ]

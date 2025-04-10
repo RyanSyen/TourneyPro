@@ -5,16 +5,13 @@ import { useMobile } from "@/hooks/useMobile";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  ChevronDownIcon,
-  Link2Icon,
-  PencilIcon,
-} from "@/icons/components";
+import { ChevronDownIcon, Link2Icon, PencilIcon } from "@/icons/components";
 import { StatusBadge } from "./custom-status-badge";
 import useTaskStore from "../../shared/data-store/useTaskStore";
 import { redirect, useParams } from "next/navigation";
 import { IInitialTask } from "@/types/initialTask";
 import TicketSidebar from "./task-sidebar";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function Task() {
   const { fetchTask } = useTaskStore();
@@ -50,7 +47,12 @@ export default function Task() {
     navigator.clipboard.writeText(`${baseUrl}/tasks/${params.id}`);
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center gap-3">
+        <Spinner size="large" />
+      </div>
+    );
 
   if (!task) return <div>Task not found</div>;
 

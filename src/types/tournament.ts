@@ -2,6 +2,7 @@ export interface ITournamentDetails {
     id?: string;
     title: string;
     description: string;
+    rules?: string;
     thumbnail: string;
     isPublic: boolean;
     type: TournamentType[];

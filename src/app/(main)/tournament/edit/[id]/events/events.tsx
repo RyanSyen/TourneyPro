@@ -32,13 +32,17 @@ import { AgeGroupLookup } from "@/lookups/tournament/ageGroupLookup";
 import { TournamentEventLookup } from "@/lookups/tournament/eventLookup";
 import { EventTypeLookup } from "@/lookups/tournament/eliminationLookup";
 import { LevelLookup } from "@/lookups/tournament/levelLookup";
-import { type TournamentEvent, TournamentEventSchema } from "@/form_schema/event";
+import {
+  type TournamentEvent,
+  TournamentEventSchema,
+} from "@/form_schema/event";
 // import { toast } from "sonner";
 import { ErrorMessage } from "@hookform/error-message";
 import useTournamentEventStore from "../../../shared/data-store/useEventStore";
 import { useParams } from "next/navigation";
 import CustomButton from "@/components/ui/button/CustomButton";
 import { PlusIcon } from "@/icons/components";
+import { Spinner } from "@/components/ui/spinner";
 
 const multiSelectAgeGrouplookup: Option[] = AgeGroupLookup.map((group) => ({
   label: group.age,
@@ -231,7 +235,12 @@ export default function TournamentEvent({
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center gap-3">
+        <Spinner size="large" />
+      </div>
+    );
 
   // if (!tournamentEvent || tournamentEvent.length == 0) return <div>No events found</div>;
 
@@ -340,7 +349,9 @@ export default function TournamentEvent({
                         placeholder="Select or insert age group"
                         loadingIndicator={
                           <p className="py-2 text-center text-lg leading-10 text-muted-foreground">
-                            loading...
+                            <div className="flex justify-center items-center gap-3">
+                              <Spinner size="large" />
+                            </div>
                           </p>
                         }
                         emptyIndicator={

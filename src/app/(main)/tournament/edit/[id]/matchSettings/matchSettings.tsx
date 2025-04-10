@@ -39,13 +39,13 @@ import useMatchSettingsStore from "../../../shared/data-store/useMatchSettingsSt
 interface props {
   tournamentId: string;
   matchSettings: Omit<IMatchSettings, "createdAt" | "updatedAt">;
-  setOpenDialog: (open: boolean) => void;
+  // setOpenDialog: (open: boolean) => void;
 }
 
 export default function MatchSettings({
   tournamentId,
   matchSettings,
-  setOpenDialog,
+  // setOpenDialog,
 }: props) {
   const [allowSpinServe, setAllowSpinServe] = useState(
     matchSettings.allowSpinServe ?? false
@@ -83,7 +83,8 @@ export default function MatchSettings({
       tournamentId: tournamentId,
     };
     updateMatchSettings(tournamentId, updatedMatchSettings);
-    setOpenDialog(false);
+    // setOpenDialog(false);
+    window.location.reload();
   };
 
   return (
@@ -98,8 +99,8 @@ export default function MatchSettings({
               name="points"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
-                    Points <span className="text-[#e50b0d] text-xl">*</span>
+                  <FormLabel className="flex items-center gap-0">
+                    Points <span className="text-[#e50b0d] text-xl pl-1">*</span>
                   </FormLabel>
                   <Select
                     onValueChange={field.onChange}
@@ -131,9 +132,9 @@ export default function MatchSettings({
               name="changeOfEnds"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
-                    Number of sets{" "}
-                    <span className="text-[#e50b0d] text-xl">*</span>
+                  <FormLabel className="flex items-center gap-0">
+                    Number of sets
+                    <span className="text-[#e50b0d] text-xl pl-1">*</span>
                   </FormLabel>
                   <Select
                     onValueChange={field.onChange}
@@ -163,8 +164,9 @@ export default function MatchSettings({
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col">
-                    <FormLabel>
-                      Grace Period (minutes){" "}
+                    <FormLabel className="flex items-center gap-0">
+                      Grace Period (minutes)
+                      <span className="text-[#e50b0d] text-xl pl-1">*</span>
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger type="button" className="pl-2">
@@ -183,7 +185,6 @@ export default function MatchSettings({
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
-                      <span className="text-[#e50b0d] text-xl pl-1">*</span>
                     </FormLabel>
                     <Select
                       onValueChange={field.onChange}
@@ -216,8 +217,9 @@ export default function MatchSettings({
               name="allowSpinServe"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel className="flex items-center">
-                    Allow Spin Serve{" "}
+                  <FormLabel className="flex items-center gap-0">
+                    Allow Spin Serve
+                    <span className="text-[#e50b0d] text-xl pl-1">*</span>
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger type="button" className="pl-2">
@@ -236,7 +238,6 @@ export default function MatchSettings({
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
-                    <span className="text-[#e50b0d] text-xl pl-1">*</span>
                   </FormLabel>
                   <FormControl>
                     <div>
@@ -259,8 +260,9 @@ export default function MatchSettings({
               name="allowDeuce"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel className="flex items-center">
-                    Allow Deuce{" "}
+                  <FormLabel className="flex items-center gap-0">
+                    Allow Deuce
+                    <span className="text-[#e50b0d] text-xl pl-1">*</span>
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger type="button" className="pl-2">
@@ -279,7 +281,6 @@ export default function MatchSettings({
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
-                    <span className="text-[#e50b0d] text-xl pl-1">*</span>
                   </FormLabel>
                   <FormControl>
                     <div>
@@ -299,14 +300,14 @@ export default function MatchSettings({
           </div>
         </section>
         <section className="flex justify-end items-center gap-2 pt-4">
-          <Button
+          {/* <Button
             type="button"
             variant={"tailAdminSecondary"}
             className="w-24"
-            onClick={() => setOpenDialog(false)}
+            // onClick={() => setOpenDialog(false)}
           >
             Back
-          </Button>
+          </Button> */}
           <Button type="submit" variant={"tailAdminPrimary"} className="w-24">
             Save
           </Button>
