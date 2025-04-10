@@ -11,7 +11,6 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Matches from "./matchSettings/matches";
 import useTournamentStore from "../../shared/data-store/useTournamentStore";
-import CreateTournamentForm from "../../create/form";
 import Players from "./players/players";
 import TournamentEvent from "./events/events";
 import Overview from "./overview/overview";

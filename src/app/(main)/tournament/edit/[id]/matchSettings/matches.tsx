@@ -10,7 +10,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { default as MatchSettingsComponent } from "./matchSettings";
 import useMatchSettingsStore from "../../../shared/data-store/useMatchSettingsStore";
 import { useEffect, useState } from "react";
 import { MatchSettings } from "@/form_schema/matchSetting";

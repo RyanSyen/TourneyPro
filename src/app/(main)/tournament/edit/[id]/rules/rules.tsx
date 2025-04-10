@@ -10,10 +10,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
@@ -46,6 +44,15 @@ function Rules({ tournament }: { tournament: ITournamentDetails }) {
   const { updateTournament } = useTournamentStore();
   // const router = useRouter();
 
+  const form = useForm<z.infer<typeof RulesFormSchema>>({
+    resolver: zodResolver(RulesFormSchema),
+    defaultValues: {
+      rules: tournament.rules ?? "",
+    },
+  });
+
+  const { reset } = form;
+
   useEffect(() => {
     console.log('calling useEffect')
     const loadMatchSettings = async () => {
@@ -73,20 +80,13 @@ function Rules({ tournament }: { tournament: ITournamentDetails }) {
     };
 
     loadMatchSettings();
-  }, [fetchMatchSettings, tournament.id]);
+  }, [fetchMatchSettings, tournament.id, reset, tournament.rules]);
 
-  const form = useForm<z.infer<typeof RulesFormSchema>>({
-    resolver: zodResolver(RulesFormSchema),
-    defaultValues: {
-      rules: tournament.rules ?? "",
-    },
-  });
-
-  const { reset } = form;
+  
 
   async function onSubmit(data: z.infer<typeof RulesFormSchema>) {
     console.log("Form Data: ", data);
-    var updatedTournament: Tournament = {
+    const updatedTournament: Tournament = {
         ...tournament,
         registrationDate: {
             from: dayjs(tournament.registrationDate.from).startOf("day").toISOString(),
