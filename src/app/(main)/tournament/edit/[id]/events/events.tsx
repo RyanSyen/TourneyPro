@@ -246,7 +246,7 @@ export default function TournamentEvent({
 
   return (
     <section
-      className={`space-y-4 overflow-y-auto pr-4 bg-[#14141b] rounded-xl p-6`}
+      className={`flex-1 space-y-4 overflow-y-auto h-fit pr-4 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] p-6`}
     >
       <div className="flex items-center gap-4">
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
@@ -272,7 +272,7 @@ export default function TournamentEvent({
           <form
             id="eventsForm"
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-6 max-w-[1000px] bg-[#14141b] rounded-xl"
+            className="flex flex-col gap-6 max-w-[1000px] space-y-4 overflow-y-auto pr-4 rounded-2xl border border-gray-200 px-6 py-3 dark:border-gray-800 dark:bg-white/[0.03]"
           >
             <section className={`flex-wrap grid grid-cols-2 gap-x-12 gap-y-8`}>
               <FormField
@@ -348,11 +348,11 @@ export default function TournamentEvent({
                         creatable
                         placeholder="Select or insert age group"
                         loadingIndicator={
-                          <p className="py-2 text-center text-lg leading-10 text-muted-foreground">
+                          <div className="py-2 text-center text-lg leading-10 text-muted-foreground">
                             <div className="flex justify-center items-center gap-3">
                               <Spinner size="large" />
                             </div>
-                          </p>
+                          </div>
                         }
                         emptyIndicator={
                           <p className="w-full text-center text-lg leading-10 text-muted-foreground">

@@ -19,7 +19,7 @@ export async function GET(
   try {
     const { tournamentId } = await params;
     const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    console.log("data: ", data);
+    // console.log("data: ", data);
 
     if (data.length === 0) {
       return NextResponse.json(data);
