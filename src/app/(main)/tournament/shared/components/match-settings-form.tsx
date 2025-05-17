@@ -1,6 +1,5 @@
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { MatchSettings, MatchSettingsSchema } from "@/form_schema/matchSetting";
 import { useForm, UseFormReturn } from "react-hook-form";
 import {
@@ -38,13 +37,13 @@ interface props {
 }
 
 function MatchSettingsForm({ form, isEdit, defaultValues }: props) {
-  if (!form) {
-    form = useForm<MatchSettings>({
-      resolver: zodResolver(MatchSettingsSchema),
-      shouldFocusError: false,
-      defaultValues: defaultValues,
-    });
-  }
+  const internalForm = useForm<MatchSettings>({
+    resolver: zodResolver(MatchSettingsSchema),
+    shouldFocusError: false,
+    defaultValues: defaultValues,
+  });
+
+  const activeForm = form ?? internalForm;
 
   return (
     <section
@@ -53,13 +52,13 @@ function MatchSettingsForm({ form, isEdit, defaultValues }: props) {
       <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
         Match Settings
       </h4>
-      <Form {...form}>
+      <Form {...activeForm}>
         <section
           className={`space-y-4 overflow-y-auto pr-4 rounded-2xl border border-gray-200 px-6 py-3 dark:border-gray-800 dark:bg-white/[0.03]`}
         >
           <div className="flex-wrap grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-12">
             <FormField
-              control={form.control}
+              control={activeForm.control}
               name="points"
               render={({ field }) => (
                 <FormItem>
@@ -93,7 +92,7 @@ function MatchSettingsForm({ form, isEdit, defaultValues }: props) {
               )}
             />
             <FormField
-              control={form.control}
+              control={activeForm.control}
               name="changeOfEnds"
               render={({ field }) => (
                 <FormItem>
@@ -124,7 +123,7 @@ function MatchSettingsForm({ form, isEdit, defaultValues }: props) {
               )}
             />
             <FormField
-              control={form.control}
+              control={activeForm.control}
               name="gracePeriod"
               render={({ field }) => {
                 return (
@@ -178,7 +177,7 @@ function MatchSettingsForm({ form, isEdit, defaultValues }: props) {
               }}
             />
             <FormField
-              control={form.control}
+              control={activeForm.control}
               name="allowSpinServe"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
@@ -223,7 +222,7 @@ function MatchSettingsForm({ form, isEdit, defaultValues }: props) {
               )}
             />
             <FormField
-              control={form.control}
+              control={activeForm.control}
               name="allowDeuce"
               render={({ field }) => (
                 <FormItem className="flex flex-col">

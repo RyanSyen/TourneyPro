@@ -30,7 +30,6 @@ export async function POST(request: NextRequest) {
     console.log('data:', data)
     const matchSettings = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const newMatchSettings: IMatchSettings = {
-      tournamentId: data,
       points: "21",
       changeOfEnds: "1",
       gracePeriod: "3",

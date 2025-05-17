@@ -5,7 +5,6 @@ export interface IMatchSettings {
     gracePeriod: string;
     allowSpinServe: boolean;
     allowDeuce: boolean;
-    tournamentId: string;
     createdAt: Date;
     updatedAt: Date;
   }

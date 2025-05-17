@@ -5,7 +5,6 @@ import { IMatchSettings } from "@/types/matchSetting";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
@@ -62,7 +61,6 @@ export default function MatchSettings({
     shouldFocusError: false,
     defaultValues: {
       // since formField is using controlled component, you need to provide default value for the field
-      tournamentId: matchSettings?.tournamentId || uuidv4(),
       points: matchSettings?.points || "21",
       changeOfEnds: matchSettings?.changeOfEnds || "1",
       gracePeriod: matchSettings?.gracePeriod || "3",
@@ -82,8 +80,7 @@ export default function MatchSettings({
   const onSubmit = async (data: z.output<typeof MatchSettingsSchema>) => {
     const updatedMatchSettings: MatchSettings = {
       ...data,
-      tournamentId: tournamentId,
-    };
+      };
     updateMatchSettings(tournamentId, updatedMatchSettings);
     window.location.reload();
     // router.refresh(); // update server components but since we are using client component, we need to hard refresh the page to see the changes using router.push()

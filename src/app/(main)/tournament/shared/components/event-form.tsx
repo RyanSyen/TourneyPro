@@ -43,6 +43,7 @@ interface props {
 
 interface MultipleAgeGroupSelectorProps {
   uniqueKey: React.Key;
+/* eslint-disable @typescript-eslint/no-explicit-any */
   form: UseFormReturn<TournamentEvent, any, undefined>;
   ageGroup: Option[];
   ageGroupStr: string;
@@ -256,7 +257,6 @@ function EventForm({
 
       if (!parsedData) console.error("Error parsing data");
 
-      /* eslint-disable @typescript-eslint/no-unused-vars */
       const payload: TournamentEvent = {
         ...parsedData,
         prize: parsedData.prize || "no prize",

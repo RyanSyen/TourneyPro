@@ -21,12 +21,12 @@ interface props {
 }
 
 function TournamentRulesForm({ form, isEdit, defaultValues }: props) {
-  if (!form) {
-    form = useForm<TournamentRules>({
-      resolver: zodResolver(TournamentRulesSchema),
-      defaultValues: defaultValues,
-    });
-  }
+  const internalForm = useForm<TournamentRules>({
+    resolver: zodResolver(TournamentRulesSchema),
+    defaultValues: defaultValues,
+  });
+
+  const activeForm = form ?? internalForm;
 
   return (
     <section
@@ -35,9 +35,9 @@ function TournamentRulesForm({ form, isEdit, defaultValues }: props) {
       <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
         Tournament Rules
       </h4>
-      <Form {...form}>
+      <Form {...activeForm}>
         <FormField
-          control={form.control}
+          control={activeForm.control}
           name="rules"
           render={({ field }) => (
             <FormItem>

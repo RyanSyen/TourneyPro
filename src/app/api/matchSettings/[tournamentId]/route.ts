@@ -16,17 +16,17 @@ export async function GET(
     const { tournamentId } = await params;
     console.log("tournamentId: ", tournamentId);
     const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    const index = data.findIndex(
-      (t: IMatchSettings) => t.tournamentId === tournamentId
-    );
+    // const index = data.findIndex(
+    //   (t: IMatchSettings) => t.tournamentId === tournamentId
+    // );
 
-    if (index === -1) {
-      return NextResponse.json(
-        { error: "Match Settings not found" },
-        { status: 404 }
-      );
-    }
-    return NextResponse.json(data[index]);
+    // if (index === -1) {
+    //   return NextResponse.json(
+    //     { error: "Match Settings not found" },
+    //     { status: 404 }
+    //   );
+    // }
+    return NextResponse.json(data[0]);
   } catch (error) {
     console.error(
       "[GET_API_MATCH_SETTINGS] Error fetching matchSettings: ",
@@ -41,25 +41,26 @@ export async function GET(
 
 export async function PUT(request: NextRequest) {
   const matchSettings = JSON.parse(fs.readFileSync(filePath, "utf8"));
-
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   const { tournamentId, updatedMatchSettings } = await request.json();
 
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   const data: IMatchSettings = {
     ...updatedMatchSettings,
     updatedAt: dayjs().toDate(),
   };
-  const index = matchSettings.findIndex(
-    (t: IMatchSettings) => t.tournamentId === tournamentId
-  );
+  // const index = matchSettings.findIndex(
+  //   (t: IMatchSettings) => t.tournamentId === tournamentId
+  // );
 
-  if (index === -1) {
-    return NextResponse.json(
-      { error: "Match Settings not found" },
-      { status: 404 }
-    );
-  }
+  // if (index === -1) {
+  //   return NextResponse.json(
+  //     { error: "Match Settings not found" },
+  //     { status: 404 }
+  //   );
+  // }
 
-  matchSettings[index] = { ...matchSettings[index], ...data };
+  // matchSettings[index] = { ...matchSettings[index], ...data };
   fs.writeFileSync(filePath, JSON.stringify(matchSettings, null, 2));
 
   return NextResponse.json(matchSettings[0]);
