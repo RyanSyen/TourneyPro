@@ -2,6 +2,7 @@ import { AlertIcon } from "./Alert";
 import { AngleDownIcon } from "./AngleDown";
 import { AngleUpIcon } from "./AngleUp";
 import { ArrowDownIcon } from "./ArrowDown";
+import { ArrowLeftIcon } from "./ArrowLeft";
 import { ArrowRightIcon } from "./ArrowRight";
 import { ArrowUpIcon } from "./ArrowUp";
 import { ArrowUpDownIcon } from "./ArrowUpDown";
@@ -80,6 +81,7 @@ export {
   AngleDownIcon,
   AngleUpIcon,
   ArrowDownIcon,
+  ArrowLeftIcon,
   ArrowRightIcon,
   ArrowUpIcon,
   ArrowUpDownIcon,

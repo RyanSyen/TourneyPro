@@ -74,5 +74,20 @@
     "attachments": [],
     "createdAt": "2025-04-11T00:04:42.054Z",
     "updatedAt": "2025-04-11T00:04:42.054Z"
+  },
+  {
+    "id": "43a0725f-f99e-4279-90ed-15a9c2f02884",
+    "summary": "can create duplicate tournament events",
+    "description": "Fix and do checking to prevent creation of duplicate events",
+    "status": "inprogress",
+    "priority": "medium",
+    "issueType": "bug",
+    "labels": [
+      "frontend"
+    ],
+    "dueDate": "2025-04-13T01:52:08.151Z",
+    "attachments": [],
+    "createdAt": "2025-04-12T01:53:15.629Z",
+    "updatedAt": "2025-04-12T01:53:15.629Z"
   }
 ]

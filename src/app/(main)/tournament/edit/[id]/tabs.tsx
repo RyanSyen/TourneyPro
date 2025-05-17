@@ -10,9 +10,7 @@ import {
 } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Matches from "./matchSettings/matches";
-import useTournamentStore from "../../shared/data-store/useTournamentStore";
 import Players from "./players/players";
-import TournamentEvent from "./events/events";
 import Overview from "./overview/overview";
 import { ITournamentDetails } from "@/types/tournament";
 import { Badge } from "@/components/ui/badge";
@@ -20,36 +18,43 @@ import { PencilIcon } from "@/icons/components";
 import Rules from "./rules/rules";
 import { Spinner } from "@/components/ui/spinner";
 
-export default function EditTournamentTabs({ username }: { username: string }) {
-  const { fetchTournament } = useTournamentStore();
+interface props {
+  username: string;
+  tournament: ITournamentDetails;
+}
+
+export default function EditTournamentTabs({ username, tournament }: props) {
+  // const { fetchTournament } = useTournamentStore();
   const params = useParams();
-  const [tournament, setTournament] = useState<ITournamentDetails | undefined>(
-    undefined
-  );
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [tournament, setTournament] = useState<ITournamentDetails | undefined>(
+  //   undefined
+  // );
+  // const [loading, setLoading] = useState<boolean>(true);
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
   const tabParam = searchParams.get("t") ?? "overview";
   const [tabValue, setTabValue] = useState<string>(tabParam);
 
-  useEffect(() => {
-    const loadTournament = async () => {
-      try {
-        setLoading(true);
-        const tournamentData = await fetchTournament(params.id!.toString());
-        console.log("tournament: ", tournamentData);
-        setTournament(tournamentData);
-      } catch (error) {
-        console.error("Error fetching tournament:", error);
-        // Handle error state if needed
-      } finally {
-        setLoading(false);
-      }
-    };
+  console.log("tournament: ", tournament);
 
-    loadTournament();
-  }, [fetchTournament, params.id]);
+  // useEffect(() => {
+  //   const loadTournament = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const tournamentData = await fetchTournament(params.id!.toString());
+  //       console.log("tournament: ", tournamentData);
+  //       setTournament(tournamentData);
+  //     } catch (error) {
+  //       console.error("Error fetching tournament:", error);
+  //       // Handle error state if needed
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   loadTournament();
+  // }, [fetchTournament, params.id]);
 
   // keep state in sync with query string if user lands on a link with ?t=
   useEffect(() => {
@@ -67,14 +72,12 @@ export default function EditTournamentTabs({ username }: { username: string }) {
     redirect("/not-found");
   }
 
-  if (loading)
+  if (!tournament)
     return (
       <div className="flex justify-center items-center gap-3">
         <Spinner size="large" />
       </div>
     );
-
-  if (!tournament) return <div>Tournament not found</div>;
 
   return (
     <div>
@@ -129,7 +132,9 @@ export default function EditTournamentTabs({ username }: { username: string }) {
           </TabsContent>
           <TabsContent value="events">
             <div className="pt-4">
-              <TournamentEvent tournamentId={params.id.toString()} />
+              {/* <TournamentEvent tournamentId={params.id.toString()} /> */}
+              {/* <TournamentEvents tournamentId={params.id.toString()} /> */}
+              tournament events
             </div>
           </TabsContent>
           <TabsContent value="players">

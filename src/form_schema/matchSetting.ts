@@ -2,7 +2,6 @@ import { z } from "zod";
 
 // Define Match Settings Schema
 export const MatchSettingsSchema = z.object({
-    tournamentId: z.string(),
     points: z.string().min(1, {
       message: "Tournament point system is required.",
     }),

@@ -31,7 +31,7 @@ export const columns: ColumnDef<ITournamentDetails>[] = [
     id: "actions",
     cell: ({ row }) => {
       const tournament = row.original;
-      console.log("tournament row: ", tournament);
+      // console.log("tournament row: ", tournament);
 
       return (
         <DropdownMenu>
@@ -116,17 +116,4 @@ export const columns: ColumnDef<ITournamentDetails>[] = [
     accessorKey: "location",
     header: "Location",
   },
-  // {
-  //   accessorKey: "amount",
-  //   header: () => <div className="text-right">Amount</div>,
-  //   cell: ({ row }) => {
-  //     const amount = parseFloat(row.getValue("amount"));
-  //     const formatted = new Intl.NumberFormat("en-US", {
-  //       style: "currency",
-  //       currency: "USD",
-  //     }).format(amount);
-
-  //     return <div className="text-right font-medium">{formatted}</div>;
-  //   },
-  // },
 ];

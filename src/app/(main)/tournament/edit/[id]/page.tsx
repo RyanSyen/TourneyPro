@@ -1,9 +1,14 @@
 import { auth } from "@clerk/nextjs/server";
 import EditTournamentTabs from "./tabs";
+import { fetchTournament } from "../../shared/actions/tournaments";
 
-const MainPage = async () => {
+type Params = Promise<{ id: string }>;
+
+const MainPage = async (props: { params: Params }) => {
   try {
     const { userId } = await auth();
+    const params = await props.params;
+    const tournamentId = params.id;
 
     const clerkApiUrl = `${process.env.NEXT_PUBLIC_CLERK_BE_API}/users/${userId}`;
     const clerkSecretKey = process.env.CLERK_SECRET_KEY;
@@ -33,8 +38,9 @@ const MainPage = async () => {
 
     const user = await response.json();
     const username = `${user.first_name} ${user.last_name}`;
+    const tournament = await fetchTournament(tournamentId);
 
-    return <EditTournamentTabs username={username} />;
+    return <EditTournamentTabs username={username} tournament={tournament} />;
   } catch (error) {
     console.error("Error fetching user data from Clerk API:", error);
     return new Response("Internal Server Error", { status: 500 });
