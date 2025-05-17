@@ -1,11 +1,12 @@
 "use client";
 import useTaskStore from "../shared/data-store/useTaskStore";
-import { KanbanBoard } from "./components/kanban-board";
+// import { KanbanBoard } from "./components/kanban-board";
 import { useEffect, useState } from "react";
 import { IInitialTask } from "@/types/initialTask";
 import { Spinner } from "@/components/ui/spinner";
 
 export default function KanbanBoardPage() {
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   const { fetchTasks, updateTask } = useTaskStore();
   const [tasks, setTasks] = useState<IInitialTask[] | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
@@ -40,7 +41,8 @@ export default function KanbanBoardPage() {
 
   return (
     <div>
-      <KanbanBoard tasks={tasks} setTasks={setTasks} updateTask={updateTask} />
+      {/* <KanbanBoard tasks={tasks} setTasks={setTasks} updateTask={updateTask} /> */}
+      disabled for now
     </div>
   );
 }
