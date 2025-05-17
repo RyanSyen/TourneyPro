@@ -1,0 +1,172 @@
+// Prisma schema for TourneyPro
+// This file defines the database models and connection for Prisma ORM
+// See: https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// --- User Table for Auditing ---
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  createdAt DateTime @default(now())
+  // Relations for auditing
+  createdTournaments      Tournament[]      @relation("CreatedTournaments")
+  updatedTournaments      Tournament[]      @relation("UpdatedTournaments")
+  deletedTournaments      Tournament[]      @relation("DeletedTournaments")
+  createdTournamentRules  TournamentRules[] @relation("CreatedTournamentRules")
+  updatedTournamentRules  TournamentRules[] @relation("UpdatedTournamentRules")
+  deletedTournamentRules  TournamentRules[] @relation("DeletedTournamentRules")
+  createdMatchSettings    MatchSettings[]   @relation("CreatedMatchSettings")
+  updatedMatchSettings    MatchSettings[]   @relation("UpdatedMatchSettings")
+  deletedMatchSettings    MatchSettings[]   @relation("DeletedMatchSettings")
+  createdTournamentEvents TournamentEvent[] @relation("CreatedTournamentEvents")
+  updatedTournamentEvents TournamentEvent[] @relation("UpdatedTournamentEvents")
+  deletedTournamentEvents TournamentEvent[] @relation("DeletedTournamentEvents")
+  createdPlayers          Player[]          @relation("CreatedPlayers")
+  updatedPlayers          Player[]          @relation("UpdatedPlayers")
+  deletedPlayers          Player[]          @relation("DeletedPlayers")
+  createdPlayerEvents     PlayerEvent[]     @relation("CreatedPlayerEvents")
+  updatedPlayerEvents     PlayerEvent[]     @relation("UpdatedPlayerEvents")
+  deletedPlayerEvents     PlayerEvent[]     @relation("DeletedPlayerEvents")
+}
+
+// --- FullAuditedEntity fields ---
+// id: String @id @default(uuid())
+// createdAt: DateTime @default(now())
+// createdById: String?
+// updatedAt: DateTime @updatedAt
+// updatedById: String?
+// deletedAt: DateTime?
+// deletedById: String?
+// isDeleted: Boolean @default(false)
+
+// --- Tournament ---
+model Tournament {
+  id          String           @id @default(uuid())
+  name        String
+  startDate   DateTime
+  endDate     DateTime?
+  rulesId     String?
+  rules       TournamentRules? @relation(fields: [rulesId], references: [id])
+  events      TournamentEvent[]
+  // Auditing
+  createdAt   DateTime         @default(now())
+  createdById String?
+  createdBy   User?            @relation("CreatedTournaments", fields: [createdById], references: [id])
+  updatedAt   DateTime         @updatedAt
+  updatedById String?
+  updatedBy   User?            @relation("UpdatedTournaments", fields: [updatedById], references: [id])
+  deletedAt   DateTime?
+  deletedById String?
+  deletedBy   User?            @relation("DeletedTournaments", fields: [deletedById], references: [id])
+  isDeleted   Boolean          @default(false)
+}
+
+// --- TournamentRules ---
+model TournamentRules {
+  id          String         @id @default(uuid())
+  description String
+  matchSettings MatchSettings[]
+  tournaments Tournament[]
+  // Auditing
+  createdAt   DateTime       @default(now())
+  createdById String?
+  createdBy   User?          @relation("CreatedTournamentRules", fields: [createdById], references: [id])
+  updatedAt   DateTime       @updatedAt
+  updatedById String?
+  updatedBy   User?          @relation("UpdatedTournamentRules", fields: [updatedById], references: [id])
+  deletedAt   DateTime?
+  deletedById String?
+  deletedBy   User?          @relation("DeletedTournamentRules", fields: [deletedById], references: [id])
+  isDeleted   Boolean        @default(false)
+}
+
+// --- MatchSettings ---
+model MatchSettings {
+  id          String           @id @default(uuid())
+  type        String
+  value       String
+  rulesId     String?
+  rules       TournamentRules? @relation(fields: [rulesId], references: [id])
+  // Auditing
+  createdAt   DateTime         @default(now())
+  createdById String?
+  createdBy   User?            @relation("CreatedMatchSettings", fields: [createdById], references: [id])
+  updatedAt   DateTime         @updatedAt
+  updatedById String?
+  updatedBy   User?            @relation("UpdatedMatchSettings", fields: [updatedById], references: [id])
+  deletedAt   DateTime?
+  deletedById String?
+  deletedBy   User?            @relation("DeletedMatchSettings", fields: [deletedById], references: [id])
+  isDeleted   Boolean          @default(false)
+}
+
+// --- TournamentEvent ---
+model TournamentEvent {
+  id            String        @id @default(uuid())
+  tournamentId  String
+  tournament    Tournament    @relation(fields: [tournamentId], references: [id])
+  name          String
+  players       PlayerEvent[]
+  // Auditing
+  createdAt     DateTime      @default(now())
+  createdById   String?
+  createdBy     User?         @relation("CreatedTournamentEvents", fields: [createdById], references: [id])
+  updatedAt     DateTime      @updatedAt
+  updatedById   String?
+  updatedBy     User?         @relation("UpdatedTournamentEvents", fields: [updatedById], references: [id])
+  deletedAt     DateTime?
+  deletedById   String?
+  deletedBy     User?         @relation("DeletedTournamentEvents", fields: [deletedById], references: [id])
+  isDeleted     Boolean       @default(false)
+}
+
+// --- Player ---
+model Player {
+  id            String        @id @default(uuid())
+  name          String
+  email         String        @unique
+  events        PlayerEvent[]
+  // Auditing
+  createdAt     DateTime      @default(now())
+  createdById   String?
+  createdBy     User?         @relation("CreatedPlayers", fields: [createdById], references: [id])
+  updatedAt     DateTime      @updatedAt
+  updatedById   String?
+  updatedBy     User?         @relation("UpdatedPlayers", fields: [updatedById], references: [id])
+  deletedAt     DateTime?
+  deletedById   String?
+  deletedBy     User?         @relation("DeletedPlayers", fields: [deletedById], references: [id])
+  isDeleted     Boolean       @default(false)
+}
+
+// --- PlayerEvent (Join Table) ---
+model PlayerEvent {
+  id            String            @id @default(uuid())
+  playerId      String
+  player        Player            @relation(fields: [playerId], references: [id])
+  eventId       String
+  event         TournamentEvent   @relation(fields: [eventId], references: [id])
+  joinedAt      DateTime          @default(now())
+  // Auditing
+  createdAt     DateTime          @default(now())
+  createdById   String?
+  createdBy     User?             @relation("CreatedPlayerEvents", fields: [createdById], references: [id])
+  updatedAt     DateTime          @updatedAt
+  updatedById   String?
+  updatedBy     User?             @relation("UpdatedPlayerEvents", fields: [updatedById], references: [id])
+  deletedAt     DateTime?
+  deletedById   String?
+  deletedBy     User?             @relation("DeletedPlayerEvents", fields: [deletedById], references: [id])
+  isDeleted     Boolean           @default(false)
+
+  @@unique([playerId, eventId])
+}

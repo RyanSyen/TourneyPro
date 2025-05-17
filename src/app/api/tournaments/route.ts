@@ -1,24 +1,16 @@
-import fs from "fs";
-import path from "path";
 import { NextResponse } from "next/server";
-import { ResponseData } from "@/types/common";
-import { ITournamentDetails } from "@/types/tournament";
-import dayjs from "dayjs";
-import { auth } from "@clerk/nextjs/server";
-
-const filePath = path.join(process.cwd(), "public/data", "tournaments.json");
-let responseData: ResponseData;
+import { prisma } from '@/lib/prisma';
+import { auth } from '@clerk/nextjs/server';
 
 export async function GET() {
   try {
-    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    return NextResponse.json(data, { status: 200 });
+    const tournaments = await prisma.tournament.findMany({
+      where: { isDeleted: false },
+      include: { rules: true, events: true },
+    });
+    return NextResponse.json(tournaments);
   } catch (error) {
-    console.error("[GET_API_TOURNAMENTS] Error fetching tournaments: ", error);
-
-    responseData = { success: false, message: "Internal server error" };
-
-    return NextResponse.json(responseData, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch tournaments', details: error }, { status: 500 });
   }
 }
 
@@ -26,24 +18,15 @@ export async function POST(request: Request) {
   try {
     const { userId } = await auth();
     const data = await request.json();
-    const tournaments = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    const newTournament: ITournamentDetails = {
-      ...data,
-      status: 0,
-      createdAt: dayjs().toDate(),
-      updatedAt: dayjs().toDate(),
-      createdBy: userId,
-      updatedBy: userId,
-    };
-    tournaments.push(newTournament);
-    fs.writeFileSync(filePath, JSON.stringify(tournaments, null, 2));
-
-    return NextResponse.json(newTournament, { status: 200 });
+    const tournament = await prisma.tournament.create({
+      data: {
+        ...data,
+        createdById: userId,
+        updatedById: userId,
+      },
+    });
+    return NextResponse.json(tournament);
   } catch (error) {
-    console.error("[POST_API_TOURNAMENT] Error creating tournament: ", error);
-
-    responseData = { success: false, message: "Internal server error" };
-
-    return NextResponse.json(responseData, { status: 500 });
+    return NextResponse.json({ error: 'Failed to create tournament', details: error }, { status: 500 });
   }
 }

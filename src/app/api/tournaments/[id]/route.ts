@@ -1,74 +1,79 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import { ITournamentDetails } from "@/types/tournament";
-import dayjs from "dayjs";
+import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
-import { ResponseData } from "@/types/common";
 
-let responseData: ResponseData;
-const filePath = path.join(process.cwd(), "public/data", "tournaments.json");
-
+// GET tournament by id
 export async function GET(
-  request: Request,
+  request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;
-    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-
-    if (data.length === 0) {
-      return NextResponse.json(data);
+    const tournament = await prisma.tournament.findUnique({
+      where: { id },
+      include: { rules: true, events: true },
+    });
+    if (!tournament || tournament.isDeleted) {
+      return NextResponse.json(
+        { error: "Tournament not found" },
+        { status: 404 }
+      );
     }
-
-    const tournament = data.find(
-      (t: ITournamentDetails) => t.id === id
-    );
-
     return NextResponse.json(tournament);
   } catch (error) {
-    console.error("[GET_API_TOURNAMENT] Error fetching tournament: ", error);
-
-    responseData = { success: false, message: "Internal server error" };
-
-    return NextResponse.json(responseData, { status: 500 });
-  }
-}
-
-export async function PUT(request: NextRequest) {
-  const tournaments = JSON.parse(fs.readFileSync(filePath, "utf8"));
-
-  const { userId } = await auth();
-
-  const { id, updatedTournament } = await request.json();
-  const data: ITournamentDetails = {
-    ...updatedTournament,
-    updatedAt: dayjs().toDate(),
-    updatedBy: userId,
-  };
-  const index = tournaments.findIndex((t: ITournamentDetails) => t.id === id);
-
-  if (index === -1) {
     return NextResponse.json(
-      { error: "Tournament not found" },
-      { status: 404 }
+      { error: "Failed to fetch tournament", details: error },
+      { status: 500 }
     );
   }
-
-  tournaments[index] = { ...tournaments[index], ...data };
-  fs.writeFileSync(filePath, JSON.stringify(tournaments, null, 2));
-
-  return NextResponse.json(tournaments[index]);
 }
 
-export async function DELETE(request: NextRequest) {
-  const id = await request.json();
-  const tournaments = JSON.parse(fs.readFileSync(filePath, "utf8"));
+// UPDATE tournament by id
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { userId } = await auth();
+    const { id } = await params;
+    const data = await request.json();
+    const tournament = await prisma.tournament.update({
+      where: { id },
+      data: {
+        ...data,
+        updatedById: userId,
+      },
+    });
+    return NextResponse.json(tournament);
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to update tournament", details: error },
+      { status: 500 }
+    );
+  }
+}
 
-  const updatedTournaments = tournaments.filter(
-    (t: ITournamentDetails) => t.id !== id
-  );
-  fs.writeFileSync(filePath, JSON.stringify(updatedTournaments, null, 2));
-
-  return new NextResponse(null, { status: 204 });
+// SOFT DELETE tournament by id
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { userId } = await auth();
+    const { id } = await params;
+    await prisma.tournament.update({
+      where: { id },
+      data: {
+        isDeleted: true,
+        deletedAt: new Date(),
+        deletedById: userId,
+      },
+    });
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to delete tournament", details: error },
+      { status: 500 }
+    );
+  }
 }
