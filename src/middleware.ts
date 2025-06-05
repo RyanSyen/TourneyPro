@@ -1,17 +1,29 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 const publicPaths = [
   '/',
   '/tournament/list',
   '/tournament/public(.*)',
-  '/api(.*)',
+  '/api(.*)', // need to remove this later
+  '/api/webhooks(.*)' // set webhooks to be public
 ];
 
-const isPublicRoute = createRouteMatcher(publicPaths);
+export function middleware(request: NextRequest) {
+  // If the request matches a public path, allow it through
+  const { pathname } = request.nextUrl;
 
-export default clerkMiddleware(async (auth, req) => {
-  if (!isPublicRoute(req)) await auth.protect()
-});
+  const isPublic = publicPaths.some((pattern) => {
+    const regex = new RegExp(`^${pattern}$`);
+    return regex.test(pathname);
+  });
+
+  if (isPublic) {
+    return NextResponse.next();
+  }
+
+  // Add any additional logic here if needed (e.g., redirects, logging)
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: [

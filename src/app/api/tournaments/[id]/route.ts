@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { auth } from "@clerk/nextjs/server";
+import { auth } from "../../../../../auth";
+import { headers } from "next/headers";
 
 // GET tournament by id
 export async function GET(
@@ -34,7 +35,19 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { userId } = await auth();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+
+    if (session === null) {
+      throw new Error("User not authenticated");
+    }
+
+    let userId = session.user.id;
+
+    if (!userId) {
+      throw new Error("User not found");
+    }
     const { id } = await params;
     const data = await request.json();
     const tournament = await prisma.tournament.update({
@@ -59,7 +72,19 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { userId } = await auth();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+
+    if (session === null) {
+      throw new Error("User not authenticated");
+    }
+
+    let userId = session.user.id;
+
+    if (!userId) {
+      throw new Error("User not found");
+    }
     const { id } = await params;
     await prisma.tournament.update({
       where: { id },

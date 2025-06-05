@@ -1,18 +1,15 @@
-"use server";
-
-// import { columns } from "./columns";
-// import { DataTable } from "./datatable";
+import { columns } from "./columns";
+import { DataTable } from "./datatable";
+import { getAllTournaments } from "@/services/tournamentService";
 
 const TournamentListTable = async () => {
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tournaments`);
-  // const tournaments = await res.json();
+  const tournaments = await getAllTournaments();
 
-  // return (
-  //   <div className="container mx-auto py-10">
-  //     <DataTable columns={columns} data={tournaments} />
-  //   </div>
-  // );
-  return "test";
+  return (
+    <div className="container mx-auto py-10">
+      <DataTable columns={columns} data={tournaments} />
+    </div>
+  );
 };
 
 export default TournamentListTable;

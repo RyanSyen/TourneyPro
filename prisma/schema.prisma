@@ -12,11 +12,12 @@ datasource db {
 }
 
 // --- User Table for Auditing ---
+
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String
-  createdAt DateTime @default(now())
+  id                      String            @id @default(uuid())
+  email                   String            @unique
+  name                    String
+  createdAt               DateTime          @default(now())
   // Relations for auditing
   createdTournaments      Tournament[]      @relation("CreatedTournaments")
   updatedTournaments      Tournament[]      @relation("UpdatedTournaments")
@@ -36,6 +37,13 @@ model User {
   createdPlayerEvents     PlayerEvent[]     @relation("CreatedPlayerEvents")
   updatedPlayerEvents     PlayerEvent[]     @relation("UpdatedPlayerEvents")
   deletedPlayerEvents     PlayerEvent[]     @relation("DeletedPlayerEvents")
+  emailVerified           Boolean
+  image                   String?
+  updatedAt               DateTime
+  sessions                Session[]
+  accounts                Account[]
+
+  @@map("user")
 }
 
 // --- FullAuditedEntity fields ---
@@ -49,124 +57,206 @@ model User {
 // isDeleted: Boolean @default(false)
 
 // --- Tournament ---
+// Define the enum
+
+enum TournamentType {
+  circuit
+  standalone
+}
+
 model Tournament {
-  id          String           @id @default(uuid())
-  name        String
-  startDate   DateTime
-  endDate     DateTime?
-  rulesId     String?
-  rules       TournamentRules? @relation(fields: [rulesId], references: [id])
-  events      TournamentEvent[]
+  id          Int  @id @default(autoincrement())
+  title       String
+  description String
+  location    String
+  thumbnail   String
+  isPublic    Boolean @default(false)
+
+  // Tournament types (e.g., circuit, standalone)
+  type TournamentType[] @default([])
+
+  // Replaces startDate and endDate
+  tournamentStart DateTime
+  tournamentEnd   DateTime
+
+  // Registration date range
+  registrationStart DateTime
+  registrationEnd   DateTime
+
+  // Rules relation
+  rulesId Int?
+  rules   TournamentRules? @relation(fields: [rulesId], references: [id])
+  
+  events TournamentEvent[]
+  status Int
+
   // Auditing
-  createdAt   DateTime         @default(now())
+  createdAt   DateTime  @default(now())
   createdById String?
-  createdBy   User?            @relation("CreatedTournaments", fields: [createdById], references: [id])
-  updatedAt   DateTime         @updatedAt
+  createdBy   User?     @relation("CreatedTournaments", fields: [createdById], references: [id])
+  updatedAt   DateTime  @updatedAt
   updatedById String?
-  updatedBy   User?            @relation("UpdatedTournaments", fields: [updatedById], references: [id])
+  updatedBy   User?     @relation("UpdatedTournaments", fields: [updatedById], references: [id])
   deletedAt   DateTime?
   deletedById String?
-  deletedBy   User?            @relation("DeletedTournaments", fields: [deletedById], references: [id])
-  isDeleted   Boolean          @default(false)
+  deletedBy   User?     @relation("DeletedTournaments", fields: [deletedById], references: [id])
+  isDeleted   Boolean   @default(false)
 }
 
 // --- TournamentRules ---
+
 model TournamentRules {
-  id          String         @id @default(uuid())
-  description String
-  matchSettings MatchSettings[]
-  tournaments Tournament[]
+  id           Int       @id @default(autoincrement())
+  description  String
+  tournamentId Int
   // Auditing
-  createdAt   DateTime       @default(now())
-  createdById String?
-  createdBy   User?          @relation("CreatedTournamentRules", fields: [createdById], references: [id])
-  updatedAt   DateTime       @updatedAt
-  updatedById String?
-  updatedBy   User?          @relation("UpdatedTournamentRules", fields: [updatedById], references: [id])
-  deletedAt   DateTime?
-  deletedById String?
-  deletedBy   User?          @relation("DeletedTournamentRules", fields: [deletedById], references: [id])
-  isDeleted   Boolean        @default(false)
+  createdAt    DateTime     @default(now())
+  createdById  String?
+  createdBy    User?        @relation("CreatedTournamentRules", fields: [createdById], references: [id])
+  updatedAt    DateTime     @updatedAt
+  updatedById  String?
+  updatedBy    User?        @relation("UpdatedTournamentRules", fields: [updatedById], references: [id])
+  deletedAt    DateTime?
+  deletedById  String?
+  deletedBy    User?        @relation("DeletedTournamentRules", fields: [deletedById], references: [id])
+  isDeleted    Boolean      @default(false)
+  Tournament   Tournament[]
 }
 
 // --- MatchSettings ---
+
 model MatchSettings {
-  id          String           @id @default(uuid())
-  type        String
-  value       String
-  rulesId     String?
-  rules       TournamentRules? @relation(fields: [rulesId], references: [id])
+  id             Int    @id @default(autoincrement())
+  points         String
+  changeOfEnds   String
+  gracePeriod    String
+  allowSpinServe Boolean
+  allowDeuce     Boolean
+  tournamentId   Int
   // Auditing
-  createdAt   DateTime         @default(now())
-  createdById String?
-  createdBy   User?            @relation("CreatedMatchSettings", fields: [createdById], references: [id])
-  updatedAt   DateTime         @updatedAt
-  updatedById String?
-  updatedBy   User?            @relation("UpdatedMatchSettings", fields: [updatedById], references: [id])
-  deletedAt   DateTime?
-  deletedById String?
-  deletedBy   User?            @relation("DeletedMatchSettings", fields: [deletedById], references: [id])
-  isDeleted   Boolean          @default(false)
+  createdAt      DateTime  @default(now())
+  createdById    String?
+  createdBy      User?     @relation("CreatedMatchSettings", fields: [createdById], references: [id])
+  updatedAt      DateTime  @updatedAt
+  updatedById    String?
+  updatedBy      User?     @relation("UpdatedMatchSettings", fields: [updatedById], references: [id])
+  deletedAt      DateTime?
+  deletedById    String?
+  deletedBy      User?     @relation("DeletedMatchSettings", fields: [deletedById], references: [id])
+  isDeleted      Boolean   @default(false)
 }
 
 // --- TournamentEvent ---
+
 model TournamentEvent {
-  id            String        @id @default(uuid())
-  tournamentId  String
-  tournament    Tournament    @relation(fields: [tournamentId], references: [id])
-  name          String
-  players       PlayerEvent[]
+  id              Int           @id @default(autoincrement())
+  tournamentId    Int
+  tournament      Tournament    @relation(fields: [tournamentId], references: [id])
+  event           String
+  ageGroup        String
+  type            String
+  level           String
+  prize           String?
+  registrationFee Int?
+  players         PlayerEvent[]
   // Auditing
-  createdAt     DateTime      @default(now())
-  createdById   String?
-  createdBy     User?         @relation("CreatedTournamentEvents", fields: [createdById], references: [id])
-  updatedAt     DateTime      @updatedAt
-  updatedById   String?
-  updatedBy     User?         @relation("UpdatedTournamentEvents", fields: [updatedById], references: [id])
-  deletedAt     DateTime?
-  deletedById   String?
-  deletedBy     User?         @relation("DeletedTournamentEvents", fields: [deletedById], references: [id])
-  isDeleted     Boolean       @default(false)
+  createdAt       DateTime      @default(now())
+  createdById     String?
+  createdBy       User?         @relation("CreatedTournamentEvents", fields: [createdById], references: [id])
+  updatedAt       DateTime      @updatedAt
+  updatedById     String?
+  updatedBy       User?         @relation("UpdatedTournamentEvents", fields: [updatedById], references: [id])
+  deletedAt       DateTime?
+  deletedById     String?
+  deletedBy       User?         @relation("DeletedTournamentEvents", fields: [deletedById], references: [id])
+  isDeleted       Boolean       @default(false)
 }
 
 // --- Player ---
+
 model Player {
-  id            String        @id @default(uuid())
-  name          String
-  email         String        @unique
-  events        PlayerEvent[]
+  id          Int        @id @default(autoincrement())
+  name        String
+  email       String        @unique
+  events      PlayerEvent[]
   // Auditing
-  createdAt     DateTime      @default(now())
-  createdById   String?
-  createdBy     User?         @relation("CreatedPlayers", fields: [createdById], references: [id])
-  updatedAt     DateTime      @updatedAt
-  updatedById   String?
-  updatedBy     User?         @relation("UpdatedPlayers", fields: [updatedById], references: [id])
-  deletedAt     DateTime?
-  deletedById   String?
-  deletedBy     User?         @relation("DeletedPlayers", fields: [deletedById], references: [id])
-  isDeleted     Boolean       @default(false)
+  createdAt   DateTime      @default(now())
+  createdById String?
+  createdBy   User?         @relation("CreatedPlayers", fields: [createdById], references: [id])
+  updatedAt   DateTime      @updatedAt
+  updatedById String?
+  updatedBy   User?         @relation("UpdatedPlayers", fields: [updatedById], references: [id])
+  deletedAt   DateTime?
+  deletedById String?
+  deletedBy   User?         @relation("DeletedPlayers", fields: [deletedById], references: [id])
+  isDeleted   Boolean       @default(false)
 }
 
 // --- PlayerEvent (Join Table) ---
+
 model PlayerEvent {
-  id            String            @id @default(uuid())
-  playerId      String
-  player        Player            @relation(fields: [playerId], references: [id])
-  eventId       String
-  event         TournamentEvent   @relation(fields: [eventId], references: [id])
-  joinedAt      DateTime          @default(now())
+  id          Int             @id @default(autoincrement())
+  playerId    Int
+  player      Player          @relation(fields: [playerId], references: [id])
+  eventId     Int
+  event       TournamentEvent @relation(fields: [eventId], references: [id])
+  joinedAt    DateTime        @default(now())
   // Auditing
-  createdAt     DateTime          @default(now())
-  createdById   String?
-  createdBy     User?             @relation("CreatedPlayerEvents", fields: [createdById], references: [id])
-  updatedAt     DateTime          @updatedAt
-  updatedById   String?
-  updatedBy     User?             @relation("UpdatedPlayerEvents", fields: [updatedById], references: [id])
-  deletedAt     DateTime?
-  deletedById   String?
-  deletedBy     User?             @relation("DeletedPlayerEvents", fields: [deletedById], references: [id])
-  isDeleted     Boolean           @default(false)
+  createdAt   DateTime        @default(now())
+  createdById String?
+  createdBy   User?           @relation("CreatedPlayerEvents", fields: [createdById], references: [id])
+  updatedAt   DateTime        @updatedAt
+  updatedById String?
+  updatedBy   User?           @relation("UpdatedPlayerEvents", fields: [updatedById], references: [id])
+  deletedAt   DateTime?
+  deletedById String?
+  deletedBy   User?           @relation("DeletedPlayerEvents", fields: [deletedById], references: [id])
+  isDeleted   Boolean         @default(false)
 
   @@unique([playerId, eventId])
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime
+  updatedAt DateTime
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime
+  updatedAt             DateTime
+
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime?
+  updatedAt  DateTime?
+
+  @@map("verification")
 }

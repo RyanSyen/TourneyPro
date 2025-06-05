@@ -12,6 +12,8 @@ import TournamentRules, { IStepTwoData } from "./tournament-rules";
 import dayjs from "dayjs";
 import TournamentEvents, { IStepThreeData } from "./tournament-events";
 import TournamentPreview from "./tournament-preview";
+import { createTournament } from "@/services/tournamentService";
+import { toast } from "sonner";
 
 // no data to fetch, so no need server component
 const CreateTournament = () => {
@@ -56,7 +58,9 @@ const CreateTournament = () => {
   const nextStep = () => setCurrentStep((prev) => prev + 1);
   const prevStep = () => setCurrentStep((prev) => prev - 1);
 
-  const handleStepSubmit = (stepData: IStepOneData | IStepTwoData | IStepThreeData) => {
+  const handleStepSubmit = (
+    stepData: IStepOneData | IStepTwoData | IStepThreeData
+  ) => {
     console.log("Step Data:", stepData);
     setFormData((prev) => ({
       ...prev,
@@ -65,15 +69,25 @@ const CreateTournament = () => {
     nextStep();
   };
 
-  const handleFinalSubmit = () => {
+  const handleFinalSubmit = async () => {
     console.log("Final Submission Data:", formData);
     // Add API call or submission logic here
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("/api/tournaments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) throw new Error("Failed to create tournament");
+      toast.success("Tournament created successfully!");
+      redirect("/tournament/list");
+    } catch (error) {
+      toast.error("Failed to create tournament.");
+    } finally {
       setIsSubmitting(false);
-      // redirect("/tournament/list");
-      console.log("Tournament Created Successfully");
-    }, 2000);
+    }
   };
   return (
     <div>

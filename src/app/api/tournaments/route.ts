@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from '@/lib/prisma';
-import { auth } from '@clerk/nextjs/server';
+import { createTournament } from "@/services/tournamentService";
 
 export async function GET() {
   try {
@@ -15,18 +15,25 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  // try {
+  //   const { userId } = await auth();
+  //   const data = await request.json();
+  //   const tournament = await prisma.tournament.create({
+  //     data: {
+  //       ...data,
+  //       createdById: userId,
+  //       updatedById: userId,
+  //     },
+  //   });
+  //   return NextResponse.json(tournament);
+  // } catch (error) {
+  //   return NextResponse.json({ error: 'Failed to create tournament', details: error }, { status: 500 });
+  // }
   try {
-    const { userId } = await auth();
     const data = await request.json();
-    const tournament = await prisma.tournament.create({
-      data: {
-        ...data,
-        createdById: userId,
-        updatedById: userId,
-      },
-    });
-    return NextResponse.json(tournament);
+    const tournament = await createTournament(data);
+    return NextResponse.json(tournament, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to create tournament', details: error }, { status: 500 });
+    return NextResponse.json({ error: "Failed to create tournament." }, { status: 500 });
   }
 }

@@ -1,5 +1,5 @@
 export interface ITournamentDetails {
-    id?: string;
+    id?: number;
     title: string;
     description: string;
     rules?: string;

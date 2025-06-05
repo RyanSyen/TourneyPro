@@ -1,16 +1,66 @@
 "use client";
 import Checkbox from "@/components/form/input/Checkbox";
-import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
-import Button from "@/components/ui/button/CustomButton";
-// import { EyeCloseIcon, EyeIcon } from "@/icons/components";
-// import { SvgChevronLeft } from "@/icons/components/ChevronLeft";
 import Link from "next/link";
 import React, { useState } from "react";
+import { createAuthClient } from "better-auth/client";
+import { useForm } from "react-hook-form";
+import { ChevronLeftIcon } from "@/icons/components";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+
+type SignInFormInputs = {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+};
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const authClient = createAuthClient();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    watch,
+  } = useForm<SignInFormInputs>({
+    defaultValues: {
+      email: "",
+      password: "",
+      rememberMe: false,
+    },
+  });
+
+  const signInWithGoogle = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+      // errorCallbackURL: "/error",
+      // newUserCallbackURL: "/welcome",
+      // disableRedirect: true,
+    });
+  };
+
+  const onSubmit = async (data: SignInFormInputs) => {
+    setLoading(true);
+    const result = await authClient.signIn.email({
+      email: data.email,
+      password: data.password,
+      callbackURL: "/",
+      rememberMe: data.rememberMe,
+    });
+    setLoading(false);
+    if (result.error) {
+      // Handle error (show toast, set error state, etc.)
+      console.error("Sign in failed:", result.error);
+    } else {
+      // Optionally handle success (redirect handled by callbackURL)
+      console.log("Sign in successful:", result);
+    }
+  };
+
   return (
     <div className="flex flex-col flex-1 lg:w-1/2 w-full">
       <div className="w-full max-w-md sm:pt-10 mx-auto mb-5">
@@ -18,23 +68,21 @@ export default function SignInForm() {
           href="/"
           className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
         >
-          {/* <SvgChevronLeft /> */}
+          <ChevronLeftIcon />
           Back to dashboard
         </Link>
       </div>
       <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
         <div>
-          <div className="mb-5 sm:mb-8">
-            <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
-              Sign In
-            </h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Enter your email and password to sign in!
-            </p>
-          </div>
+          <h1 className="mb-6 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
+            Sign In
+          </h1>
           <div>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
-              <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
+              <button
+                onClick={signInWithGoogle}
+                className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10"
+              >
                 <svg
                   width="20"
                   height="20"
@@ -61,7 +109,7 @@ export default function SignInForm() {
                 </svg>
                 Sign in with Google
               </button>
-              <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
+              {/* <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                 <svg
                   width="21"
                   className="fill-current"
@@ -73,7 +121,7 @@ export default function SignInForm() {
                   <path d="M15.6705 1.875H18.4272L12.4047 8.75833L19.4897 18.125H13.9422L9.59717 12.4442L4.62554 18.125H1.86721L8.30887 10.7625L1.51221 1.875H7.20054L11.128 7.0675L15.6705 1.875ZM14.703 16.475H16.2305L6.37054 3.43833H4.73137L14.703 16.475Z" />
                 </svg>
                 Sign in with X
-              </button>
+              </button> */}
             </div>
             <div className="relative py-3 sm:py-5">
               <div className="absolute inset-0 flex items-center">
@@ -85,38 +133,72 @@ export default function SignInForm() {
                 </span>
               </div>
             </div>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate>
               <div className="space-y-6">
                 <div>
                   <Label>
-                    Email <span className="text-error-500">*</span>{" "}
+                    Email <span className="text-error-500">*</span>
                   </Label>
-                  <Input placeholder="info@gmail.com" type="email" />
+                  <Input
+                    type="email"
+                    placeholder="info@gmail.com"
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: "Enter a valid email address",
+                      },
+                    })}
+                  />
+                  {errors.email && (
+                    <span className="text-xs text-error-500">
+                      {errors.email.message}
+                    </span>
+                  )}
                 </div>
                 <div>
                   <Label>
-                    Password <span className="text-error-500">*</span>{" "}
+                    Password <span className="text-error-500">*</span>
                   </Label>
                   <div className="relative">
                     <Input
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
+                      {...register("password", {
+                        required: "Password is required",
+                        minLength: {
+                          value: 6,
+                          message: "Password must be at least 6 characters",
+                        },
+                      })}
                     />
                     <span
-                      onClick={() => setShowPassword(!showPassword)}
+                      onClick={() => setShowPassword((prev) => !prev)}
                       className="absolute z-30 -translate-y-1/2 cursor-pointer right-4 top-1/2"
+                      tabIndex={0}
+                      role="button"
+                      aria-label={
+                        showPassword ? "Hide password" : "Show password"
+                      }
                     >
-                      {/* {showPassword ? (
-                        <EyeIcon className="fill-gray-500 dark:fill-gray-400" />
-                      ) : (
-                        <EyeCloseIcon className="fill-gray-500 dark:fill-gray-400" />
-                      )} */}
+                      {/* Add your EyeIcon/EyeCloseIcon here if available */}
+                      {showPassword ? "🙈" : "👁️"}
                     </span>
                   </div>
+                  {errors.password && (
+                    <span className="text-xs text-error-500">
+                      {errors.password.message}
+                    </span>
+                  )}
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Checkbox checked={isChecked} onChange={setIsChecked} />
+                    <Checkbox
+                      checked={watch("rememberMe")}
+                      onChange={(checked: boolean) =>
+                        setValue("rememberMe", checked)
+                      }
+                    />
                     <span className="block font-normal text-gray-700 text-theme-sm dark:text-gray-400">
                       Keep me logged in
                     </span>
@@ -129,8 +211,13 @@ export default function SignInForm() {
                   </Link>
                 </div>
                 <div>
-                  <Button className="w-full" size="sm">
-                    Sign in
+                  <Button
+                    className="w-full"
+                    size="sm"
+                    type="submit"
+                    disabled={loading}
+                  >
+                    {loading ? "Signing in..." : "Sign in"}
                   </Button>
                 </div>
               </div>
