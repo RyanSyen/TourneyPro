@@ -32,7 +32,7 @@ export async function POST(request: Request) {
   try {
     const data = await request.json();
     const tournament = await createTournament(data);
-    return NextResponse.json(tournament, { status: 201 });
+    return NextResponse.json(tournament, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: "Failed to create tournament." }, { status: 500 });
   }

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import CustomButton from "@/components/ui/button/CustomButton";
 import { ArrowLeftIcon } from "@/icons/components";
-import { redirect } from "next/navigation";
 import { CheckCircleIcon } from "@/icons/components";
 import TournamentDetailsForm, {
   IStepOneData,
@@ -12,8 +11,8 @@ import TournamentRules, { IStepTwoData } from "./tournament-rules";
 import dayjs from "dayjs";
 import TournamentEvents, { IStepThreeData } from "./tournament-events";
 import TournamentPreview from "./tournament-preview";
-import { createTournament } from "@/services/tournamentService";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 // no data to fetch, so no need server component
 const CreateTournament = () => {
@@ -54,7 +53,7 @@ const CreateTournament = () => {
     },
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const router = useRouter();
   const nextStep = () => setCurrentStep((prev) => prev + 1);
   const prevStep = () => setCurrentStep((prev) => prev - 1);
 
@@ -80,9 +79,10 @@ const CreateTournament = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      console.log("Response:", response);
       if (!response.ok) throw new Error("Failed to create tournament");
       toast.success("Tournament created successfully!");
-      redirect("/tournament/list");
+      router.push("/tournament/list");
     } catch (error) {
       toast.error("Failed to create tournament.");
     } finally {
@@ -97,7 +97,7 @@ const CreateTournament = () => {
             variant="outline"
             size="sm"
             startIcon={<ArrowLeftIcon className="h-4 w-4" />}
-            onClick={() => redirect("/tournament/list")}
+            onClick={() => router.push("/tournament/list")}
           >
             Back
           </CustomButton>

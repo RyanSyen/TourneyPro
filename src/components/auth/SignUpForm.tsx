@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+import { useRouter } from "next/navigation";
 
 type SignUpFormInputs = {
   firstName: string;
@@ -20,6 +21,7 @@ export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const authClient = createAuthClient();
+  const router = useRouter();
 
   const {
     register,
@@ -61,6 +63,8 @@ export default function SignUpForm() {
       } else {
         // Optionally handle success (redirect handled by callbackURL)
         // You may want to show a success message or redirect here
+        console.log("Sign up successful");
+        router.push("/");
       }
     } catch (err) {
       alert("An unexpected error occurred.");
@@ -223,7 +227,9 @@ export default function SignUpForm() {
                       className="absolute z-30 -translate-y-1/2 cursor-pointer right-4 top-1/2"
                       tabIndex={0}
                       role="button"
-                      aria-label={showPassword ? "Hide password" : "Show password"}
+                      aria-label={
+                        showPassword ? "Hide password" : "Show password"
+                      }
                     >
                       {showPassword ? (
                         <EyeIcon className="fill-gray-500 dark:fill-gray-400" />
