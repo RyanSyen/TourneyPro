@@ -8,6 +8,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 type SessionUser = {
   name?: string;
@@ -53,13 +54,20 @@ const UserProfile: React.FC<{ session: Session | null }> = ({ session }) => {
   if (session && session.user) {
     return (
       <div className="flex items-center gap-2">
-        <Image
+        <Avatar>
+          {session.user.image ? (
+            <AvatarImage src={session.user.image} />
+          ) : (
+            <AvatarFallback>{session.user.name ? session.user.name[0] : ""}</AvatarFallback>
+          )}
+        </Avatar>
+        {/* <Image
           src={session.user.image || "/images/avatar/avatar-1.jpg"}
           alt="User Avatar"
           width={40}
           height={40}
           className="rounded-full"
-        />
+        /> */}
         <span className="hidden lg:inline-block text-gray-800 dark:text-white">
           {session.user.name || "Guest"}
         </span>

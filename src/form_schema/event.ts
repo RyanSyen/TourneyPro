@@ -2,7 +2,7 @@ import { z } from "zod";
 
 // Define Event Schema
 export const TournamentEventSchema = z.object({
-  id: z.string().optional(),
+  id: z.number().optional(),
   event: z.string().min(1, {
     message: "Event is required.",
   }),

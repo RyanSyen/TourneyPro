@@ -11,11 +11,11 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Matches from "./matchSettings/matches";
 import Players from "./players/players";
-import Overview from "./overview/overview";
+// import Overview from "./overview/overview";
 import { ITournamentDetails } from "@/types/tournament";
 import { Badge } from "@/components/ui/badge";
 import { PencilIcon } from "@/icons/components";
-import Rules from "./rules/rules";
+// import Rules from "./rules/rules";
 import { Spinner } from "@/components/ui/spinner";
 
 interface props {
@@ -23,7 +23,7 @@ interface props {
   tournament: ITournamentDetails;
 }
 
-export default function EditTournamentTabs({ username, tournament }: props) {
+export default function EditTournamentTabs({ tournament }: props) {
   // const { fetchTournament } = useTournamentStore();
   const params = useParams();
   // const [tournament, setTournament] = useState<ITournamentDetails | undefined>(
@@ -122,12 +122,12 @@ export default function EditTournamentTabs({ username, tournament }: props) {
           </TabsList>
           <TabsContent value="overview">
             <div className="pt-4">
-              <Overview tournament={tournament} username={username} />
+              {/* <Overview tournament={tournament} username={username} /> */}
             </div>
           </TabsContent>
           <TabsContent value="rules">
             <div className="pt-4">
-              <Rules tournament={tournament} />
+              {/* <Rules tournament={tournament} /> */}
             </div>
           </TabsContent>
           <TabsContent value="events">

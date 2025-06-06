@@ -37,7 +37,7 @@ export async function addTournament(tournament: Omit<Tournament, 'id'>): Promise
   return newTournament.id;
 }
 
-export async function updateTournament(id: string, updatedTournament: Tournament): Promise<void> {
+export async function updateTournament(id: number, updatedTournament: Tournament): Promise<void> {
   await fetch(`${API_URL}/api/tournaments/${id}`, {
     method: 'PUT',
     body: JSON.stringify({ id, updatedTournament }),
@@ -55,7 +55,7 @@ export async function deleteTournament(id: string): Promise<void> {
   revalidatePath('/tournaments');
 }
 
-export async function publishTournament(id: string): Promise<void> {
+export async function publishTournament(id: number): Promise<void> {
   const tournaments = await fetchTournaments();
   const tournament = tournaments.find((t) => t.id === id);
   if (!tournament) return;

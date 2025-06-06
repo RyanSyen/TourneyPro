@@ -137,7 +137,6 @@ function EventForm({
     resolver: zodResolver(TournamentEventSchema),
     shouldFocusError: false,
     defaultValues: {
-      id: event.id || "",
       event: event.event || "",
       ageGroup: event.ageGroup || "",
       type: event.type || "",
@@ -212,7 +211,6 @@ function EventForm({
 
   const resetForm = () => {
     const defaultEvent: TournamentEvent = {
-      id: "",
       event: "",
       ageGroup: "",
       type: "",

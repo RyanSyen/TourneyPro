@@ -6,7 +6,7 @@ import { headers } from "next/headers";
 // GET tournament by id
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: number }> }
 ) {
   try {
     const { id } = await params;
@@ -32,7 +32,7 @@ export async function GET(
 // UPDATE tournament by id
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: number }> }
 ) {
   try {
     const session = await auth.api.getSession({
@@ -43,7 +43,7 @@ export async function PUT(
       throw new Error("User not authenticated");
     }
 
-    let userId = session.user.id;
+    const userId = session.user.id;
 
     if (!userId) {
       throw new Error("User not found");
@@ -69,7 +69,7 @@ export async function PUT(
 // SOFT DELETE tournament by id
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: number }> }
 ) {
   try {
     const session = await auth.api.getSession({
@@ -80,7 +80,7 @@ export async function DELETE(
       throw new Error("User not authenticated");
     }
 
-    let userId = session.user.id;
+    const userId = session.user.id;
 
     if (!userId) {
       throw new Error("User not found");

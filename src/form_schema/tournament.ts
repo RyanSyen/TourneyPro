@@ -2,7 +2,7 @@ import { z } from "zod";
 
 // Define Tournament Schema
 export const TournamentSchema = z.object({
-  id: z.string().uuid().optional(),
+  id: z.number().optional(),
   title: z.string({
     required_error: "Tournament title is required.",
   }),

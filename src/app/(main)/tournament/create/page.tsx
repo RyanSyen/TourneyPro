@@ -84,7 +84,7 @@ const CreateTournament = () => {
       toast.success("Tournament created successfully!");
       router.push("/tournament/list");
     } catch (error) {
-      toast.error("Failed to create tournament.");
+      toast.error("Failed to create tournament: " + error);
     } finally {
       setIsSubmitting(false);
     }

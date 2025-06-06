@@ -21,7 +21,6 @@ export interface IStepThreeData {
 
 function Events({ tournamentId, defaultValues, onSubmit, prevStep }: props) {
   const [event, setEvent] = useState<TournamentEvent>({
-    id: "",
     event: "",
     ageGroup: "",
     type: "",
@@ -39,7 +38,7 @@ function Events({ tournamentId, defaultValues, onSubmit, prevStep }: props) {
     setEvent(event);
   };
 
-  const onDeleteEvent = async (id: string) => {
+  const onDeleteEvent = async (id: number) => {
     try {
       const updatedEvents = events?.filter((cat) => cat.id !== id);
       setEvents(updatedEvents || []);

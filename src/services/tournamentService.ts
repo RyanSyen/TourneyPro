@@ -44,7 +44,7 @@ export async function createTournament(data: {
       throw new Error("User not authenticated");
     }
 
-    let userId = session.user.id;
+    const userId = session.user.id;
 
     const {
       title,
@@ -102,7 +102,7 @@ export async function createTournament(data: {
 
       console.time("tournamentEvent");
       await tx.tournamentEvent.createMany({
-        data: data.step3.events.map(({ id, ...event }) => ({
+        data: data.step3.events.map(({ ...event }) => ({
           ...event,
           tournamentId: createdTournament.id,
           createdById: userId,
@@ -146,7 +146,7 @@ export async function updateTournament(
       throw new Error("User not authenticated");
     }
 
-    let userId = session.user.id;
+    const userId = session.user.id;
 
     if (!userId) {
       throw new Error("User not found");
@@ -204,7 +204,7 @@ export async function deleteTournament(tournamentId: number) {
       throw new Error("User not authenticated");
     }
 
-    let userId = session.user.id;
+    const userId = session.user.id;
 
     if (!userId) {
       throw new Error("User not found");

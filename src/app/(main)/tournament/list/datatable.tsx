@@ -31,7 +31,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { TrashIcon } from "@/icons/components";
-import useTournamentStore from "../shared/data-store/useTournamentStore";
+// import useTournamentStore from "../shared/data-store/useTournamentStore";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -49,7 +49,7 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
-  const { deleteTournament } = useTournamentStore();
+  // const { deleteTournament } = useTournamentStore();
 
   const table = useReactTable({
     data,
@@ -70,7 +70,8 @@ export function DataTable<TData, TValue>({
 
   const deleteAllTournaments = async () => {
     const selectedRows = table.getRowModel().rows.map((row) => (row.original as { id: string }).id);
-    selectedRows.forEach(async (id) => await deleteTournament(id));
+    console.log("Selected Rows to delete: ", selectedRows);
+    // selectedRows.forEach(async (id) => await deleteTournament(id));
   };
 
   return (

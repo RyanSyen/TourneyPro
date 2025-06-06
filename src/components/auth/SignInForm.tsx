@@ -41,6 +41,8 @@ export default function SignInForm() {
       // newUserCallbackURL: "/welcome",
       // disableRedirect: true,
     });
+
+    console.log("Google sign-in data:", data);
   };
 
   const onSubmit = async (data: SignInFormInputs) => {

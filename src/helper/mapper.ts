@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { APP_CONFIG } from "@/app/appconfig";
 import { ITournamentDetails } from "@/types/tournament";
-import { Prisma, Tournament } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 type TournamentWithRelations = Prisma.TournamentGetPayload<{
   include: {

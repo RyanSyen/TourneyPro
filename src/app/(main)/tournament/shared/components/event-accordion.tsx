@@ -15,7 +15,7 @@ import { v4 as uuidv4 } from "uuid";
 interface Props {
   events: TournamentEvent[];
   onEditEvent: React.Dispatch<TournamentEvent>;
-  onDeleteEvent: React.Dispatch<string>;
+  onDeleteEvent: React.Dispatch<number>;
 }
 
 function EventAccordion({ events, onEditEvent, onDeleteEvent }: Props) {
