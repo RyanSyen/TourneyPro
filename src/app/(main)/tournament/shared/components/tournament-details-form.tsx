@@ -226,7 +226,7 @@ function TournamentDetailsForm({
                           />
                         </PrimaryPopoverContent>
                       </Popover>
-                      <ErrorMessage name="date.from" />
+                      <ErrorMessage name="date.from" /> <br />
                       <ErrorMessage name="date.to" />
                     </FormItem>
                   );
@@ -239,7 +239,7 @@ function TournamentDetailsForm({
                   return (
                     <FormItem className="flex flex-col">
                       <FormLabel>
-                        Dates <span className="text-[#e50b0d] text-xl">*</span>
+                        Tournament Period <span className="text-[#e50b0d] text-xl">*</span>
                       </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
@@ -300,7 +300,7 @@ function TournamentDetailsForm({
                           />
                         </PrimaryPopoverContent>
                       </Popover>
-                      <ErrorMessage name="date.from" />
+                      <ErrorMessage name="date.from" /> <br />
                       <ErrorMessage name="date.to" />
                     </FormItem>
                   );

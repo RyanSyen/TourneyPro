@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import {
+  notFound,
   redirect,
   useParams,
   usePathname,
@@ -18,6 +19,7 @@ import { ArrowLeftIcon, PencilIcon } from "@/icons/components";
 // import Rules from "./rules/rules";
 import { Spinner } from "@/components/ui/spinner";
 import CustomButton from "@/components/ui/button/CustomButton";
+import Overview from "./overview/overview";
 
 interface props {
   tournament: ITournamentDetails;
@@ -31,11 +33,6 @@ export default function EditTournamentTabs({ tournament }: props) {
   const tabParam = searchParams.get("t") ?? "overview";
   const [tabValue, setTabValue] = useState<string>(tabParam);
 
-  // keep state in sync with query string if user lands on a link with ?t=
-  useEffect(() => {
-    setTabValue(tabParam);
-  }, [tabParam]);
-
   const handleTabChange = async (nextTab: string) => {
     const newUrl = `${pathname}?t=${nextTab}`;
     router.push(newUrl);
@@ -44,28 +41,21 @@ export default function EditTournamentTabs({ tournament }: props) {
   };
 
   if (!params.id) {
-    redirect("/not-found");
+    return notFound();
   }
-
-  if (!tournament)
-    return (
-      <div className="flex justify-center items-center gap-3">
-        <Spinner size="large" />
-      </div>
-    );
 
   return (
     <div>
       <div className="flex items-center mb-6">
-          <CustomButton
-            variant="outline"
-            size="sm"
-            startIcon={<ArrowLeftIcon className="h-4 w-4" />}
-            onClick={() => router.push("/tournament/list")}
-          >
-            Back
-          </CustomButton>
-        </div>
+        <CustomButton
+          variant="outline"
+          size="sm"
+          startIcon={<ArrowLeftIcon className="h-4 w-4" />}
+          onClick={() => router.push("/tournament/list")}
+        >
+          Back
+        </CustomButton>
+      </div>
       <div className="py-4 flex justify-between items-center">
         <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
           {tournament.title}
@@ -107,7 +97,7 @@ export default function EditTournamentTabs({ tournament }: props) {
           </TabsList>
           <TabsContent value="overview">
             <div className="pt-4">
-              {/* <Overview tournament={tournament} username={username} /> */}
+              <Overview tournament={tournament} />
             </div>
           </TabsContent>
           <TabsContent value="rules">

@@ -2,32 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "../../../../../auth";
 import { headers } from "next/headers";
-
-// GET tournament by id
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: number }> }
-) {
-  try {
-    const { id } = await params;
-    const tournament = await prisma.tournament.findUnique({
-      where: { id },
-      include: { rules: true, events: true },
-    });
-    if (!tournament || tournament.isDeleted) {
-      return NextResponse.json(
-        { error: "Tournament not found" },
-        { status: 404 }
-      );
-    }
-    return NextResponse.json(tournament);
-  } catch (error) {
-    return NextResponse.json(
-      { error: "Failed to fetch tournament", details: error },
-      { status: 500 }
-    );
-  }
-}
+import { updateTournamentDetails } from "@/services/tournamentService";
 
 // UPDATE tournament by id
 export async function PUT(
@@ -35,29 +10,12 @@ export async function PUT(
   { params }: { params: Promise<{ id: number }> }
 ) {
   try {
-    const session = await auth.api.getSession({
-      headers: await headers(),
-    });
-
-    if (session === null) {
-      throw new Error("User not authenticated");
-    }
-
-    const userId = session.user.id;
-
-    if (!userId) {
-      throw new Error("User not found");
-    }
     const { id } = await params;
+    // console.log("Updating tournament with ID:", id);
     const data = await request.json();
-    const tournament = await prisma.tournament.update({
-      where: { id },
-      data: {
-        ...data,
-        updatedById: userId,
-      },
-    });
-    return NextResponse.json(tournament);
+    // console.log("Received data for update:", data);
+    const tournament = await updateTournamentDetails(id, data);
+    return NextResponse.json(tournament, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to update tournament", details: error },

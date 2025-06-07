@@ -10,7 +10,6 @@ const EditTournamentPage = async (props: { params: Params }) => {
   const tournament = await getTournamentById(Number(tournamentId));
 
   if (!tournament) {
-    // return redirect("/not-found?error=Tournament not found");
     return notFound();
   }
 

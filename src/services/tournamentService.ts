@@ -7,6 +7,7 @@ import { IStepThreeData } from "@/app/(main)/tournament/create/tournament-events
 import { tournamentStatusLookup } from "@/lookups/tournament/statusLookup";
 import { auth } from "../../auth";
 import { headers } from "next/headers";
+import { ITournamentDetails } from "@/types/tournament";
 
 export async function getAllTournaments() {
   const tournaments = await prisma.tournament.findMany({
@@ -128,13 +129,9 @@ export async function createTournament(data: {
   }
 }
 
-export async function updateTournament(
+export async function updateTournamentDetails(
   tournamentId: number,
-  data: {
-    step1: IStepOneData;
-    step2: IStepTwoData;
-    step3: IStepThreeData;
-  }
+  data: ITournamentDetails
 ) {
   try {
     const session = await auth.api.getSession({
@@ -151,31 +148,21 @@ export async function updateTournament(
       throw new Error("User not found");
     }
 
-    const {
-      title,
-      description,
-      location,
-      thumbnail,
-      isPublic,
-      type,
-      date,
-      registrationDate,
-    } = data.step1;
-
     const tournament = await prisma.$transaction(async (tx) => {
       const updatedTournament = await tx.tournament.update({
-        where: { id: tournamentId },
+        where: { id: Number(tournamentId) },
         data: {
-          title,
-          description,
-          location,
-          thumbnail,
-          isPublic,
-          type,
-          tournamentStart: date.from,
-          tournamentEnd: date.to,
-          registrationStart: registrationDate.from,
-          registrationEnd: registrationDate.to,
+          id: Number(tournamentId),
+          title: data.title,
+          description: data.description,
+          location: data.location,
+          thumbnail: data.thumbnail,
+          isPublic: data.isPublic,
+          type: data.type,
+          tournamentStart: data.date.from,
+          tournamentEnd: data.date.to,
+          registrationStart: data.registrationDate.from,
+          registrationEnd: data.registrationDate.to,
           updatedById: userId,
         },
       });
@@ -185,14 +172,80 @@ export async function updateTournament(
 
     return tournament;
   } catch (error) {
-    console.error("Error updating tournament:", error);
+    console.error("Error updating tournament details:", error);
     throw new Error(
-      `Failed to update tournament: ${
+      `Failed to update tournament details: ${
         error instanceof Error ? error.message : String(error)
       }`
     );
   }
 }
+
+// export async function updateTournament(
+//   tournamentId: number,
+//   data: {
+//     step1: IStepOneData;
+//     step2: IStepTwoData;
+//     step3: IStepThreeData;
+//   }
+// ) {
+//   try {
+//     const session = await auth.api.getSession({
+//       headers: await headers(),
+//     });
+
+//     if (session === null) {
+//       throw new Error("User not authenticated");
+//     }
+
+//     const userId = session.user.id;
+
+//     if (!userId) {
+//       throw new Error("User not found");
+//     }
+
+//     const {
+//       title,
+//       description,
+//       location,
+//       thumbnail,
+//       isPublic,
+//       type,
+//       date,
+//       registrationDate,
+//     } = data.step1;
+
+//     const tournament = await prisma.$transaction(async (tx) => {
+//       const updatedTournament = await tx.tournament.update({
+//         where: { id: tournamentId },
+//         data: {
+//           title,
+//           description,
+//           location,
+//           thumbnail,
+//           isPublic,
+//           type,
+//           tournamentStart: date.from,
+//           tournamentEnd: date.to,
+//           registrationStart: registrationDate.from,
+//           registrationEnd: registrationDate.to,
+//           updatedById: userId,
+//         },
+//       });
+
+//       return updatedTournament;
+//     });
+
+//     return tournament;
+//   } catch (error) {
+//     console.error("Error updating tournament:", error);
+//     throw new Error(
+//       `Failed to update tournament: ${
+//         error instanceof Error ? error.message : String(error)
+//       }`
+//     );
+//   }
+// }
 export async function deleteTournament(tournamentId: number) {
   try {
     const session = await auth.api.getSession({
