@@ -14,47 +14,22 @@ import Players from "./players/players";
 // import Overview from "./overview/overview";
 import { ITournamentDetails } from "@/types/tournament";
 import { Badge } from "@/components/ui/badge";
-import { PencilIcon } from "@/icons/components";
+import { ArrowLeftIcon, PencilIcon } from "@/icons/components";
 // import Rules from "./rules/rules";
 import { Spinner } from "@/components/ui/spinner";
+import CustomButton from "@/components/ui/button/CustomButton";
 
 interface props {
-  username: string;
   tournament: ITournamentDetails;
 }
 
 export default function EditTournamentTabs({ tournament }: props) {
-  // const { fetchTournament } = useTournamentStore();
   const params = useParams();
-  // const [tournament, setTournament] = useState<ITournamentDetails | undefined>(
-  //   undefined
-  // );
-  // const [loading, setLoading] = useState<boolean>(true);
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
   const tabParam = searchParams.get("t") ?? "overview";
   const [tabValue, setTabValue] = useState<string>(tabParam);
-
-  console.log("tournament: ", tournament);
-
-  // useEffect(() => {
-  //   const loadTournament = async () => {
-  //     try {
-  //       setLoading(true);
-  //       const tournamentData = await fetchTournament(params.id!.toString());
-  //       console.log("tournament: ", tournamentData);
-  //       setTournament(tournamentData);
-  //     } catch (error) {
-  //       console.error("Error fetching tournament:", error);
-  //       // Handle error state if needed
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   loadTournament();
-  // }, [fetchTournament, params.id]);
 
   // keep state in sync with query string if user lands on a link with ?t=
   useEffect(() => {
@@ -81,6 +56,16 @@ export default function EditTournamentTabs({ tournament }: props) {
 
   return (
     <div>
+      <div className="flex items-center mb-6">
+          <CustomButton
+            variant="outline"
+            size="sm"
+            startIcon={<ArrowLeftIcon className="h-4 w-4" />}
+            onClick={() => router.push("/tournament/list")}
+          >
+            Back
+          </CustomButton>
+        </div>
       <div className="py-4 flex justify-between items-center">
         <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
           {tournament.title}

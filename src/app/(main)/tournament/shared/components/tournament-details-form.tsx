@@ -292,7 +292,7 @@ function TournamentDetailsForm({
                               }
                             }}
                             disabled={(date) =>
-                              date >
+                              date <=
                                 dayjs(
                                   form.getValues("registrationDate.to")
                                 ).toDate() || date < new Date()

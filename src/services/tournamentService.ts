@@ -24,11 +24,7 @@ export async function getTournamentById(tournamentId: number) {
     include: { rules: true, events: true },
   });
 
-  if (!tournament) {
-    throw new Error("Tournament not found");
-  }
-
-  return mapTournamentToDetails(tournament);
+  return tournament ? mapTournamentToDetails(tournament) : null;
 }
 export async function createTournament(data: {
   step1: IStepOneData;
@@ -37,7 +33,7 @@ export async function createTournament(data: {
 }) {
   try {
     const session = await auth.api.getSession({
-      headers: await headers()
+      headers: await headers(),
     });
 
     if (session === null) {
@@ -57,64 +53,67 @@ export async function createTournament(data: {
       registrationDate,
     } = data.step1;
 
-    const tournament = await prisma.$transaction(async (tx) => {
-      console.time("createTournament");
-      const createdTournament = await tx.tournament.create({
-        data: {
-          title,
-          description,
-          location,
-          thumbnail,
-          isPublic,
-          type,
-          tournamentStart: date.from,
-          tournamentEnd: date.to,
-          registrationStart: registrationDate.from,
-          registrationEnd: registrationDate.to,
-          status: tournamentStatusLookup[0].id,
-          createdById: userId,
-          updatedById: userId,
-        },
-      });
-      console.timeEnd("createTournament");
+    const tournament = await prisma.$transaction(
+      async (tx) => {
+        console.time("createTournament");
+        const createdTournament = await tx.tournament.create({
+          data: {
+            title,
+            description,
+            location,
+            thumbnail,
+            isPublic,
+            type,
+            tournamentStart: date.from,
+            tournamentEnd: date.to,
+            registrationStart: registrationDate.from,
+            registrationEnd: registrationDate.to,
+            status: tournamentStatusLookup[0].id,
+            createdById: userId,
+            updatedById: userId,
+          },
+        });
+        console.timeEnd("createTournament");
 
-      console.time("createRules");
-      await tx.tournamentRules.create({
-        data: {
-          description: data.step2.rules,
-          tournamentId: createdTournament.id,
-          createdById: userId,
-          updatedById: userId,
-        },
-      });
-      console.timeEnd("createRules");
+        console.time("createRules");
+        await tx.tournamentRules.create({
+          data: {
+            description: data.step2.rules,
+            tournamentId: createdTournament.id,
+            createdById: userId,
+            updatedById: userId,
+          },
+        });
+        console.timeEnd("createRules");
 
-      console.time("matchSettings");
-      await tx.matchSettings.create({
-        data: {
-          ...data.step2.matchSettings,
-          tournamentId: createdTournament.id,
-          createdById: userId,
-          updatedById: userId,
-        },
-      });
-      console.timeEnd("matchSettings");
+        console.time("matchSettings");
+        await tx.matchSettings.create({
+          data: {
+            ...data.step2.matchSettings,
+            tournamentId: createdTournament.id,
+            createdById: userId,
+            updatedById: userId,
+          },
+        });
+        console.timeEnd("matchSettings");
 
-      console.time("tournamentEvent");
-      await tx.tournamentEvent.createMany({
-        data: data.step3.events.map(({ ...event }) => ({
-          ...event,
-          tournamentId: createdTournament.id,
-          createdById: userId,
-          updatedById: userId,
-        })),
-      });
-      console.timeEnd("tournamentEvent");
+        console.time("tournamentEvent");
+        await tx.tournamentEvent.createMany({
+          data: data.step3.events.map(({ ...event }) => ({
+            ...event,
+            tournamentId: createdTournament.id,
+            createdById: userId,
+            updatedById: userId,
+          })),
+        });
+        console.timeEnd("tournamentEvent");
 
-      return createdTournament;
-    },{
-      timeout: 10000,
-    });
+        return createdTournament;
+      },
+      {
+        timeout: 10000,
+      }
+    );
 
     console.log("Tournament created successfully:", tournament);
 
@@ -139,7 +138,7 @@ export async function updateTournament(
 ) {
   try {
     const session = await auth.api.getSession({
-      headers: await headers()
+      headers: await headers(),
     });
 
     if (session === null) {
@@ -197,7 +196,7 @@ export async function updateTournament(
 export async function deleteTournament(tournamentId: number) {
   try {
     const session = await auth.api.getSession({
-      headers: await headers()
+      headers: await headers(),
     });
 
     if (session === null) {
