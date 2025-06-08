@@ -1,3 +1,7 @@
+import { ITournamentEvent } from "./event";
+import { IMatchSettings } from "./matchSetting";
+import { ITournamentRule } from "./tournamentRule";
+
 export interface ITournamentDetails {
     id?: number;
     title: string;
@@ -15,6 +19,10 @@ export interface ITournamentDetails {
     updatedAt: string;
     createdBy: string;
     updatedBy: string;
+
+    tournamentRule?: ITournamentRule;
+    matchSettings?: IMatchSettings;
+    events?: ITournamentEvent[];
   }
 
 export type TournamentType = "circuit" | "standalone";

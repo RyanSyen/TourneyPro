@@ -14,7 +14,7 @@ let responseData: ResponseData;
 
 export async function GET(
   request: Request,
-  { params }: { params: Promise<{ tournamentId: string }> }
+  { params }: { params: Promise<{ tournamentId: number }> }
 ) {
   try {
     const { tournamentId } = await params;

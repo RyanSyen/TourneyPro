@@ -65,42 +65,40 @@ enum TournamentType {
 }
 
 model Tournament {
-  id          Int  @id @default(autoincrement())
-  title       String
-  description String
-  location    String
-  thumbnail   String
-  isPublic    Boolean @default(false)
-
+  id                Int               @id @default(autoincrement())
+  title             String
+  description       String
+  location          String
+  thumbnail         String
+  isPublic          Boolean           @default(false)
   // Tournament types (e.g., circuit, standalone)
-  type TournamentType[] @default([])
-
+  type              TournamentType[]  @default([])
   // Replaces startDate and endDate
-  tournamentStart DateTime
-  tournamentEnd   DateTime
-
+  tournamentStart   DateTime
+  tournamentEnd     DateTime
   // Registration date range
   registrationStart DateTime
   registrationEnd   DateTime
-
   // Rules relation
-  rulesId Int?
-  rules   TournamentRules? @relation(fields: [rulesId], references: [id])
-  
-  events TournamentEvent[]
-  status Int
-
+  rulesId           Int?
+  rules             TournamentRules?  @relation(fields: [rulesId], references: [id])
+  // Match settings relation
+  matchSettingsId   Int?
+  matchSettings     MatchSettings?    @relation(fields: [matchSettingsId], references: [id])
+  // Events relation
+  events            TournamentEvent[]
+  status            Int
   // Auditing
-  createdAt   DateTime  @default(now())
-  createdById String?
-  createdBy   User?     @relation("CreatedTournaments", fields: [createdById], references: [id])
-  updatedAt   DateTime  @updatedAt
-  updatedById String?
-  updatedBy   User?     @relation("UpdatedTournaments", fields: [updatedById], references: [id])
-  deletedAt   DateTime?
-  deletedById String?
-  deletedBy   User?     @relation("DeletedTournaments", fields: [deletedById], references: [id])
-  isDeleted   Boolean   @default(false)
+  createdAt         DateTime          @default(now())
+  createdById       String?
+  createdBy         User?             @relation("CreatedTournaments", fields: [createdById], references: [id])
+  updatedAt         DateTime          @updatedAt
+  updatedById       String?
+  updatedBy         User?             @relation("UpdatedTournaments", fields: [updatedById], references: [id])
+  deletedAt         DateTime?
+  deletedById       String?
+  deletedBy         User?             @relation("DeletedTournaments", fields: [deletedById], references: [id])
+  isDeleted         Boolean           @default(false)
 }
 
 // --- TournamentRules ---
@@ -110,23 +108,24 @@ model TournamentRules {
   description  String
   tournamentId Int
   // Auditing
-  createdAt    DateTime     @default(now())
+  createdAt    DateTime  @default(now())
   createdById  String?
-  createdBy    User?        @relation("CreatedTournamentRules", fields: [createdById], references: [id])
-  updatedAt    DateTime     @updatedAt
+  createdBy    User?     @relation("CreatedTournamentRules", fields: [createdById], references: [id])
+  updatedAt    DateTime  @updatedAt
   updatedById  String?
-  updatedBy    User?        @relation("UpdatedTournamentRules", fields: [updatedById], references: [id])
+  updatedBy    User?     @relation("UpdatedTournamentRules", fields: [updatedById], references: [id])
   deletedAt    DateTime?
   deletedById  String?
-  deletedBy    User?        @relation("DeletedTournamentRules", fields: [deletedById], references: [id])
-  isDeleted    Boolean      @default(false)
-  Tournament   Tournament[]
+  deletedBy    User?     @relation("DeletedTournamentRules", fields: [deletedById], references: [id])
+  isDeleted    Boolean   @default(false)
+
+  Tournament Tournament[]
 }
 
 // --- MatchSettings ---
 
 model MatchSettings {
-  id             Int    @id @default(autoincrement())
+  id             Int       @id @default(autoincrement())
   points         String
   changeOfEnds   String
   gracePeriod    String
@@ -144,6 +143,8 @@ model MatchSettings {
   deletedById    String?
   deletedBy      User?     @relation("DeletedMatchSettings", fields: [deletedById], references: [id])
   isDeleted      Boolean   @default(false)
+
+  Tournament Tournament[]
 }
 
 // --- TournamentEvent ---
@@ -175,7 +176,7 @@ model TournamentEvent {
 // --- Player ---
 
 model Player {
-  id          Int        @id @default(autoincrement())
+  id          Int           @id @default(autoincrement())
   name        String
   email       String        @unique
   events      PlayerEvent[]
