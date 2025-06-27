@@ -19,19 +19,23 @@ interface props {
 const { useSession } = createAuthClient();
 
 export default function Overview({ tournament }: props) {
-  // console.log("tournament:", tournament);
+  console.log("tournament:", tournament);
 
   // prepare default values for the tournament details form
   const defaultValues: Tournament = {
     ...tournament,
-    registrationDate: {
-      from: dayjs(tournament.registrationDate.from).toISOString(),
-      to: dayjs(tournament.registrationDate.to).toISOString(),
-    },
-    date: {
-      from: dayjs(tournament.date.from).toISOString(),
-      to: dayjs(tournament.date.to).toISOString(),
-    },
+    // registrationDate: {
+    //   from: dayjs(tournament.registrationDate.from).toISOString(),
+    //   to: dayjs(tournament.registrationDate.to).toISOString(),
+    // },
+    // date: {
+    //   from: dayjs(tournament.date.from).toISOString(),
+    //   to: dayjs(tournament.date.to).toISOString(),
+    // },
+    registrationStartDate: dayjs(tournament.registrationStartDate).toISOString(),
+    registrationEndDate: dayjs(tournament.registrationEndDate).toISOString(),
+    tournamentStartDate: dayjs(tournament.tournamentStartDate).toISOString(),
+    tournamentEndDate: dayjs(tournament.tournamentEndDate).toISOString(),
   }
   const { data: session, isPending, error, refetch } = useSession();
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -107,7 +111,7 @@ export default function Overview({ tournament }: props) {
         </section>
         <div className="flex-2">
           <TournamentDetailsForm
-            isEdit={false}
+            isEdit={true}
             defaultValues={defaultValues}
             onSubmit={onUpdateTournament}
           />

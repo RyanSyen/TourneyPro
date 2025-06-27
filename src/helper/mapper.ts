@@ -20,14 +20,10 @@ export function mapTournamentToDetails(
     thumbnail: t.thumbnail,
     isPublic: t.isPublic,
     type: t.type,
-    registrationDate: {
-      from: dayjs(t.registrationStart).format(APP_CONFIG.DATEFORMAT1),
-      to: dayjs(t.registrationEnd).format(APP_CONFIG.DATEFORMAT1),
-    },
-    date: {
-      from: dayjs(t.tournamentStart).format(APP_CONFIG.DATEFORMAT1),
-      to: dayjs(t.tournamentEnd).format(APP_CONFIG.DATEFORMAT1),
-    },
+    registrationStartDate: dayjs(t.registrationStart).format(APP_CONFIG.DATEFORMAT1),
+    registrationEndDate: dayjs(t.registrationEnd).format(APP_CONFIG.DATEFORMAT1),
+    tournamentStartDate: dayjs(t.tournamentStart).format(APP_CONFIG.DATEFORMAT1),
+    tournamentEndDate: dayjs(t.tournamentEnd).format(APP_CONFIG.DATEFORMAT1),
     location: t.location,
     organizer: t.createdById!,
     status: t.status,

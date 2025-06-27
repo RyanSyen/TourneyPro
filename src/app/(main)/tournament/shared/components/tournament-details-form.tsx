@@ -41,26 +41,6 @@ interface props {
   onSubmit: (data: Tournament) => void;
 }
 
-// Interface mapped from Tournament type
-// export interface IStepOneData {
-//   // id?: string; // Optional UUID
-//   title: string;
-//   description: string;
-//   rules?: string; // Optional, min 10 chars, max 1000 chars
-//   thumbnail: string;
-//   isPublic: boolean;
-//   type: Array<"circuit" | "standalone">;
-//   registrationDate: {
-//     from: string; // ISO datetime string
-//     to: string; // ISO datetime string
-//   };
-//   date: {
-//     from: string; // ISO datetime string
-//     to: string; // ISO datetime string
-//   };
-//   location: string;
-// }
-
 function TournamentDetailsForm({
   isEdit = false,
   defaultValues,
@@ -166,76 +146,6 @@ function TournamentDetailsForm({
                   </FormItem>
                 )}
               />
-              {/* <FormField
-                control={form.control}
-                name="registrationDate"
-                render={({ field }) => {
-                  return (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>
-                        Registration Period{" "}
-                        <span className="text-[#e50b0d] text-xl">*</span>
-                      </FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant={"outline"}
-                              className="h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90 dark:focus:border-brand-800"
-                            >
-                              {field.value?.from ? (
-                                field.value.to ? (
-                                  <>
-                                    {format(field.value.from, "LLL dd, y")} -{" "}
-                                    {format(field.value.to, "LLL dd, y")}
-                                  </>
-                                ) : (
-                                  format(field.value.from, "LLL dd, y")
-                                )
-                              ) : (
-                                <span>Pick a date</span>
-                              )}
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PrimaryPopoverContent
-                          className="w-auto p-0"
-                          align="start"
-                        >
-                          <Calendar
-                            initialFocus
-                            mode="range"
-                            numberOfMonths={2}
-                            defaultMonth={dayjs(field.value?.from).toDate()}
-                            selected={{
-                              from: dayjs(field.value?.from).toDate(),
-                              to: dayjs(field.value?.to).toDate(),
-                            }}
-                            onSelect={(range) => {
-                              if (range?.from && range?.to) {
-                                field.onChange({
-                                  from: range.from.toISOString(),
-                                  to: range.to.toISOString(),
-                                });
-                              } else if (range?.from) {
-                                field.onChange({
-                                  from: range.from.toISOString(),
-                                  to: undefined,
-                                });
-                              } else {
-                                field.onChange(undefined);
-                              }
-                            }}
-                            disabled={{ before: new Date() }}
-                          />
-                        </PrimaryPopoverContent>
-                      </Popover>
-                      <ErrorMessage name="date.from" /> <br />
-                      <ErrorMessage name="date.to" />
-                    </FormItem>
-                  );
-                }}
-              /> */}
               <FormField
                 control={form.control}
                 name="registrationStartDate"
@@ -244,6 +154,8 @@ function TournamentDetailsForm({
                     control={form.control}
                     name="registrationEndDate"
                     render={({ field: endField }) => {
+                      // console.log('startField:', startField);
+                      // console.log('endField:', endField);
                       const from = startField.value
                         ? new Date(startField.value)
                         : undefined;
@@ -316,82 +228,6 @@ function TournamentDetailsForm({
                   />
                 )}
               />
-
-              {/* <FormField
-                control={form.control}
-                name="date"
-                render={({ field }) => {
-                  return (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>
-                        Tournament Period{" "}
-                        <span className="text-[#e50b0d] text-xl">*</span>
-                      </FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant={"outline"}
-                              className="h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90 dark:focus:border-brand-800"
-                            >
-                              {field.value?.from ? (
-                                field.value.to ? (
-                                  <>
-                                    {format(field.value.from, "LLL dd, y")} -{" "}
-                                    {format(field.value.to, "LLL dd, y")}
-                                  </>
-                                ) : (
-                                  format(field.value.from, "LLL dd, y")
-                                )
-                              ) : (
-                                <span>Pick a date</span>
-                              )}
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PrimaryPopoverContent
-                          className="w-auto p-0"
-                          align="start"
-                        >
-                          <Calendar
-                            initialFocus
-                            mode="range"
-                            numberOfMonths={2}
-                            defaultMonth={dayjs(field.value?.from).toDate()}
-                            selected={{
-                              from: dayjs(field.value?.from).toDate(),
-                              to: dayjs(field.value?.to).toDate(),
-                            }}
-                            onSelect={(range) => {
-                              if (range?.from && range?.to) {
-                                field.onChange({
-                                  from: range.from.toISOString(),
-                                  to: range.to.toISOString(),
-                                });
-                              } else if (range?.from) {
-                                field.onChange({
-                                  from: range.from.toISOString(),
-                                  to: undefined,
-                                });
-                              } else {
-                                field.onChange(undefined);
-                              }
-                            }}
-                            disabled={(date) =>
-                              date <=
-                                dayjs(
-                                  form.getValues("registrationDate.to")
-                                ).toDate() || date < new Date()
-                            }
-                          />
-                        </PrimaryPopoverContent>
-                      </Popover>
-                      <ErrorMessage name="date.from" /> <br />
-                      <ErrorMessage name="date.to" />
-                    </FormItem>
-                  );
-                }}
-              /> */}
               <FormField
                 control={form.control}
                 name="tournamentStartDate"
@@ -477,7 +313,6 @@ function TournamentDetailsForm({
                   />
                 )}
               />
-
               <FormField
                 control={form.control}
                 name="location"
