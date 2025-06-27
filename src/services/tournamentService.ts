@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/prisma";
 import { mapTournamentToDetails } from "@/helper/mapper";
-import { IStepOneData } from "@/app/(main)/tournament/shared/components/tournament-details-form";
 import { IStepTwoData } from "@/app/(main)/tournament/create/tournament-rules";
 import { IStepThreeData } from "@/app/(main)/tournament/create/tournament-events";
 // import { auth } from "@clerk/nextjs/server";
@@ -8,6 +7,7 @@ import { tournamentStatusLookup } from "@/lookups/tournament/statusLookup";
 import { auth } from "../../auth";
 import { headers } from "next/headers";
 import { ITournamentDetails } from "@/types/tournament";
+import { ITournamentEvent } from "@/types/event";
 
 export async function getAllTournaments() {
   const tournaments = await prisma.tournament.findMany({
@@ -28,9 +28,9 @@ export async function getTournamentById(tournamentId: number) {
   return tournament ? mapTournamentToDetails(tournament) : null;
 }
 export async function createTournament(data: {
-  step1: IStepOneData;
+  step1: ITournamentDetails;
   step2: IStepTwoData;
-  step3: IStepThreeData;
+  step3: ITournamentEvent[];
 }) {
   try {
     const session = await auth.api.getSession({
@@ -50,8 +50,10 @@ export async function createTournament(data: {
       thumbnail,
       isPublic,
       type,
-      date,
-      registrationDate,
+      registrationStartDate,
+      registrationEndDate,
+      tournamentStartDate,
+      tournamentEndDate,
     } = data.step1;
 
     const tournament = await prisma.$transaction(
@@ -65,10 +67,10 @@ export async function createTournament(data: {
             thumbnail,
             isPublic,
             type,
-            tournamentStart: date.from,
-            tournamentEnd: date.to,
-            registrationStart: registrationDate.from,
-            registrationEnd: registrationDate.to,
+            tournamentStart: tournamentStartDate,
+            tournamentEnd: tournamentEndDate,
+            registrationStart: registrationStartDate,
+            registrationEnd: registrationEndDate,
             status: tournamentStatusLookup[0].id,
             createdById: userId,
             updatedById: userId,
@@ -79,7 +81,7 @@ export async function createTournament(data: {
         console.time("createRules");
         await tx.tournamentRules.create({
           data: {
-            description: data.step2.rules,
+            description: data.step2.rules.description,
             tournamentId: createdTournament.id,
             createdById: userId,
             updatedById: userId,
@@ -100,8 +102,9 @@ export async function createTournament(data: {
 
         console.time("tournamentEvent");
         await tx.tournamentEvent.createMany({
-          data: data.step3.events.map(({ ...event }) => ({
+          data: data.step3.map(({ ...event }) => ({
             ...event,
+            updatedAt: event.updatedAt || new Date(),
             tournamentId: createdTournament.id,
             createdById: userId,
             updatedById: userId,
@@ -159,10 +162,10 @@ export async function updateTournamentDetails(
           thumbnail: data.thumbnail,
           isPublic: data.isPublic,
           type: data.type,
-          tournamentStart: data.date.from,
-          tournamentEnd: data.date.to,
-          registrationStart: data.registrationDate.from,
-          registrationEnd: data.registrationDate.to,
+          tournamentStart: data.tournamentStartDate,
+          tournamentEnd: data.tournamentEndDate,
+          registrationStart: data.registrationStartDate,
+          registrationEnd: data.registrationEndDate,
           updatedById: userId,
         },
       });

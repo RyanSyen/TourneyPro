@@ -5,6 +5,6 @@ export interface IMatchSettings {
     gracePeriod: string;
     allowSpinServe: boolean;
     allowDeuce: boolean;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
   }

@@ -38,7 +38,7 @@ function TournamentRulesForm({ form, isEdit, defaultValues }: props) {
       <Form {...activeForm}>
         <FormField
           control={activeForm.control}
-          name="rules"
+          name="description"
           render={({ field }) => (
             <FormItem>
               <FormControl>

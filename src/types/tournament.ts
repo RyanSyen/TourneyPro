@@ -10,15 +10,17 @@ export interface ITournamentDetails {
     thumbnail: string;
     isPublic: boolean;
     type: TournamentType[];
-    registrationDate: DateRange;
-    date: DateRange;
+    registrationStartDate: string;
+    registrationEndDate: string;
+    tournamentStartDate: string;
+    tournamentEndDate: string;
     location: string;
-    organizer: string;
-    status: number;
-    createdAt: string;
-    updatedAt: string;
-    createdBy: string;
-    updatedBy: string;
+    organizer?: string;
+    status?: number;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: string;
+    updatedBy?: string;
 
     tournamentRule?: ITournamentRule;
     matchSettings?: IMatchSettings;

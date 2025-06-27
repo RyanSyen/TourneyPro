@@ -29,22 +29,23 @@ import { EventTypeLookup } from "@/lookups/tournament/eliminationLookup";
 import { Spinner } from "@/components/ui/spinner";
 import { Separator } from "@/components/ui/separator";
 import { AgeGroupLookup } from "@/lookups/tournament/ageGroupLookup";
+import { ITournamentEvent } from "@/types/event";
 
 interface props {
   tournamentId: string;
-  event: TournamentEvent;
-  setEvent: React.Dispatch<React.SetStateAction<TournamentEvent>>;
+  event: ITournamentEvent;
+  setEvent: React.Dispatch<React.SetStateAction<ITournamentEvent>>;
   isEdit: boolean;
   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
-  previewList: TournamentEvent[];
-  setPreviewList: React.Dispatch<React.SetStateAction<TournamentEvent[]>>;
+  previewList: ITournamentEvent[];
+  setPreviewList: React.Dispatch<React.SetStateAction<ITournamentEvent[]>>;
 }
 
 interface MultipleAgeGroupSelectorProps {
   uniqueKey: React.Key;
 /* eslint-disable @typescript-eslint/no-explicit-any */
-  form: UseFormReturn<TournamentEvent, any, undefined>;
+  form: UseFormReturn<ITournamentEvent, any, undefined>;
   ageGroup: Option[];
   ageGroupStr: string;
   ageSearch: (value: string) => Promise<Option[]>;
@@ -122,16 +123,16 @@ function EventForm({
 }: props) {
   const [ageGroupStr, setAgeGroupStr] = useState("");
   const [ageGroup, setAgeGroup] = useState<Option[]>([]);
-  const [tournamentEvent, setTournamentEvent] = useState<
-    TournamentEvent[] | undefined
+  const [ITournamentEvent, setITournamentEvent] = useState<
+    ITournamentEvent[] | undefined
   >(undefined);
 
   // const {
-  //   fetchTournamentEvents,
-  //   addTournamentEvent,
-  //   updateTournamentEvent,
-  //   deleteTournamentEvent,
-  // } = useTournamentEventStore();
+  //   fetchITournamentEvents,
+  //   addITournamentEvent,
+  //   updateITournamentEvent,
+  //   deleteITournamentEvent,
+  // } = useITournamentEventStore();
 
   const form = useForm<TournamentEvent>({
     resolver: zodResolver(TournamentEventSchema),
@@ -210,7 +211,7 @@ function EventForm({
   };
 
   const resetForm = () => {
-    const defaultEvent: TournamentEvent = {
+    const defaultEvent: ITournamentEvent = {
       event: "",
       ageGroup: "",
       type: "",
@@ -255,17 +256,17 @@ function EventForm({
 
       if (!parsedData) console.error("Error parsing data");
 
-      const payload: TournamentEvent = {
+      const payload: ITournamentEvent = {
         ...parsedData,
         prize: parsedData.prize || "no prize",
         registrationFee: parsedData.registrationFee || 0,
       };
 
       if (isEdit) {
-        const event = tournamentEvent!.find((cat) => cat.id === parsedData.id);
+        const event = ITournamentEvent!.find((cat) => cat.id === parsedData.id);
 
         if (event) {
-          // result = await updateTournamentEvent(event.id!, payload);
+          // result = await updateITournamentEvent(event.id!, payload);
           const prevPreviewList = [...previewList].filter((cat) => {
             return cat.id !== parsedData.id;
           });
@@ -274,8 +275,8 @@ function EventForm({
         // if (result.success) setPreviewList([...prevPreviewList, payload]);
       } else {
         console.log("adding tournament event");
-        // result = await addTournamentEvent(tournamentId, payload);
-        setTournamentEvent((prev) => {
+        // result = await addITournamentEvent(tournamentId, payload);
+        setITournamentEvent((prev) => {
           if (prev) {
             return [...prev, payload];
           }

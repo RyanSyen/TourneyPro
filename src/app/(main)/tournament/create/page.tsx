@@ -4,23 +4,25 @@ import { useState } from "react";
 import CustomButton from "@/components/ui/button/CustomButton";
 import { ArrowLeftIcon } from "@/icons/components";
 import { CheckCircleIcon } from "@/icons/components";
-import TournamentDetailsForm, {
-  IStepOneData,
-} from "../shared/components/tournament-details-form";
+import TournamentDetailsForm from "../shared/components/tournament-details-form";
 import TournamentRules, { IStepTwoData } from "./tournament-rules";
 import dayjs from "dayjs";
 import TournamentEvents, { IStepThreeData } from "./tournament-events";
 import TournamentPreview from "./tournament-preview";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { ITournamentDetails } from "@/types/tournament";
+import { IMatchSettings } from "@/types/matchSetting";
+import { ITournamentRule } from "@/types/tournamentRule";
+import { ITournamentEvent } from "@/types/event";
 
 // no data to fetch, so no need server component
 const CreateTournament = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<{
-    step1: IStepOneData;
+    step1: ITournamentDetails;
     step2: IStepTwoData;
-    step3: IStepThreeData;
+    step3: ITournamentEvent[];
   }>({
     step1: {
       title: "",
@@ -29,14 +31,10 @@ const CreateTournament = () => {
       isPublic: true,
       type: [],
       location: "",
-      registrationDate: {
-        from: dayjs().toISOString(),
-        to: dayjs().add(3, "days").toISOString(),
-      },
-      date: {
-        from: dayjs().add(3, "days").toISOString(),
-        to: dayjs().add(10, "days").toISOString(),
-      },
+      registrationStartDate: dayjs().toISOString(),
+      registrationEndDate: dayjs().add(3, "days").toISOString(),
+      tournamentStartDate: dayjs().add(3, "days").toISOString(),
+      tournamentEndDate: dayjs().add(10, "days").toISOString(),
     },
     step2: {
       matchSettings: {
@@ -46,11 +44,11 @@ const CreateTournament = () => {
         allowSpinServe: false,
         allowDeuce: true,
       },
-      rules: "Standard badminton rules apply.",
+      rules: {
+        description: "Standard badminton rules apply."
+      },
     },
-    step3: {
-      events: [],
-    },
+    step3: [],
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
@@ -58,7 +56,7 @@ const CreateTournament = () => {
   const prevStep = () => setCurrentStep((prev) => prev - 1);
 
   const handleStepSubmit = (
-    stepData: IStepOneData | IStepTwoData | IStepThreeData
+    stepData: ITournamentDetails | IStepTwoData | ITournamentEvent[]
   ) => {
     console.log("Step Data:", stepData);
     setFormData((prev) => ({

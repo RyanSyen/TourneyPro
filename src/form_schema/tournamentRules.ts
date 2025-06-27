@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const TournamentRulesSchema = z.object({
-  rules: z
+  description: z
     .string()
     .min(10, {
       message: "Tournament rules must be at least 10 characters.",

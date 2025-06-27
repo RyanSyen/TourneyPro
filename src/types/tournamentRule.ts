@@ -1,12 +1,12 @@
 export interface ITournamentRule {
-  id: number;
+  id?: number;
   description: string;
-  tournamentId: number;
-  createdAt: Date;
+  tournamentId?: number;
+  createdAt?: Date;
   createdBy?: string;
-  updatedAt: Date | null;
+  updatedAt?: Date | null;
   updatedBy?: string;
-  deletedAt: Date | null;
+  deletedAt?: Date | null;
   deletedBy?: string;
-  isDeleted: boolean;
+  isDeleted?: boolean;
 }

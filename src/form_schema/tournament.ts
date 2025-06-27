@@ -29,14 +29,10 @@ export const TournamentSchema = z.object({
     .refine((value) => value.some((item) => item), {
       message: "You have to select at least one tournament type.",
     }),
-  registrationDate: z.object({
-    from: z.string().datetime(),
-    to: z.string().datetime(),
-  }),
-  date: z.object({
-    from: z.string().datetime(),
-    to: z.string().datetime(),
-  }),
+  registrationStartDate: z.string().datetime(),
+  registrationEndDate: z.string().datetime(),
+  tournamentStartDate: z.string().datetime(),
+  tournamentEndDate: z.string().datetime(),
   location: z.string({
     required_error: "Tournament location is required.",
   }),

@@ -7,11 +7,12 @@ import CustomButton from "@/components/ui/button/CustomButton";
 import { PlusIcon } from "@/icons/components";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { ITournamentEvent } from "@/types/event";
 
 interface props {
   tournamentId: string;
-  defaultValues: IStepThreeData;
-  onSubmit: (data: IStepThreeData) => void;
+  defaultValues: ITournamentEvent[];
+  onSubmit: (data: ITournamentEvent[]) => void;
   prevStep: () => void;
 }
 
@@ -20,7 +21,7 @@ export interface IStepThreeData {
 }
 
 function Events({ tournamentId, defaultValues, onSubmit, prevStep }: props) {
-  const [event, setEvent] = useState<TournamentEvent>({
+  const [event, setEvent] = useState<ITournamentEvent>({
     event: "",
     ageGroup: "",
     type: "",
@@ -28,11 +29,11 @@ function Events({ tournamentId, defaultValues, onSubmit, prevStep }: props) {
     prize: "",
     registrationFee: 0,
   });
-  const [events, setEvents] = useState<TournamentEvent[]>(defaultValues.events);
+  const [events, setEvents] = useState<ITournamentEvent[]>(defaultValues);
   const [isEdit, setIsEdit] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
-  const onEditEvent = (event: TournamentEvent) => {
+  const onEditEvent = (event: ITournamentEvent) => {
     console.log("edit Event: ", event);
     setIsEdit(true);
     setEvent(event);
@@ -53,9 +54,7 @@ function Events({ tournamentId, defaultValues, onSubmit, prevStep }: props) {
       return;
     }
 
-    onSubmit({
-      events: events,
-    });
+    onSubmit(events);
   };
 
   return (

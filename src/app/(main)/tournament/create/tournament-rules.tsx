@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { MatchSettings, MatchSettingsSchema } from "@/form_schema/matchSetting";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { IMatchSettings } from "@/types/matchSetting";
+import { ITournamentRule } from "@/types/tournamentRule";
 
 interface props {
   isEdit?: boolean;
@@ -18,14 +20,8 @@ interface props {
 }
 
 export interface IStepTwoData {
-  matchSettings: {
-    points: string;
-    changeOfEnds: string;
-    gracePeriod: string;
-    allowSpinServe: boolean;
-    allowDeuce: boolean;
-  };
-  rules: string;
+  matchSettings: IMatchSettings;
+  rules: ITournamentRule;
 }
 
 function TournamentRulesPage({ defaultValues, onSubmit, prevStep }: props) {
@@ -41,7 +37,7 @@ function TournamentRulesPage({ defaultValues, onSubmit, prevStep }: props) {
   const tournamentRulesForm = useForm<TournamentRules>({
     resolver: zodResolver(TournamentRulesSchema),
     shouldFocusError: false,
-    defaultValues: stepTwoData,
+    defaultValues: stepTwoData.rules,
   });
 
   const handleSave = async () => {
@@ -54,12 +50,12 @@ function TournamentRulesPage({ defaultValues, onSubmit, prevStep }: props) {
 
       setStepTwoData({
         matchSettings: matchSettingsData,
-        rules: tournamentRulesData.rules,
+        rules: {description: tournamentRulesData.description},
       });
 
       onSubmit({
         matchSettings: matchSettingsData,
-        rules: tournamentRulesData.rules,
+        rules: {description: tournamentRulesData.description},
       });
     }
   };
@@ -73,7 +69,7 @@ function TournamentRulesPage({ defaultValues, onSubmit, prevStep }: props) {
       <div className="my-6" />
       <TournamentRulesForm
         form={tournamentRulesForm}
-        defaultValues={stepTwoData}
+        defaultValues={stepTwoData.rules}
       />
       <section className="flex justify-end items-center gap-2 py-8">
         <Button
