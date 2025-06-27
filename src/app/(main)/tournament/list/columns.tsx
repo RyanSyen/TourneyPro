@@ -99,7 +99,7 @@ export const columns: ColumnDef<ITournamentDetails>[] = [
     header: "Start Date",
     cell: ({ row }) => {
       const tournament = row.original;
-      const date = dayjs(tournament.date?.from).format("DD/MM/YYYY");
+      const date = dayjs(tournament.tournamentStartDate).format("DD/MM/YYYY");
       return <div>{date}</div>;
     },
   },
@@ -108,7 +108,7 @@ export const columns: ColumnDef<ITournamentDetails>[] = [
     header: "End Date",
     cell: ({ row }) => {
       const tournament = row.original;
-      const date = dayjs(tournament.date?.to).format("DD/MM/YYYY");
+      const date = dayjs(tournament.tournamentEndDate).format("DD/MM/YYYY");
       return <div>{date}</div>;
     },
   },
