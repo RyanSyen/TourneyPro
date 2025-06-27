@@ -11,9 +11,28 @@ import { ITournamentEvent } from "@/types/event";
 
 export async function getAllTournaments() {
   const tournaments = await prisma.tournament.findMany({
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      location: true,
+      thumbnail: false,
+      isPublic: true,
+      type: true,
+      registrationStart: true,
+      registrationEnd: true,
+      tournamentStart: true,
+      tournamentEnd: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true,
+      createdById: true,
+      updatedById: true,
+    },
     where: { isDeleted: false },
-    include: { rules: true, events: true },
+    // include: { rules: true, events: true },
     orderBy: { createdAt: "desc" },
+    // take: 5,
   });
 
   return tournaments.map(mapTournamentToDetails);

@@ -1,22 +1,25 @@
 import dayjs from "dayjs";
 import { APP_CONFIG } from "@/app/appconfig";
 import { ITournamentDetails } from "@/types/tournament";
-import { Prisma } from "@prisma/client";
+import { Prisma, Tournament } from "@prisma/client";
 
-type TournamentWithRelations = Prisma.TournamentGetPayload<{
-  include: {
-    rules: true;
-    events: true;
-  };
-}>;
-export function mapTournamentToDetails(
-  t: TournamentWithRelations
-): ITournamentDetails {
+// type TournamentWithRelations = Prisma.TournamentGetPayload<{
+//   include: {
+//     // rules: true;
+//     // events: true;
+//   };
+// }>;
+// export function mapTournamentToDetails(
+//   t: TournamentWithRelations
+// ): ITournamentDetails {
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function mapTournamentToDetails(t: any): ITournamentDetails {
   return {
     id: t.id,
     title: t.title,
     description: t.description,
-    rules: t.rules?.description,
+    rules: "", //t.rules?.description
     thumbnail: t.thumbnail,
     isPublic: t.isPublic,
     type: t.type,
