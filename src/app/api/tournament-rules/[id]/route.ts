@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { setTournamentDetails } from "@/services/tournamentService";
+// import { prisma } from "@/lib/prisma";
+// import { auth } from "../../../../../auth";
+// import { headers } from "next/headers";
+// import { updateTournamentDetails } from "@/services/tournamentService";
 
 // UPDATE tournament by id
 export async function PUT(
@@ -8,14 +11,14 @@ export async function PUT(
 ) {
   try {
     const { id } = await params;
-    // console.log("Updating tournament with ID:", id);
+    console.log("Updating tournament with ID:", id);
     const data = await request.json();
-    // console.log("Received data for update:", data);
-    const tournament = await setTournamentDetails(id, data);
-    return NextResponse.json(tournament, { status: 200 });
+    console.log("Received data for update:", data);
+    // const tournament = await updateTournamentDetails(id, data);
+    return NextResponse.json("test", { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to update tournament", details: error },
+      { error: "Failed to update tournament rules", details: error },
       { status: 500 }
     );
   }

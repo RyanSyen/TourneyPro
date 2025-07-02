@@ -499,7 +499,7 @@ function TournamentDetailsForm({
         </section>
         <section className="flex justify-end items-center gap-2 py-8">
           <Button type="submit" variant={"tailAdminPrimary"}>
-            {isEdit ? "Update" : "Continue"}
+            {isEdit ? "Save" : "Continue"}
           </Button>
         </section>
       </form>

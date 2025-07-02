@@ -19,7 +19,7 @@ interface props {
 const { useSession } = createAuthClient();
 
 export default function Overview({ tournament }: props) {
-  console.log("tournament:", tournament);
+  // console.log("tournament:", tournament);
 
   // prepare default values for the tournament details form
   const defaultValues: Tournament = {
@@ -32,14 +32,15 @@ export default function Overview({ tournament }: props) {
     //   from: dayjs(tournament.date.from).toISOString(),
     //   to: dayjs(tournament.date.to).toISOString(),
     // },
-    registrationStartDate: dayjs(tournament.registrationStartDate).toISOString(),
+    registrationStartDate: dayjs(
+      tournament.registrationStartDate
+    ).toISOString(),
     registrationEndDate: dayjs(tournament.registrationEndDate).toISOString(),
     tournamentStartDate: dayjs(tournament.tournamentStartDate).toISOString(),
     tournamentEndDate: dayjs(tournament.tournamentEndDate).toISOString(),
-  }
+  };
   const { data: session, isPending, error, refetch } = useSession();
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onUpdateTournament = async (updatedTournament: Tournament) => {
     setIsSubmitting(true);
@@ -58,7 +59,7 @@ export default function Overview({ tournament }: props) {
     } finally {
       setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col gap-4 w-lvw-full">

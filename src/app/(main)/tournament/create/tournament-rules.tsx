@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TournamentRulesForm from "../shared/components/tournament-rules-form";
 import MatchSettingsForm from "../shared/components/match-settings-form";
 import {
@@ -11,12 +11,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { IMatchSettings } from "@/types/matchSetting";
 import { ITournamentRule } from "@/types/tournamentRule";
+import { toast } from "sonner";
+import { useParams } from "next/navigation";
 
 interface props {
   isEdit?: boolean;
   defaultValues: IStepTwoData;
-  onSubmit: (data: IStepTwoData) => void;
-  prevStep: () => void;
+  onSubmit?: (data: IStepTwoData) => void;
+  prevStep?: () => void;
 }
 
 export interface IStepTwoData {
@@ -24,9 +26,17 @@ export interface IStepTwoData {
   rules: ITournamentRule;
 }
 
-function TournamentRulesPage({ defaultValues, onSubmit, prevStep }: props) {
+function TournamentRulesPage({
+  isEdit,
+  defaultValues,
+  onSubmit,
+  prevStep,
+}: props) {
   const [stepTwoData, setStepTwoData] =
     React.useState<IStepTwoData>(defaultValues);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const params = useParams();
+  const tournamentId = params.id?.toString();
 
   const matchSettingsForm = useForm<MatchSettings>({
     resolver: zodResolver(MatchSettingsSchema),
@@ -48,15 +58,43 @@ function TournamentRulesPage({ defaultValues, onSubmit, prevStep }: props) {
       const matchSettingsData = matchSettingsForm.getValues();
       const tournamentRulesData = tournamentRulesForm.getValues();
 
-      setStepTwoData({
+      const stepTwoData = {
         matchSettings: matchSettingsData,
-        rules: {description: tournamentRulesData.description},
-      });
+        rules: { description: tournamentRulesData.description },
+      };
 
-      onSubmit({
-        matchSettings: matchSettingsData,
-        rules: {description: tournamentRulesData.description},
+      setStepTwoData(stepTwoData);
+
+      if (isEdit) {
+        // call update api
+        onUpdateRules(tournamentId!, stepTwoData);
+      } else {
+        if (onSubmit) {
+          onSubmit({
+            matchSettings: matchSettingsData,
+            rules: { description: tournamentRulesData.description },
+          });
+        }
+      }
+    }
+  };
+
+  const onUpdateRules = async (tournamentId: string, rules: IStepTwoData) => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/tournament-rules/" + tournamentId, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(rules),
       });
+      console.log("Response:", response);
+      if (!response.ok) throw new Error("Failed to update tournament rules");
+      toast.success("Tournament rules updated successfully!");
+      // router.push("/tournament/list");
+    } catch (error) {
+      toast.error("Failed to update tournament rules: " + error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -75,13 +113,13 @@ function TournamentRulesPage({ defaultValues, onSubmit, prevStep }: props) {
         <Button
           type="button"
           variant={"tailAdminSecondary"}
-          className="w-24"
+          className={isEdit ? "hidden" : "w-24"}
           onClick={prevStep}
         >
           Previous
         </Button>
         <Button type="button" variant="tailAdminPrimary" onClick={handleSave}>
-          Continue
+          {isEdit ? "Save" : "Continue"}
         </Button>
       </section>
     </>

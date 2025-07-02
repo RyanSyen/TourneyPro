@@ -80,11 +80,9 @@ model Tournament {
   registrationStart DateTime
   registrationEnd   DateTime
   // Rules relation
-  rulesId           Int?
-  rules             TournamentRules?  @relation(fields: [rulesId], references: [id])
+  rules             TournamentRules?
   // Match settings relation
-  matchSettingsId   Int?
-  matchSettings     MatchSettings?    @relation(fields: [matchSettingsId], references: [id])
+  matchSettings     MatchSettings?
   // Events relation
   events            TournamentEvent[]
   status            Int
@@ -104,22 +102,21 @@ model Tournament {
 // --- TournamentRules ---
 
 model TournamentRules {
-  id           Int       @id @default(autoincrement())
+  id           Int        @id @default(autoincrement())
   description  String
-  tournamentId Int
+  tournamentId Int        @unique
+  tournament   Tournament @relation(fields: [tournamentId], references: [id])
   // Auditing
-  createdAt    DateTime  @default(now())
+  createdAt    DateTime   @default(now())
   createdById  String?
-  createdBy    User?     @relation("CreatedTournamentRules", fields: [createdById], references: [id])
-  updatedAt    DateTime  @updatedAt
+  createdBy    User?      @relation("CreatedTournamentRules", fields: [createdById], references: [id])
+  updatedAt    DateTime   @updatedAt
   updatedById  String?
-  updatedBy    User?     @relation("UpdatedTournamentRules", fields: [updatedById], references: [id])
+  updatedBy    User?      @relation("UpdatedTournamentRules", fields: [updatedById], references: [id])
   deletedAt    DateTime?
   deletedById  String?
-  deletedBy    User?     @relation("DeletedTournamentRules", fields: [deletedById], references: [id])
-  isDeleted    Boolean   @default(false)
-
-  Tournament Tournament[]
+  deletedBy    User?      @relation("DeletedTournamentRules", fields: [deletedById], references: [id])
+  isDeleted    Boolean    @default(false)
 }
 
 // --- MatchSettings ---
@@ -131,7 +128,9 @@ model MatchSettings {
   gracePeriod    String
   allowSpinServe Boolean
   allowDeuce     Boolean
-  tournamentId   Int
+  tournamentId   Int        @unique
+  tournament     Tournament @relation(fields: [tournamentId], references: [id])
+
   // Auditing
   createdAt      DateTime  @default(now())
   createdById    String?
@@ -143,8 +142,6 @@ model MatchSettings {
   deletedById    String?
   deletedBy      User?     @relation("DeletedMatchSettings", fields: [deletedById], references: [id])
   isDeleted      Boolean   @default(false)
-
-  Tournament Tournament[]
 }
 
 // --- TournamentEvent ---

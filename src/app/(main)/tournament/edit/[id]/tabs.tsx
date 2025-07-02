@@ -20,6 +20,7 @@ import { ArrowLeftIcon, PencilIcon } from "@/icons/components";
 import { Spinner } from "@/components/ui/spinner";
 import CustomButton from "@/components/ui/button/CustomButton";
 import Overview from "./overview/overview";
+import TournamentRules from "../../create/tournament-rules";
 
 interface props {
   tournament: ITournamentDetails;
@@ -43,6 +44,9 @@ export default function EditTournamentTabs({ tournament }: props) {
   if (!params.id) {
     return notFound();
   }
+
+  console.log('tournament matchSettings:', tournament.matchSettings);
+  console.log('tournament rules:', tournament.rules);
 
   return (
     <div>
@@ -103,6 +107,13 @@ export default function EditTournamentTabs({ tournament }: props) {
           <TabsContent value="rules">
             <div className="pt-4">
               {/* <Rules tournament={tournament} /> */}
+              {/* <TournamentRules
+                isEdit={true}
+                defaultValues={{
+                  matchSettings: tournament.matchSettings!,
+                  rules: { description: tournament.rules! },
+                }}
+              /> */}
             </div>
           </TabsContent>
           <TabsContent value="events">

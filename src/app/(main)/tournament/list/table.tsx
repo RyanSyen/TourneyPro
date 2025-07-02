@@ -1,9 +1,9 @@
 import { columns } from "./columns";
 import { DataTable } from "./datatable";
-import { getAllTournaments } from "@/services/tournamentService";
+import { fetchAllTournaments } from "@/services/tournamentService";
 
 const TournamentListTable = async () => {
-  const tournaments = await getAllTournaments();
+  const tournaments = await fetchAllTournaments();
 
     // console.log("Tournament payload size (KB):", JSON.stringify(tournaments).length / 1024);
 

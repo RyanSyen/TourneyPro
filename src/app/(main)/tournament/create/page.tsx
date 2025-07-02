@@ -45,7 +45,7 @@ const CreateTournament = () => {
         allowDeuce: true,
       },
       rules: {
-        description: "Standard badminton rules apply."
+        description: "Standard badminton rules apply.",
       },
     },
     step3: [],
@@ -78,11 +78,17 @@ const CreateTournament = () => {
         body: JSON.stringify(formData),
       });
       console.log("Response:", response);
-      if (!response.ok) throw new Error("Failed to create tournament");
+
+      if (!response.ok) {
+        const errorBody = await response.json();
+        throw new Error(errorBody.error || "Unknown error");
+      }
+
       toast.success("Tournament created successfully!");
       router.push("/tournament/list");
-    } catch (error) {
-      toast.error("Failed to create tournament: " + error);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      toast.error("Failed to create tournament: " + error.message);
     } finally {
       setIsSubmitting(false);
     }

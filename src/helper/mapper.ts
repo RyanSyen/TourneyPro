@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import { APP_CONFIG } from "@/app/appconfig";
 import { ITournamentDetails } from "@/types/tournament";
-import { Prisma, Tournament } from "@prisma/client";
 
 // type TournamentWithRelations = Prisma.TournamentGetPayload<{
 //   include: {
@@ -19,7 +18,7 @@ export function mapTournamentToDetails(t: any): ITournamentDetails {
     id: t.id,
     title: t.title,
     description: t.description,
-    rules: "", //t.rules?.description
+    rules: t.rules?.description ?? "", //t.rules?.description
     thumbnail: t.thumbnail,
     isPublic: t.isPublic,
     type: t.type,
@@ -34,5 +33,9 @@ export function mapTournamentToDetails(t: any): ITournamentDetails {
     updatedAt: dayjs(t.updatedAt).format(APP_CONFIG.DATETIMEFORMAT2),
     createdBy: t.createdById!,
     updatedBy: t.updatedById!,
+
+    tournamentRule: t.rules ?? "",
+    matchSettings: t.matchSettings ?? null,
+    events: t.events ?? [],
   };
 }
