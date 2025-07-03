@@ -13,7 +13,7 @@ import {
   getAllTournaments,
   getTournamentById,
 } from "@/repository/tournament/queries";
-import { requireAuthUser } from "./requireAuthUser";
+import { requireAuthUser } from "./require-auth-user";
 import { createTournament } from "@/repository/tournament/mutation";
 import { create } from "domain";
 import { prisma } from "@/lib/prisma";

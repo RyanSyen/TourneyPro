@@ -1,6 +1,6 @@
 import { columns } from "./columns";
 import { DataTable } from "./datatable";
-import { fetchAllTournaments } from "@/services/tournamentService";
+import { fetchAllTournaments } from "@/services/tournament-service";
 
 const TournamentListTable = async () => {
   const tournaments = await fetchAllTournaments();

@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import {
   TournamentRulesSchema,
   TournamentRules,
-} from "@/form_schema/tournamentRules";
+} from "@/form_schema/tournament-rules-form-schema";
 
 interface props {
   form?: UseFormReturn<TournamentRules>;

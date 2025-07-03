@@ -9,7 +9,7 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Tournament, TournamentSchema } from "@/form_schema/tournament";
+import { Tournament, TournamentSchema } from "@/form_schema/tournament-form-schema";
 import { ChangeEvent, useState } from "react";
 import { toast } from "sonner";
 import { validateFileSize } from "@/helper/common";

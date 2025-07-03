@@ -4,9 +4,9 @@ import MatchSettingsForm from "../shared/components/match-settings-form";
 import {
   TournamentRules,
   TournamentRulesSchema,
-} from "@/form_schema/tournamentRules";
+} from "@/form_schema/tournament-rules-form-schema";
 import { Button } from "@/components/ui/button";
-import { MatchSettings, MatchSettingsSchema } from "@/form_schema/matchSetting";
+import { MatchSettings, MatchSettingsSchema } from "@/form_schema/match-setting-form-schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { IMatchSettings } from "@/types/matchSetting";

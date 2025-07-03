@@ -9,7 +9,7 @@ import { tournamentStatusLookup } from "@/lookups/tournament/statusLookup";
 import { createAuthClient } from "better-auth/react";
 import TournamentDetailsForm from "../../shared/components/tournament-details-form";
 import { useState } from "react";
-import { Tournament } from "@/form_schema/tournament";
+import { Tournament } from "@/form_schema/tournament-form-schema";
 import dayjs from "dayjs";
 
 interface props {

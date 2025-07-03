@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { setupDraftTournament } from "@/services/tournamentService";
+import { setupDraftTournament } from "@/services/tournament-service";
 
 export async function POST(request: Request) {
   try {

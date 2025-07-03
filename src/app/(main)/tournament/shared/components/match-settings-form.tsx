@@ -1,6 +1,6 @@
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MatchSettings, MatchSettingsSchema } from "@/form_schema/matchSetting";
+import { MatchSettings, MatchSettingsSchema } from "@/form_schema/match-setting-form-schema";
 import { useForm, UseFormReturn } from "react-hook-form";
 import {
   Form,

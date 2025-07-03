@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TournamentEvent, TournamentEventSchema } from "@/form_schema/event";
+import { TournamentEvent, TournamentEventSchema } from "@/form_schema/tournament-event-form-schema";
 import { ErrorMessage } from "@hookform/error-message";
 import { TournamentEventLookup } from "@/lookups/tournament/eventLookup";
 import { LevelLookup } from "@/lookups/tournament/levelLookup";

@@ -1,4 +1,4 @@
-import { fetchTournamentById } from "@/services/tournamentService";
+import { fetchTournamentById } from "@/services/tournament-service";
 import EditTournamentTabs from "./tabs";
 import { notFound, redirect } from "next/navigation";
 

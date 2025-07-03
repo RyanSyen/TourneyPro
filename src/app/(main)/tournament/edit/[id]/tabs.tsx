@@ -10,17 +10,11 @@ import {
   useSearchParams,
 } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Matches from "./matchSettings/matches";
-import Players from "./players/players";
-// import Overview from "./overview/overview";
 import { ITournamentDetails } from "@/types/tournament";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeftIcon, PencilIcon } from "@/icons/components";
-// import Rules from "./rules/rules";
-import { Spinner } from "@/components/ui/spinner";
 import CustomButton from "@/components/ui/button/CustomButton";
 import Overview from "./edit-tournament-details";
-import TournamentRules from "../../create/tournament-rules";
 import Rules from "./edit-tournament-rules";
 
 interface props {
@@ -119,14 +113,16 @@ export default function EditTournamentTabs({ tournament }: props) {
           </TabsContent>
           <TabsContent value="players">
             <div className="pt-4">
-              <Players tournamentId={params.id.toString()} />
+              {/* <Players tournamentId={params.id.toString()} /> */}
+              Players
             </div>
           </TabsContent>
           <TabsContent value="seededEntries">Seeded Entries</TabsContent>
           <TabsContent value="draws">Draws</TabsContent>
           <TabsContent value="matches">
             <div className="pt-4">
-              <Matches tournamentId={params.id.toString()} />
+              {/* <Matches tournamentId={params.id.toString()} /> */}
+              Matches
             </div>
           </TabsContent>
           <TabsContent value="winners">Winners</TabsContent>

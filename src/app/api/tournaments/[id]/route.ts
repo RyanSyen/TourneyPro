@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { setTournamentDetails } from "@/services/tournamentService";
+import { setTournamentDetails } from "@/services/tournament-service";
 
 // UPDATE tournament by id
 export async function PUT(

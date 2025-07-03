@@ -1,4 +1,4 @@
-import { TournamentEvent } from "@/form_schema/event";
+import { TournamentEvent } from "@/form_schema/tournament-event-form-schema";
 import React, { useState } from "react";
 import EventAccordion from "../shared/components/event-accordion";
 import { Separator } from "@/components/ui/separator";
