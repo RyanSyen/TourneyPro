@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { IStepTwoData } from "./tournament-rules";
+import { ITournamentRules } from "./tournament-rules";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { format } from "date-fns";
@@ -16,7 +16,7 @@ import { ITournamentDetails } from "@/types/tournament";
 
 interface props {
   step1: ITournamentDetails;
-  step2: IStepTwoData;
+  step2: ITournamentRules;
   step3: ITournamentEvent[];
   handleFinalSubmit: () => void;
   prevStep: () => void;

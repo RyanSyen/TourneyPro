@@ -1,6 +1,6 @@
 // import { prisma } from "@/lib/prisma";
 import { mapTournamentToDetails } from "@/helper/mapper";
-import { IStepTwoData } from "@/app/(main)/tournament/create/tournament-rules";
+import { ITournamentRules } from "@/app/(main)/tournament/create/tournament-rules";
 import { IStepThreeData } from "@/app/(main)/tournament/create/tournament-events";
 // import { auth } from "@clerk/nextjs/server";
 import { tournamentStatusLookup } from "@/lookups/tournament/statusLookup";
@@ -59,7 +59,7 @@ import { prisma } from "@/lib/prisma";
 // }
 // export async function createTournament(data: {
 //   step1: ITournamentDetails;
-//   step2: IStepTwoData;
+//   step2: ITournamentRules;
 //   step3: ITournamentEvent[];
 // }) {
 //   try {
@@ -326,20 +326,21 @@ export async function fetchTournamentById(
 ): Promise<ITournamentDetails> {
   const user = await requireAuthUser();
 
-  console.log('user: ', user);
+  console.log("user: ", user);
 
   const tournament = await getTournamentById(id);
   if (!tournament) throw new Error("Tournament not found");
 
   const isOwner = tournament.createdBy?.id === user.id;
-  if (!isOwner) throw new Error("You are not authorized to view this tournament");
+  if (!isOwner)
+    throw new Error("You are not authorized to view this tournament");
 
   return mapTournamentToDetails(tournament);
 }
 
 export async function setupDraftTournament(data: {
   step1: ITournamentDetails;
-  step2: IStepTwoData;
+  step2: ITournamentRules;
   step3: ITournamentEvent[];
 }) {
   try {
@@ -418,4 +419,34 @@ export async function setTournamentDetails(
   });
 
   return updatedTournament;
+}
+
+export async function setTournamentRulesAndMatchSettings(
+  tournamentId: number,
+  data: ITournamentRules
+) {
+  try {
+    const user = await requireAuthUser();
+
+    const updatedTournamentRules = await prisma.tournamentRules.update({
+      where: { tournamentId },
+      data: {
+        description: data.rules.description,
+        updatedById: user.id,
+      },
+    });
+
+    const updatedMatchSettings = await prisma.matchSettings.update({
+      where: { tournamentId },
+      data: {
+        ...data.matchSettings,
+        updatedById: user.id,
+      },
+    });
+
+    return { updatedTournamentRules, updatedMatchSettings };
+  } catch (error) {
+    console.error("Error setting tournament rules and match settings:", error);
+    throw new Error(error instanceof Error ? error.message : String(error));
+  }
 }

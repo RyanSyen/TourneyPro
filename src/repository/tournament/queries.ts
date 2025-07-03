@@ -32,7 +32,7 @@ export async function getTournamentById(
   try {
     return await prisma.tournament.findUnique({
       where: { id },
-      select: tournamentSelect,
+      select: tournamentSelect
     });
   } catch (error) {
     console.error(`getTournamentById ${id} error: ${error}`);

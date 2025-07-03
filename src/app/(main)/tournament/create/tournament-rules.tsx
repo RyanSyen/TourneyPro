@@ -16,12 +16,12 @@ import { useParams } from "next/navigation";
 
 interface props {
   isEdit?: boolean;
-  defaultValues: IStepTwoData;
-  onSubmit?: (data: IStepTwoData) => void;
+  defaultValues: ITournamentRules;
+  onSubmit?: (data: ITournamentRules) => void;
   prevStep?: () => void;
 }
 
-export interface IStepTwoData {
+export interface ITournamentRules {
   matchSettings: IMatchSettings;
   rules: ITournamentRule;
 }
@@ -33,7 +33,7 @@ function TournamentRulesPage({
   prevStep,
 }: props) {
   const [stepTwoData, setStepTwoData] =
-    React.useState<IStepTwoData>(defaultValues);
+    React.useState<ITournamentRules>(defaultValues);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const params = useParams();
   const tournamentId = params.id?.toString();
@@ -79,7 +79,7 @@ function TournamentRulesPage({
     }
   };
 
-  const onUpdateRules = async (tournamentId: string, rules: IStepTwoData) => {
+  const onUpdateRules = async (tournamentId: string, rules: ITournamentRules) => {
     setIsSubmitting(true);
     try {
       const response = await fetch("/api/tournament-rules/" + tournamentId, {

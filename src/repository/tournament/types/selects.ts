@@ -14,4 +14,6 @@ export const tournamentSelect = {
   registrationEnd: true,
   status: true,
   createdBy: true,
+  rules: true,
+  matchSettings: true,
 } satisfies Prisma.TournamentSelect;

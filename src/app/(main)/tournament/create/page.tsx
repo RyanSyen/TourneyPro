@@ -5,7 +5,7 @@ import CustomButton from "@/components/ui/button/CustomButton";
 import { ArrowLeftIcon } from "@/icons/components";
 import { CheckCircleIcon } from "@/icons/components";
 import TournamentDetailsForm from "../shared/components/tournament-details-form";
-import TournamentRules, { IStepTwoData } from "./tournament-rules";
+import TournamentRules, { ITournamentRules } from "./tournament-rules";
 import dayjs from "dayjs";
 import TournamentEvents, { IStepThreeData } from "./tournament-events";
 import TournamentPreview from "./tournament-preview";
@@ -21,7 +21,7 @@ const CreateTournament = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<{
     step1: ITournamentDetails;
-    step2: IStepTwoData;
+    step2: ITournamentRules;
     step3: ITournamentEvent[];
   }>({
     step1: {
@@ -56,7 +56,7 @@ const CreateTournament = () => {
   const prevStep = () => setCurrentStep((prev) => prev - 1);
 
   const handleStepSubmit = (
-    stepData: ITournamentDetails | IStepTwoData | ITournamentEvent[]
+    stepData: ITournamentDetails | ITournamentRules | ITournamentEvent[]
   ) => {
     console.log("Step Data:", stepData);
     setFormData((prev) => ({

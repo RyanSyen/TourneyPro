@@ -1,3 +1,4 @@
+import { setTournamentRulesAndMatchSettings } from "@/services/tournamentService";
 import { NextRequest, NextResponse } from "next/server";
 // import { prisma } from "@/lib/prisma";
 // import { auth } from "../../../../../auth";
@@ -14,8 +15,8 @@ export async function PUT(
     console.log("Updating tournament with ID:", id);
     const data = await request.json();
     console.log("Received data for update:", data);
-    // const tournament = await updateTournamentDetails(id, data);
-    return NextResponse.json("test", { status: 200 });
+    const tournament = await setTournamentRulesAndMatchSettings(Number(id), data);
+    return NextResponse.json(tournament, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to update tournament rules", details: error },

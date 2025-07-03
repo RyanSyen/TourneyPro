@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { tournamentStatusLookup } from "@/lookups/tournament/statusLookup";
 import { createAuthClient } from "better-auth/react";
-import TournamentDetailsForm from "../../../shared/components/tournament-details-form";
+import TournamentDetailsForm from "../../shared/components/tournament-details-form";
 import { useState } from "react";
 import { Tournament } from "@/form_schema/tournament";
 import dayjs from "dayjs";
@@ -18,20 +18,9 @@ interface props {
 
 const { useSession } = createAuthClient();
 
-export default function Overview({ tournament }: props) {
-  // console.log("tournament:", tournament);
-
-  // prepare default values for the tournament details form
+export default function EditTournamentDetails({ tournament }: props) {
   const defaultValues: Tournament = {
     ...tournament,
-    // registrationDate: {
-    //   from: dayjs(tournament.registrationDate.from).toISOString(),
-    //   to: dayjs(tournament.registrationDate.to).toISOString(),
-    // },
-    // date: {
-    //   from: dayjs(tournament.date.from).toISOString(),
-    //   to: dayjs(tournament.date.to).toISOString(),
-    // },
     registrationStartDate: dayjs(
       tournament.registrationStartDate
     ).toISOString(),
