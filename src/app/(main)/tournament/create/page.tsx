@@ -77,7 +77,8 @@ const CreateTournament = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      console.log("Response:", response);
+
+      // console.log("Response:", response);
 
       if (!response.ok) {
         const errorBody = await response.json();

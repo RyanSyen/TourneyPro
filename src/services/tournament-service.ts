@@ -14,9 +14,12 @@ import {
   getTournamentById,
 } from "@/repository/tournament/queries";
 import { requireAuthUser } from "./require-auth-user";
-import { createTournament } from "@/repository/tournament/mutation";
-import { create } from "domain";
-import { prisma } from "@/lib/prisma";
+import {
+  createTournament,
+  updateTournament,
+} from "@/repository/tournament/mutation";
+import { updateTournamentRules } from "@/repository/tournament-rules/mutation";
+import { updateMatchSettings } from "@/repository/match-settings/mutation";
 
 // export async function getAllTournaments() {
 //   const tournaments = await prisma.tournament.findMany({
@@ -386,11 +389,6 @@ export async function setupDraftTournament(data: {
     );
   } catch (error) {
     console.error("Error setting up draft tournament:", error);
-    // throw new Error(
-    //   `Failed to setup draft tournament: ${
-    //     error instanceof Error ? error.message : String(error)
-    //   }`
-    // );
     throw new Error(error instanceof Error ? error.message : String(error));
   }
 }
@@ -399,11 +397,10 @@ export async function setTournamentDetails(
   tournamentId: number,
   data: ITournamentDetails
 ) {
-  const user = await requireAuthUser();
+  try {
+    const user = await requireAuthUser();
 
-  const updatedTournament = await prisma.tournament.update({
-    where: { id: tournamentId },
-    data: {
+    const updateTournamentInput: Prisma.TournamentUpdateInput = {
       title: data.title,
       description: data.description,
       location: data.location,
@@ -414,11 +411,14 @@ export async function setTournamentDetails(
       tournamentEnd: data.tournamentEndDate,
       registrationStart: data.registrationStartDate,
       registrationEnd: data.registrationEndDate,
-      updatedById: user.id,
-    },
-  });
+      status: tournamentStatusLookup[0].id,
+    };
 
-  return updatedTournament;
+    return await updateTournament(tournamentId, updateTournamentInput, user);
+  } catch (error) {
+    // console.error("Error setting tournament:", error);
+    throw new Error("Error updating tournament. Please try again or contact support.");
+  }
 }
 
 export async function setTournamentRulesAndMatchSettings(
@@ -428,23 +428,33 @@ export async function setTournamentRulesAndMatchSettings(
   try {
     const user = await requireAuthUser();
 
-    const updatedTournamentRules = await prisma.tournamentRules.update({
-      where: { tournamentId },
-      data: {
+    const updateTournamentRulesInput: Prisma.TournamentRulesUpdateWithoutTournamentInput =
+      {
         description: data.rules.description,
-        updatedById: user.id,
-      },
-    });
+      };
 
-    const updatedMatchSettings = await prisma.matchSettings.update({
-      where: { tournamentId },
-      data: {
-        ...data.matchSettings,
-        updatedById: user.id,
-      },
-    });
+    const res1 = await updateTournamentRules(
+      tournamentId,
+      updateTournamentRulesInput,
+      user
+    );
 
-    return { updatedTournamentRules, updatedMatchSettings };
+    const updateMatchSettingsInput: Prisma.MatchSettingsUpdateWithoutTournamentInput =
+      {
+        points: data.matchSettings.points,
+        changeOfEnds: data.matchSettings.changeOfEnds,
+        gracePeriod: data.matchSettings.gracePeriod,
+        allowSpinServe: data.matchSettings.allowSpinServe,
+        allowDeuce: data.matchSettings.allowDeuce,
+      };
+
+    const res2 = await updateMatchSettings(
+      tournamentId,
+      updateMatchSettingsInput,
+      user
+    );
+
+    return { updatedTournamentRules: res1, updatedMatchSettings: res2 };
   } catch (error) {
     console.error("Error setting tournament rules and match settings:", error);
     throw new Error(error instanceof Error ? error.message : String(error));

@@ -15,7 +15,7 @@ export async function PUT(
     return NextResponse.json(tournament, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to update tournament", details: error },
+      { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }

@@ -39,8 +39,14 @@ export default function EditTournamentDetails({ tournament }: props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedTournament),
       });
-      console.log("Response:", response);
-      if (!response.ok) throw new Error("Failed to update tournament");
+
+      // console.log("Response:", response);
+
+      if (!response.ok) {
+        const errorBody = await response.json();
+        throw new Error(errorBody.error || "Unknown error");
+      }
+
       toast.success("Tournament updated successfully!");
       // router.push("/tournament/list");
     } catch (error) {
