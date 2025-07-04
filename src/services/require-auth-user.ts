@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
-import { prisma } from "@/lib/prisma";
 import { auth } from "../../auth";
 import { cache } from "react";
+import { getUserById } from "@/repository/user/queries";
 
 // nextjs best practices
 /*
@@ -25,9 +25,11 @@ export const requireAuthUser = cache(async () => {
 
   const userId = session.user.id;
 
-  const user = await prisma.user.findUnique({
-    where: { id: userId },
-  });
+  if (!userId) {
+    throw new Error("User ID not found in session");
+  }
+
+  const user = await getUserById(userId);
 
   if (!user) {
     throw new Error("User not found");

@@ -1,6 +1,7 @@
 import { Prisma, User } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { tournamentStatusLookup } from "@/lookups/tournament/statusLookup";
+import { handlePrismaError } from "../handle-prisma-error";
 
 export async function createTournament(
   tournamentInput: Prisma.TournamentCreateInput,
@@ -15,7 +16,7 @@ export async function createTournament(
         data: {
           ...tournamentInput,
           createdBy: { connect: { id: user.id } },
-          updatedBy: { connect: { id: user.id } }
+          updatedBy: { connect: { id: user.id } },
         },
       });
 
@@ -24,7 +25,7 @@ export async function createTournament(
           ...tournamentRulesInput,
           tournament: { connect: { id: tournament.id } },
           createdBy: { connect: { id: user.id } },
-          updatedBy: { connect: { id: user.id } }
+          updatedBy: { connect: { id: user.id } },
         },
       });
 
@@ -33,7 +34,7 @@ export async function createTournament(
           ...matchSettingsInput,
           tournament: { connect: { id: tournament.id } },
           createdBy: { connect: { id: user.id } },
-          updatedBy: { connect: { id: user.id } }
+          updatedBy: { connect: { id: user.id } },
         },
       });
 
@@ -44,7 +45,7 @@ export async function createTournament(
             ...event,
             tournament: { connect: { id: tournament.id } },
             createdBy: { connect: { id: user.id } },
-            updatedBy: { connect: { id: user.id } }
+            updatedBy: { connect: { id: user.id } },
           },
         });
       }
@@ -53,22 +54,29 @@ export async function createTournament(
     });
   } catch (error) {
     console.error(`create tournament error: ${error}`);
-    throw new Error(error instanceof Error ? error.message : String(error));
+    handlePrismaError(error);
   }
 }
 
 export async function updateTournament(
   id: number,
-  data: Prisma.TournamentUpdateInput
+  data: Prisma.TournamentUpdateInput,
+  user: User
 ) {
   try {
     return await prisma.tournament.update({
       where: { id },
-      data,
+      data: {
+        ...data,
+        updatedAt: new Date(),
+        updatedBy: {
+          connect: { id: user.id },
+        },
+      },
     });
   } catch (error) {
     console.error(`update tournament ${id} error: ${error}`);
-    throw new Error(error instanceof Error ? error.message : String(error));
+    handlePrismaError(error);
   }
 }
 
@@ -85,6 +93,6 @@ export async function deleteTournament(id: number, userId: string) {
     });
   } catch (error) {
     console.error(`delete tournament ${id} error: ${error}`);
-    throw new Error(error instanceof Error ? error.message : String(error));
+    handlePrismaError(error);
   }
 }

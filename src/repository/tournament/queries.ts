@@ -1,6 +1,7 @@
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { tournamentSelect } from "./types/selects";
+import { handlePrismaError } from "../handle-prisma-error";
 
 type TournamentPreview = Prisma.TournamentGetPayload<{
   select: typeof tournamentSelect;
@@ -22,7 +23,7 @@ export async function getAllTournaments(
     });
   } catch (error) {
     console.error("getAllTournaments error:", error);
-    throw new Error("Failed to fetch tournaments");
+    handlePrismaError(error);
   }
 }
 
@@ -36,6 +37,6 @@ export async function getTournamentById(
     });
   } catch (error) {
     console.error(`getTournamentById ${id} error: ${error}`);
-    throw new Error("Failed to fetch tournament");
+    handlePrismaError(error);
   }
 }
