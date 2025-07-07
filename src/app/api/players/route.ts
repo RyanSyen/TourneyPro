@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import dayjs from "dayjs";
 import { ResponseData } from "@/types/common";
-import { IPlayer } from "@/types/player";
+import { IPlayer } from "@/app/(main)/tournament/types/tournament.types";
 
 const filePath = path.join(process.cwd(), "public/data", "players.json");
 let responseData: ResponseData;

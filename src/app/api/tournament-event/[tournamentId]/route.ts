@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import dayjs from "dayjs";
-import { ITournamentEvent } from "@/types/event";
 import { ResponseData } from "@/types/common";
+import { ITournamentEvent } from "@/app/(main)/tournament/types/tournament.types";
 
 const filePath = path.join(
   process.cwd(),

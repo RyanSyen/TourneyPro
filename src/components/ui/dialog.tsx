@@ -5,7 +5,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog"
 // import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { CloseLineIcon } from "@/icons/components"
+import { CloseLineIcon } from "@/components/icons/components"
 
 function Dialog({
   ...props

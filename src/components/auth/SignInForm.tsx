@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { createAuthClient } from "better-auth/client";
 import { useForm } from "react-hook-form";
-import { ChevronLeftIcon } from "@/icons/components";
+import { ChevronLeftIcon } from "@/components/icons/components";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 

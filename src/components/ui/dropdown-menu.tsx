@@ -8,7 +8,7 @@ import {
   CheckCircleIcon,
   ChevronRightIcon,
   CircleIcon,
-} from "@/icons/components";
+} from "@/components/icons/components";
 
 function DropdownMenu({
   ...props

@@ -1,6 +1,6 @@
 "use client";
 import Checkbox from "@/components/form/input/Checkbox";
-import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons/components";
+import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/components/icons/components";
 import { createAuthClient } from "better-auth/client";
 import Link from "next/link";
 import React, { useState } from "react";

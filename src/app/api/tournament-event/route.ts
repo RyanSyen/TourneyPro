@@ -3,7 +3,7 @@ import path from "path";
 import { NextResponse } from "next/server";
 import { ResponseData } from "@/types/common";
 import dayjs from "dayjs";
-import { ITournamentEvent } from "@/types/event";
+import { ITournamentEvent } from "@/app/(main)/tournament/types/tournament.types";
 
 const filePath = path.join(process.cwd(), "public/data", "tournamentEvents.json");
 let responseData: ResponseData;

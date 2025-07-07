@@ -20,10 +20,10 @@ interface props {
 }
 
 export function UserNavDropdown({ username, profilePic }: props) {
-  console.log("UserNavDropdown rendered with:", {
-    username,
-    profilePic,
-  });
+  // console.log("UserNavDropdown rendered with:", {
+  //   username,
+  //   profilePic,
+  // });
   const router = useRouter();
 
   const handleSignOut = async () => {

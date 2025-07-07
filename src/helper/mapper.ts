@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { APP_CONFIG } from "@/app/appconfig";
-import { ITournamentDetails } from "@/types/tournament";
+import { ITournament } from "@/app/(main)/tournament/types/tournament.types";
 
 // type TournamentWithRelations = Prisma.TournamentGetPayload<{
 //   include: {
@@ -10,10 +10,10 @@ import { ITournamentDetails } from "@/types/tournament";
 // }>;
 // export function mapTournamentToDetails(
 //   t: TournamentWithRelations
-// ): ITournamentDetails {
+// ): ITournament {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function mapTournamentToDetails(t: any): ITournamentDetails {
+export function mapTournamentToDetails(t: any): ITournament {
   return {
     id: t.id,
     title: t.title,

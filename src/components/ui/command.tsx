@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { SearchIcon } from "@/icons/components"
+import { SearchIcon } from "@/components/icons/components"
 
 function Command({
   className,

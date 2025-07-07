@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import { IMatchSettings } from "@/types/matchSetting";
 import dayjs from "dayjs";
 import { ResponseData } from "@/types/common";
+import { IMatchSettings } from "@/app/(main)/tournament/types/tournament.types";
 
 const filePath = path.join(process.cwd(), "public/data", "matchSettings.json");
 let responseData: ResponseData;

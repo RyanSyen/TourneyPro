@@ -12,7 +12,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
-import { CloseIcon } from "@/icons/components";
+import { CloseIcon } from "@/components/icons/components";
 
 export interface Option {
   value: string;

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import CountryMap from "./CountryMap";
 import { useState } from "react";
-import { MoreDotIcon } from "@/icons/components";
+import { MoreDotIcon } from "@/components/icons/components";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
 

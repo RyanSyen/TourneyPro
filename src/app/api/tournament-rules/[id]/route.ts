@@ -1,9 +1,24 @@
-import { setTournamentRulesAndMatchSettings } from "@/services/tournament-service";
+import { fetchTournamentRulesAndMatchSettings, setTournamentRulesAndMatchSettings } from "@/app/(main)/tournament/services/tournament.service";
 import { NextRequest, NextResponse } from "next/server";
-// import { prisma } from "@/lib/prisma";
-// import { auth } from "../../../../../auth";
-// import { headers } from "next/headers";
-// import { updateTournamentDetails } from "@/services/tournamentService";
+
+export async function GET(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: number }> }
+) {
+  try {
+    const { id } = await params;
+    const data = await fetchTournamentRulesAndMatchSettings(Number(id));
+
+    // console.log("get rules from api:", data);
+
+    return NextResponse.json(data, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
+  }
+}
 
 // UPDATE tournament by id
 export async function PUT(
@@ -24,40 +39,3 @@ export async function PUT(
     );
   }
 }
-
-// // SOFT DELETE tournament by id
-// export async function DELETE(
-//   request: NextRequest,
-//   { params }: { params: Promise<{ id: number }> }
-// ) {
-//   try {
-//     const session = await auth.api.getSession({
-//       headers: await headers(),
-//     });
-
-//     if (session === null) {
-//       throw new Error("User not authenticated");
-//     }
-
-//     const userId = session.user.id;
-
-//     if (!userId) {
-//       throw new Error("User not found");
-//     }
-//     const { id } = await params;
-//     await prisma.tournament.update({
-//       where: { id },
-//       data: {
-//         isDeleted: true,
-//         deletedAt: new Date(),
-//         deletedById: userId,
-//       },
-//     });
-//     return NextResponse.json({ success: true });
-//   } catch (error) {
-//     return NextResponse.json(
-//       { error: "Failed to delete tournament", details: error },
-//       { status: 500 }
-//     );
-//   }
-// }

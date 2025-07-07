@@ -4,7 +4,7 @@ import ComponentCard from "../../common/ComponentCard";
 import Label from "../Label";
 import Input from "../input/InputField";
 import PhoneInput from "../group-input/PhoneInput";
-import { EnvelopeIcon } from "@/icons/components";
+import { EnvelopeIcon } from "@/components/icons/components";
 
 export default function InputGroup() {
   const countries = [
